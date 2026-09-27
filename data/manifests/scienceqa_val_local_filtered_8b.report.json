@@ -1,0 +1,11 @@
+{
+  "input_manifest": "data/manifests/scienceqa_val_local.jsonl",
+  "score_cache": "outputs/cache/scienceqa_scores_8b.jsonl",
+  "receiver": "models/Qwen3-4B",
+  "total": 300,
+  "kept": 221,
+  "dropped": 79,
+  "full_prompt_accuracy_before_filter": 0.7366666666666667,
+  "full_prompt_accuracy_after_filter": 1.0,
+  "output_manifest": "data/manifests/scienceqa_val_local_filtered_8b.jsonl"
+}

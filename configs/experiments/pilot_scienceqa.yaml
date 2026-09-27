@@ -1,0 +1,52 @@
+dataset:
+  name: scienceqa
+  split: validation
+  manifest: data/manifests/scienceqa_val.jsonl
+  processed: data/processed/scienceqa_validation_pilot.jsonl
+  # The paper evaluates image-containing multi-modal samples only.
+  require_image: true
+model:
+  config: configs/models/qwen3_primary.yaml
+  transmitter_path: models/Qwen3-VL-2B-Instruct
+  receiver_path: models/Qwen3-1.7B
+  image_min_pixels: 25088      # 28*28*32  -> about 24 visual tokens
+  image_max_pixels: 200704     # 28*28*256 -> about 196 visual tokens
+transmitter:
+  # Paper VI-A truncates the prompt to N_k <= 64 tokens. That limit was calibrated
+  # for BLIP-2 captions; a Qwen3-VL description needs roughly twice that to stay
+  # grammatically complete, and truncating mid-sentence destroys the discriminative
+  # conclusion. The bound is therefore configurable and the truncation rate is
+  # recorded; the observed length distribution decides the final N policy.
+  max_new_tokens: 192
+  max_prompt_tokens: 192
+receiver:
+  max_new_tokens: 24
+selection:
+  methods: [full, random, proposed]
+  retention_ratios: [0.3, 0.5, 0.7, 1.0]
+  protection:
+    # Differentiated protection is Stage C work; until then every retained
+    # token carries the same placeholder cost so that the symbol axis stays
+    # separable from the token axis in the recorded data.
+    mode: uniform
+    levels: [48, 32, 16]       # r_H / r_M / r_L, equivalent bits per token
+    uniform_symbols_per_token: 1.0
+pragmatic:
+  lambda_attention: 0.25
+  lambda_semantic: 0.30
+  lambda_gradient: 0.45
+  beta: 0.25
+  parameter_status: legacy paper parameters; not claimed optimal for the Qwen3 backbone
+  layer_reduction: mean        # Eq. (10)/(16) average over the masked decoder layers
+  coupling_enabled: false      # Stage C turns on Eq. (17) local refinement
+  # e_mask of Eq. (12): the embedding an untransmitted token is replaced by.
+  mask_token: "<|endoftext|>"
+experiment:
+  dataset_seed: 2026
+  model_seed: 2026
+  channel_seed: 0
+  num_samples: 150
+  channel: ideal
+  dry_run: true
+  cuda_visible_devices: "0"
+  single_gpu_only: true

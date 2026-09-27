@@ -1,0 +1,5 @@
+name: rayleigh
+snr_db: 15
+csi_error_variance: 0.10
+packet_loss_rate: 0.05
+seed: 2026

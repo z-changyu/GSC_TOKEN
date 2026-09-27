@@ -1,0 +1,84 @@
+# 边缘-边缘 V2X-QA 实验配置（方案 A：文本化多车协调接收端）
+#
+# 收发端均部署在边缘设备：
+#   - 发送端（车端）：Qwen3-VL-2B-Instruct，带视觉塔，负责"看图 → 生成语义报告"
+#   - 接收端（边缘 RSU）：Qwen3-4B（纯文本），无视觉塔，负责 R1 摄入 / R2 跨视角融合 / R3 回答
+#
+# 为何接收端可比发送端"大"：接收端是纯文本 LLM，没有视觉编码器这个固定重开销，
+# 因此在相同边缘算力/功耗预算下可承载更多 LLM 参数。Qwen3-4B 需从国内镜像拉取
+# （见 docs/边缘-边缘收发端落地清单.md）；若暂时仅有 Qwen3-1.7B，把 receiver_path
+# 改回 models/Qwen3-1.7B 即可，其余无需改动。
+dataset:
+  name: v2xqa
+  split: test
+  manifest: data/manifests/v2xqa_test.jsonl
+  processed: data/processed/v2xqa_test.jsonl
+  require_image: true
+
+score_cache: outputs/cache/v2xqa_scores.jsonl
+
+model:
+  config: configs/models/qwen3_primary.yaml
+  transmitter_path: models/Qwen3-VL-2B-Instruct
+  receiver_path: models/Qwen3-4B
+  image_min_pixels: 25088      # 28*28*32  -> about 24 visual tokens
+  image_max_pixels: 200704     # 28*28*256 -> about 196 visual tokens
+
+transmitter:
+  max_new_tokens: 192
+  max_prompt_tokens: 192
+receiver:
+  max_new_tokens: 24
+
+selection:
+  methods: [full, random, proposed]
+  retention_ratios: [0.3, 0.5, 0.7, 1.0]
+  protection:
+    mode: uniform
+    levels: [48, 32, 16]       # r_H / r_M / r_L, equivalent bits per token
+    uniform_symbols_per_token: 1.0
+
+pragmatic:
+  lambda_attention: 0.25
+  lambda_semantic: 0.30
+  lambda_gradient: 0.45
+  beta: 0.25
+  layer_reduction: mean
+  coupling_enabled: false      # Stage C turns on Eq. (17) local refinement
+  mask_token: "<|endoftext|>"
+
+radio:
+  bandwidth: 1000000.0         # B, Hz
+  slot_duration: 0.001         # T_s, s
+  epsilon_out: 0.05
+  protection:
+    levels: [48, 32, 16]
+    information_bits_per_token: 16.0
+
+scheduling:
+  t_max: 8
+  refine: true
+
+channels:
+  - configs/channels/ideal.yaml          # 无信道损伤：full 方法在此即 100% 参考线
+  - configs/channels/rayleigh.yaml
+  - configs/channels/rician.yaml
+  - configs/channels/frequency_selective.yaml
+
+snr_db: [0, 15]
+
+methods:
+  - full              # whole prompt at strongest level, budget ignored (upper reference)
+  - random            # random tokens at strongest level, budget respected
+  - fixed_H           # utility-greedy at strongest level only
+  - proposed          # Algorithm 1: Lagrangian + certified rounding + local refinement
+  - plugin_capacity   # internal baseline: Eq. (6) replaced by plug-in capacity
+
+experiment:
+  channel_seeds: [0, 1, 2]
+  channel_seed: 0
+  num_samples: 150
+  dataset_seed: 2026
+  model_seed: 2026
+  cuda_visible_devices: "0"
+  single_gpu_only: true

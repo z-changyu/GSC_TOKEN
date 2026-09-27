@@ -1,0 +1,11 @@
+# DeepMIMO scenario I1 is a ray-tracing export that is not part of this
+# repository. Point `path` at a .npy array of complex channel vectors
+# (or a .npz with a "channels" key) to enable it; until then build_channel
+# raises FileNotFoundError instead of substituting a synthetic fading law.
+name: deepmimo
+scenario: I1
+path: data/channels/deepmimo_i1.npy
+snr_db: 15
+csi_error_variance: 0.01
+packet_loss_rate: 0.05
+seed: 2026

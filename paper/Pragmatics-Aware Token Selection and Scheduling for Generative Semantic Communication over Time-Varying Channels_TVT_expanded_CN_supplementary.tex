@@ -1,0 +1,607 @@
+\documentclass[journal]{IEEEtran}
+\usepackage[UTF8,scheme=plain,fontset=fandol]{ctex}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage{cite}
+
+\newtheorem{proposition}{命题}
+\newtheorem{theorem}{定理}
+
+\renewcommand{\abstractname}{摘\quad 要}
+
+\begin{document}
+
+\title{补充材料：面向V2X风险判定的Token级语义传输}
+\author{Changyu~Zhang, Lingyun~Lu, Wei~Ni, Xiaoqiang~Zhu}
+\maketitle
+
+\appendix
+\section{模型失配选择界的证明}
+\label{app:proxy}
+
+下面证明式~选择间隙式（主文件式）。仿射标定以完整提示序列为锚点，因此根据式~语义代理误差界（主文件式），对任意$\mathcal T\in\mathfrak F_k(m_{\max})$均有
+\begin{equation}
+|F_{\mathrm T,\mathrm{true}}^{(k)}(\mathcal T)
+-F_{\mathrm T}^{(k)}(\mathcal T)|
+\leq\varepsilon_{\mathrm{sem}}^{(k)}(m_{\max}).
+\end{equation}
+再结合式~模型失配界（主文件式）并应用三角不等式，得到
+\begin{equation}
+|F_{\mathrm R}^{(k)}(\mathcal T)-F_{\mathrm T}^{(k)}(\mathcal T)|
+\leq\varepsilon_{\mathrm{sem}}^{(k)}(m_{\max})
++\varepsilon_{\mathrm{model}}^{(k)}
+\triangleq\overline\varepsilon_k.
+\end{equation}
+由于$\mathcal T_{\mathrm P}^{\star}$使代理效用达到最大，因此$F_{\mathrm T}^{(k)}(\mathcal T_{\mathrm P}^{\star})\geq F_{\mathrm T}^{(k)}(\mathcal T_{\mathrm R}^{\star})$。在接收端效用差中分别加上并减去相应的代理效用，可得
+\begin{align}
+&F_{\mathrm R}^{(k)}(\mathcal T_{\mathrm R}^{\star})
+-F_{\mathrm R}^{(k)}(\mathcal T_{\mathrm P}^{\star})
+\notag\\
+&\leq
+|F_{\mathrm R}^{(k)}(\mathcal T_{\mathrm R}^{\star})
+-F_{\mathrm T}^{(k)}(\mathcal T_{\mathrm R}^{\star})|
+\notag\\
+&\quad+
+|F_{\mathrm T}^{(k)}(\mathcal T_{\mathrm P}^{\star})
+-F_{\mathrm R}^{(k)}(\mathcal T_{\mathrm P}^{\star})|
+\leq2\overline\varepsilon_k.
+\end{align}
+因此，式~选择间隙式（主文件式）得证。
+
+\section{耦合近似界的证明}
+\label{app:coupling}
+
+在求解式~基础LP（主文件式）之前，先剔除所有单独选择时就不满足容量约束的模式。若暂时去掉唯一的容量不等式，剩余可行域是各Token组单纯形的笛卡尔积。该乘积与一个活跃的容量超平面相交后，所得极点最优解中至多只有一个Token组取非整数值。否则，若同时存在两个分数组，就可以在两者之间构造一个非零的反向扰动，使容量约束和所有组约束均保持不变，这与极点的定义矛盾。唯一可能存在的分数组位于其单纯形的一条边上，因此其LP贡献不超过该组中最佳单独可行模式的价值。令$V_{\mathrm I}$和$V_{\mathrm f}$分别表示整数部分和分数部分的贡献，由主文件中的相应公式可得
+\begin{equation}
+F_{\mathrm{base},\tau}^{(k)}(\widehat{\bm y})
+\geq\max\{V_{\mathrm I},V_{\mathrm f}\}
+\geq\tfrac12(V_{\mathrm I}+V_{\mathrm f})
+\geq\tfrac12F_{\mathrm{base},\tau}^{(k)}(\bm y_{\mathrm{base}}^{\star}),
+\end{equation}
+从而证明式~1/2保证（主文件式）。另一方面，带耦合问题的最优解$\bm y^{\star}$也是基础问题的一个可行解，因此
+\begin{align}
+\overline F_{\tau}^{(k)}(\widehat{\bm y})
+&\geq F_{\mathrm{base},\tau}^{(k)}(\widehat{\bm y})
+\notag\\
+&\geq\frac12F_{\mathrm{base},\tau}^{(k)}(\bm y^{\star})
+\notag\\
+&\geq\frac{1}{2(1+\kappa_k)}
+\overline F_{\tau}^{(k)}(\bm y^{\star}),
+\end{align}
+其中，首尾两个不等式均由式~夹逼关系（主文件式）得到。由于每一次被接受的局部操作都会严格增大$\overline F_{\tau}^{(k)}$，上述下界在局部改进后仍然成立。又因为可行的Token与保护模式组合数是有限的，所以局部改进必将在有限步内终止。至此，式~耦合近似（主文件式）得证。
+
+\section{特殊情形与退化一致性检查}
+\label{app:degenerate}
+
+本文模型可以恢复若干有用的特殊情形。当$\beta=0$时，式~期望效用（主文件式）退化为可加的多选择背包目标。当$q_{i\ell,\tau}^{(k)}=1$且$|\mathcal R|=1$时，原问题退化为带容量约束的Token选择。当$\Delta r_k\rightarrow0$时，式~码本间隙界（主文件式）恢复连续速率自适应。在CSI完美且$\varepsilon_{\mathrm{out}}\rightarrow0$时，可靠频谱效率退化为瞬时频谱效率。当信道分布歧义集仅包含一个元素时，式~中断分布偏移式（主文件式）退化为经过校准的条件中断模型。若$\bm\theta_{\mathrm T}^{(k)}=\bm\theta_{\mathrm R}$且两侧提示序列分布一致，则$\varepsilon_{\mathrm{model}}^{(k)}=0$。最后，当$K=1$时，不再需要跨终端带宽分配，系统退化为单终端可靠性感知调度器。
+
+\bibliographystyle{IEEEtran}
+\bibliography{IEEEabrv,references}
+\section{语义代理与模型失配界：完整推导}
+
+\noindent 以下为该小节在主文件中所略去的中间推导。
+
+
+为使语义分数能够与任务损失直接比较，令$\mathcal P_{\mathcal T}^{(k)}$表示将集合$\mathcal T$之外的Token全部掩码后得到的提示序列，并在忽略无关加法常数的意义下，将发送端真实的保留效用定义为
+\begin{equation}
+F_{\mathrm T,\mathrm{true}}^{(k)}(\mathcal T)
+=-\mathcal L_{\mathrm T}^{(k)}(\mathcal P_{\mathcal T}^{(k)}).
+\label{eq:true_transmitter_utility}
+\end{equation}
+本文利用验证集上的正仿射标定，把式~集合效用（主文件式）中的原始语义分数$U_{\mathrm T}^{(k)}$映射到NLL量纲，标定后的效用记为$F_{\mathrm T}^{(k)}$。仿射偏置以完整提示序列为锚点，使$F_{\mathrm T}^{(k)}(\mathcal P^{(k)})=F_{\mathrm T,\mathrm{true}}^{(k)}(\mathcal P^{(k)})$，而正比例系数可吸收到业务权重$\omega_k$中。由此，
+\begin{equation}
+\Delta\mathcal L_{\mathrm{proxy}}^{(k)}(\mathcal T)
+=F_{\mathrm T}^{(k)}(\mathcal P^{(k)})
+-F_{\mathrm T}^{(k)}(\mathcal T)
+\label{eq:calibrated_proxy_loss}
+\end{equation}
+该量可作为提示剪枝所引起NLL增量的代理量，而对应的真实NLL增量为
+\begin{equation}
+\Delta\mathcal L_{\mathrm{true}}^{(k)}(\mathcal T)
+=\mathcal L_{\mathrm T}^{(k)}(\mathcal P_{\mathcal T}^{(k)})
+-\mathcal L_{\mathrm T}^{(k)}(\mathcal P^{(k)}).
+\label{eq:true_pruning_loss}
+\end{equation}
+
+设共有$m_k=N_k-|\mathcal T|$个Token被删除，并将这些Token的嵌入扰动拼接为向量$\Delta\bm\xi^{(k)}$。由于不同Token的扰动位于互不重叠的坐标块中，且式~集合效用（主文件式）至多是二次的，因此，经过标定的代理剪枝损失可在删除扰动子空间上写成
+\begin{equation}
+\Delta\mathcal L_{\mathrm{proxy}}^{(k)}
+=\widehat{\bm g}^{(k)\top}\Delta\bm\xi^{(k)}
++\frac12\Delta\bm\xi^{(k)\top}
+\widehat{\bm H}^{(k)}\Delta\bm\xi^{(k)}.
+\label{eq:proxy_quadratic_form}
+\end{equation}
+令$\bm g^{(k)}$和$\bm H^{(k)}$分别表示同一删除扰动子空间上的真实一阶系数和二阶系数，并假设
+\begin{equation}
+\|\bm g^{(k)}-\widehat{\bm g}^{(k)}\|_2\leq\varepsilon_{g,k},
+\qquad
+\|\bm H^{(k)}-\widehat{\bm H}^{(k)}\|_2\leq\varepsilon_{H,k}.
+\label{eq:proxy_coefficient_mismatch}
+\end{equation}
+进一步假设真实Hessian的Lipschitz常数为$L_{3,k}$。式~系数偏差假设（本文件）中的系数偏差可利用留出的单Token删除样本和成对Token删除样本进行保守校准。根据Taylor定理，有
+\begin{align}
+|\Delta\mathcal L_{\mathrm{true}}^{(k)}
+-\Delta\mathcal L_{\mathrm{proxy}}^{(k)}|
+\leq&~\varepsilon_{g,k}\|\Delta\bm\xi^{(k)}\|_2
+\notag\\[-0.2em]
+&+\frac{\varepsilon_{H,k}}{2}\|\Delta\bm\xi^{(k)}\|_2^2
+\notag\\[-0.2em]
+&+\frac{L_{3,k}}{6}\|\Delta\bm\xi^{(k)}\|_2^3.
+\label{eq:second_order_proxy}
+\end{align}
+若每个被删除Token的嵌入扰动范数均不超过$d_k$，则由坐标块互不重叠可得$\|\Delta\bm\xi^{(k)}\|_2\leq\sqrt{m_k}d_k$。定义
+\begin{equation}
+\varepsilon_{\mathrm{sem}}^{(k)}(m_k)
+\triangleq \varepsilon_{g,k}\sqrt{m_k}d_k
++\frac{\varepsilon_{H,k}}{2}m_kd_k^2
++\frac{L_{3,k}}{6}m_k^{3/2}d_k^3.
+\label{eq:semantic_proxy_bound}
+\end{equation}
+于是，式~二阶代理展开（本文件）右侧的误差上界不超过$\varepsilon_{\mathrm{sem}}^{(k)}(m_k)$。给定允许的语义损失误差$\delta_k$，定义可保证的最大删除Token数
+\begin{equation}
+m_{k}^{\mathrm{cert}}(\delta_k)
+=\max\{m\in\{0,\ldots,N_k\}:~
+\varepsilon_{\mathrm{sem}}^{(k)}(m)\leq\delta_k\}.
+\label{eq:certified_deletion_scale}
+\end{equation}
+因此，只要$m_k\leq m_k^{\mathrm{cert}}(\delta_k)$，语义代理误差就不会超过预设容限$\delta_k$。这一结果明确给出了近似成立的范围：它同时取决于被删除Token的数量、一阶系数标定误差、因果耦合所对应的曲率误差以及更高阶的非线性交互。主文件相应小节还将给出独立条件$\kappa_k=\beta d_{M,k}/2<1$，用于刻画相应的弱耦合范围。其取值分布与条件成立与否由主文件相应小节D-3的实验给出，从而避免该理论条件停留在未验证的假设层面。
+
+以上讨论均假定收发模型一致。实际中，发送端与接收端可以采用不同的模型架构、参数规模、量化精度或提示序列分布。忽略与上文相同的无关加法常数，定义接收端效用$F_{\mathrm R}^{(k)}(\mathcal T)=-\mathcal L_{\mathrm R}^{(k)}(\mathcal P_{\mathcal T}^{(k)})$。假设发送端与接收端之间的效用偏差具有如下统一上界：
+\begin{equation}
+\sup_{\mathcal T}
+|F_{\mathrm R}^{(k)}(\mathcal T)
+-F_{\mathrm T,\mathrm{true}}^{(k)}(\mathcal T)|
+\leq \varepsilon_{\mathrm{model}}^{(k)}.
+\label{eq:model_mismatch}
+\end{equation}
+当两侧模型的参数一一对应且可以直接比较时，可采用如下充分上界：
+\begin{align}
+\varepsilon_{\mathrm{model}}^{(k)}
+\leq&~L_{\theta,k}
+\|\bm\theta_{\mathrm T}^{(k)}-\bm\theta_{\mathrm R}\|_2
+\notag\\[-0.2em]
+&+L_{P,k}d(\mathbb P_{\mathrm T}^{(k)},\mathbb P_{\mathrm R}).
+\label{eq:model_mismatch_components}
+\end{align}
+对于架构不同的模型，可用公共校准集上答案分布之间的全变差距离或基于KL散度的距离替代参数差异项。令$\mathfrak F_k(m_{\max})$表示删除Token数量不超过$m_{\max}$的可行集合族，并令$\mathcal T_{\mathrm P}^{\star}$和$\mathcal T_{\mathrm R}^{\star}$分别为该集合族上代理效用与接收端真实效用的最优解，则
+\begin{equation}
+F_{\mathrm R}^{(k)}(\mathcal T_{\mathrm R}^{\star})
+-F_{\mathrm R}^{(k)}(\mathcal T_{\mathrm P}^{\star})
+\leq 2\left[
+\varepsilon_{\mathrm{sem}}^{(k)}(m_{\max})
++\varepsilon_{\mathrm{model}}^{(k)}
+\right].
+\label{eq:proxy_selection_gap}
+\end{equation}
+式~选择间隙式（主文件式）将发送端模型内部的语义代理误差，与收发模型差异及提示序列分布偏移造成的失配明确区分开来（证明见补充材料）。进一步地，把主文件中的相应公式用于单个Token的删除，并分别在完整提示序列和删除Token后的提示序列上应用式~模型失配界（主文件式），即可得到从梯度敏感度到下游任务误差的显式联系：
+\begin{align}
+P_{e,\mathrm R}^{(k)}(\mathcal P_{-i}^{(k)})
+\leq\frac{1}{\log 2}\big[&\mathcal L_{\mathrm R}^{(k)}(\mathcal P^{(k)})
++G_i^{(k)}
+\notag\\[-0.2em]
+&+\tfrac{L_{H,k}}{2}\|\Delta\bm e_i^{(k)}\|_2^2
++2\varepsilon_{\mathrm{model}}^{(k)}\big].
+\label{eq:gradient_vqa_connection}
+\end{align}
+因此，本文并未把$G_i^{(k)}$直接解释为与VQA错误线性等价的量。它表示接收端VQA错误概率上界中可以通过Token选择进行控制的一阶主导项。
+
+\section{可靠性感知联合选择与调度}
+\label{sec:optimization}
+
+
+\section{速率、Token保留率与任务性能边界的推导}
+
+\noindent
+
+
+分别定义被调度的Token数量和相应的等效比特开销为
+\begin{equation}
+n_k(\bm y)=\sum_{i,\ell}y_{i\ell,\tau}^{(k)},
+\qquad
+R_k(\bm y)=\sum_{i,\ell}r_{i\ell}^{(k)}y_{i\ell,\tau}^{(k)}.
+\label{eq:count_and_rate}
+\end{equation}
+给定Token数量上限$n$和可靠传输预算$C$，最优语义性能前沿可表示为如下值函数：
+\begin{equation}
+\begin{split}
+\mathcal V_{k,\tau}(n,C)
+=\max_{\bm y^{(k)}}~~&\overline F_{\tau}^{(k)}(\bm y^{(k)})\\
+\mathrm{s.t.}~~&n_k(\bm y)\leq n,~~R_k(\bm y)\leq C,\\
+&单模式约束（主文件式）,~~y_{i\ell,\tau}^{(k)}\in\{0,1\}.
+\end{split}
+\label{eq:semantic_rate_frontier}
+\end{equation}
+$\mathcal V_{k,\tau}(n,C)$关于$n$和$C$均单调不减。它在两个方向上的离散增量，分别表示多调度一个Token或多增加一个等效比特所带来的边际语义收益。这里，$T_sB_{k,\tau}$为可用的时频符号资源，$C$为相应的可靠传输预算，二者的关系由式~可靠预算（主文件式）给出，而$C/T_s$即相应的可靠等效比特速率。
+
+令$\bm y_{\mathcal V}^{\star}$为式~语义速率前沿（本文件）的一个最优解，并以$\mathcal T_{\tau}^{(k)}(\bm y_{\mathcal V}^{\star})$表示由该调度产生的随机成功接收Token集合。定义平均语义代理余项
+\begin{equation}
+\overline\varepsilon_{\mathrm{sem},k,\tau}(n,C)
+=\mathbb E\!\left[
+\varepsilon_{\mathrm{sem}}^{(k)}
+\!\left(N_k-|\mathcal T_{\tau}^{(k)}(\bm y_{\mathcal V}^{\star})|\right)
+\middle|\widehat h_{\tau}^{(k)}\right].
+\label{eq:average_semantic_remainder}
+\end{equation}
+若该最优解共调度$n_{\star}=n_k(\bm y_{\mathcal V}^{\star})$个Token，且其中至少一个Token发生残余解码失败的概率不超过$\delta_{\mathrm{dec}}$，则由式~语义代理误差界（主文件式）的单调性可得如下可直接计算的上界：
+\begin{align}
+\overline\varepsilon_{\mathrm{sem},k,\tau}(n,C)
+\leq&~(1-\delta_{\mathrm{dec}})
+\varepsilon_{\mathrm{sem}}^{(k)}(N_k-n_{\star})
+\notag\\[-0.2em]
+&+\delta_{\mathrm{dec}}\varepsilon_{\mathrm{sem}}^{(k)}(N_k),
+\label{eq:average_semantic_remainder_bound}
+\end{align}
+其中，根据并合界，$\delta_{\mathrm{dec}}\leq\sum_{i,\ell}y_{\mathcal V,i\ell,\tau}^{\star(k)}(1-q_{i\ell,\tau}^{(k)})$。进一步结合式~VQA错误界（主文件式）、式~标定损失式给出的标定损失恒等式、语义代理误差界以及模型失配界，可得到下游VQA性能的显式上界：
+\begin{equation}
+\begin{split}
+P_{e,k,\tau}^{\mathcal V}(n,C)
+\leq\frac{1}{\log 2}\big[&\mathcal L_{\mathrm R}^{(k)}(\mathcal P^{(k)})
++F_{\mathrm T}^{(k)}(\mathcal P^{(k)})
+-\mathcal V_{k,\tau}(n,C)\\
+&+\overline\varepsilon_{\mathrm{sem},k,\tau}(n,C)\\
+&+2\varepsilon_{\mathrm{model}}^{(k)}
++\varepsilon_{\mathrm{ch},\tau}^{(k)}\big].
+\end{split}
+\label{eq:rate_retention_vqa_boundary}
+\end{equation}
+上述结果由恒等式$\mathbb E[\mathcal L_{\mathrm R}^{(k)}(\mathcal P_{\mathcal T}^{(k)})]=\mathcal L_{\mathrm R}^{(k)}(\mathcal P^{(k)})+F_{\mathrm R}^{(k)}(\mathcal P^{(k)})-\mathbb E[F_{\mathrm R}^{(k)}(\mathcal T)]$以及对收发模型失配界的两次应用得到。其中，$P_{e,k,\tau}^{\mathcal V}$表示采用语义性能前沿最优调度时的VQA错误概率。若NLL等效效用的变化范围不超过$\Delta_{F,k}^{\max}$，则可靠容量发生中断所引起的附加项满足$\varepsilon_{\mathrm{ch},\tau}^{(k)}\leq\varepsilon_{\mathrm{out}}\Delta_{F,k}^{\max}$。根据式~中断分布偏移式（主文件式），该结论以$1-\delta_{\mathrm{amb}}$的置信度成立。需要强调的是，式~VQA性能上界（主文件式）给出的是性能上界，而不是精确等式。该式从理论上刻画了Token数量、传输比特率与VQA性能之间的权衡。其可检验的定性推论是，在可靠预算内提高可传输的Token数量或等效比特率不会恶化可达的最优代理效用，而过度剪枝或采用过弱的保护模式会放大语义代理余项。主文件相应小节C的符号预算扫描与该节D-2的集合级可加性检验正是针对这两个推论设计的。当被调度的$n$个Token均成功接收时，式~平均语义余项（本文件）简化为$\varepsilon_{\mathrm{sem}}^{(k)}(N_k-n)$。
+
+本文并未根据某个Token优先级类别预先固定其保护速率。二元变量$y_{i\ell,\tau}^{(k)}$允许系统在每个时隙内为每个Token单独选择保护模式，而有限集合$\mathcal R$对应实际可用的调制编码码本。为量化离散码本相对于连续速率自适应的性能差距，设连续速率$r$下的条件解码概率$q_i^{(k)}(r,h)$随$r$单调不减，并关于$r$满足常数为$L_{q,k}$的Lipschitz条件，而码本速率$r_{i\ell}^{(k)}$处的取值即$q_{i\ell,\tau}^{(k)}$。同时假设任一可行连续速率都可以向下舍入到一个码本速率，且两者之差不超过$\Delta r_k$。定义
+\begin{equation}
+d_{M,k}=\max_i\left(
+\sum_{j>i}M_{ij}^{(k)}+\sum_{j<i}M_{ji}^{(k)}
+\right),
+\label{eq:directed_coupling_degree}
+\end{equation}
+则向下舍入后的资源分配仍满足容量约束，并且
+\begin{equation}
+0\leq\mathcal V_{k,\tau}^{\mathrm{cont}}(n,C)
+-\mathcal V_{k,\tau}^{\mathcal R}(n,C)
+\leq N_k(1+\beta d_{M,k})L_{q,k}\Delta r_k.
+\label{eq:rate_codebook_gap}
+\end{equation}
+这是因为，向下舍入使每个Token的接收程度至多变化$L_{q,k}\Delta r_k$，记舍入后的接收程度为$\widetilde z_i$，则$|z_iz_j-\widetilde z_i\widetilde z_j|\leq|z_i-\widetilde z_i|+|z_j-\widetilde z_j|$。对所有与Token关联的因果耦合权重求和，即可得到式~码本间隙界（主文件式）。因此，随着码本粒度不断细化，动态离散保护的性能将逐渐逼近连续速率自适应。
+
+
+\section{多终端联合优化的推导}
+
+\noindent
+
+
+令$\omega_k$表示终端$k$的业务权重，$B$表示系统总带宽。为兼顾任务效用和终端间的服务公平性，每个时隙求解如下联合优化问题：
+\begin{align}
+\max_{\bm B_{\tau},\bm y_{\tau}}~~
+&\sum_{k=1}^{K}\omega_k\overline F_{\tau}^{(k)}(\bm y^{(k)})
++\vartheta\sum_{k=1}^{K}\log(B_{k,\tau}+\varepsilon_B)
+\label{eq:joint_optimization}\\
+\mathrm{s.t.}~~
+&\sum_{k=1}^{K}B_{k,\tau}\leq B,\quad B_{k,\tau}\geq0,
+\label{eq:bandwidth_constraint}\\
+&单模式约束（主文件式）,~容量约束（主文件式）,
+\quad y_{i\ell,\tau}^{(k)}\in\{0,1\}.
+\notag
+\end{align}
+目标函数中，前一项用于最大化各终端的加权任务效用，后一项是比例公平正则项。参数$\vartheta\geq0$调节任务准确率与服务公平性之间的权衡，$\varepsilon_B>0$则保证带宽为零时对数项仍为有限值。Jain公平指数仅作为实验评估指标使用。关于Pareto改进的判断必须基于对$\vartheta$进行扫描后得到的完整性能前沿，而不能仅依据某一个工作点。
+
+问题~联合优化问题（主文件式）采用集中式形式书写，以便清楚呈现系统级目标，但实际实现可以分解。接收端只负责在各终端之间协调共享带宽变量$\{B_{k,\tau}\}$，而每个终端$k$在本地并行计算其私有的Token与保护模式选择$\bm y^{(k)}$。因此，本文所谓“联合”，是指带宽分配会综合考虑所有终端局部响应所体现的语义价值，并不意味着终端必须在调度前把候选Token或Token嵌入上传给接收端。
+
+固定$B_{k,\tau}$后，终端在$n=N_k$、$C=C_{\tau}^{(k)}$处的离散优化最优值记为$V_{\tau}^{(k)}(B_{k,\tau})=\mathcal V_{k,\tau}(N_k,C_{\tau}^{(k)})$。进一步在足够细的资源粒度上，对相邻的可行Token与保护模式调度进行时间共享，并以$\widetilde V_{\tau}^{(k)}(B_{k,\tau})$表示由此得到的凹闭包。该时间共享可通过OFDM资源块或微时隙实现，从而避免把阶梯状的离散值函数直接当作可微函数处理。令$\mu_{k,\tau}^{\star}$表示相应连续松弛问题的最优乘子。对于可微点，根据包络定理有
+\begin{equation}
+\frac{\partial \widetilde V_{\tau}^{(k)}(B_{k,\tau})}{\partial B_{k,\tau}}
+=T_s\mu_{k,\tau}^{\star}
+c_{\varepsilon}^{(k)}(\widehat h_{\tau}^{(k)}).
+\label{eq:value_envelope}
+\end{equation}
+在不可微点，式~值包络式（本文件）右侧仍是一个有效次梯度。外层时间共享松弛是凹优化问题。当$\vartheta>0$时，对数正则项使目标函数在带宽单纯形上严格凹。因此，该问题的KKT条件不仅是必要条件，而且是充分条件，所得带宽分配并非经验性的启发式规则。
+
+由此，终端$k$的带宽边际语义价值可写为$g_{k,\tau}(B_{k,\tau})=\omega_kT_s\mu_{k,\tau}^{\star}(B_{k,\tau})c_{\varepsilon}^{(k)}(\widehat h_{\tau}^{(k)})$。所有获得正带宽的活跃终端均满足
+\begin{equation}
+g_{k,\tau}+
+\frac{\vartheta}{B_{k,\tau}+\varepsilon_B}
+=\nu_{\tau},
+\qquad B_{k,\tau}>0,
+\label{eq:bandwidth_kkt}
+\end{equation}
+其中，$\nu_{\tau}$取值应使各终端获配带宽之和等于$B$。结合时间共享值函数的分段常数次梯度，可通过对$\nu_{\tau}$进行一维搜索求解式~带宽KKT条件（主文件式）。在实际资源块量化时，再选择距离最近的可行时间共享点。由此，原先固定的$p_k|\widehat h_{\tau}^{(k)}|$分配规则被替换为直接从联合目标函数推导出的带宽分配方法。
+
+为保证系统能够按时隙因果运行，终端$k$只需上报当前的对偶迭代值$\mu_{k,\tau}$，以一个标量概括其私有候选Token池的边际资源压力。接收端将该语义价格报告与CSI估计相结合，得到
+\begin{equation}
+\widehat g_{k,\tau}
+=\omega_kT_s\mu_{k,\tau}
+\,c_{\varepsilon}^{(k)}(\widehat h_{\tau}^{(k)}),
+\label{eq:online_semantic_report}
+\end{equation}
+随后以$\widehat g_{k,\tau}$替代式~带宽KKT条件（主文件式）中的精确边际语义价值。当语义价格报告固定时，活跃终端的带宽分配具有如下闭式表达：
+\begin{equation}
+\widehat B_{k,\tau}
+=\left[\frac{\vartheta}{\nu_{\tau}-\widehat g_{k,\tau}}
+-\varepsilon_B\right]^+,
+\qquad \nu_{\tau}>\widehat g_{k,\tau},
+\label{eq:reported_bandwidth_solution}
+\end{equation}
+其中，$\nu_{\tau}$用于保证式~带宽约束（主文件式）成立。算法收敛后，$\mu_{k,\tau}=\mu_{k,\tau}^{\star}(B_{k,\tau})$，此时式~语义价格上报式（主文件式）恢复为精确次梯度。式~对偶更新式（主文件式）在相邻时隙之间更新语义价格，并将更新结果用于下一时隙的需求上报。这样便无须在获得当前资源授权之前，预先上报一个本身依赖该授权的Token选择结果，从而避免控制流程中的循环依赖。
+
+语义价格上报不精确所造成的近似误差同样可以量化。令$\bm B_{\tau}^{\star}$满足使用精确边际价值时的KKT条件，令$\widehat{\bm B}_{\tau}$满足使用上报值时的KKT条件，并在$\widehat{\bm B}_{\tau}$处定义梯度误差$\bm e_{g,\tau}=\widehat{\bm g}_{\tau}-\bm g_{\tau}(\widehat{\bm B}_{\tau})$。比例公平的外层目标$J_{\tau}(\bm B)$是参数为$\sigma_B$的强凹函数，且
+\begin{equation}
+\sigma_B\geq\frac{\vartheta}{(B+\varepsilon_B)^2},
+\qquad \vartheta>0.
+\label{eq:bandwidth_strong_concavity}
+\end{equation}
+比较这两个KKT系统对应的变分不等式，可得
+\begin{equation}
+\|\widehat{\bm B}_{\tau}-\bm B_{\tau}^{\star}\|_2
+\leq\frac{\|\bm e_{g,\tau}\|_2}{\sigma_B},
+\qquad
+J_{\tau}(\bm B_{\tau}^{\star})-J_{\tau}(\widehat{\bm B}_{\tau})
+\leq\frac{\|\bm e_{g,\tau}\|_2^2}{\sigma_B}.
+\label{eq:bandwidth_report_gap}
+\end{equation}
+因此，当终端上报的语义价格精确时，在线分配规则能够精确求解松弛后的联合目标。当上报存在误差时，带宽偏差和目标函数差距均由式~上报间隙界（本文件）显式控制。若$\vartheta=0$，式~带宽KKT条件（主文件式）仍是必要的次梯度条件，但此时不再保证解的唯一性，强凹性误差界也不再适用。
+
+
+\end{document}
+
+\section{语义代理与模型失配界：完整推导}
+
+\noindent 以下为该小节在主文件中所略去的中间推导。
+
+
+为使语义分数能够与任务损失直接比较，令$\mathcal P_{\mathcal T}^{(k)}$表示将集合$\mathcal T$之外的Token全部掩码后得到的提示序列，并在忽略无关加法常数的意义下，将发送端真实的保留效用定义为
+\begin{equation}
+F_{\mathrm T,\mathrm{true}}^{(k)}(\mathcal T)
+=-\mathcal L_{\mathrm T}^{(k)}(\mathcal P_{\mathcal T}^{(k)}).
+\label{eq:true_transmitter_utility}
+\end{equation}
+本文利用验证集上的正仿射标定，把式~集合效用（主文件式）中的原始语义分数$U_{\mathrm T}^{(k)}$映射到NLL量纲，标定后的效用记为$F_{\mathrm T}^{(k)}$。仿射偏置以完整提示序列为锚点，使$F_{\mathrm T}^{(k)}(\mathcal P^{(k)})=F_{\mathrm T,\mathrm{true}}^{(k)}(\mathcal P^{(k)})$，而正比例系数可吸收到业务权重$\omega_k$中。由此，
+\begin{equation}
+\Delta\mathcal L_{\mathrm{proxy}}^{(k)}(\mathcal T)
+=F_{\mathrm T}^{(k)}(\mathcal P^{(k)})
+-F_{\mathrm T}^{(k)}(\mathcal T)
+\label{eq:calibrated_proxy_loss}
+\end{equation}
+该量可作为提示剪枝所引起NLL增量的代理量，而对应的真实NLL增量为
+\begin{equation}
+\Delta\mathcal L_{\mathrm{true}}^{(k)}(\mathcal T)
+=\mathcal L_{\mathrm T}^{(k)}(\mathcal P_{\mathcal T}^{(k)})
+-\mathcal L_{\mathrm T}^{(k)}(\mathcal P^{(k)}).
+\label{eq:true_pruning_loss}
+\end{equation}
+
+设共有$m_k=N_k-|\mathcal T|$个Token被删除，并将这些Token的嵌入扰动拼接为向量$\Delta\bm\xi^{(k)}$。由于不同Token的扰动位于互不重叠的坐标块中，且式~集合效用（主文件式）至多是二次的，因此，经过标定的代理剪枝损失可在删除扰动子空间上写成
+\begin{equation}
+\Delta\mathcal L_{\mathrm{proxy}}^{(k)}
+=\widehat{\bm g}^{(k)\top}\Delta\bm\xi^{(k)}
++\frac12\Delta\bm\xi^{(k)\top}
+\widehat{\bm H}^{(k)}\Delta\bm\xi^{(k)}.
+\label{eq:proxy_quadratic_form}
+\end{equation}
+令$\bm g^{(k)}$和$\bm H^{(k)}$分别表示同一删除扰动子空间上的真实一阶系数和二阶系数，并假设
+\begin{equation}
+\|\bm g^{(k)}-\widehat{\bm g}^{(k)}\|_2\leq\varepsilon_{g,k},
+\qquad
+\|\bm H^{(k)}-\widehat{\bm H}^{(k)}\|_2\leq\varepsilon_{H,k}.
+\label{eq:proxy_coefficient_mismatch}
+\end{equation}
+进一步假设真实Hessian的Lipschitz常数为$L_{3,k}$。式~系数偏差假设（本文件）中的系数偏差可利用留出的单Token删除样本和成对Token删除样本进行保守校准。根据Taylor定理，有
+\begin{align}
+|\Delta\mathcal L_{\mathrm{true}}^{(k)}
+-\Delta\mathcal L_{\mathrm{proxy}}^{(k)}|
+\leq&~\varepsilon_{g,k}\|\Delta\bm\xi^{(k)}\|_2
+\notag\\[-0.2em]
+&+\frac{\varepsilon_{H,k}}{2}\|\Delta\bm\xi^{(k)}\|_2^2
+\notag\\[-0.2em]
+&+\frac{L_{3,k}}{6}\|\Delta\bm\xi^{(k)}\|_2^3.
+\label{eq:second_order_proxy}
+\end{align}
+若每个被删除Token的嵌入扰动范数均不超过$d_k$，则由坐标块互不重叠可得$\|\Delta\bm\xi^{(k)}\|_2\leq\sqrt{m_k}d_k$。定义
+\begin{equation}
+\varepsilon_{\mathrm{sem}}^{(k)}(m_k)
+\triangleq \varepsilon_{g,k}\sqrt{m_k}d_k
++\frac{\varepsilon_{H,k}}{2}m_kd_k^2
++\frac{L_{3,k}}{6}m_k^{3/2}d_k^3.
+\label{eq:semantic_proxy_bound}
+\end{equation}
+于是，式~二阶代理展开（本文件）右侧的误差上界不超过$\varepsilon_{\mathrm{sem}}^{(k)}(m_k)$。给定允许的语义损失误差$\delta_k$，定义可保证的最大删除Token数
+\begin{equation}
+m_{k}^{\mathrm{cert}}(\delta_k)
+=\max\{m\in\{0,\ldots,N_k\}:~
+\varepsilon_{\mathrm{sem}}^{(k)}(m)\leq\delta_k\}.
+\label{eq:certified_deletion_scale}
+\end{equation}
+因此，只要$m_k\leq m_k^{\mathrm{cert}}(\delta_k)$，语义代理误差就不会超过预设容限$\delta_k$。这一结果明确给出了近似成立的范围：它同时取决于被删除Token的数量、一阶系数标定误差、因果耦合所对应的曲率误差以及更高阶的非线性交互。主文件相应小节还将给出独立条件$\kappa_k=\beta d_{M,k}/2<1$，用于刻画相应的弱耦合范围。其取值分布与条件成立与否由主文件相应小节D-3的实验给出，从而避免该理论条件停留在未验证的假设层面。
+
+以上讨论均假定收发模型一致。实际中，发送端与接收端可以采用不同的模型架构、参数规模、量化精度或提示序列分布。忽略与上文相同的无关加法常数，定义接收端效用$F_{\mathrm R}^{(k)}(\mathcal T)=-\mathcal L_{\mathrm R}^{(k)}(\mathcal P_{\mathcal T}^{(k)})$。假设发送端与接收端之间的效用偏差具有如下统一上界：
+\begin{equation}
+\sup_{\mathcal T}
+|F_{\mathrm R}^{(k)}(\mathcal T)
+-F_{\mathrm T,\mathrm{true}}^{(k)}(\mathcal T)|
+\leq \varepsilon_{\mathrm{model}}^{(k)}.
+\label{eq:model_mismatch}
+\end{equation}
+当两侧模型的参数一一对应且可以直接比较时，可采用如下充分上界：
+\begin{align}
+\varepsilon_{\mathrm{model}}^{(k)}
+\leq&~L_{\theta,k}
+\|\bm\theta_{\mathrm T}^{(k)}-\bm\theta_{\mathrm R}\|_2
+\notag\\[-0.2em]
+&+L_{P,k}d(\mathbb P_{\mathrm T}^{(k)},\mathbb P_{\mathrm R}).
+\label{eq:model_mismatch_components}
+\end{align}
+对于架构不同的模型，可用公共校准集上答案分布之间的全变差距离或基于KL散度的距离替代参数差异项。令$\mathfrak F_k(m_{\max})$表示删除Token数量不超过$m_{\max}$的可行集合族，并令$\mathcal T_{\mathrm P}^{\star}$和$\mathcal T_{\mathrm R}^{\star}$分别为该集合族上代理效用与接收端真实效用的最优解，则
+\begin{equation}
+F_{\mathrm R}^{(k)}(\mathcal T_{\mathrm R}^{\star})
+-F_{\mathrm R}^{(k)}(\mathcal T_{\mathrm P}^{\star})
+\leq 2\left[
+\varepsilon_{\mathrm{sem}}^{(k)}(m_{\max})
++\varepsilon_{\mathrm{model}}^{(k)}
+\right].
+\label{eq:proxy_selection_gap}
+\end{equation}
+式~选择间隙式（主文件式）将发送端模型内部的语义代理误差，与收发模型差异及提示序列分布偏移造成的失配明确区分开来（证明见补充材料）。进一步地，把主文件中的相应公式用于单个Token的删除，并分别在完整提示序列和删除Token后的提示序列上应用式~模型失配界（主文件式），即可得到从梯度敏感度到下游任务误差的显式联系：
+\begin{align}
+P_{e,\mathrm R}^{(k)}(\mathcal P_{-i}^{(k)})
+\leq\frac{1}{\log 2}\big[&\mathcal L_{\mathrm R}^{(k)}(\mathcal P^{(k)})
++G_i^{(k)}
+\notag\\[-0.2em]
+&+\tfrac{L_{H,k}}{2}\|\Delta\bm e_i^{(k)}\|_2^2
++2\varepsilon_{\mathrm{model}}^{(k)}\big].
+\label{eq:gradient_vqa_connection}
+\end{align}
+因此，本文并未把$G_i^{(k)}$直接解释为与VQA错误线性等价的量。它表示接收端VQA错误概率上界中可以通过Token选择进行控制的一阶主导项。
+
+\section{可靠性感知联合选择与调度}
+\label{sec:optimization}
+
+
+\section{速率、Token保留率与任务性能边界的推导}
+
+\noindent
+
+
+分别定义被调度的Token数量和相应的等效比特开销为
+\begin{equation}
+n_k(\bm y)=\sum_{i,\ell}y_{i\ell,\tau}^{(k)},
+\qquad
+R_k(\bm y)=\sum_{i,\ell}r_{i\ell}^{(k)}y_{i\ell,\tau}^{(k)}.
+\label{eq:count_and_rate}
+\end{equation}
+给定Token数量上限$n$和可靠传输预算$C$，最优语义性能前沿可表示为如下值函数：
+\begin{equation}
+\begin{split}
+\mathcal V_{k,\tau}(n,C)
+=\max_{\bm y^{(k)}}~~&\overline F_{\tau}^{(k)}(\bm y^{(k)})\\
+\mathrm{s.t.}~~&n_k(\bm y)\leq n,~~R_k(\bm y)\leq C,\\
+&单模式约束（主文件式）,~~y_{i\ell,\tau}^{(k)}\in\{0,1\}.
+\end{split}
+\label{eq:semantic_rate_frontier}
+\end{equation}
+$\mathcal V_{k,\tau}(n,C)$关于$n$和$C$均单调不减。它在两个方向上的离散增量，分别表示多调度一个Token或多增加一个等效比特所带来的边际语义收益。这里，$T_sB_{k,\tau}$为可用的时频符号资源，$C$为相应的可靠传输预算，二者的关系由式~可靠预算（主文件式）给出，而$C/T_s$即相应的可靠等效比特速率。
+
+令$\bm y_{\mathcal V}^{\star}$为式~语义速率前沿（本文件）的一个最优解，并以$\mathcal T_{\tau}^{(k)}(\bm y_{\mathcal V}^{\star})$表示由该调度产生的随机成功接收Token集合。定义平均语义代理余项
+\begin{equation}
+\overline\varepsilon_{\mathrm{sem},k,\tau}(n,C)
+=\mathbb E\!\left[
+\varepsilon_{\mathrm{sem}}^{(k)}
+\!\left(N_k-|\mathcal T_{\tau}^{(k)}(\bm y_{\mathcal V}^{\star})|\right)
+\middle|\widehat h_{\tau}^{(k)}\right].
+\label{eq:average_semantic_remainder}
+\end{equation}
+若该最优解共调度$n_{\star}=n_k(\bm y_{\mathcal V}^{\star})$个Token，且其中至少一个Token发生残余解码失败的概率不超过$\delta_{\mathrm{dec}}$，则由式~语义代理误差界（主文件式）的单调性可得如下可直接计算的上界：
+\begin{align}
+\overline\varepsilon_{\mathrm{sem},k,\tau}(n,C)
+\leq&~(1-\delta_{\mathrm{dec}})
+\varepsilon_{\mathrm{sem}}^{(k)}(N_k-n_{\star})
+\notag\\[-0.2em]
+&+\delta_{\mathrm{dec}}\varepsilon_{\mathrm{sem}}^{(k)}(N_k),
+\label{eq:average_semantic_remainder_bound}
+\end{align}
+其中，根据并合界，$\delta_{\mathrm{dec}}\leq\sum_{i,\ell}y_{\mathcal V,i\ell,\tau}^{\star(k)}(1-q_{i\ell,\tau}^{(k)})$。进一步结合式~VQA错误界（主文件式）、式~标定损失式给出的标定损失恒等式、语义代理误差界以及模型失配界，可得到下游VQA性能的显式上界：
+\begin{equation}
+\begin{split}
+P_{e,k,\tau}^{\mathcal V}(n,C)
+\leq\frac{1}{\log 2}\big[&\mathcal L_{\mathrm R}^{(k)}(\mathcal P^{(k)})
++F_{\mathrm T}^{(k)}(\mathcal P^{(k)})
+-\mathcal V_{k,\tau}(n,C)\\
+&+\overline\varepsilon_{\mathrm{sem},k,\tau}(n,C)\\
+&+2\varepsilon_{\mathrm{model}}^{(k)}
++\varepsilon_{\mathrm{ch},\tau}^{(k)}\big].
+\end{split}
+\label{eq:rate_retention_vqa_boundary}
+\end{equation}
+上述结果由恒等式$\mathbb E[\mathcal L_{\mathrm R}^{(k)}(\mathcal P_{\mathcal T}^{(k)})]=\mathcal L_{\mathrm R}^{(k)}(\mathcal P^{(k)})+F_{\mathrm R}^{(k)}(\mathcal P^{(k)})-\mathbb E[F_{\mathrm R}^{(k)}(\mathcal T)]$以及对收发模型失配界的两次应用得到。其中，$P_{e,k,\tau}^{\mathcal V}$表示采用语义性能前沿最优调度时的VQA错误概率。若NLL等效效用的变化范围不超过$\Delta_{F,k}^{\max}$，则可靠容量发生中断所引起的附加项满足$\varepsilon_{\mathrm{ch},\tau}^{(k)}\leq\varepsilon_{\mathrm{out}}\Delta_{F,k}^{\max}$。根据式~中断分布偏移式（主文件式），该结论以$1-\delta_{\mathrm{amb}}$的置信度成立。需要强调的是，式~VQA性能上界（主文件式）给出的是性能上界，而不是精确等式。该式从理论上刻画了Token数量、传输比特率与VQA性能之间的权衡。其可检验的定性推论是，在可靠预算内提高可传输的Token数量或等效比特率不会恶化可达的最优代理效用，而过度剪枝或采用过弱的保护模式会放大语义代理余项。主文件相应小节C的符号预算扫描与该节D-2的集合级可加性检验正是针对这两个推论设计的。当被调度的$n$个Token均成功接收时，式~平均语义余项（本文件）简化为$\varepsilon_{\mathrm{sem}}^{(k)}(N_k-n)$。
+
+本文并未根据某个Token优先级类别预先固定其保护速率。二元变量$y_{i\ell,\tau}^{(k)}$允许系统在每个时隙内为每个Token单独选择保护模式，而有限集合$\mathcal R$对应实际可用的调制编码码本。为量化离散码本相对于连续速率自适应的性能差距，设连续速率$r$下的条件解码概率$q_i^{(k)}(r,h)$随$r$单调不减，并关于$r$满足常数为$L_{q,k}$的Lipschitz条件，而码本速率$r_{i\ell}^{(k)}$处的取值即$q_{i\ell,\tau}^{(k)}$。同时假设任一可行连续速率都可以向下舍入到一个码本速率，且两者之差不超过$\Delta r_k$。定义
+\begin{equation}
+d_{M,k}=\max_i\left(
+\sum_{j>i}M_{ij}^{(k)}+\sum_{j<i}M_{ji}^{(k)}
+\right),
+\label{eq:directed_coupling_degree}
+\end{equation}
+则向下舍入后的资源分配仍满足容量约束，并且
+\begin{equation}
+0\leq\mathcal V_{k,\tau}^{\mathrm{cont}}(n,C)
+-\mathcal V_{k,\tau}^{\mathcal R}(n,C)
+\leq N_k(1+\beta d_{M,k})L_{q,k}\Delta r_k.
+\label{eq:rate_codebook_gap}
+\end{equation}
+这是因为，向下舍入使每个Token的接收程度至多变化$L_{q,k}\Delta r_k$，记舍入后的接收程度为$\widetilde z_i$，则$|z_iz_j-\widetilde z_i\widetilde z_j|\leq|z_i-\widetilde z_i|+|z_j-\widetilde z_j|$。对所有与Token关联的因果耦合权重求和，即可得到式~码本间隙界（主文件式）。因此，随着码本粒度不断细化，动态离散保护的性能将逐渐逼近连续速率自适应。
+
+
+\section{多终端联合优化的推导}
+
+\noindent
+
+
+令$\omega_k$表示终端$k$的业务权重，$B$表示系统总带宽。为兼顾任务效用和终端间的服务公平性，每个时隙求解如下联合优化问题：
+\begin{align}
+\max_{\bm B_{\tau},\bm y_{\tau}}~~
+&\sum_{k=1}^{K}\omega_k\overline F_{\tau}^{(k)}(\bm y^{(k)})
++\vartheta\sum_{k=1}^{K}\log(B_{k,\tau}+\varepsilon_B)
+\label{eq:joint_optimization}\\
+\mathrm{s.t.}~~
+&\sum_{k=1}^{K}B_{k,\tau}\leq B,\quad B_{k,\tau}\geq0,
+\label{eq:bandwidth_constraint}\\
+&单模式约束（主文件式）,~容量约束（主文件式）,
+\quad y_{i\ell,\tau}^{(k)}\in\{0,1\}.
+\notag
+\end{align}
+目标函数中，前一项用于最大化各终端的加权任务效用，后一项是比例公平正则项。参数$\vartheta\geq0$调节任务准确率与服务公平性之间的权衡，$\varepsilon_B>0$则保证带宽为零时对数项仍为有限值。Jain公平指数仅作为实验评估指标使用。关于Pareto改进的判断必须基于对$\vartheta$进行扫描后得到的完整性能前沿，而不能仅依据某一个工作点。
+
+问题~联合优化问题（主文件式）采用集中式形式书写，以便清楚呈现系统级目标，但实际实现可以分解。接收端只负责在各终端之间协调共享带宽变量$\{B_{k,\tau}\}$，而每个终端$k$在本地并行计算其私有的Token与保护模式选择$\bm y^{(k)}$。因此，本文所谓“联合”，是指带宽分配会综合考虑所有终端局部响应所体现的语义价值，并不意味着终端必须在调度前把候选Token或Token嵌入上传给接收端。
+
+固定$B_{k,\tau}$后，终端在$n=N_k$、$C=C_{\tau}^{(k)}$处的离散优化最优值记为$V_{\tau}^{(k)}(B_{k,\tau})=\mathcal V_{k,\tau}(N_k,C_{\tau}^{(k)})$。进一步在足够细的资源粒度上，对相邻的可行Token与保护模式调度进行时间共享，并以$\widetilde V_{\tau}^{(k)}(B_{k,\tau})$表示由此得到的凹闭包。该时间共享可通过OFDM资源块或微时隙实现，从而避免把阶梯状的离散值函数直接当作可微函数处理。令$\mu_{k,\tau}^{\star}$表示相应连续松弛问题的最优乘子。对于可微点，根据包络定理有
+\begin{equation}
+\frac{\partial \widetilde V_{\tau}^{(k)}(B_{k,\tau})}{\partial B_{k,\tau}}
+=T_s\mu_{k,\tau}^{\star}
+c_{\varepsilon}^{(k)}(\widehat h_{\tau}^{(k)}).
+\label{eq:value_envelope}
+\end{equation}
+在不可微点，式~值包络式（本文件）右侧仍是一个有效次梯度。外层时间共享松弛是凹优化问题。当$\vartheta>0$时，对数正则项使目标函数在带宽单纯形上严格凹。因此，该问题的KKT条件不仅是必要条件，而且是充分条件，所得带宽分配并非经验性的启发式规则。
+
+由此，终端$k$的带宽边际语义价值可写为$g_{k,\tau}(B_{k,\tau})=\omega_kT_s\mu_{k,\tau}^{\star}(B_{k,\tau})c_{\varepsilon}^{(k)}(\widehat h_{\tau}^{(k)})$。所有获得正带宽的活跃终端均满足
+\begin{equation}
+g_{k,\tau}+
+\frac{\vartheta}{B_{k,\tau}+\varepsilon_B}
+=\nu_{\tau},
+\qquad B_{k,\tau}>0,
+\label{eq:bandwidth_kkt}
+\end{equation}
+其中，$\nu_{\tau}$取值应使各终端获配带宽之和等于$B$。结合时间共享值函数的分段常数次梯度，可通过对$\nu_{\tau}$进行一维搜索求解式~带宽KKT条件（主文件式）。在实际资源块量化时，再选择距离最近的可行时间共享点。由此，原先固定的$p_k|\widehat h_{\tau}^{(k)}|$分配规则被替换为直接从联合目标函数推导出的带宽分配方法。
+
+为保证系统能够按时隙因果运行，终端$k$只需上报当前的对偶迭代值$\mu_{k,\tau}$，以一个标量概括其私有候选Token池的边际资源压力。接收端将该语义价格报告与CSI估计相结合，得到
+\begin{equation}
+\widehat g_{k,\tau}
+=\omega_kT_s\mu_{k,\tau}
+\,c_{\varepsilon}^{(k)}(\widehat h_{\tau}^{(k)}),
+\label{eq:online_semantic_report}
+\end{equation}
+随后以$\widehat g_{k,\tau}$替代式~带宽KKT条件（主文件式）中的精确边际语义价值。当语义价格报告固定时，活跃终端的带宽分配具有如下闭式表达：
+\begin{equation}
+\widehat B_{k,\tau}
+=\left[\frac{\vartheta}{\nu_{\tau}-\widehat g_{k,\tau}}
+-\varepsilon_B\right]^+,
+\qquad \nu_{\tau}>\widehat g_{k,\tau},
+\label{eq:reported_bandwidth_solution}
+\end{equation}
+其中，$\nu_{\tau}$用于保证式~带宽约束（主文件式）成立。算法收敛后，$\mu_{k,\tau}=\mu_{k,\tau}^{\star}(B_{k,\tau})$，此时式~语义价格上报式（主文件式）恢复为精确次梯度。式~对偶更新式（主文件式）在相邻时隙之间更新语义价格，并将更新结果用于下一时隙的需求上报。这样便无须在获得当前资源授权之前，预先上报一个本身依赖该授权的Token选择结果，从而避免控制流程中的循环依赖。
+
+语义价格上报不精确所造成的近似误差同样可以量化。令$\bm B_{\tau}^{\star}$满足使用精确边际价值时的KKT条件，令$\widehat{\bm B}_{\tau}$满足使用上报值时的KKT条件，并在$\widehat{\bm B}_{\tau}$处定义梯度误差$\bm e_{g,\tau}=\widehat{\bm g}_{\tau}-\bm g_{\tau}(\widehat{\bm B}_{\tau})$。比例公平的外层目标$J_{\tau}(\bm B)$是参数为$\sigma_B$的强凹函数，且
+\begin{equation}
+\sigma_B\geq\frac{\vartheta}{(B+\varepsilon_B)^2},
+\qquad \vartheta>0.
+\label{eq:bandwidth_strong_concavity}
+\end{equation}
+比较这两个KKT系统对应的变分不等式，可得
+\begin{equation}
+\|\widehat{\bm B}_{\tau}-\bm B_{\tau}^{\star}\|_2
+\leq\frac{\|\bm e_{g,\tau}\|_2}{\sigma_B},
+\qquad
+J_{\tau}(\bm B_{\tau}^{\star})-J_{\tau}(\widehat{\bm B}_{\tau})
+\leq\frac{\|\bm e_{g,\tau}\|_2^2}{\sigma_B}.
+\label{eq:bandwidth_report_gap}
+\end{equation}
+因此，当终端上报的语义价格精确时，在线分配规则能够精确求解松弛后的联合目标。当上报存在误差时，带宽偏差和目标函数差距均由式~上报间隙界（本文件）显式控制。若$\vartheta=0$，式~带宽KKT条件（主文件式）仍是必要的次梯度条件，但此时不再保证解的唯一性，强凹性误差界也不再适用。
+
+
+\end{document}

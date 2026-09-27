@@ -1,0 +1,79 @@
+# SNR 扫描配置（方向 1）：只跑新增的 {5, 10, 20} dB，
+# 0/15 dB 复用 outputs/channel_8b_final14 的结果（同种子/样本/权重，可直接合并）。
+dataset:
+  name: v2xqa
+  split: test
+  manifest: data/manifests/v2xqa_test.jsonl
+  processed: data/processed/v2xqa_test.jsonl
+  require_image: true
+
+score_cache: outputs/cache/v2xqa_scores_8b.jsonl
+benchmark_score_cache: outputs/cache/v2xqa_scores_8b_surprisal.jsonl
+answer_score_cache: outputs/cache/v2xqa_scores_8b_answer_aware.jsonl
+
+model:
+  config: configs/models/qwen3_primary.yaml
+  transmitter_path: models/Qwen3-VL-8B-Instruct
+  receiver_path: models/Qwen3-4B
+  image_min_pixels: 25088
+  image_max_pixels: 200704
+
+transmitter:
+  max_new_tokens: 192
+  max_prompt_tokens: 192
+receiver:
+  max_new_tokens: 24
+
+pragmatic:
+  lambda_attention: 0.25
+  lambda_semantic: 0.30
+  lambda_gradient: 0.45
+  beta: 0.25
+  layer_reduction: mean
+  coupling_enabled: false
+  mask_token: "<|endoftext|>"
+
+radio:
+  bandwidth: 1000000.0
+  slot_duration: 0.001
+  epsilon_out: 0.05
+  protection:
+    levels: [48, 32, 16]
+    information_bits_per_token: 16.0
+
+scheduling:
+  t_max: 8
+  refine: true
+
+channels:
+  - configs/channels/rayleigh.yaml
+  - configs/channels/rician.yaml
+  - configs/channels/frequency_selective.yaml
+
+snr_db: [5, 10, 20]
+
+methods:
+  - full
+  - adaptive_sc
+  - answer_loo
+  - answer_loo_uep
+  - answer_attn
+  - tokcom_uep
+  - llmlingua2
+  - efpc
+  - tokcom
+  - llmlingua
+  - longllmlingua
+  - selective_context
+  - plugin_capacity
+  - proposed
+
+experiment:
+  channel_seeds: [0, 1, 2]
+  proposed_budget: "conservative"
+  channel_seed: 0
+  num_samples: 150
+  dataset_seed: 2026
+  model_seed: 2026
+  cuda_visible_devices: "0"
+  single_gpu_only: true

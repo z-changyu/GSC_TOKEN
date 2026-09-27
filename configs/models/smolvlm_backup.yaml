@@ -1,0 +1,8 @@
+# Repository IDs must be verified immediately before use; this config is not loaded by default.
+transmitter:
+  model_name: HuggingFaceTB/SmolVLM2-2.2B-Instruct
+  dtype: bfloat16
+receiver:
+  model_name: null
+  note: Verify the official SmolLM2 1.7B instruct repository before use.
+

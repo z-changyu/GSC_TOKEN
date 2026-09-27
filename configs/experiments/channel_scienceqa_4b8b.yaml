@@ -1,0 +1,72 @@
+# 跨域复现（ScienceQA）的主线口径版本：端 4B VLM → 边 8B 文本协调器
+#
+# 与 channel_scienceqa.yaml（端2B→边1.7B）的唯一差异：
+#   - transmitter_path : Qwen3-VL-2B   → Qwen3-VL-4B
+#   - receiver_path    : Qwen3-1.7B    → Qwen3-VL-8B-Instruct（文本模式）
+#   - score_cache      : 需用 4B 发送端重建（耦合项开启，保持与调度器一致）
+# 其余（问题池、语用权重、无量纲保护级、带宽/时隙、方法集合）全部保持不变，
+# 以便与 V2X-QA 主线结果在同一模型族阶梯下比较。
+dataset:
+  manifest: data/manifests/scienceqa_val_local.jsonl
+  processed: data/processed/scienceqa_validation_local.jsonl
+  require_image: true
+
+# Per-token pragmatic scores are cached once and reused by every channel,
+# SNR and method, because they do not depend on the radio state.
+# The coupling-enabled cache is used so the coupling term in the scheduler is live.
+score_cache: outputs/cache/scienceqa_scores_4b_coupling.jsonl
+coupling_enabled: true
+
+model:
+  transmitter_path: models/Qwen3-VL-4B
+  receiver_path: models/Qwen3-VL-8B-Instruct
+  image_min_pixels: 25088
+  image_max_pixels: 200704
+
+transmitter:
+  max_new_tokens: 320
+  max_prompt_tokens: 320
+
+receiver:
+  max_new_tokens: 24
+
+pragmatic:
+  # Fold-0 calibrated weights from the 5-fold CV (accuracy objective): G_i dominates.
+  weights: [0.25, 0.0, 0.75]
+  beta: 0.25
+  layer_reduction: mean
+  coupling_enabled: true
+  mask_token: "<|endoftext|>"
+
+radio:
+  bandwidth: 1000000.0      # B, Hz
+  slot_duration: 0.001      # T_s, s
+  epsilon_out: 0.05         # in {0.01, 0.05, 0.1}
+  protection:
+    levels: [48, 32, 16]    # r_H / r_M / r_L
+    information_bits_per_token: 16.0
+
+scheduling:
+  t_max: 8
+  refine: true
+
+channels:
+  - configs/channels/rayleigh.yaml
+  - configs/channels/rician.yaml
+  - configs/channels/frequency_selective.yaml
+
+snr_db: [0, 15]
+
+methods:
+  - full              # whole prompt at the strongest level, budget ignored (upper reference)
+  - random            # random tokens at the strongest level, budget respected
+  - fixed_H           # utility-greedy at the strongest level only: no differentiated protection
+  - proposed          # Algorithm 1: Lagrangian + certified rounding + local refinement
+  - plugin_capacity   # internal baseline (1): Eq. (6) replaced by T_s B log2(1+|h_hat|^2 gamma)
+
+experiment:
+  channel_seeds: [0, 1, 2]
+  num_samples: 60
+  model_seed: 2026
+  cuda_visible_devices: "0"
+  single_gpu_only: true

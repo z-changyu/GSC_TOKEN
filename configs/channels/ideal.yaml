@@ -1,0 +1,7 @@
+name: ideal
+# No fading, perfect CSI, no packet loss: the only setting in which the
+# pragmatic scores can be validated without the outage term of Eq. (66).
+snr_db: .inf
+csi_error_variance: 0.0
+packet_loss_rate: 0.0
+seed: 2026

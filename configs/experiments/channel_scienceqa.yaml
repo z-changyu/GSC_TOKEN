@@ -1,0 +1,63 @@
+dataset:
+  manifest: data/manifests/scienceqa_val_local.jsonl
+  processed: data/processed/scienceqa_validation_local.jsonl
+  require_image: true
+
+# Per-token pragmatic scores are cached once and reused by every channel,
+# SNR and method, because they do not depend on the radio state.
+# The coupling-enabled cache is used so the coupling term in the scheduler is live.
+score_cache: outputs/cache/scienceqa_scores_coupling.jsonl
+coupling_enabled: true
+
+model:
+  transmitter_path: models/Qwen3-VL-2B-Instruct
+  receiver_path: models/Qwen3-1.7B
+  image_min_pixels: 25088
+  image_max_pixels: 200704
+
+receiver:
+  max_new_tokens: 24
+
+pragmatic:
+  # Fold-0 calibrated weights from the 5-fold CV (accuracy objective): G_i dominates.
+  weights: [0.25, 0.0, 0.75]
+  beta: 0.25
+  layer_reduction: mean
+
+radio:
+  # Eq. (6) gives C_tau = T_s B c_eps(h_hat) in equivalent bits. The product
+  # T_s B is the number of channel uses per slot and has to be commensurate with
+  # the token costs r_ell in {48, 32, 16}: a 1 ms slot over 1 MHz gives 1000
+  # channel uses, which at 15 dB (c_eps about 5 bit/s/Hz) carries the full
+  # prompt and at 0 dB (c_eps about 1 bit/s/Hz) carries roughly half of it.
+  bandwidth: 1000000.0      # B, Hz
+  slot_duration: 0.001      # T_s, s
+  epsilon_out: 0.05         # in {0.01, 0.05, 0.1}
+  protection:
+    levels: [48, 32, 16]    # r_H / r_M / r_L
+    information_bits_per_token: 16.0
+
+scheduling:
+  t_max: 8
+  refine: true
+
+channels:
+  - configs/channels/rayleigh.yaml
+  - configs/channels/rician.yaml
+  - configs/channels/frequency_selective.yaml
+
+snr_db: [0, 15]
+
+methods:
+  - full              # whole prompt at the strongest level, budget ignored (upper reference)
+  - random            # random tokens at the strongest level, budget respected
+  - fixed_H           # utility-greedy at the strongest level only: no differentiated protection
+  - proposed          # Algorithm 1: Lagrangian + certified rounding + local refinement
+  - plugin_capacity   # internal baseline (1): Eq. (6) replaced by T_s B log2(1+|h_hat|^2 gamma)
+
+experiment:
+  channel_seeds: [0, 1, 2]
+  num_samples: 60
+  model_seed: 2026
+  cuda_visible_devices: "0"
+  single_gpu_only: true

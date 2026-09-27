@@ -1,0 +1,53 @@
+{
+  "dataset": "scienceqa",
+  "split": "validation",
+  "manifest": "data/manifests/scienceqa_val_local.jsonl",
+  "processed": "data/processed/scienceqa_validation_local.jsonl",
+  "num_folds": 5,
+  "seed": 2026,
+  "stratify_by": [
+    "subject"
+  ],
+  "stratum_sizes": {
+    "language science": 6,
+    "natural science": 201,
+    "social science": 93
+  },
+  "folds": [
+    {
+      "fold": 0,
+      "test_size": 62,
+      "train_size": 238,
+      "test_manifest": "data/manifests/folds/scienceqa_local_fold0_test.jsonl",
+      "train_manifest": "data/manifests/folds/scienceqa_local_fold0_train.jsonl"
+    },
+    {
+      "fold": 1,
+      "test_size": 60,
+      "train_size": 240,
+      "test_manifest": "data/manifests/folds/scienceqa_local_fold1_test.jsonl",
+      "train_manifest": "data/manifests/folds/scienceqa_local_fold1_train.jsonl"
+    },
+    {
+      "fold": 2,
+      "test_size": 60,
+      "train_size": 240,
+      "test_manifest": "data/manifests/folds/scienceqa_local_fold2_test.jsonl",
+      "train_manifest": "data/manifests/folds/scienceqa_local_fold2_train.jsonl"
+    },
+    {
+      "fold": 3,
+      "test_size": 59,
+      "train_size": 241,
+      "test_manifest": "data/manifests/folds/scienceqa_local_fold3_test.jsonl",
+      "train_manifest": "data/manifests/folds/scienceqa_local_fold3_train.jsonl"
+    },
+    {
+      "fold": 4,
+      "test_size": 59,
+      "train_size": 241,
+      "test_manifest": "data/manifests/folds/scienceqa_local_fold4_test.jsonl",
+      "train_manifest": "data/manifests/folds/scienceqa_local_fold4_train.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+transmitter:
+  model_name: Qwen/Qwen3-VL-2B-Instruct
+  model_kind: vision_text_generation
+  dtype: bfloat16
+  attention_implementation: eager
+  quantization: null
+  device: cuda:0
+receiver:
+  model_name: Qwen/Qwen3-1.7B
+  model_kind: causal_lm
+  dtype: bfloat16
+  attention_implementation: eager
+  device: cuda:0
+runtime:
+  cuda_visible_devices: "0"
+  multi_gpu: false

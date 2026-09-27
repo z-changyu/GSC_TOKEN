@@ -1,0 +1,102 @@
+# 模型轴升级（方案 A）：端 4B VLM → 边 8B 文本协调器
+#
+# 动机（由模型轴实测驱动）：
+#   - 端侧是瓶颈：端 2B 时 full=60.0%，端 8B 时 full=86.1%（+26.1pp），全在报告质量；
+#   - 接收端不是瓶颈：同载荷审计显示 4B 接收端(51.1%) 反而低于 1.7B(56.5%)。
+# 因此把算力投到端侧：端 2B → 4B（同系列 Qwen3-VL-4B），边同时升到 8B 以保持阶梯
+#   端 4B < 边 8B < 云（更大）。
+#
+# 与主线配置 v2x_edge_edge_main_2b4b.yaml 的差异（其余全部保持一致以便对比）：
+#   - transmitter_path : Qwen3-VL-2B → Qwen3-VL-4B
+#   - receiver_path    : Qwen3-4B    → Qwen3-VL-8B（文本模式，同 rx8b 先例）
+#   - 三份缓存需用 4B 发送端重建；answer-aware 用 8B 接收端重建
+#   - 问题集仍是 8B 过滤出的同一批 60 题（跨模型可比，不做逐模型调参）
+#
+# 注：语用权重沿用全项目统一的 (0.25, 0.30, 0.45)，不为新模型单独调参——
+# 模型轴各行的唯一变量是模型，权重统一才能做受控对比。
+dataset:
+  name: v2xqa
+  split: test
+  manifest: data/manifests/v2xqa_test_filtered_8b.jsonl
+  processed: data/processed/v2xqa_test.jsonl
+  require_image: true
+
+score_cache: outputs/cache/v2xqa_scores_4b.jsonl
+benchmark_score_cache: outputs/cache/v2xqa_scores_4b_surprisal.jsonl
+answer_score_cache: outputs/cache/v2xqa_scores_4b8b_answer_aware.jsonl
+
+model:
+  config: configs/models/qwen3_primary.yaml
+  transmitter_path: models/Qwen3-VL-4B            # 端：车端 4B VLM
+  receiver_path: models/Qwen3-VL-8B-Instruct      # 边：8B 文本协调器（不读图）
+  image_min_pixels: 25088
+  image_max_pixels: 200704
+
+transmitter:
+  max_new_tokens: 320
+  max_prompt_tokens: 320
+
+receiver:
+  max_new_tokens: 24
+
+selection:
+  methods: [full, random, proposed]
+  retention_ratios: [0.3, 0.5, 0.7, 1.0]
+  protection:
+    mode: uniform
+    levels: [48, 32, 16]
+    uniform_symbols_per_token: 1.0
+
+pragmatic:
+  lambda_attention: 0.25
+  lambda_semantic: 0.30
+  lambda_gradient: 0.45
+  beta: 0.25
+  layer_reduction: mean
+  coupling_enabled: false
+  mask_token: "<|endoftext|>"
+
+radio:
+  bandwidth: 500000.0
+  slot_duration: 0.001
+  epsilon_out: 0.05
+  protection:
+    levels: [48, 32, 16]
+    information_bits_per_token: 16.0
+
+scheduling:
+  t_max: 8
+  refine: true
+
+channels:
+  - configs/channels/rayleigh.yaml
+  - configs/channels/rician.yaml
+  - configs/channels/frequency_selective.yaml
+
+snr_db: [0, 15]
+
+methods:
+  - full
+  - adaptive_sc
+  - answer_loo
+  - answer_loo_uep
+  - answer_attn
+  - tokcom_uep
+  - llmlingua2
+  - efpc
+  - tokcom
+  - llmlingua
+  - longllmlingua
+  - selective_context
+  - plugin_capacity
+  - proposed
+
+experiment:
+  channel_seeds: [0, 1, 2]
+  proposed_budget: "conservative"
+  channel_seed: 0
+  num_samples: 150
+  dataset_seed: 2026
+  model_seed: 2026
+  cuda_visible_devices: "0"
+  single_gpu_only: true

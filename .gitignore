@@ -1,0 +1,36 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+.env
+
+# ---- 数据集与模型权重（体积过大，不上传）----
+datasets/
+models/*
+!models/.gitkeep
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+
+# ---- 实验产物与缓存（可由代码重新生成）----
+outputs/
+.cache/
+*.zip
+*.tar.gz
+
+# ---- 编译与运行日志 ----
+*.aux
+*.bbl
+*.blg
+*.out
+*.toc
+*.synctex.gz
+*.log
+nohup.out
+
+# ---- 本地 IDE / 工具配置 ----
+.codebuddy/
+.idea/
+.vscode/

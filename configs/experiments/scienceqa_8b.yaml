@@ -1,0 +1,95 @@
+# ScienceQA 跨域复现配置（第二数据集）
+#
+# 与 v2x_edge_edge_8b.yaml（V2X-QA 主实验）**逐项一致**，只替换数据集与缓存路径：
+#   - 发送端仍是 Qwen3-VL-8B、接收端仍是 Qwen3-4B（云→边这一跳）
+#   - 14 个方法、无线电参数、调度参数、pragmatic 权重全部相同
+#   - 目的是回答"换个数据集结论是否成立"，因此不做任何方法侧改动
+#
+# 旧 ScienceQA 资产（2B 发送端 + 旧协议 + 开耦合）不可复用，缓存全部以 _8b 后缀重建。
+dataset:
+  manifest: data/manifests/scienceqa_val_local.jsonl
+  processed: data/processed/scienceqa_validation_local.jsonl
+  require_image: true
+
+score_cache: outputs/cache/scienceqa_scores_8b.jsonl
+benchmark_score_cache: outputs/cache/scienceqa_scores_8b_surprisal.jsonl
+answer_score_cache: outputs/cache/scienceqa_scores_8b_answer_aware.jsonl
+
+model:
+  config: configs/models/qwen3_primary.yaml
+  transmitter_path: models/Qwen3-VL-8B-Instruct
+  receiver_path: models/Qwen3-4B
+  image_min_pixels: 25088      # 28*28*32  -> about 24 visual tokens
+  image_max_pixels: 200704     # 28*28*256 -> about 196 visual tokens
+
+transmitter:
+  max_new_tokens: 192
+  # ScienceQA 的题干/选项比 V2X 长得多（评分序列中位 326、最长 473 token），
+  # 8B 打分在 24 GiB 卡上于序列约 480 处 OOM。把评分包络从 192 收到 160，
+  # 序列上限约 390，实测峰值显存 ≤21.6 GiB。影响约 13% 报告（被截断），
+  # 与 V2X 上"192 上限"的实际作用等价，差异已在文档中披露。
+  max_prompt_tokens: 160
+receiver:
+  max_new_tokens: 24
+
+selection:
+  methods: [full, random, proposed]
+  retention_ratios: [0.3, 0.5, 0.7, 1.0]
+  protection:
+    mode: uniform
+    levels: [48, 32, 16]
+    uniform_symbols_per_token: 1.0
+
+pragmatic:
+  lambda_attention: 0.25
+  lambda_semantic: 0.30
+  lambda_gradient: 0.45
+  beta: 0.25
+  layer_reduction: mean
+  coupling_enabled: false
+  mask_token: "<|endoftext|>"
+
+radio:
+  bandwidth: 1000000.0         # B, Hz
+  slot_duration: 0.001         # T_s, s
+  epsilon_out: 0.05
+  protection:
+    levels: [48, 32, 16]
+    information_bits_per_token: 16.0
+
+scheduling:
+  t_max: 8
+  refine: true
+
+channels:
+  - configs/channels/rayleigh.yaml
+  - configs/channels/rician.yaml
+  - configs/channels/frequency_selective.yaml
+
+snr_db: [0, 15]
+
+methods:
+  - full                 # Prompt-SC [5]: whole prompt, budget ignored (uncompressed ref.)
+  - adaptive_sc          # Adaptive-SC [8]: equal protection, rate-adaptive level and count
+  - answer_loo           # gold standard: exact leave-one-out answer-NLL importance
+  - answer_loo_uep       # LOO importance + our full scheduler
+  - answer_attn          # answer-grounded receiver attention
+  - tokcom_uep           # TokCom (2025) importance + our full scheduler
+  - llmlingua2           # LLMLingua-2: trained token classifier (Xiao et al., ACL 2024)
+  - efpc                 # EFPC-style unified task-aware+agnostic scoring (Cao et al., 2025)
+  - tokcom               # TokCom: cross-modal attention masking (Qiao et al., 2025)
+  - llmlingua            # LLMLingua [16]: coarse-to-fine PPL pruning (Jiang et al., ACL 2023)
+  - longllmlingua        # LongLLMLingua: question-aware contrastive PPL (2024)
+  - selective_context    # Selective-Context: self-information top-k (Li et al., EMNLP 2023)
+  - plugin_capacity      # internal baseline: Eq. (6) replaced by plug-in capacity
+  - proposed             # Algorithm 1: Lagrangian + certified rounding + local refinement
+
+experiment:
+  channel_seeds: [0, 1, 2]
+  proposed_budget: "conservative"
+  channel_seed: 0
+  num_samples: 300
+  dataset_seed: 2026
+  model_seed: 2026
+  cuda_visible_devices: "0"
+  single_gpu_only: true

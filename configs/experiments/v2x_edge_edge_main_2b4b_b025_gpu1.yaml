@@ -1,0 +1,104 @@
+# 论文主线配置：端 → 边（车端小模型写报告 → 路侧文本协调器作答）
+#
+# 参数阶梯（部署前提）：端 2B < 边 4B < 云 8B
+#   - 端（车，带摄像头，发射端）: Qwen3-VL-2B-Instruct   —— 20 亿
+#   - 边（RSU，纯文本协调器，接收端）: Qwen3-4B          —— 40 亿
+#   - 云（下发权重与知识；三级流水线精炼跳）: Qwen3-VL-8B —— 80 亿
+#
+# 与 configs/experiments/v2x_edge_edge_8b.yaml（端 8B 上界参照）的唯一差异：
+#   - model.transmitter_path -> models/Qwen3-VL-2B-Instruct
+#   - score_cache            -> 2B 报告对应的语用打分缓存
+#   - benchmark/answer 缓存  -> 必须与 2B 报告 token 对齐（长度校验见
+#     scripts/run_channel_experiment.py 的对齐检查，8B 缓存不可复用）
+# 其余（接收端 4B、信道、方法集、权重、预算、过滤集）完全一致，保证受控对比。
+dataset:
+  name: v2xqa
+  split: test
+  manifest: data/manifests/v2xqa_test_filtered_8b.jsonl
+  processed: data/processed/v2xqa_test.jsonl
+  require_image: true
+
+# 端侧 2B 模型生成的报告 + 其语用打分（现有缓存，150 样本）
+score_cache: outputs/cache/v2xqa_scores_2b.jsonl
+# 以下两个 sidecar 必须用 2B 配置重新生成，否则与 2B 报告 token 长度不一致会被拒绝：
+#   python scripts/build_benchmark_scores.py    --config configs/experiments/v2x_edge_edge_main_2b4b.yaml --output outputs/cache/v2xqa_scores_2b_surprisal.jsonl
+#   python scripts/build_answer_aware_scores.py --config configs/experiments/v2x_edge_edge_main_2b4b.yaml --output outputs/cache/v2xqa_scores_2b_answer_aware.jsonl
+benchmark_score_cache: outputs/cache/v2xqa_scores_2b_surprisal.jsonl
+answer_score_cache: outputs/cache/v2xqa_scores_2b_answer_aware.jsonl
+
+model:
+  config: configs/models/qwen3_primary.yaml
+  transmitter_path: models/Qwen3-VL-2B-Instruct   # 端：车端小 VLM
+  receiver_path: models/Qwen3-4B                  # 边：路侧文本协调器
+  image_min_pixels: 25088      # 28*28*32  -> about 24 visual tokens
+  image_max_pixels: 200704     # 28*28*256 -> about 196 visual tokens
+
+transmitter:
+  # 端侧报告上限 320（原 192 会让 28% 的 2B 报告断在半句——实测伪困难，
+  # 不是算力约束；提示词保持与 8B 组一致以保证可比性）
+  max_new_tokens: 320
+  max_prompt_tokens: 192
+receiver:
+  max_new_tokens: 24
+
+selection:
+  methods: [full, random, proposed]
+  retention_ratios: [0.3, 0.5, 0.7, 1.0]
+  protection:
+    mode: uniform
+    levels: [48, 32, 16]       # r_H / r_M / r_L, equivalent bits per token
+    uniform_symbols_per_token: 1.0
+
+pragmatic:
+  lambda_attention: 0.25
+  lambda_semantic: 0.30
+  lambda_gradient: 0.45
+  beta: 0.25
+  layer_reduction: mean
+  coupling_enabled: false      # 验证显示耦合在本任务无增益（见 docs 消融记录），保持关闭
+  mask_token: "<|endoftext|>"
+
+radio:
+  bandwidth: 250000.0         # 主线紧预算变体（E3）
+  slot_duration: 0.001         # T_s, s
+  epsilon_out: 0.05
+  protection:
+    levels: [48, 32, 16]
+    information_bits_per_token: 16.0
+
+scheduling:
+  t_max: 8
+  refine: true
+
+channels:
+  - configs/channels/rayleigh.yaml
+  - configs/channels/rician.yaml
+  - configs/channels/frequency_selective.yaml
+
+snr_db: [0, 15]
+
+methods:
+  - full                 # Prompt-SC [5]: whole prompt, budget ignored (uncompressed ref.)
+  - adaptive_sc          # Adaptive-SC [8]: equal protection, rate-adaptive level and count
+  - answer_loo           # gold standard: exact leave-one-out answer-NLL importance
+  - answer_loo_uep       # LOO importance + our full scheduler (strongest possible variant)
+  - answer_attn          # answer-grounded receiver attention (consumer-side signal)
+  - tokcom_uep           # TokCom (2025) importance + our full scheduler (strongest 2025 variant)
+  - llmlingua2           # LLMLingua-2: trained token classifier (Xiao et al., ACL 2024)
+  - efpc                 # EFPC-style unified task-aware+agnostic scoring (Cao et al., 2025)
+  - tokcom               # TokCom: cross-modal attention masking (Qiao et al., 2025)
+  - llmlingua            # LLMLingua [16]: coarse-to-fine PPL pruning (Jiang et al., ACL 2023)
+  - longllmlingua        # LongLLMLingua: question-aware contrastive PPL (2024)
+  - selective_context    # Selective-Context: self-information top-k (Li et al., EMNLP 2023)
+  - plugin_capacity      # internal baseline (1): Eq. (6) replaced by plug-in capacity
+  - proposed             # Algorithm 1: Lagrangian + certified rounding + local refinement
+
+experiment:
+  channel_seeds: [0, 1, 2]
+  proposed_budget: "conservative"  # 公平比较：proposed 与所有外部基线同处式(6)可靠预算下
+  channel_seed: 0
+  num_samples: 150
+  dataset_seed: 2026
+  model_seed: 2026
+  cuda_visible_devices: "1"
+  single_gpu_only: true

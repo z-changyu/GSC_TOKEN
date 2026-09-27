@@ -1,0 +1,95 @@
+# 主线配置的未筛选问题池复现（端 4B VLM → 边 8B 文本协调器）
+#
+# 目的：主结果用的是 8B 充分性过滤后的同一批 60 题（跨模型可比）。本配置把问题池
+# 放回未筛选的 150 题全集，用于检验主结论（资源效率与精度持平/更低开销）是否只在
+# 过滤子集上成立。除问题池与随之需要重建的缓存外，其余字段与
+# v2x_edge_edge_main_4b8b.yaml 完全一致。
+#
+# 与主线配置的唯一差异：
+#   - dataset.manifest     : v2xqa_test_filtered_8b.jsonl → v2xqa_test.jsonl（150 题）
+#   - score_cache          : 需用 4B 发送端在 150 题上重建
+#   - benchmark_score_cache: 同样重建（词表类基线所需的自信息/LLMLingua-2/TokCom 排名）
+#   - methods              : 去掉三个依赖答案感知缓存的方法（answer_loo、
+#                            answer_loo_uep、answer_attn），其余 11 个方法不变
+dataset:
+  name: v2xqa
+  split: test
+  manifest: data/manifests/v2xqa_test.jsonl
+  processed: data/processed/v2xqa_test.jsonl
+  require_image: true
+
+score_cache: outputs/cache/v2xqa_scores_4b_pool150.jsonl
+benchmark_score_cache: outputs/cache/v2xqa_scores_4b_pool150_surprisal.jsonl
+
+model:
+  config: configs/models/qwen3_primary.yaml
+  transmitter_path: models/Qwen3-VL-4B            # 端：车端 4B VLM
+  receiver_path: models/Qwen3-VL-8B-Instruct      # 边：8B 文本协调器（不读图）
+  image_min_pixels: 25088
+  image_max_pixels: 200704
+
+transmitter:
+  max_new_tokens: 320
+  max_prompt_tokens: 320
+
+receiver:
+  max_new_tokens: 24
+
+selection:
+  methods: [full, random, proposed]
+  retention_ratios: [0.3, 0.5, 0.7, 1.0]
+  protection:
+    mode: uniform
+    levels: [48, 32, 16]
+    uniform_symbols_per_token: 1.0
+
+pragmatic:
+  lambda_attention: 0.25
+  lambda_semantic: 0.30
+  lambda_gradient: 0.45
+  beta: 0.25
+  layer_reduction: mean
+  coupling_enabled: false
+  mask_token: "<|endoftext|>"
+
+radio:
+  bandwidth: 1000000.0
+  slot_duration: 0.001
+  epsilon_out: 0.05
+  protection:
+    levels: [48, 32, 16]
+    information_bits_per_token: 16.0
+
+scheduling:
+  t_max: 8
+  refine: true
+
+channels:
+  - configs/channels/rayleigh.yaml
+  - configs/channels/rician.yaml
+  - configs/channels/frequency_selective.yaml
+
+snr_db: [0, 15]
+
+methods:
+  - full
+  - adaptive_sc
+  - tokcom_uep
+  - llmlingua2
+  - efpc
+  - tokcom
+  - llmlingua
+  - longllmlingua
+  - selective_context
+  - plugin_capacity
+  - proposed
+
+experiment:
+  channel_seeds: [0, 1, 2]
+  proposed_budget: "conservative"
+  channel_seed: 0
+  num_samples: 150
+  dataset_seed: 2026
+  model_seed: 2026
+  cuda_visible_devices: "0"
+  single_gpu_only: true

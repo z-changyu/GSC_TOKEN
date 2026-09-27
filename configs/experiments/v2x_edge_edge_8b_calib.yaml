@@ -1,0 +1,69 @@
+# 8B 发送端校准配置（仅用于 λ 交叉验证），与 v2x_edge_edge_8b.yaml 相同，
+# 但 cuda_visible_devices: "1" 以在 GPU1 上与 GPU0 的 ablation 并行。
+dataset:
+  name: v2xqa
+  split: test
+  manifest: data/manifests/v2xqa_test.jsonl
+  processed: data/processed/v2xqa_test.jsonl
+  require_image: true
+
+score_cache: outputs/cache/v2xqa_scores_8b.jsonl
+
+model:
+  config: configs/models/qwen3_primary.yaml
+  transmitter_path: models/Qwen3-VL-8B-Instruct
+  receiver_path: models/Qwen3-4B
+  image_min_pixels: 25088
+  image_max_pixels: 200704
+
+transmitter:
+  max_new_tokens: 192
+  max_prompt_tokens: 192
+receiver:
+  max_new_tokens: 24
+
+selection:
+  methods: [full, random, proposed]
+  retention_ratios: [0.3, 0.5, 0.7, 1.0]
+  protection:
+    mode: uniform
+    levels: [48, 32, 16]
+    uniform_symbols_per_token: 1.0
+
+pragmatic:
+  lambda_attention: 0.25
+  lambda_semantic: 0.30
+  lambda_gradient: 0.45
+  beta: 0.25
+  layer_reduction: mean
+  coupling_enabled: false
+  mask_token: "<|endoftext|>"
+
+radio:
+  bandwidth: 1000000.0
+  slot_duration: 0.001
+  epsilon_out: 0.05
+  protection:
+    levels: [48, 32, 16]
+    information_bits_per_token: 16.0
+
+scheduling:
+  t_max: 8
+  refine: true
+
+channels:
+  - configs/channels/rayleigh.yaml
+
+snr_db: [0, 15]
+
+methods:
+  - proposed
+
+experiment:
+  channel_seeds: [0, 1]
+  channel_seed: 0
+  num_samples: 20
+  dataset_seed: 2026
+  model_seed: 2026
+  cuda_visible_devices: "1"
+  single_gpu_only: true

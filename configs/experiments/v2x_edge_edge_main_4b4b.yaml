@@ -1,0 +1,86 @@
+# 归因对照：端 4B → 边 4B
+#
+# 目的：方案 A（端 4B → 边 8B）同时改了两处（端 2B→4B、边 4B→8B），
+# 本配置把边侧固定回主线的 4B，从而把 A 的 +11.8pp 拆成两部分：
+#   - 端侧贡献 = (本配置) − (端 2B → 边 4B 主线)
+#   - 边侧贡献 = (端 4B → 边 8B) − (本配置)
+# 既有证据（同载荷审计：4B 接收端 51.1% < 1.7B 56.5%）提示边侧升级贡献接近 0 或为负。
+#
+# 复用 A1 已建好的 4B 语用缓存与 surprisal sidecar；方法集与其它模型轴行一致（4 个），
+# 因此不需要 answer-aware sidecar（任务感知方法未在集合内）。
+dataset:
+  name: v2xqa
+  split: test
+  manifest: data/manifests/v2xqa_test_filtered_8b.jsonl
+  processed: data/processed/v2xqa_test.jsonl
+  require_image: true
+
+score_cache: outputs/cache/v2xqa_scores_4b.jsonl
+benchmark_score_cache: outputs/cache/v2xqa_scores_4b_surprisal.jsonl
+answer_score_cache: outputs/cache/v2xqa_scores_4b8b_answer_aware.jsonl   # 本 4 方法集不使用
+
+model:
+  config: configs/models/qwen3_primary.yaml
+  transmitter_path: models/Qwen3-VL-4B       # 端：4B（与 A 相同）
+  receiver_path: models/Qwen3-4B             # 边：回到主线的 4B
+  image_min_pixels: 25088
+  image_max_pixels: 200704
+
+transmitter:
+  max_new_tokens: 320
+  max_prompt_tokens: 320
+
+receiver:
+  max_new_tokens: 24
+
+selection:
+  methods: [full, random, proposed]
+  retention_ratios: [0.3, 0.5, 0.7, 1.0]
+  protection:
+    mode: uniform
+    levels: [48, 32, 16]
+    uniform_symbols_per_token: 1.0
+
+pragmatic:
+  lambda_attention: 0.25
+  lambda_semantic: 0.30
+  lambda_gradient: 0.45
+  beta: 0.25
+  layer_reduction: mean
+  coupling_enabled: false
+  mask_token: "<|endoftext|>"
+
+radio:
+  bandwidth: 1000000.0
+  slot_duration: 0.001
+  epsilon_out: 0.05
+  protection:
+    levels: [48, 32, 16]
+    information_bits_per_token: 16.0
+
+scheduling:
+  t_max: 8
+  refine: true
+
+channels:
+  - configs/channels/rayleigh.yaml
+  - configs/channels/rician.yaml
+  - configs/channels/frequency_selective.yaml
+
+snr_db: [0, 15]
+
+methods:
+  - full
+  - plugin_capacity
+  - proposed
+  - adaptive_sc
+
+experiment:
+  channel_seeds: [0, 1, 2]
+  proposed_budget: "conservative"
+  channel_seed: 0
+  num_samples: 150
+  dataset_seed: 2026
+  model_seed: 2026
+  cuda_visible_devices: "0"
+  single_gpu_only: true

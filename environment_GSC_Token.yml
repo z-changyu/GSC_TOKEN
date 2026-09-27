@@ -1,0 +1,29 @@
+name: GSC_Token
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+      # Install torch/torchvision from https://download.pytorch.org/whl/cu121.
+      - torch==2.5.1
+      - torchvision==0.20.1
+      - transformers>=4.57,<5
+      - accelerate
+      - datasets
+      - huggingface_hub
+      - safetensors
+      - sentencepiece
+      - protobuf
+      - pillow
+      - numpy
+      - pandas
+      - scipy
+      - scikit-learn
+      - tqdm
+      - matplotlib
+      - einops
+      - timm
+      - pyyaml
+      - pytest
+

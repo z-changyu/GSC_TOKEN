@@ -1,0 +1,11 @@
+{
+  "input_manifest": "data/manifests/v2xqa_test.jsonl",
+  "score_cache": "outputs/cache/v2xqa_scores.jsonl",
+  "receiver": "models/Qwen3-4B",
+  "total": 150,
+  "kept": 40,
+  "dropped": 110,
+  "full_prompt_accuracy_before_filter": 0.26666666666666666,
+  "full_prompt_accuracy_after_filter": 1.0,
+  "output_manifest": "data/manifests/v2xqa_test_filtered.jsonl"
+}

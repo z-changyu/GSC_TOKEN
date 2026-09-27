@@ -1,0 +1,82 @@
+dataset:
+  name: v2xqa
+  split: test
+  manifest: data/manifests/v2xqa_test.jsonl
+  processed: data/processed/v2xqa_test.jsonl
+  require_image: true
+# 模型轴：发送端 8B + 接收端 1.7B。协议与 v2x_edge_edge_8b.yaml (final14) 完全一致，
+# 仅接收端换为 Qwen3-1.7B；选择信号缓存沿用 8B 主协议（模型轴只改答题接收端）。
+score_cache: outputs/cache/v2xqa_scores_8b.jsonl
+benchmark_score_cache: outputs/cache/v2xqa_scores_8b_surprisal.jsonl
+answer_score_cache: outputs/cache/v2xqa_scores_8b_answer_aware.jsonl
+model:
+  config: configs/models/qwen3_primary.yaml
+  transmitter_path: models/Qwen3-VL-8B-Instruct
+  receiver_path: models/Qwen3-1.7B
+  image_min_pixels: 25088      # 28*28*32  -> about 24 visual tokens
+  image_max_pixels: 200704     # 28*28*256 -> about 196 visual tokens
+transmitter:
+  max_new_tokens: 192
+  max_prompt_tokens: 192
+receiver:
+  max_new_tokens: 24
+selection:
+  methods: [full, random, proposed]
+  retention_ratios: [0.3, 0.5, 0.7, 1.0]
+  protection:
+    mode: uniform
+    levels: [48, 32, 16]       # r_H / r_M / r_L, equivalent bits per token
+    uniform_symbols_per_token: 1.0
+pragmatic:
+  lambda_attention: 0.25
+  lambda_semantic: 0.30
+  lambda_gradient: 0.45
+  beta: 0.25
+  layer_reduction: mean
+  coupling_enabled: false      # 验证显示耦合在本任务无增益（见 docs 消融记录），保持关闭
+  mask_token: "<|endoftext|>"
+radio:
+  bandwidth: 1000000.0
+  slot_duration: 0.001
+  epsilon_out: 0.05
+  protection:
+    levels:
+    - 48
+    - 32
+    - 16
+    information_bits_per_token: 16.0
+scheduling:
+  t_max: 8
+  refine: true
+channels:
+- configs/channels/rayleigh.yaml
+- configs/channels/rician.yaml
+- configs/channels/frequency_selective.yaml
+snr_db:
+- 0
+- 15
+methods:
+  - full                 # Prompt-SC [5]: whole prompt, budget ignored (uncompressed ref.)
+  - adaptive_sc          # Adaptive-SC [8]: equal protection, rate-adaptive level and count
+  - answer_loo           # gold standard: exact leave-one-out answer-NLL importance
+  - answer_loo_uep       # LOO importance + our full scheduler (strongest possible variant)
+  - answer_attn          # answer-grounded receiver attention (consumer-side signal)
+  - tokcom_uep           # TokCom (2025) importance + our full scheduler (strongest 2025 variant)
+  - llmlingua2           # LLMLingua-2: trained token classifier (Xiao et al., ACL 2024)
+  - efpc                 # EFPC-style unified task-aware+agnostic scoring (Cao et al., 2025)
+  - tokcom               # TokCom: cross-modal attention masking (Qiao et al., 2025)
+  - llmlingua            # LLMLingua [16]: coarse-to-fine PPL pruning (Jiang et al., ACL 2023)
+  - longllmlingua        # LongLLMLingua: question-aware contrastive PPL (2024)
+  - selective_context    # Selective-Context: self-information top-k (Li et al., EMNLP 2023)
+  - plugin_capacity      # internal baseline (1): Eq. (6) replaced by plug-in capacity
+  - proposed             # Algorithm 1: Lagrangian + certified rounding + local refinement
+
+experiment:
+  channel_seeds: [0, 1, 2]
+  proposed_budget: "conservative"  # 公平比较：proposed 与所有外部基线同处式(6)可靠预算下
+  channel_seed: 0
+  num_samples: 150
+  dataset_seed: 2026
+  model_seed: 2026
+  cuda_visible_devices: "1"   # GPU1 空闲，避免与主分析冲突
+  single_gpu_only: true

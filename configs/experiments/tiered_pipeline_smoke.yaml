@@ -1,0 +1,71 @@
+# E3 三级流水线冒烟配置（云-边-端）
+#
+# 数据流：端(车) 2B VLM 写粗报告 → 上行有损信道 → 云 8B VLM 纯文本精炼
+#        → 下行语义压缩广播(proposed/adaptive/full) → 端 1.7B 车机作答。
+# 对照组 direct：跳过云端精炼，粗报告直接走同一下行协议。
+dataset:
+  name: v2xqa
+  split: test
+  manifest: data/manifests/v2xqa_test_filtered_8b.jsonl
+  processed: data/processed/v2xqa_test.jsonl
+  require_image: true
+
+model:
+  vehicle_path: models/Qwen3-VL-2B-Instruct      # 端：车端小 VLM
+  cloud_path: models/Qwen3-VL-8B-Instruct        # 云：大模型（纯文本精炼与打分）
+  terminal_path: models/Qwen3-1.7B               # 端：车机答题 LLM
+  image_min_pixels: 25088
+  image_max_pixels: 200704
+
+vehicle:            # 端侧受限：粗报告必须短（两处上限同步放宽，避免报告被截断）
+  max_new_tokens: 320
+  max_prompt_tokens: 320
+cloud:              # 云端精炼产出与主协议同尺寸的语义报告
+  max_new_tokens: 192
+  max_prompt_tokens: 256
+receiver:
+  max_new_tokens: 24
+
+pragmatic:
+  weights: [0.25, 0.30, 0.45]
+  beta: 0.25
+  layer_reduction: mean
+  coupling_enabled: false
+  mask_token: "<|endoftext|>"
+
+radio:
+  bandwidth: 1000000.0
+  slot_duration: 0.001
+  epsilon_out: 0.05
+  protection:
+    levels: [48, 32, 16]
+    information_bits_per_token: 16.0
+
+uplink:             # 上行：车→RSU/云，廉价链路（最差信道 + 最强保护仍会擦除）
+  channel: configs/channels/rayleigh.yaml
+  snr_db: 0.0
+  protection_level: 1          # r_H = 48 symbols/token
+
+scheduling:
+  t_max: 8
+  refine: true
+
+channels:
+  - configs/channels/rayleigh.yaml
+  - configs/channels/rician.yaml
+
+snr_db: [0, 15]
+
+methods:
+  - full
+  - adaptive_sc
+  - proposed
+
+experiment:
+  channel_seeds: [0]
+  channel_seed: 0
+  num_samples: 150
+  dataset_seed: 2026
+  model_seed: 2026
+  cuda_visible_devices: "0"
+  single_gpu_only: true
