@@ -1,0 +1,43 @@
+transmitter prompt version: v2
+manifest -> 150 samples in processed pool
+cache has 0/150; building the rest
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 113.60it/s]
+gradient checkpointing: ON (train mode)
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+`use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`.
+Caching is incompatible with gradient checkpointing in Qwen3VLTextDecoderLayer. Setting `past_key_values=None`.
+Traceback (most recent call last):
+  File "/mnt/4t/code_space/zcy/GSC_Token/scripts/build_score_cache.py", line 114, in <module>
+    main()
+  File "/mnt/4t/code_space/zcy/GSC_Token/scripts/build_score_cache.py", line 99, in main
+    scores = scorer.score(row, image)
+  File "/mnt/4t/code_space/zcy/GSC_Token/src/experiments/scoring.py", line 152, in score
+    semantic_prompt = self.generate_prompt(sample, image)
+  File "/mnt/4t/code_space/zcy/GSC_Token/src/experiments/scoring.py", line 139, in generate_prompt
+    generated = self.transmitter.generate(**inputs, max_new_tokens=self.max_new_tokens,
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/transformers/generation/utils.py", line 2566, in generate
+    result = decoding_method(
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/transformers/generation/utils.py", line 2789, in _sample
+    outputs = model_forward(**model_inputs, return_dict=True)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/transformers/utils/generic.py", line 1072, in wrapper
+    outputs = func(self, *args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/transformers/models/qwen3_vl/modeling_qwen3_vl.py", line 1344, in forward
+    outputs = self.model(
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/transformers/utils/generic.py", line 1072, in wrapper
+    outputs = func(self, *args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/transformers/models/qwen3_vl/modeling_qwen3_vl.py", line 1201, in forward
+    position_ids, rope_deltas = self.get_rope_index(
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/transformers/models/qwen3_vl/modeling_qwen3_vl.py", line 949, in get_rope_index
+    input_ids = input_ids[attention_mask[i] == 1]
+IndexError: The shape of the mask [398] at index 0 does not match the shape of the indexed tensor [1] at index 0
+PROMPTV2_FAILED

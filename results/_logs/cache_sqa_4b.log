@@ -1,0 +1,48 @@
+transmitter prompt version: v1
+manifest -> 300 samples in processed pool
+cache has 0/300; building the rest
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 60.48it/s]
+Traceback (most recent call last):
+  File "/mnt/4t/code_space/zcy/GSC_Token/scripts/build_score_cache.py", line 114, in <module>
+    main()
+  File "/mnt/4t/code_space/zcy/GSC_Token/scripts/build_score_cache.py", line 89, in main
+    scorer = PragmaticScorer(transmitter, processor, config)
+  File "/mnt/4t/code_space/zcy/GSC_Token/src/experiments/scoring.py", line 90, in __init__
+    self.max_prompt_tokens = int(config["transmitter"]["max_prompt_tokens"])
+KeyError: 'transmitter'
+transmitter prompt version: v1
+manifest -> 300 samples in processed pool
+cache has 0/300; building the rest
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 59.21it/s]
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+scored 10/300 id=698 tokens=88 nll=8.062 leak=False
+scored 20/300 id=1162 tokens=129 nll=1.781 leak=False
+scored 30/300 id=1866 tokens=106 nll=3.379 leak=False
+scored 40/300 id=2589 tokens=94 nll=2.688 leak=False
+scored 50/300 id=3588 tokens=84 nll=4.750 leak=False
+scored 60/300 id=4256 tokens=118 nll=4.854 leak=False
+scored 70/300 id=4858 tokens=96 nll=2.593 leak=False
+scored 80/300 id=5360 tokens=89 nll=2.375 leak=False
+scored 90/300 id=6113 tokens=142 nll=8.376 leak=False
+scored 100/300 id=7180 tokens=132 nll=3.708 leak=False
+scored 110/300 id=7865 tokens=109 nll=6.208 leak=False
+scored 120/300 id=8871 tokens=80 nll=3.125 leak=False
+scored 130/300 id=9586 tokens=94 nll=4.532 leak=False
+scored 140/300 id=10659 tokens=113 nll=6.626 leak=False
+scored 150/300 id=11091 tokens=107 nll=10.938 leak=False
+scored 160/300 id=12022 tokens=108 nll=4.208 leak=False
+scored 170/300 id=12546 tokens=57 nll=5.502 leak=False
+scored 180/300 id=12951 tokens=57 nll=6.083 leak=False
+scored 190/300 id=13561 tokens=79 nll=10.438 leak=False
+scored 200/300 id=14441 tokens=81 nll=5.333 leak=False
+scored 210/300 id=15192 tokens=95 nll=7.918 leak=False
+scored 220/300 id=16174 tokens=107 nll=6.750 leak=False
+scored 230/300 id=17023 tokens=98 nll=10.958 leak=False
+scored 240/300 id=17455 tokens=66 nll=8.625 leak=False
+scored 250/300 id=17924 tokens=122 nll=7.063 leak=False
+scored 260/300 id=18748 tokens=63 nll=4.556 leak=False
+scored 270/300 id=19238 tokens=56 nll=5.625 leak=False
+scored 280/300 id=19970 tokens=119 nll=3.813 leak=False
+scored 290/300 id=20610 tokens=87 nll=5.458 leak=False
+scored 300/300 id=21183 tokens=71 nll=7.625 leak=False
+DONE: 300 samples -> outputs/cache/scienceqa_scores_4b_coupling.jsonl

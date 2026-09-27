@@ -1,0 +1,7 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 60.39it/s]
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 110.17it/s]
+2026-09-27 14:37:21,645 INFO same-condition pass: 1 samples x 4 methods x 1 repeats (warm-up 0), 15 dB
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+2026-09-27 14:37:27,909 INFO sample 3 done (1/1)
+2026-09-27 14:37:27,919 INFO wrote outputs/_rec_smoke

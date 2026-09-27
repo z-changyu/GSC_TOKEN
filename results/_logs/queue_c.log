@@ -1,0 +1,7 @@
+[2026-09-25 21:15] START cache_sqa_4b
+[2026-09-25 21:15] DONE  cache_sqa_4b (exit 1)
+[2026-09-25 21:15] START channel_scienceqa_4b8b
+[2026-09-25 21:15] DONE  channel_scienceqa_4b8b (exit 1)
+[2026-09-25 21:15] START v2x_co_fusion_4b8b
+[2026-09-25 21:15] DONE  v2x_co_fusion_4b8b (exit 1)
+[2026-09-25 21:15] QUEUE_C COMPLETE

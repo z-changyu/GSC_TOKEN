@@ -1,0 +1,84 @@
+2026-08-30 13:45:15,762 INFO channel experiment: 60 samples
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 105.36it/s]
+2026-08-30 13:45:19,072 INFO Power sampling backend: nvidia-smi
+2026-08-30 13:45:19,073 INFO channel=ideal snr=0.0 seed=0
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+2026-08-30 13:47:09,782 INFO channel=ideal snr=0.0 seed=1
+2026-08-30 13:49:00,126 INFO channel=ideal snr=0.0 seed=2
+2026-08-30 13:50:51,377 INFO channel=ideal snr=15.0 seed=0
+2026-08-30 13:52:42,581 INFO channel=ideal snr=15.0 seed=1
+2026-08-30 13:54:33,690 INFO channel=ideal snr=15.0 seed=2
+2026-08-30 13:56:24,768 INFO channel=rayleigh snr=0.0 seed=0
+2026-08-30 13:58:12,832 INFO channel=rayleigh snr=0.0 seed=1
+2026-08-30 13:59:57,336 INFO channel=rayleigh snr=0.0 seed=2
+2026-08-30 14:01:41,006 INFO channel=rayleigh snr=15.0 seed=0
+2026-08-30 14:03:24,598 INFO channel=rayleigh snr=15.0 seed=1
+2026-08-30 14:05:13,906 INFO channel=rayleigh snr=15.0 seed=2
+2026-08-30 14:07:00,409 INFO channel=rician snr=0.0 seed=0
+2026-08-30 14:08:40,920 INFO channel=rician snr=0.0 seed=1
+2026-08-30 14:10:20,850 INFO channel=rician snr=0.0 seed=2
+2026-08-30 14:12:05,984 INFO channel=rician snr=15.0 seed=0
+2026-08-30 14:13:51,626 INFO channel=rician snr=15.0 seed=1
+2026-08-30 14:15:34,604 INFO channel=rician snr=15.0 seed=2
+2026-08-30 14:17:20,012 INFO channel=frequency_selective snr=0.0 seed=0
+2026-08-30 14:19:07,041 INFO channel=frequency_selective snr=0.0 seed=1
+2026-08-30 14:20:56,622 INFO channel=frequency_selective snr=0.0 seed=2
+2026-08-30 14:22:38,348 INFO channel=frequency_selective snr=15.0 seed=0
+Traceback (most recent call last):
+  File "/mnt/4t/code_space/zcy/GSC_Token/scripts/run_channel_experiment.py", line 275, in <module>
+    main()
+  File "/mnt/4t/code_space/zcy/GSC_Token/scripts/run_channel_experiment.py", line 200, in main
+    output = receiver.generate(
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/transformers/generation/utils.py", line 2566, in generate
+    result = decoding_method(
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/transformers/generation/utils.py", line 2786, in _sample
+    outputs = self(**model_inputs, return_dict=True)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/transformers/utils/generic.py", line 1072, in wrapper
+    outputs = func(self, *args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/transformers/models/qwen3_vl/modeling_qwen3_vl.py", line 1344, in forward
+    outputs = self.model(
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/transformers/utils/generic.py", line 1072, in wrapper
+    outputs = func(self, *args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/transformers/models/qwen3_vl/modeling_qwen3_vl.py", line 1223, in forward
+    outputs = self.language_model(
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/transformers/utils/generic.py", line 1072, in wrapper
+    outputs = func(self, *args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/transformers/models/qwen3_vl/modeling_qwen3_vl.py", line 850, in forward
+    layer_outputs = decoder_layer(
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/transformers/modeling_layers.py", line 94, in __call__
+    return super().__call__(*args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/transformers/utils/deprecation.py", line 172, in wrapped_func
+    return func(*args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/transformers/models/qwen3_vl/modeling_qwen3_vl.py", line 517, in forward
+    hidden_states = self.mlp(hidden_states)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/transformers/models/qwen3_vl/modeling_qwen3_vl.py", line 472, in forward
+    down_proj = self.down_proj(self.act_fn(self.gate_proj(x)) * self.up_proj(x))
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/nn/modules/linear.py", line 125, in forward
+    return F.linear(input, self.weight, self.bias)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 23.69 GiB of which 20.88 MiB is free. Including non-PyTorch memory, this process has 16.89 GiB memory in use. Process 1494320 has 6.76 GiB memory in use. Of the allocated memory 16.40 GiB is allocated by PyTorch, and 163.74 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

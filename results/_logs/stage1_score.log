@@ -1,0 +1,4 @@
+2026-08-29 22:55:37,734 INFO cross-validation over 5 folds, 300 distinct samples
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 154.72it/s]
+2026-08-29 22:55:39,645 INFO loaded 300 cached score rows
+2026-08-29 22:55:39,645 INFO score-only mode: cache has 300/300 samples

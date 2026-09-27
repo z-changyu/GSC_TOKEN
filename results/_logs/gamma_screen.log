@@ -1,0 +1,71 @@
+2026-09-12 11:16:06,262 INFO gamma screen: 60 samples, gammas=[0.0, 0.25, 0.5, 1.0], cells=18
+2026-09-12 11:16:06,263 INFO cell rayleigh/0.0 seed=0
+2026-09-12 11:16:09,022 INFO cell rayleigh/0.0 seed=1
+2026-09-12 11:16:11,754 INFO cell rayleigh/0.0 seed=2
+2026-09-12 11:16:14,639 INFO cell rayleigh/15.0 seed=0
+2026-09-12 11:16:17,858 INFO cell rayleigh/15.0 seed=1
+2026-09-12 11:16:21,026 INFO cell rayleigh/15.0 seed=2
+2026-09-12 11:16:24,227 INFO cell rician/0.0 seed=0
+2026-09-12 11:16:27,211 INFO cell rician/0.0 seed=1
+2026-09-12 11:16:30,239 INFO cell rician/0.0 seed=2
+2026-09-12 11:16:33,153 INFO cell rician/15.0 seed=0
+2026-09-12 11:16:36,352 INFO cell rician/15.0 seed=1
+2026-09-12 11:16:39,511 INFO cell rician/15.0 seed=2
+2026-09-12 11:16:42,651 INFO cell frequency_selective/0.0 seed=0
+2026-09-12 11:16:45,468 INFO cell frequency_selective/0.0 seed=1
+2026-09-12 11:16:48,328 INFO cell frequency_selective/0.0 seed=2
+2026-09-12 11:16:51,009 INFO cell frequency_selective/15.0 seed=0
+2026-09-12 11:16:54,246 INFO cell frequency_selective/15.0 seed=1
+2026-09-12 11:16:57,345 INFO cell frequency_selective/15.0 seed=2
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 154.98it/s]
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+2026-09-12 11:23:44,672 INFO   answered 400/5400 [6.7 min]
+2026-09-12 11:30:06,607 INFO   answered 800/5400 [13.1 min]
+2026-09-12 11:32:41,558 INFO   answered 1200/5400 [15.7 min]
+2026-09-12 11:34:30,751 INFO   answered 1600/5400 [17.5 min]
+2026-09-12 11:38:42,343 INFO   answered 2000/5400 [21.7 min]
+2026-09-12 11:46:01,733 INFO   answered 2400/5400 [29.0 min]
+2026-09-12 11:51:11,632 INFO   answered 2800/5400 [34.2 min]
+2026-09-12 11:52:17,518 INFO   answered 3200/5400 [35.3 min]
+2026-09-12 11:53:14,620 INFO   answered 3600/5400 [36.2 min]
+2026-09-12 11:59:59,740 INFO   answered 4000/5400 [43.0 min]
+2026-09-12 12:06:28,991 INFO   answered 4400/5400 [49.4 min]
+2026-09-12 12:09:08,366 INFO   answered 4800/5400 [52.1 min]
+2026-09-12 12:10:29,264 INFO   answered 5200/5400 [53.4 min]
+2026-09-12 12:11:17,953 INFO method       cell                         acc     dev    test  symbols
+2026-09-12 12:11:17,953 INFO g0           rayleigh/0                 51.1%   54.0%   48.4%      667
+2026-09-12 12:11:17,953 INFO g0           rayleigh/15                84.4%   86.2%   82.8%     1923
+2026-09-12 12:11:17,953 INFO g0           rician/0                   54.4%   55.2%   53.8%      723
+2026-09-12 12:11:17,953 INFO g0           rician/15                  88.3%   92.0%   84.9%     2060
+2026-09-12 12:11:17,953 INFO g0           frequency_selective/0      57.2%   57.5%   57.0%      754
+2026-09-12 12:11:17,953 INFO g0           frequency_selective/15     83.9%   86.2%   81.7%     1937
+2026-09-12 12:11:17,954 INFO g0.25        rayleigh/0                 57.2%   52.9%   61.3%      666
+2026-09-12 12:11:17,954 INFO g0.25        rayleigh/15                83.3%   85.1%   81.7%     1963
+2026-09-12 12:11:17,954 INFO g0.25        rician/0                   56.7%   51.7%   61.3%      722
+2026-09-12 12:11:17,954 INFO g0.25        rician/15                  87.8%   89.7%   86.0%     2076
+2026-09-12 12:11:17,954 INFO g0.25        frequency_selective/0      56.1%   56.3%   55.9%      753
+2026-09-12 12:11:17,954 INFO g0.25        frequency_selective/15     81.7%   82.8%   80.6%     1966
+2026-09-12 12:11:17,954 INFO g0.5         rayleigh/0                 56.1%   55.2%   57.0%      666
+2026-09-12 12:11:17,954 INFO g0.5         rayleigh/15                85.6%   86.2%   84.9%     1963
+2026-09-12 12:11:17,954 INFO g0.5         rician/0                   55.0%   57.5%   52.7%      722
+2026-09-12 12:11:17,954 INFO g0.5         rician/15                  89.4%   89.7%   89.2%     2076
+2026-09-12 12:11:17,954 INFO g0.5         frequency_selective/0      55.6%   51.7%   59.1%      753
+2026-09-12 12:11:17,954 INFO g0.5         frequency_selective/15     84.4%   85.1%   83.9%     1966
+2026-09-12 12:11:17,954 INFO g1           rayleigh/0                 55.6%   55.2%   55.9%      666
+2026-09-12 12:11:17,954 INFO g1           rayleigh/15                85.0%   86.2%   83.9%     1975
+2026-09-12 12:11:17,954 INFO g1           rician/0                   58.3%   55.2%   61.3%      722
+2026-09-12 12:11:17,954 INFO g1           rician/15                  90.0%   92.0%   88.2%     2080
+2026-09-12 12:11:17,954 INFO g1           frequency_selective/0      56.1%   51.7%   60.2%      753
+2026-09-12 12:11:17,954 INFO g1           frequency_selective/15     85.6%   87.4%   83.9%     1967
+2026-09-12 12:11:17,954 INFO adaptive_sc  rayleigh/0                 51.1%   51.7%   50.5%      660
+2026-09-12 12:11:17,954 INFO adaptive_sc  rayleigh/15                86.1%   89.7%   82.8%     2998
+2026-09-12 12:11:17,954 INFO adaptive_sc  rician/0                   53.9%   50.6%   57.0%      716
+2026-09-12 12:11:17,954 INFO adaptive_sc  rician/15                  88.9%   93.1%   84.9%     3205
+2026-09-12 12:11:17,954 INFO adaptive_sc  frequency_selective/0      57.2%   54.0%   60.2%      747
+2026-09-12 12:11:17,954 INFO adaptive_sc  frequency_selective/15     84.4%   88.5%   80.6%     3197
+2026-09-12 12:11:17,954 INFO --- 6-cell average per method ---
+2026-09-12 12:11:17,954 INFO g0           all=69.9% dev=71.8% test=68.1%
+2026-09-12 12:11:17,954 INFO g0.25        all=70.5% dev=69.7% test=71.1%
+2026-09-12 12:11:17,954 INFO g0.5         all=71.0% dev=70.9% test=71.1%
+2026-09-12 12:11:17,954 INFO g1           all=71.8% dev=71.3% test=72.2%
+2026-09-12 12:11:17,955 INFO adaptive_sc  all=70.3% dev=71.3% test=69.4%

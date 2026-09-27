@@ -1,0 +1,139 @@
+2026-09-25 13:06:18,839 INFO multi-terminal: 60 terminals, K=(4, 10, 20), SNR=(0.0, 15.0), thetas=(0.0, 0.01, 0.05, 0.1, 0.2, 0.5, 1.0, 1000000000.0)
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:00<00:01,  2.57it/s]Loading checkpoint shards:  50%|█████     | 2/4 [00:00<00:00,  2.56it/s]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:01<00:00,  2.55it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:01<00:00,  3.31it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:01<00:00,  2.99it/s]
+/mnt/4t/code_space/zcy/GSC_Token/scripts/run_multiterminal.py:121: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  u_prime = torch.tensor(combine_scores(
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/transformers/models/qwen3_vl/modeling_qwen3_vl.py:328: UserWarning: Deterministic behavior was enabled with either `torch.use_deterministic_algorithms(True)` or `at::Context::setDeterministicAlgorithms(true)`, but this operation is not deterministic because it uses CuBLAS and you have CUDA >= 10.2. To enable deterministic behavior in this case, you must set an environment variable before running your PyTorch application: CUBLAS_WORKSPACE_CONFIG=:4096:8 or CUBLAS_WORKSPACE_CONFIG=:16:8. For more information, go to https://docs.nvidia.com/cuda/cublas/index.html#results-reproducibility (Triggered internally at ../aten/src/ATen/Context.cpp:208.)
+  freqs = (inv_freq_expanded.float() @ position_ids_expanded.float()).transpose(2, 3)
+/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/nn/modules/linear.py:125: UserWarning: Deterministic behavior was enabled with either `torch.use_deterministic_algorithms(True)` or `at::Context::setDeterministicAlgorithms(true)`, but this operation is not deterministic because it uses CuBLAS and you have CUDA >= 10.2. To enable deterministic behavior in this case, you must set an environment variable before running your PyTorch application: CUBLAS_WORKSPACE_CONFIG=:4096:8 or CUBLAS_WORKSPACE_CONFIG=:16:8. For more information, go to https://docs.nvidia.com/cuda/cublas/index.html#results-reproducibility (Triggered internally at ../aten/src/ATen/Context.cpp:208.)
+  return F.linear(input, self.weight, self.bias)
+/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/transformers/models/qwen3_vl/modeling_qwen3_vl.py:155: UserWarning: Deterministic behavior was enabled with either `torch.use_deterministic_algorithms(True)` or `at::Context::setDeterministicAlgorithms(true)`, but this operation is not deterministic because it uses CuBLAS and you have CUDA >= 10.2. To enable deterministic behavior in this case, you must set an environment variable before running your PyTorch application: CUBLAS_WORKSPACE_CONFIG=:4096:8 or CUBLAS_WORKSPACE_CONFIG=:16:8. For more information, go to https://docs.nvidia.com/cuda/cublas/index.html#results-reproducibility (Triggered internally at ../aten/src/ATen/Context.cpp:208.)
+  attn_weights = torch.matmul(query, key_states.transpose(2, 3)) * scaling
+/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/transformers/models/qwen3_vl/modeling_qwen3_vl.py:162: UserWarning: Deterministic behavior was enabled with either `torch.use_deterministic_algorithms(True)` or `at::Context::setDeterministicAlgorithms(true)`, but this operation is not deterministic because it uses CuBLAS and you have CUDA >= 10.2. To enable deterministic behavior in this case, you must set an environment variable before running your PyTorch application: CUBLAS_WORKSPACE_CONFIG=:4096:8 or CUBLAS_WORKSPACE_CONFIG=:16:8. For more information, go to https://docs.nvidia.com/cuda/cublas/index.html#results-reproducibility (Triggered internally at ../aten/src/ATen/Context.cpp:208.)
+  attn_output = torch.matmul(attn_weights, value_states)
+2026-09-25 13:06:43,025 INFO snr=0 K=4 theta=0 mean_acc=0.1500 jain_w=0.2500 nslots=15
+2026-09-25 13:06:56,745 INFO snr=0 K=4 theta=0.01 mean_acc=0.1333 jain_w=0.9445 nslots=15
+2026-09-25 13:07:10,203 INFO snr=0 K=4 theta=0.05 mean_acc=0.0833 jain_w=0.9981 nslots=15
+2026-09-25 13:07:23,926 INFO snr=0 K=4 theta=0.1 mean_acc=0.0833 jain_w=0.9995 nslots=15
+2026-09-25 13:07:37,509 INFO snr=0 K=4 theta=0.2 mean_acc=0.0833 jain_w=0.9999 nslots=15
+2026-09-25 13:07:51,039 INFO snr=0 K=4 theta=0.5 mean_acc=0.0833 jain_w=1.0000 nslots=15
+2026-09-25 13:08:04,567 INFO snr=0 K=4 theta=1 mean_acc=0.0833 jain_w=1.0000 nslots=15
+2026-09-25 13:08:18,138 INFO snr=0 K=4 theta=1e+09 mean_acc=0.0833 jain_w=1.0000 nslots=15
+2026-09-25 13:08:36,348 INFO snr=0 K=10 theta=0 mean_acc=0.0667 jain_w=0.1000 nslots=6
+2026-09-25 13:08:48,309 INFO snr=0 K=10 theta=0.01 mean_acc=0.1000 jain_w=0.9898 nslots=6
+2026-09-25 13:08:59,937 INFO snr=0 K=10 theta=0.05 mean_acc=0.0833 jain_w=0.9996 nslots=6
+2026-09-25 13:09:11,710 INFO snr=0 K=10 theta=0.1 mean_acc=0.0833 jain_w=0.9999 nslots=6
+2026-09-25 13:09:23,470 INFO snr=0 K=10 theta=0.2 mean_acc=0.0833 jain_w=1.0000 nslots=6
+2026-09-25 13:09:35,237 INFO snr=0 K=10 theta=0.5 mean_acc=0.0833 jain_w=1.0000 nslots=6
+2026-09-25 13:09:47,031 INFO snr=0 K=10 theta=1 mean_acc=0.0833 jain_w=1.0000 nslots=6
+2026-09-25 13:09:58,801 INFO snr=0 K=10 theta=1e+09 mean_acc=0.0833 jain_w=1.0000 nslots=6
+2026-09-25 13:10:16,714 INFO snr=0 K=20 theta=0 mean_acc=0.0167 jain_w=0.0500 nslots=3
+2026-09-25 13:10:28,892 INFO snr=0 K=20 theta=0.01 mean_acc=0.0500 jain_w=0.9980 nslots=3
+2026-09-25 13:10:41,180 INFO snr=0 K=20 theta=0.05 mean_acc=0.0500 jain_w=0.9999 nslots=3
+2026-09-25 13:10:53,468 INFO snr=0 K=20 theta=0.1 mean_acc=0.0500 jain_w=1.0000 nslots=3
+2026-09-25 13:11:05,765 INFO snr=0 K=20 theta=0.2 mean_acc=0.0500 jain_w=1.0000 nslots=3
+2026-09-25 13:11:18,056 INFO snr=0 K=20 theta=0.5 mean_acc=0.0500 jain_w=1.0000 nslots=3
+2026-09-25 13:11:30,339 INFO snr=0 K=20 theta=1 mean_acc=0.0500 jain_w=1.0000 nslots=3
+2026-09-25 13:11:42,621 INFO snr=0 K=20 theta=1e+09 mean_acc=0.0500 jain_w=1.0000 nslots=3
+2026-09-25 13:12:00,036 INFO snr=15 K=4 theta=0 mean_acc=0.1500 jain_w=0.2500 nslots=15
+2026-09-25 13:12:16,617 INFO snr=15 K=4 theta=0.01 mean_acc=0.4667 jain_w=0.7140 nslots=15
+2026-09-25 13:12:31,420 INFO snr=15 K=4 theta=0.05 mean_acc=0.5667 jain_w=0.9748 nslots=15
+2026-09-25 13:12:45,377 INFO snr=15 K=4 theta=0.1 mean_acc=0.5500 jain_w=0.9939 nslots=15
+2026-09-25 13:12:58,628 INFO snr=15 K=4 theta=0.2 mean_acc=0.5500 jain_w=0.9985 nslots=15
+2026-09-25 13:13:12,866 INFO snr=15 K=4 theta=0.5 mean_acc=0.6000 jain_w=0.9998 nslots=15
+2026-09-25 13:13:28,027 INFO snr=15 K=4 theta=1 mean_acc=0.5667 jain_w=0.9999 nslots=15
+2026-09-25 13:13:43,250 INFO snr=15 K=4 theta=1e+09 mean_acc=0.5667 jain_w=1.0000 nslots=15
+2026-09-25 13:14:01,081 INFO snr=15 K=10 theta=0 mean_acc=0.0833 jain_w=0.1000 nslots=6
+2026-09-25 13:14:14,710 INFO snr=15 K=10 theta=0.01 mean_acc=0.3333 jain_w=0.9025 nslots=6
+2026-09-25 13:14:30,268 INFO snr=15 K=10 theta=0.05 mean_acc=0.2833 jain_w=0.9957 nslots=6
+2026-09-25 13:14:45,922 INFO snr=15 K=10 theta=0.1 mean_acc=0.3167 jain_w=0.9989 nslots=6
+2026-09-25 13:15:02,447 INFO snr=15 K=10 theta=0.2 mean_acc=0.3833 jain_w=0.9997 nslots=6
+2026-09-25 13:15:18,127 INFO snr=15 K=10 theta=0.5 mean_acc=0.3500 jain_w=1.0000 nslots=6
+2026-09-25 13:15:33,065 INFO snr=15 K=10 theta=1 mean_acc=0.3333 jain_w=1.0000 nslots=6
+2026-09-25 13:15:48,553 INFO snr=15 K=10 theta=1e+09 mean_acc=0.3333 jain_w=1.0000 nslots=6
+2026-09-25 13:16:06,491 INFO snr=15 K=20 theta=0 mean_acc=0.0167 jain_w=0.0500 nslots=3
+2026-09-25 13:16:18,351 INFO snr=15 K=20 theta=0.01 mean_acc=0.1667 jain_w=0.9731 nslots=3
+2026-09-25 13:16:29,946 INFO snr=15 K=20 theta=0.05 mean_acc=0.1500 jain_w=0.9989 nslots=3
+2026-09-25 13:16:41,638 INFO snr=15 K=20 theta=0.1 mean_acc=0.1667 jain_w=0.9997 nslots=3
+2026-09-25 13:16:53,554 INFO snr=15 K=20 theta=0.2 mean_acc=0.1667 jain_w=0.9999 nslots=3
+2026-09-25 13:17:05,495 INFO snr=15 K=20 theta=0.5 mean_acc=0.1667 jain_w=1.0000 nslots=3
+2026-09-25 13:17:17,386 INFO snr=15 K=20 theta=1 mean_acc=0.1667 jain_w=1.0000 nslots=3
+2026-09-25 13:17:29,309 INFO snr=15 K=20 theta=1e+09 mean_acc=0.1667 jain_w=1.0000 nslots=3
+{
+  "samples": 60,
+  "K": [
+    4,
+    10,
+    20
+  ],
+  "snr_db": [
+    0.0,
+    15.0
+  ],
+  "thetas": [
+    0.0,
+    0.01,
+    0.05,
+    0.1,
+    0.2,
+    0.5,
+    1.0,
+    1000000000.0
+  ],
+  "weights": [
+    0.25,
+    0.0,
+    0.75
+  ],
+  "epsilon_out": 0.05,
+  "energy_backend": "nvidia-smi"
+}
+ snr_db  K        theta  mean_accuracy  jain_accuracy
+    0.0  4 0.000000e+00       0.150000       0.150000
+    0.0  4 1.000000e-02       0.133333       0.133333
+    0.0  4 5.000000e-02       0.083333       0.083333
+    0.0  4 1.000000e-01       0.083333       0.083333
+    0.0  4 2.000000e-01       0.083333       0.083333
+    0.0  4 5.000000e-01       0.083333       0.083333
+    0.0  4 1.000000e+00       0.083333       0.083333
+    0.0  4 1.000000e+09       0.083333       0.083333
+    0.0 10 0.000000e+00       0.066667       0.066667
+    0.0 10 1.000000e-02       0.100000       0.100000
+    0.0 10 5.000000e-02       0.083333       0.083333
+    0.0 10 1.000000e-01       0.083333       0.083333
+    0.0 10 2.000000e-01       0.083333       0.083333
+    0.0 10 5.000000e-01       0.083333       0.083333
+    0.0 10 1.000000e+00       0.083333       0.083333
+    0.0 10 1.000000e+09       0.083333       0.083333
+    0.0 20 0.000000e+00       0.016667       0.016667
+    0.0 20 1.000000e-02       0.050000       0.050000
+    0.0 20 5.000000e-02       0.050000       0.050000
+    0.0 20 1.000000e-01       0.050000       0.050000
+    0.0 20 2.000000e-01       0.050000       0.050000
+    0.0 20 5.000000e-01       0.050000       0.050000
+    0.0 20 1.000000e+00       0.050000       0.050000
+    0.0 20 1.000000e+09       0.050000       0.050000
+   15.0  4 0.000000e+00       0.150000       0.150000
+   15.0  4 1.000000e-02       0.466667       0.466667
+   15.0  4 5.000000e-02       0.566667       0.566667
+   15.0  4 1.000000e-01       0.550000       0.550000
+   15.0  4 2.000000e-01       0.550000       0.550000
+   15.0  4 5.000000e-01       0.600000       0.600000
+   15.0  4 1.000000e+00       0.566667       0.566667
+   15.0  4 1.000000e+09       0.566667       0.566667
+   15.0 10 0.000000e+00       0.083333       0.083333
+   15.0 10 1.000000e-02       0.333333       0.333333
+   15.0 10 5.000000e-02       0.283333       0.283333
+   15.0 10 1.000000e-01       0.316667       0.316667
+   15.0 10 2.000000e-01       0.383333       0.383333
+   15.0 10 5.000000e-01       0.350000       0.350000
+   15.0 10 1.000000e+00       0.333333       0.333333
+   15.0 10 1.000000e+09       0.333333       0.333333
+   15.0 20 0.000000e+00       0.016667       0.016667
+   15.0 20 1.000000e-02       0.166667       0.166667
+   15.0 20 5.000000e-02       0.150000       0.150000
+   15.0 20 1.000000e-01       0.166667       0.166667
+   15.0 20 2.000000e-01       0.166667       0.166667
+   15.0 20 5.000000e-01       0.166667       0.166667
+   15.0 20 1.000000e+00       0.166667       0.166667
+   15.0 20 1.000000e+09       0.166667       0.166667

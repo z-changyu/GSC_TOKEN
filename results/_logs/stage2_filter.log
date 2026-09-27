@@ -1,0 +1,11 @@
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 159.49it/s]
+Traceback (most recent call last):
+  File "/mnt/4t/code_space/zcy/GSC_Token/scripts/filter_by_full.py", line 138, in <module>
+    main()
+  File "/mnt/4t/code_space/zcy/GSC_Token/scripts/filter_by_full.py", line 76, in main
+    cache = {str(r["sample_id"]): r for r in read_jsonl(score_cache_path)}
+  File "/mnt/4t/code_space/zcy/GSC_Token/src/utils/io.py", line 9, in read_jsonl
+    with Path(path).open(encoding="utf-8") as handle:
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/pathlib.py", line 1119, in open
+    return self._accessor.open(self, mode, buffering, encoding, errors,
+FileNotFoundError: [Errno 2] No such file or directory: 'outputs/cache/v2xqa_scores.jsonl'

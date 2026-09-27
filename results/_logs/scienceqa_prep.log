@@ -1,0 +1,123 @@
+=== 1/4 pragmatic cache ===
+transmitter prompt version: v1
+manifest -> 300 samples in processed pool
+cache has 158/300; building the rest
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 110.73it/s]
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+scored 10/142 id=4268 tokens=160 nll=5.002 leak=False
+scored 20/142 id=10466 tokens=160 nll=0.886 leak=False
+scored 30/142 id=13452 tokens=160 nll=5.210 leak=False
+scored 40/142 id=14302 tokens=160 nll=1.406 leak=False
+scored 50/142 id=14848 tokens=81 nll=4.333 leak=False
+scored 60/142 id=16131 tokens=68 nll=3.333 leak=False
+scored 70/142 id=16694 tokens=159 nll=0.570 leak=False
+scored 80/142 id=17333 tokens=112 nll=5.000 leak=False
+scored 90/142 id=17880 tokens=99 nll=1.875 leak=False
+scored 100/142 id=18604 tokens=98 nll=3.917 leak=False
+scored 110/142 id=19041 tokens=148 nll=4.281 leak=False
+scored 120/142 id=19931 tokens=57 nll=4.670 leak=False
+scored 130/142 id=20593 tokens=138 nll=0.360 leak=False
+scored 140/142 id=21091 tokens=73 nll=5.000 leak=False
+scored 142/142 id=21183 tokens=103 nll=7.438 leak=False
+DONE: 300 samples -> outputs/cache/scienceqa_scores_8b.jsonl
+=== 2/4 benchmark ===
+cache: 300 samples -> outputs/cache/scienceqa_scores_8b.jsonl
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 151.55it/s]
+[phase 1] receiver LM: models/Qwen3-4B
+[phase 1] llmlingua-2: models/llmlingua2-xlmr (keep label 1)
+[phase 1] 25/300 id=1397 [16:38:36]
+[phase 1] 50/300 id=3588 [16:38:39]
+[phase 1] 75/300 id=4982 [16:38:43]
+[phase 1] 100/300 id=7180 [16:38:47]
+[phase 1] 125/300 id=9209 [16:38:51]
+[phase 1] 150/300 id=11091 [16:38:54]
+[phase 1] 175/300 id=12773 [16:38:58]
+[phase 1] 200/300 id=14441 [16:39:02]
+[phase 1] 225/300 id=16514 [16:39:06]
+[phase 1] 250/300 id=17924 [16:39:09]
+[phase 1] 275/300 id=19653 [16:39:13]
+[phase 1] 300/300 id=21183 [16:39:17]
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 107.84it/s]
+[phase 2] transmitter VLM: models/Qwen3-VL-8B-Instruct
+[phase 2] 10/300 id=698 mean=0.6261 [16:39:22]
+[phase 2] 20/300 id=1162 mean=0.6336 [16:39:25]
+[phase 2] 30/300 id=1866 mean=0.6228 [16:39:27]
+[phase 2] 40/300 id=2589 mean=0.6397 [16:39:29]
+[phase 2] 50/300 id=3588 mean=0.6024 [16:39:32]
+[phase 2] 60/300 id=4256 mean=0.6358 [16:39:35]
+[phase 2] 70/300 id=4858 mean=0.6307 [16:39:37]
+[phase 2] 80/300 id=5360 mean=0.6323 [16:39:40]
+[phase 2] 90/300 id=6113 mean=0.5966 [16:39:42]
+[phase 2] 100/300 id=7180 mean=0.6512 [16:39:45]
+[phase 2] 110/300 id=7865 mean=0.6118 [16:39:48]
+[phase 2] 120/300 id=8871 mean=0.5990 [16:39:50]
+[phase 2] 130/300 id=9586 mean=0.6185 [16:39:53]
+[phase 2] 140/300 id=10659 mean=0.6451 [16:39:56]
+[phase 2] 150/300 id=11091 mean=0.6157 [16:39:58]
+[phase 2] 160/300 id=12022 mean=0.6454 [16:40:01]
+[phase 2] 170/300 id=12546 mean=0.6946 [16:40:03]
+[phase 2] 180/300 id=12951 mean=0.6724 [16:40:05]
+[phase 2] 190/300 id=13561 mean=0.6675 [16:40:08]
+[phase 2] 200/300 id=14441 mean=0.6081 [16:40:11]
+[phase 2] 210/300 id=15192 mean=0.6289 [16:40:13]
+[phase 2] 220/300 id=16174 mean=0.5949 [16:40:16]
+[phase 2] 230/300 id=17023 mean=0.5987 [16:40:18]
+[phase 2] 240/300 id=17455 mean=0.6689 [16:40:21]
+[phase 2] 250/300 id=17924 mean=0.5952 [16:40:23]
+[phase 2] 260/300 id=18748 mean=0.6469 [16:40:26]
+[phase 2] 270/300 id=19238 mean=0.6564 [16:40:28]
+[phase 2] 280/300 id=19970 mean=0.6186 [16:40:31]
+[phase 2] 290/300 id=20610 mean=0.6287 [16:40:34]
+[phase 2] 300/300 id=21183 mean=0.6128 [16:40:36]
+DONE: 300 samples -> outputs/cache/scienceqa_scores_8b_surprisal.jsonl
+=== 3/4 answer-aware ===
+cache: 300 samples -> outputs/cache/scienceqa_scores_8b.jsonl
+resuming: 3 rows on disk
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 162.15it/s]
+scorer (receiver LM): models/Qwen3-4B
+10/297 id=958 tok=109 loo_max=8.370 [16:41:23]
+20/297 id=1307 tok=62 loo_max=1.719 [16:42:08]
+30/297 id=2115 tok=100 loo_max=4.094 [16:42:45]
+40/297 id=2985 tok=160 loo_max=1.786 [16:43:32]
+50/297 id=3666 tok=104 loo_max=5.735 [16:44:30]
+60/297 id=4509 tok=155 loo_max=1.708 [16:45:18]
+70/297 id=4932 tok=104 loo_max=1.328 [16:46:01]
+80/297 id=5565 tok=117 loo_max=14.113 [16:46:47]
+90/297 id=6431 tok=160 loo_max=8.479 [16:47:42]
+100/297 id=7461 tok=160 loo_max=5.292 [16:48:35]
+110/297 id=8219 tok=70 loo_max=5.768 [16:49:24]
+120/297 id=9121 tok=123 loo_max=9.365 [16:50:11]
+130/297 id=9776 tok=129 loo_max=6.188 [16:51:04]
+140/297 id=10834 tok=71 loo_max=5.315 [16:51:49]
+150/297 id=11190 tok=100 loo_max=4.914 [16:52:32]
+160/297 id=12153 tok=122 loo_max=1.649 [16:53:19]
+170/297 id=12685 tok=135 loo_max=10.277 [16:54:13]
+180/297 id=13079 tok=150 loo_max=2.459 [16:55:01]
+190/297 id=14009 tok=160 loo_max=2.146 [16:55:54]
+200/297 id=14603 tok=160 loo_max=2.222 [16:56:51]
+210/297 id=15459 tok=160 loo_max=7.873 [16:57:52]
+220/297 id=16466 tok=120 loo_max=3.544 [16:58:36]
+230/297 id=17174 tok=116 loo_max=3.116 [16:59:23]
+240/297 id=17614 tok=77 loo_max=2.980 [16:59:59]
+250/297 id=18058 tok=78 loo_max=0.516 [17:00:45]
+260/297 id=18914 tok=118 loo_max=8.906 [17:01:34]
+270/297 id=19495 tok=100 loo_max=4.600 [17:02:16]
+280/297 id=20275 tok=126 loo_max=3.216 [17:03:05]
+290/297 id=20737 tok=124 loo_max=2.458 [17:03:48]
+297/297 id=21183 tok=103 loo_max=3.125 [17:04:19]
+DONE: 300 samples -> outputs/cache/scienceqa_scores_8b_answer_aware.jsonl
+=== 4/4 filter ===
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 157.12it/s]
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+{
+  "input_manifest": "data/manifests/scienceqa_val_local.jsonl",
+  "score_cache": "outputs/cache/scienceqa_scores_8b.jsonl",
+  "receiver": "models/Qwen3-4B",
+  "total": 300,
+  "kept": 221,
+  "dropped": 79,
+  "full_prompt_accuracy_before_filter": 0.7366666666666667,
+  "full_prompt_accuracy_after_filter": 1.0,
+  "output_manifest": "data/manifests/scienceqa_val_local_filtered_8b.jsonl"
+}
+SCIENCEQA_PREP_DONE

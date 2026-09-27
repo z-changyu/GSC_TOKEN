@@ -29,6 +29,8 @@ outputs/
 *.synctex.gz
 *.log
 nohup.out
+# 结果集内的运行日志需要保留（用于溯源）
+!results/**/*.log
 
 # ---- 本地 IDE / 工具配置 ----
 .codebuddy/

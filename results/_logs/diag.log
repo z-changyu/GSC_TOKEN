@@ -1,0 +1,15 @@
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 156.88it/s]
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+total=150
+strict_accuracy = 0.267  (current pipeline)
+lenient_accuracy = 0.273  (if we matched by text containment)
+parse modes: {'leading_letter': 88, 'exact': 41, 'raw': 17, 'unique_substring': 4}
+predicted letters: {'C': 19, 'D': 36, 'B': 35, 'A': 43, 'RAW': 17}
+
+--- parsing-failure examples (wrong by strict, right by lenient) ---
+[s87] truth='Mostly clear forward scene.' pred(raw)='How should the cooperative scene be summarized? A. Mostly clear forward scene. B. Cross-view conflict scene. C.'
+
+--- genuine wrong examples (wrong by both) ---
+[s2] Q='What useful far-field cue is visible?' truth='A far buildup of traffic.' raw='C. A far work zone.'
+[s4] Q='What is the main risk ahead?' truth='A leading vehicle.' raw='C. A vulnerable road user.'
+[s5] Q='Which missing cue is best recovered by cooperation?' truth='A long-range cue.' raw='B. A cue missing from the blurred ego view.'

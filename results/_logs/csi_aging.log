@@ -1,0 +1,216 @@
+2026-09-27 00:22:51,285 INFO CSI aging sweep: 60 samples, ages=[0.0, 0.0002, 0.0005, 0.001, 0.002, 0.005, 0.01], f_d=330 Hz
+2026-09-27 00:22:51,285 INFO loading receiver models/Qwen3-VL-8B-Instruct
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 106.74it/s]
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+2026-09-27 00:23:08,638 INFO done rayleigh/0.0/seed=0/age=0s
+2026-09-27 00:23:21,418 INFO done rayleigh/0.0/seed=0/age=0.0002s
+2026-09-27 00:23:34,200 INFO done rayleigh/0.0/seed=0/age=0.0005s
+2026-09-27 00:23:49,309 INFO done rayleigh/0.0/seed=0/age=0.001s
+2026-09-27 00:24:03,166 INFO done rayleigh/0.0/seed=0/age=0.002s
+2026-09-27 00:24:17,413 INFO done rayleigh/0.0/seed=0/age=0.005s
+2026-09-27 00:24:33,280 INFO done rayleigh/0.0/seed=0/age=0.01s
+2026-09-27 00:24:46,108 INFO done rayleigh/0.0/seed=1/age=0s
+2026-09-27 00:24:58,959 INFO done rayleigh/0.0/seed=1/age=0.0002s
+2026-09-27 00:25:11,854 INFO done rayleigh/0.0/seed=1/age=0.0005s
+2026-09-27 00:25:24,802 INFO done rayleigh/0.0/seed=1/age=0.001s
+2026-09-27 00:25:37,766 INFO done rayleigh/0.0/seed=1/age=0.002s
+2026-09-27 00:25:50,740 INFO done rayleigh/0.0/seed=1/age=0.005s
+2026-09-27 00:26:03,735 INFO done rayleigh/0.0/seed=1/age=0.01s
+2026-09-27 00:26:25,618 INFO done rayleigh/15.0/seed=0/age=0s
+2026-09-27 00:26:46,756 INFO done rayleigh/15.0/seed=0/age=0.0002s
+2026-09-27 00:27:04,922 INFO done rayleigh/15.0/seed=0/age=0.0005s
+2026-09-27 00:27:25,211 INFO done rayleigh/15.0/seed=0/age=0.001s
+2026-09-27 00:27:45,335 INFO done rayleigh/15.0/seed=0/age=0.002s
+2026-09-27 00:28:05,484 INFO done rayleigh/15.0/seed=0/age=0.005s
+2026-09-27 00:28:25,736 INFO done rayleigh/15.0/seed=0/age=0.01s
+2026-09-27 00:28:47,866 INFO done rayleigh/15.0/seed=1/age=0s
+2026-09-27 00:29:07,961 INFO done rayleigh/15.0/seed=1/age=0.0002s
+2026-09-27 00:29:28,025 INFO done rayleigh/15.0/seed=1/age=0.0005s
+2026-09-27 00:29:48,101 INFO done rayleigh/15.0/seed=1/age=0.001s
+2026-09-27 00:30:08,168 INFO done rayleigh/15.0/seed=1/age=0.002s
+2026-09-27 00:30:28,190 INFO done rayleigh/15.0/seed=1/age=0.005s
+2026-09-27 00:30:48,345 INFO done rayleigh/15.0/seed=1/age=0.01s
+2026-09-27 00:31:04,487 INFO done rician/0.0/seed=0/age=0s
+2026-09-27 00:31:18,512 INFO done rician/0.0/seed=0/age=0.0002s
+2026-09-27 00:31:32,367 INFO done rician/0.0/seed=0/age=0.0005s
+2026-09-27 00:31:48,067 INFO done rician/0.0/seed=0/age=0.001s
+2026-09-27 00:32:02,348 INFO done rician/0.0/seed=0/age=0.002s
+2026-09-27 00:32:17,579 INFO done rician/0.0/seed=0/age=0.005s
+2026-09-27 00:32:34,189 INFO done rician/0.0/seed=0/age=0.01s
+2026-09-27 00:32:50,192 INFO done rician/0.0/seed=1/age=0s
+2026-09-27 00:33:05,322 INFO done rician/0.0/seed=1/age=0.0002s
+2026-09-27 00:33:19,366 INFO done rician/0.0/seed=1/age=0.0005s
+2026-09-27 00:33:33,306 INFO done rician/0.0/seed=1/age=0.001s
+2026-09-27 00:33:47,244 INFO done rician/0.0/seed=1/age=0.002s
+2026-09-27 00:34:01,154 INFO done rician/0.0/seed=1/age=0.005s
+2026-09-27 00:34:15,070 INFO done rician/0.0/seed=1/age=0.01s
+2026-09-27 00:34:36,787 INFO done rician/15.0/seed=0/age=0s
+2026-09-27 00:34:58,528 INFO done rician/15.0/seed=0/age=0.0002s
+2026-09-27 00:35:15,828 INFO done rician/15.0/seed=0/age=0.0005s
+2026-09-27 00:35:36,139 INFO done rician/15.0/seed=0/age=0.001s
+2026-09-27 00:35:56,263 INFO done rician/15.0/seed=0/age=0.002s
+2026-09-27 00:36:16,451 INFO done rician/15.0/seed=0/age=0.005s
+2026-09-27 00:36:36,753 INFO done rician/15.0/seed=0/age=0.01s
+2026-09-27 00:36:58,795 INFO done rician/15.0/seed=1/age=0s
+2026-09-27 00:37:20,921 INFO done rician/15.0/seed=1/age=0.0002s
+2026-09-27 00:37:41,249 INFO done rician/15.0/seed=1/age=0.0005s
+2026-09-27 00:38:01,310 INFO done rician/15.0/seed=1/age=0.001s
+2026-09-27 00:38:21,328 INFO done rician/15.0/seed=1/age=0.002s
+2026-09-27 00:38:41,419 INFO done rician/15.0/seed=1/age=0.005s
+2026-09-27 00:39:01,501 INFO done rician/15.0/seed=1/age=0.01s
+2026-09-27 00:39:22,926 INFO done frequency_selective/0.0/seed=0/age=0s
+2026-09-27 00:39:43,115 INFO done frequency_selective/0.0/seed=0/age=0.0002s
+2026-09-27 00:40:00,092 INFO done frequency_selective/0.0/seed=0/age=0.0005s
+2026-09-27 00:40:16,002 INFO done frequency_selective/0.0/seed=0/age=0.001s
+2026-09-27 00:40:31,927 INFO done frequency_selective/0.0/seed=0/age=0.002s
+2026-09-27 00:40:47,851 INFO done frequency_selective/0.0/seed=0/age=0.005s
+2026-09-27 00:41:03,821 INFO done frequency_selective/0.0/seed=0/age=0.01s
+2026-09-27 00:41:16,889 INFO done frequency_selective/0.0/seed=1/age=0s
+2026-09-27 00:41:30,003 INFO done frequency_selective/0.0/seed=1/age=0.0002s
+2026-09-27 00:41:43,068 INFO done frequency_selective/0.0/seed=1/age=0.0005s
+2026-09-27 00:41:56,033 INFO done frequency_selective/0.0/seed=1/age=0.001s
+2026-09-27 00:42:09,035 INFO done frequency_selective/0.0/seed=1/age=0.002s
+2026-09-27 00:42:22,035 INFO done frequency_selective/0.0/seed=1/age=0.005s
+2026-09-27 00:42:35,001 INFO done frequency_selective/0.0/seed=1/age=0.01s
+2026-09-27 00:42:56,766 INFO done frequency_selective/15.0/seed=0/age=0s
+2026-09-27 00:43:18,567 INFO done frequency_selective/15.0/seed=0/age=0.0002s
+2026-09-27 00:43:40,252 INFO done frequency_selective/15.0/seed=0/age=0.0005s
+2026-09-27 00:44:00,474 INFO done frequency_selective/15.0/seed=0/age=0.001s
+2026-09-27 00:44:20,553 INFO done frequency_selective/15.0/seed=0/age=0.002s
+2026-09-27 00:44:40,904 INFO done frequency_selective/15.0/seed=0/age=0.005s
+2026-09-27 00:45:01,064 INFO done frequency_selective/15.0/seed=0/age=0.01s
+2026-09-27 00:45:23,116 INFO done frequency_selective/15.0/seed=1/age=0s
+2026-09-27 00:45:45,207 INFO done frequency_selective/15.0/seed=1/age=0.0002s
+2026-09-27 00:46:05,271 INFO done frequency_selective/15.0/seed=1/age=0.0005s
+2026-09-27 00:46:25,484 INFO done frequency_selective/15.0/seed=1/age=0.001s
+2026-09-27 00:46:45,595 INFO done frequency_selective/15.0/seed=1/age=0.002s
+2026-09-27 00:47:05,814 INFO done frequency_selective/15.0/seed=1/age=0.005s
+2026-09-27 00:47:25,958 INFO done frequency_selective/15.0/seed=1/age=0.01s
+2026-09-27 00:47:26,116 INFO cell                            rho planViol  realViol    decode       acc
+2026-09-27 00:47:26,116 INFO frequency_selective@0dB|age=0.2ms|fresh    0.957   0.0000    0.0000     0.948     0.633
+2026-09-27 00:47:26,116 INFO frequency_selective@0dB|age=0.2ms|nominal    0.957   0.0000    0.0000     0.951     0.642
+2026-09-27 00:47:26,116 INFO frequency_selective@0dB|age=0.2ms|robust    0.957   0.0000    0.0000     0.945     0.542
+2026-09-27 00:47:26,116 INFO frequency_selective@0dB|age=0.5ms|fresh    0.749   0.0000    0.0000     0.948     0.633
+2026-09-27 00:47:26,116 INFO frequency_selective@0dB|age=0.5ms|nominal    0.749   0.0000    0.0000     0.950     0.575
+2026-09-27 00:47:26,116 INFO frequency_selective@0dB|age=0.5ms|robust    0.749   0.0000    0.0083     0.927     0.475
+2026-09-27 00:47:26,116 INFO frequency_selective@0dB|age=0ms|fresh    1.000   0.0000    0.0000     0.948     0.633
+2026-09-27 00:47:26,116 INFO frequency_selective@0dB|age=0ms|nominal    1.000   0.0000    0.0000     0.950     0.625
+2026-09-27 00:47:26,116 INFO frequency_selective@0dB|age=0ms|robust    1.000   0.0000    0.0000     0.950     0.642
+2026-09-27 00:47:26,116 INFO frequency_selective@0dB|age=10ms|fresh    0.080   0.0000    0.0000     0.948     0.633
+2026-09-27 00:47:26,116 INFO frequency_selective@0dB|age=10ms|nominal    0.080   0.0000    0.0000     0.944     0.525
+2026-09-27 00:47:26,116 INFO frequency_selective@0dB|age=10ms|robust    0.080   0.0000    0.4750     0.508     0.433
+2026-09-27 00:47:26,116 INFO frequency_selective@0dB|age=1ms|fresh    0.182   0.0000    0.0000     0.948     0.633
+2026-09-27 00:47:26,116 INFO frequency_selective@0dB|age=1ms|nominal    0.182   0.0000    0.0000     0.957     0.517
+2026-09-27 00:47:26,116 INFO frequency_selective@0dB|age=1ms|robust    0.182   0.0000    0.4833     0.490     0.425
+2026-09-27 00:47:26,116 INFO frequency_selective@0dB|age=2ms|fresh    0.383   0.0000    0.0000     0.948     0.633
+2026-09-27 00:47:26,116 INFO frequency_selective@0dB|age=2ms|nominal    0.383   0.0000    0.5000     0.887     0.525
+2026-09-27 00:47:26,116 INFO frequency_selective@0dB|age=2ms|robust    0.383   0.0000    0.3333     0.651     0.467
+2026-09-27 00:47:26,116 INFO frequency_selective@0dB|age=5ms|fresh    0.245   0.0000    0.0000     0.948     0.633
+2026-09-27 00:47:26,116 INFO frequency_selective@0dB|age=5ms|nominal    0.245   0.0000    0.0000     0.951     0.517
+2026-09-27 00:47:26,116 INFO frequency_selective@0dB|age=5ms|robust    0.245   0.0000    0.4417     0.528     0.458
+2026-09-27 00:47:26,117 INFO frequency_selective@15dB|age=0.2ms|fresh    0.957   0.0000    0.0000     0.947     0.733
+2026-09-27 00:47:26,117 INFO frequency_selective@15dB|age=0.2ms|nominal    0.957   0.0000    0.0000     0.948     0.733
+2026-09-27 00:47:26,117 INFO frequency_selective@15dB|age=0.2ms|robust    0.957   0.0667    0.0000     0.951     0.767
+2026-09-27 00:47:26,117 INFO frequency_selective@15dB|age=0.5ms|fresh    0.749   0.0000    0.0000     0.947     0.733
+2026-09-27 00:47:26,117 INFO frequency_selective@15dB|age=0.5ms|nominal    0.749   0.0000    0.0000     0.948     0.733
+2026-09-27 00:47:26,117 INFO frequency_selective@15dB|age=0.5ms|robust    0.749   0.0000    0.0000     0.950     0.683
+2026-09-27 00:47:26,117 INFO frequency_selective@15dB|age=0ms|fresh    1.000   0.0000    0.0000     0.947     0.733
+2026-09-27 00:47:26,117 INFO frequency_selective@15dB|age=0ms|nominal    1.000   0.0000    0.0000     0.948     0.733
+2026-09-27 00:47:26,117 INFO frequency_selective@15dB|age=0ms|robust    1.000   0.0000    0.0000     0.951     0.767
+2026-09-27 00:47:26,117 INFO frequency_selective@15dB|age=10ms|fresh    0.080   0.0000    0.0000     0.947     0.733
+2026-09-27 00:47:26,117 INFO frequency_selective@15dB|age=10ms|nominal    0.080   0.0000    0.0000     0.948     0.733
+2026-09-27 00:47:26,117 INFO frequency_selective@15dB|age=10ms|robust    0.080   0.0000    0.0000     0.949     0.683
+2026-09-27 00:47:26,117 INFO frequency_selective@15dB|age=1ms|fresh    0.182   0.0000    0.0000     0.947     0.733
+2026-09-27 00:47:26,117 INFO frequency_selective@15dB|age=1ms|nominal    0.182   0.0000    0.0000     0.948     0.733
+2026-09-27 00:47:26,117 INFO frequency_selective@15dB|age=1ms|robust    0.182   0.0000    0.0000     0.951     0.667
+2026-09-27 00:47:26,117 INFO frequency_selective@15dB|age=2ms|fresh    0.383   0.0000    0.0000     0.947     0.733
+2026-09-27 00:47:26,117 INFO frequency_selective@15dB|age=2ms|nominal    0.383   0.0000    0.0000     0.948     0.733
+2026-09-27 00:47:26,117 INFO frequency_selective@15dB|age=2ms|robust    0.383   0.0000    0.0000     0.951     0.617
+2026-09-27 00:47:26,117 INFO frequency_selective@15dB|age=5ms|fresh    0.245   0.0000    0.0000     0.947     0.733
+2026-09-27 00:47:26,117 INFO frequency_selective@15dB|age=5ms|nominal    0.245   0.0000    0.0000     0.948     0.733
+2026-09-27 00:47:26,117 INFO frequency_selective@15dB|age=5ms|robust    0.245   0.0083    0.0000     0.950     0.650
+2026-09-27 00:47:26,117 INFO rayleigh@0dB|age=0.2ms|fresh    0.957   0.0000    0.5000     0.472     0.458
+2026-09-27 00:47:26,117 INFO rayleigh@0dB|age=0.2ms|nominal    0.957   0.0000    0.5000     0.468     0.450
+2026-09-27 00:47:26,117 INFO rayleigh@0dB|age=0.2ms|robust    0.957   0.0000    0.5000     0.483     0.417
+2026-09-27 00:47:26,117 INFO rayleigh@0dB|age=0.5ms|fresh    0.749   0.0000    0.5000     0.472     0.458
+2026-09-27 00:47:26,117 INFO rayleigh@0dB|age=0.5ms|nominal    0.749   0.0000    0.5000     0.492     0.433
+2026-09-27 00:47:26,117 INFO rayleigh@0dB|age=0.5ms|robust    0.749   0.0000    0.5000     0.492     0.433
+2026-09-27 00:47:26,117 INFO rayleigh@0dB|age=0ms|fresh    1.000   0.0000    0.5000     0.472     0.458
+2026-09-27 00:47:26,117 INFO rayleigh@0dB|age=0ms|nominal    1.000   0.0000    0.5000     0.476     0.458
+2026-09-27 00:47:26,117 INFO rayleigh@0dB|age=0ms|robust    1.000   0.0000    0.5000     0.475     0.433
+2026-09-27 00:47:26,117 INFO rayleigh@0dB|age=10ms|fresh    0.080   0.0000    0.5000     0.472     0.458
+2026-09-27 00:47:26,117 INFO rayleigh@0dB|age=10ms|nominal    0.080   0.0000    0.5000     0.473     0.558
+2026-09-27 00:47:26,117 INFO rayleigh@0dB|age=10ms|robust    0.080   0.0000    0.5000     0.463     0.425
+2026-09-27 00:47:26,117 INFO rayleigh@0dB|age=1ms|fresh    0.182   0.0000    0.5000     0.472     0.458
+2026-09-27 00:47:26,117 INFO rayleigh@0dB|age=1ms|nominal    0.182   0.0000    0.5000     0.472     0.542
+2026-09-27 00:47:26,117 INFO rayleigh@0dB|age=1ms|robust    0.182   0.0000    0.5000     0.480     0.408
+2026-09-27 00:47:26,117 INFO rayleigh@0dB|age=2ms|fresh    0.383   0.0000    0.5000     0.472     0.458
+2026-09-27 00:47:26,117 INFO rayleigh@0dB|age=2ms|nominal    0.383   0.0000    0.5000     0.474     0.467
+2026-09-27 00:47:26,117 INFO rayleigh@0dB|age=2ms|robust    0.383   0.0000    0.5000     0.460     0.417
+2026-09-27 00:47:26,117 INFO rayleigh@0dB|age=5ms|fresh    0.245   0.0000    0.5000     0.472     0.458
+2026-09-27 00:47:26,117 INFO rayleigh@0dB|age=5ms|nominal    0.245   0.0000    0.5000     0.473     0.517
+2026-09-27 00:47:26,117 INFO rayleigh@0dB|age=5ms|robust    0.245   0.0000    0.5000     0.474     0.392
+2026-09-27 00:47:26,117 INFO rayleigh@15dB|age=0.2ms|fresh    0.957   0.0000    0.0000     0.947     0.733
+2026-09-27 00:47:26,117 INFO rayleigh@15dB|age=0.2ms|nominal    0.957   0.0000    0.0000     0.948     0.733
+2026-09-27 00:47:26,117 INFO rayleigh@15dB|age=0.2ms|robust    0.957   0.0000    0.0000     0.950     0.692
+2026-09-27 00:47:26,117 INFO rayleigh@15dB|age=0.5ms|fresh    0.749   0.0000    0.0000     0.947     0.733
+2026-09-27 00:47:26,117 INFO rayleigh@15dB|age=0.5ms|nominal    0.749   0.0000    0.0000     0.947     0.700
+2026-09-27 00:47:26,117 INFO rayleigh@15dB|age=0.5ms|robust    0.749   0.0000    0.0000     0.952     0.500
+2026-09-27 00:47:26,117 INFO rayleigh@15dB|age=0ms|fresh    1.000   0.0000    0.0000     0.947     0.733
+2026-09-27 00:47:26,117 INFO rayleigh@15dB|age=0ms|nominal    1.000   0.0000    0.0000     0.948     0.733
+2026-09-27 00:47:26,117 INFO rayleigh@15dB|age=0ms|robust    1.000   0.0000    0.0000     0.951     0.767
+2026-09-27 00:47:26,117 INFO rayleigh@15dB|age=10ms|fresh    0.080   0.0000    0.0000     0.947     0.733
+2026-09-27 00:47:26,117 INFO rayleigh@15dB|age=10ms|nominal    0.080   0.0167    0.0000     0.948     0.725
+2026-09-27 00:47:26,117 INFO rayleigh@15dB|age=10ms|robust    0.080   0.0000    0.0000     0.951     0.658
+2026-09-27 00:47:26,117 INFO rayleigh@15dB|age=1ms|fresh    0.182   0.0000    0.0000     0.947     0.733
+2026-09-27 00:47:26,118 INFO rayleigh@15dB|age=1ms|nominal    0.182   0.0500    0.0000     0.948     0.733
+2026-09-27 00:47:26,118 INFO rayleigh@15dB|age=1ms|robust    0.182   0.0000    0.0000     0.950     0.642
+2026-09-27 00:47:26,118 INFO rayleigh@15dB|age=2ms|fresh    0.383   0.0000    0.0000     0.947     0.733
+2026-09-27 00:47:26,118 INFO rayleigh@15dB|age=2ms|nominal    0.383   0.0000    0.0000     0.948     0.733
+2026-09-27 00:47:26,118 INFO rayleigh@15dB|age=2ms|robust    0.383   0.0000    0.0000     0.950     0.675
+2026-09-27 00:47:26,118 INFO rayleigh@15dB|age=5ms|fresh    0.245   0.0000    0.0000     0.947     0.733
+2026-09-27 00:47:26,118 INFO rayleigh@15dB|age=5ms|nominal    0.245   0.0083    0.0000     0.948     0.733
+2026-09-27 00:47:26,118 INFO rayleigh@15dB|age=5ms|robust    0.245   0.0000    0.0000     0.950     0.675
+2026-09-27 00:47:26,118 INFO rician@0dB|age=0.2ms|fresh    0.957   0.0000    0.0000     0.950     0.592
+2026-09-27 00:47:26,118 INFO rician@0dB|age=0.2ms|nominal    0.957   0.0000    0.0000     0.942     0.517
+2026-09-27 00:47:26,118 INFO rician@0dB|age=0.2ms|robust    0.957   0.0000    0.0000     0.937     0.500
+2026-09-27 00:47:26,118 INFO rician@0dB|age=0.5ms|fresh    0.749   0.0000    0.0000     0.950     0.592
+2026-09-27 00:47:26,118 INFO rician@0dB|age=0.5ms|nominal    0.749   0.0167    0.0000     0.973     0.458
+2026-09-27 00:47:26,118 INFO rician@0dB|age=0.5ms|robust    0.749   0.0000    0.0000     0.964     0.442
+2026-09-27 00:47:26,118 INFO rician@0dB|age=0ms|fresh      1.000   0.0000    0.0000     0.950     0.592
+2026-09-27 00:47:26,118 INFO rician@0dB|age=0ms|nominal    1.000   0.0000    0.0000     0.943     0.600
+2026-09-27 00:47:26,118 INFO rician@0dB|age=0ms|robust     1.000   0.0083    0.0000     0.947     0.617
+2026-09-27 00:47:26,118 INFO rician@0dB|age=10ms|fresh     0.080   0.0000    0.0000     0.950     0.592
+2026-09-27 00:47:26,118 INFO rician@0dB|age=10ms|nominal    0.080   0.0000    0.0000     0.942     0.583
+2026-09-27 00:47:26,118 INFO rician@0dB|age=10ms|robust    0.080   0.0000    0.0000     0.938     0.467
+2026-09-27 00:47:26,118 INFO rician@0dB|age=1ms|fresh      0.182   0.0000    0.0000     0.950     0.592
+2026-09-27 00:47:26,118 INFO rician@0dB|age=1ms|nominal    0.182   0.0000    0.0000     0.934     0.550
+2026-09-27 00:47:26,118 INFO rician@0dB|age=1ms|robust     0.182   0.0000    0.0000     0.946     0.467
+2026-09-27 00:47:26,118 INFO rician@0dB|age=2ms|fresh      0.383   0.0000    0.0000     0.950     0.592
+2026-09-27 00:47:26,118 INFO rician@0dB|age=2ms|nominal    0.383   0.0000    0.0000     0.937     0.508
+2026-09-27 00:47:26,118 INFO rician@0dB|age=2ms|robust     0.383   0.0000    0.0000     0.938     0.483
+2026-09-27 00:47:26,118 INFO rician@0dB|age=5ms|fresh      0.245   0.0000    0.0000     0.950     0.592
+2026-09-27 00:47:26,118 INFO rician@0dB|age=5ms|nominal    0.245   0.0000    0.0000     0.935     0.567
+2026-09-27 00:47:26,118 INFO rician@0dB|age=5ms|robust     0.245   0.0000    0.0000     0.947     0.483
+2026-09-27 00:47:26,118 INFO rician@15dB|age=0.2ms|fresh    0.957   0.0000    0.0000     0.947     0.733
+2026-09-27 00:47:26,118 INFO rician@15dB|age=0.2ms|nominal    0.957   0.0000    0.0000     0.948     0.733
+2026-09-27 00:47:26,118 INFO rician@15dB|age=0.2ms|robust    0.957   0.1000    0.0000     0.951     0.767
+2026-09-27 00:47:26,118 INFO rician@15dB|age=0.5ms|fresh    0.749   0.0000    0.0000     0.947     0.733
+2026-09-27 00:47:26,118 INFO rician@15dB|age=0.5ms|nominal    0.749   0.0000    0.0000     0.955     0.592
+2026-09-27 00:47:26,118 INFO rician@15dB|age=0.5ms|robust    0.749   0.0000    0.0000     0.947     0.642
+2026-09-27 00:47:26,118 INFO rician@15dB|age=0ms|fresh     1.000   0.0000    0.0000     0.947     0.733
+2026-09-27 00:47:26,118 INFO rician@15dB|age=0ms|nominal    1.000   0.0000    0.0000     0.948     0.733
+2026-09-27 00:47:26,118 INFO rician@15dB|age=0ms|robust    1.000   0.0000    0.0000     0.951     0.767
+2026-09-27 00:47:26,118 INFO rician@15dB|age=10ms|fresh    0.080   0.0000    0.0000     0.947     0.733
+2026-09-27 00:47:26,118 INFO rician@15dB|age=10ms|nominal    0.080   0.0250    0.0000     0.948     0.733
+2026-09-27 00:47:26,118 INFO rician@15dB|age=10ms|robust    0.080   0.0083    0.0000     0.950     0.667
+2026-09-27 00:47:26,118 INFO rician@15dB|age=1ms|fresh     0.182   0.0000    0.0000     0.947     0.733
+2026-09-27 00:47:26,118 INFO rician@15dB|age=1ms|nominal    0.182   0.0000    0.0000     0.948     0.733
+2026-09-27 00:47:26,118 INFO rician@15dB|age=1ms|robust    0.182   0.0000    0.0000     0.949     0.675
+2026-09-27 00:47:26,118 INFO rician@15dB|age=2ms|fresh     0.383   0.0000    0.0000     0.947     0.733
+2026-09-27 00:47:26,118 INFO rician@15dB|age=2ms|nominal    0.383   0.0000    0.0000     0.948     0.733
+2026-09-27 00:47:26,118 INFO rician@15dB|age=2ms|robust    0.383   0.0000    0.0000     0.950     0.600
+2026-09-27 00:47:26,118 INFO rician@15dB|age=5ms|fresh     0.245   0.0000    0.0000     0.947     0.733
+2026-09-27 00:47:26,118 INFO rician@15dB|age=5ms|nominal    0.245   0.0000    0.0000     0.948     0.733
+2026-09-27 00:47:26,118 INFO rician@15dB|age=5ms|robust    0.245   0.0000    0.0000     0.949     0.625
+2026-09-27 00:47:26,118 INFO wrote outputs/csi_aging

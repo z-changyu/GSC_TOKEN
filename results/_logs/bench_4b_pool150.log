@@ -1,0 +1,28 @@
+cache: 150 samples -> outputs/cache/v2xqa_scores_4b_pool150.jsonl
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 108.69it/s]
+[phase 1] receiver LM: models/Qwen3-VL-8B-Instruct
+[phase 1] llmlingua-2: models/llmlingua2-xlmr (keep label 1)
+[phase 1] 25/150 id=24 [13:32:05]
+[phase 1] 50/150 id=49 [13:32:10]
+[phase 1] 75/150 id=74 [13:32:15]
+[phase 1] 100/150 id=99 [13:32:20]
+[phase 1] 125/150 id=124 [13:32:25]
+[phase 1] 150/150 id=149 [13:32:30]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 52.96it/s]
+[phase 2] transmitter VLM: models/Qwen3-VL-4B
+[phase 2] 10/150 id=9 mean=0.6806 [13:32:35]
+[phase 2] 20/150 id=19 mean=0.6596 [13:32:38]
+[phase 2] 30/150 id=29 mean=0.6644 [13:32:41]
+[phase 2] 40/150 id=39 mean=0.6309 [13:32:43]
+[phase 2] 50/150 id=49 mean=0.6515 [13:32:46]
+[phase 2] 60/150 id=59 mean=0.6577 [13:32:48]
+[phase 2] 70/150 id=69 mean=0.6729 [13:32:51]
+[phase 2] 80/150 id=79 mean=0.6453 [13:32:53]
+[phase 2] 90/150 id=89 mean=0.6716 [13:32:56]
+[phase 2] 100/150 id=99 mean=0.6222 [13:32:58]
+[phase 2] 110/150 id=109 mean=0.6468 [13:33:01]
+[phase 2] 120/150 id=119 mean=0.6623 [13:33:03]
+[phase 2] 130/150 id=129 mean=0.6446 [13:33:06]
+[phase 2] 140/150 id=139 mean=0.6528 [13:33:08]
+[phase 2] 150/150 id=149 mean=0.6482 [13:33:11]
+DONE: 150 samples -> outputs/cache/v2xqa_scores_4b_pool150_surprisal.jsonl

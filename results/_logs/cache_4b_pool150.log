@@ -1,0 +1,21 @@
+transmitter prompt version: v1
+manifest -> 150 samples in processed pool
+cache has 0/150; building the rest
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.17s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.48s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.43s/it]
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+scored 10/150 id=9 tokens=87 nll=2.298 leak=False
+scored 20/150 id=19 tokens=117 nll=4.250 leak=False
+scored 30/150 id=29 tokens=123 nll=4.676 leak=False
+scored 40/150 id=39 tokens=162 nll=9.064 leak=False
+scored 50/150 id=49 tokens=122 nll=2.875 leak=False
+scored 60/150 id=59 tokens=98 nll=5.219 leak=False
+scored 70/150 id=69 tokens=95 nll=2.938 leak=False
+scored 80/150 id=79 tokens=115 nll=5.167 leak=False
+scored 90/150 id=89 tokens=101 nll=5.375 leak=False
+scored 100/150 id=99 tokens=142 nll=4.729 leak=False
+scored 110/150 id=109 tokens=120 nll=6.775 leak=False
+scored 120/150 id=119 tokens=116 nll=3.625 leak=False
+scored 130/150 id=129 tokens=132 nll=4.438 leak=False
+scored 140/150 id=139 tokens=113 nll=6.000 leak=False
+scored 150/150 id=149 tokens=122 nll=4.627 leak=False
+DONE: 150 samples -> outputs/cache/v2xqa_scores_4b_pool150.jsonl

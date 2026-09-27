@@ -1,0 +1,24 @@
+transmitter prompt version: v2
+manifest -> 150 samples in processed pool
+cache has 0/150; building the rest
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 108.33it/s]
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Traceback (most recent call last):
+  File "/mnt/4t/code_space/zcy/GSC_Token/scripts/build_score_cache.py", line 114, in <module>
+    main()
+  File "/mnt/4t/code_space/zcy/GSC_Token/scripts/build_score_cache.py", line 99, in main
+    scores = scorer.score(row, image)
+  File "/mnt/4t/code_space/zcy/GSC_Token/src/experiments/scoring.py", line 198, in score
+    output = self.transmitter(inputs_embeds=embeddings, attention_mask=attention_mask,
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/transformers/utils/generic.py", line 1072, in wrapper
+    outputs = func(self, *args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/transformers/models/qwen3_vl/modeling_qwen3_vl.py", line 1366, in forward
+    loss = self.loss_function(logits=logits, labels=labels, vocab_size=self.config.text_config.vocab_size)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/transformers/loss/loss_utils.py", line 55, in ForCausalLMLoss
+    logits = logits.float()
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 312.00 MiB. GPU 0 has a total capacity of 23.69 GiB of which 34.38 MiB is free. Including non-PyTorch memory, this process has 23.44 GiB memory in use. Of the allocated memory 22.66 GiB is allocated by PyTorch, and 456.54 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+PROMPTV2_FAILED

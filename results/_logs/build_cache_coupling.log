@@ -1,0 +1,20 @@
+manifest -> 150 samples in processed pool
+cache has 0/150; building the rest
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 109.77it/s]
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+scored 10/150 id=9 tokens=103 nll=2.608 leak=False
+scored 20/150 id=19 tokens=136 nll=3.521 leak=False
+scored 30/150 id=29 tokens=102 nll=3.875 leak=False
+scored 40/150 id=39 tokens=123 nll=8.156 leak=False
+scored 50/150 id=49 tokens=104 nll=3.125 leak=False
+scored 60/150 id=59 tokens=160 nll=6.875 leak=False
+scored 70/150 id=69 tokens=113 nll=4.720 leak=False
+scored 80/150 id=79 tokens=140 nll=5.021 leak=False
+scored 90/150 id=89 tokens=138 nll=4.575 leak=False
+scored 100/150 id=99 tokens=132 nll=3.958 leak=False
+scored 110/150 id=109 tokens=112 nll=2.501 leak=False
+scored 120/150 id=119 tokens=109 nll=5.800 leak=False
+scored 130/150 id=129 tokens=135 nll=4.125 leak=False
+scored 140/150 id=139 tokens=98 nll=3.300 leak=False
+scored 150/150 id=149 tokens=135 nll=3.711 leak=False
+DONE: 150 samples -> outputs/cache/v2xqa_scores_8b_coupling.jsonl

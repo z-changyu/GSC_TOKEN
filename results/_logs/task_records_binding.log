@@ -1,0 +1,72 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 58.88it/s]
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 112.42it/s]
+2026-09-27 12:25:36,333 INFO same-condition pass: 30 samples x 4 methods x 3 repeats (warm-up 5), 0 dB
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+2026-09-27 12:26:21,756 INFO sample 3 done (1/30)
+2026-09-27 12:26:53,692 INFO sample 9 done (2/30)
+2026-09-27 12:27:41,175 INFO sample 11 done (3/30)
+2026-09-27 12:28:26,336 INFO sample 16 done (4/30)
+2026-09-27 12:29:12,244 INFO sample 17 done (5/30)
+2026-09-27 12:30:04,461 INFO sample 21 done (6/30)
+2026-09-27 12:31:05,192 INFO sample 26 done (7/30)
+2026-09-27 12:31:50,134 INFO sample 27 done (8/30)
+2026-09-27 12:32:36,136 INFO sample 28 done (9/30)
+2026-09-27 12:33:19,149 INFO sample 31 done (10/30)
+2026-09-27 12:33:56,127 INFO sample 32 done (11/30)
+2026-09-27 12:34:44,260 INFO sample 36 done (12/30)
+2026-09-27 12:35:18,363 INFO sample 37 done (13/30)
+2026-09-27 12:36:00,869 INFO sample 44 done (14/30)
+2026-09-27 12:36:38,120 INFO sample 48 done (15/30)
+2026-09-27 12:37:21,710 INFO sample 49 done (16/30)
+2026-09-27 12:38:03,933 INFO sample 50 done (17/30)
+2026-09-27 12:38:40,750 INFO sample 55 done (18/30)
+2026-09-27 12:39:23,530 INFO sample 56 done (19/30)
+2026-09-27 12:40:01,971 INFO sample 57 done (20/30)
+2026-09-27 12:40:38,054 INFO sample 59 done (21/30)
+2026-09-27 12:41:17,903 INFO sample 60 done (22/30)
+2026-09-27 12:42:03,680 INFO sample 61 done (23/30)
+2026-09-27 12:42:41,222 INFO sample 65 done (24/30)
+2026-09-27 12:43:22,733 INFO sample 67 done (25/30)
+2026-09-27 12:43:53,241 INFO sample 70 done (26/30)
+2026-09-27 12:44:39,713 INFO sample 71 done (27/30)
+2026-09-27 12:45:29,241 INFO sample 77 done (28/30)
+2026-09-27 12:46:17,600 INFO sample 83 done (29/30)
+2026-09-27 12:47:03,446 INFO sample 85 done (30/30)
+2026-09-27 12:47:03,483 INFO wrote outputs/task_records_binding
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 59.44it/s]
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 110.26it/s]
+2026-09-27 13:36:02,909 INFO same-condition pass: 30 samples x 4 methods x 3 repeats (warm-up 5), 0 dB
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+2026-09-27 13:36:47,958 INFO sample 3 done (1/30)
+2026-09-27 13:37:19,683 INFO sample 9 done (2/30)
+2026-09-27 13:38:06,402 INFO sample 11 done (3/30)
+2026-09-27 13:38:50,947 INFO sample 16 done (4/30)
+2026-09-27 13:39:36,480 INFO sample 17 done (5/30)
+2026-09-27 13:40:27,786 INFO sample 21 done (6/30)
+2026-09-27 13:41:27,137 INFO sample 26 done (7/30)
+2026-09-27 13:42:11,280 INFO sample 27 done (8/30)
+2026-09-27 13:42:56,545 INFO sample 28 done (9/30)
+2026-09-27 13:43:38,878 INFO sample 31 done (10/30)
+2026-09-27 13:44:15,235 INFO sample 32 done (11/30)
+2026-09-27 13:45:02,868 INFO sample 36 done (12/30)
+2026-09-27 13:45:36,574 INFO sample 37 done (13/30)
+2026-09-27 13:46:18,221 INFO sample 44 done (14/30)
+2026-09-27 13:46:55,085 INFO sample 48 done (15/30)
+2026-09-27 13:47:37,917 INFO sample 49 done (16/30)
+2026-09-27 13:48:19,317 INFO sample 50 done (17/30)
+2026-09-27 13:48:55,894 INFO sample 55 done (18/30)
+2026-09-27 13:49:38,244 INFO sample 56 done (19/30)
+2026-09-27 13:50:16,045 INFO sample 57 done (20/30)
+2026-09-27 13:50:51,386 INFO sample 59 done (21/30)
+2026-09-27 13:51:30,411 INFO sample 60 done (22/30)
+2026-09-27 13:52:15,967 INFO sample 61 done (23/30)
+2026-09-27 13:52:52,906 INFO sample 65 done (24/30)
+2026-09-27 13:53:33,835 INFO sample 67 done (25/30)
+2026-09-27 13:54:04,146 INFO sample 70 done (26/30)
+2026-09-27 13:54:49,810 INFO sample 71 done (27/30)
+2026-09-27 13:55:38,563 INFO sample 77 done (28/30)
+2026-09-27 13:56:26,324 INFO sample 83 done (29/30)
+2026-09-27 13:57:11,633 INFO sample 85 done (30/30)
+2026-09-27 13:57:11,667 INFO wrote outputs/task_records_binding

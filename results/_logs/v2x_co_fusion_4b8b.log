@@ -1,0 +1,56 @@
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 59.85it/s]
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 112.43it/s]
+Traceback (most recent call last):
+  File "/mnt/4t/code_space/zcy/GSC_Token/scripts/run_v2x_co_fusion.py", line 312, in <module>
+    main()
+  File "/mnt/4t/code_space/zcy/GSC_Token/scripts/run_v2x_co_fusion.py", line 122, in main
+    scorer = PragmaticScorer(transmitter, processor, config)
+  File "/mnt/4t/code_space/zcy/GSC_Token/src/experiments/scoring.py", line 113, in __init__
+    self.mask_embedding = transmitter.get_input_embeddings()(
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/nn/modules/sparse.py", line 190, in forward
+    return F.embedding(
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/nn/functional.py", line 2551, in embedding
+    return torch.embedding(weight, input, padding_idx, scale_grad_by_freq, sparse)
+RuntimeError: CUDA error: out of memory
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 58.86it/s]
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 108.75it/s]
+Traceback (most recent call last):
+  File "/mnt/4t/code_space/zcy/GSC_Token/scripts/run_v2x_co_fusion.py", line 317, in <module>
+    main()
+  File "/mnt/4t/code_space/zcy/GSC_Token/scripts/run_v2x_co_fusion.py", line 127, in main
+    scorer = PragmaticScorer(transmitter, processor, config)
+  File "/mnt/4t/code_space/zcy/GSC_Token/src/experiments/scoring.py", line 113, in __init__
+    self.mask_embedding = transmitter.get_input_embeddings()(
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/nn/modules/sparse.py", line 190, in forward
+    return F.embedding(
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/nn/functional.py", line 2551, in embedding
+    return torch.embedding(weight, input, padding_idx, scale_grad_by_freq, sparse)
+RuntimeError: CUDA error: out of memory
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 59.00it/s]
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 108.25it/s]
+2026-09-26 11:58:37,003 INFO CO fusion over 33 samples; modes=['vehicle_only', 'infrastructure_only', 'fused', 'single_double'] protocol=['v0', 'v6_norestore', 'v6']
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Traceback (most recent call last):
+  File "/mnt/4t/code_space/zcy/GSC_Token/scripts/run_v2x_co_fusion.py", line 323, in <module>
+    main()
+  File "/mnt/4t/code_space/zcy/GSC_Token/scripts/run_v2x_co_fusion.py", line 241, in main
+    lv_v = select_level(method, ut_v, zeros_v, beta, q_v, levels,
+  File "/mnt/4t/code_space/zcy/GSC_Token/src/scheduling/methods.py", line 126, in select_level
+    raise ValueError(f"{method!r} needs the LM self-information scores "
+ValueError: 'answer_loo' needs the LM self-information scores (pass alt_score)

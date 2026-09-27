@@ -1,0 +1,19 @@
+manifest -> 150 samples in processed pool
+cache has 0/150; building the rest
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+scored 10/150 id=9 tokens=119 nll=3.396 leak=False
+scored 20/150 id=19 tokens=81 nll=2.545 leak=False
+scored 30/150 id=29 tokens=192 nll=5.629 leak=False
+scored 40/150 id=39 tokens=157 nll=9.519 leak=False
+scored 50/150 id=49 tokens=192 nll=4.413 leak=False
+scored 60/150 id=59 tokens=150 nll=5.477 leak=False
+scored 70/150 id=69 tokens=98 nll=4.375 leak=False
+scored 80/150 id=79 tokens=114 nll=4.438 leak=False
+scored 90/150 id=89 tokens=111 nll=5.654 leak=False
+scored 100/150 id=99 tokens=192 nll=3.482 leak=False
+scored 110/150 id=109 tokens=102 nll=4.150 leak=False
+scored 120/150 id=119 tokens=87 nll=3.850 leak=False
+scored 130/150 id=129 tokens=152 nll=6.073 leak=False
+scored 140/150 id=139 tokens=174 nll=5.000 leak=False
+scored 150/150 id=149 tokens=106 nll=3.230 leak=False
+DONE: 150 samples -> outputs/cache/v2xqa_scores.jsonl

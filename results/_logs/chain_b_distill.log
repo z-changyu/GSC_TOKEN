@@ -1,0 +1,150 @@
+=== [B2] LoRA 蒸馏训练（2B 学生 ← 8B 教师，3000 题）===
+student=models/Qwen3-VL-2B-Instruct  train reports=3000  prompt=v1
+trainable params: 17,432,576 || all params: 2,144,964,608 || trainable%: 0.8127209155331667
+  0%|          | 0/375 [00:00<?, ?it/s]/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/utils/checkpoint.py:87: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+  0%|          | 1/375 [00:02<16:18,  2.62s/it]  1%|          | 2/375 [00:04<13:22,  2.15s/it]  1%|          | 3/375 [00:06<12:34,  2.03s/it]  1%|          | 4/375 [00:08<12:08,  1.96s/it]  1%|▏         | 5/375 [00:10<11:50,  1.92s/it]  2%|▏         | 6/375 [00:11<11:42,  1.90s/it]  2%|▏         | 7/375 [00:13<11:33,  1.88s/it]  2%|▏         | 8/375 [00:15<11:26,  1.87s/it]  2%|▏         | 9/375 [00:17<11:36,  1.90s/it]  3%|▎         | 10/375 [00:19<11:35,  1.90s/it]  3%|▎         | 11/375 [00:21<11:31,  1.90s/it]  3%|▎         | 12/375 [00:23<11:31,  1.90s/it]  3%|▎         | 13/375 [00:25<11:27,  1.90s/it]  4%|▎         | 14/375 [00:27<11:39,  1.94s/it]  4%|▍         | 15/375 [00:29<11:39,  1.94s/it]  4%|▍         | 16/375 [00:31<11:33,  1.93s/it]  5%|▍         | 17/375 [00:33<11:47,  1.98s/it]  5%|▍         | 18/375 [00:35<11:40,  1.96s/it]                                                {'loss': 1.1861, 'grad_norm': 0.97265625, 'learning_rate': 9.995319430020003e-05, 'epoch': 0.05}
+  5%|▍         | 18/375 [00:35<11:40,  1.96s/it]  5%|▌         | 19/375 [00:36<11:31,  1.94s/it]  5%|▌         | 20/375 [00:38<11:27,  1.94s/it]  6%|▌         | 21/375 [00:40<11:18,  1.92s/it]  6%|▌         | 22/375 [00:42<11:12,  1.91s/it]  6%|▌         | 23/375 [00:44<11:32,  1.97s/it]  6%|▋         | 24/375 [00:46<11:48,  2.02s/it]  7%|▋         | 25/375 [00:48<11:42,  2.01s/it]  7%|▋         | 26/375 [00:50<11:30,  1.98s/it]  7%|▋         | 27/375 [00:52<11:21,  1.96s/it]  7%|▋         | 28/375 [00:54<11:15,  1.95s/it]  8%|▊         | 29/375 [00:56<11:11,  1.94s/it]  8%|▊         | 30/375 [00:58<11:13,  1.95s/it]  8%|▊         | 31/375 [01:00<11:11,  1.95s/it]  9%|▊         | 32/375 [01:02<11:08,  1.95s/it]  9%|▉         | 33/375 [01:04<11:04,  1.94s/it]  9%|▉         | 34/375 [01:06<11:01,  1.94s/it]  9%|▉         | 35/375 [01:08<10:55,  1.93s/it] 10%|▉         | 36/375 [01:10<11:00,  1.95s/it]                                                {'loss': 0.7866, 'grad_norm': 0.88671875, 'learning_rate': 9.901270323231115e-05, 'epoch': 0.1}
+ 10%|▉         | 36/375 [01:10<11:00,  1.95s/it] 10%|▉         | 37/375 [01:12<10:55,  1.94s/it] 10%|█         | 38/375 [01:13<10:49,  1.93s/it] 10%|█         | 39/375 [01:15<10:44,  1.92s/it] 11%|█         | 40/375 [01:17<10:44,  1.92s/it] 11%|█         | 41/375 [01:19<10:42,  1.92s/it] 11%|█         | 42/375 [01:21<10:40,  1.92s/it] 11%|█▏        | 43/375 [01:23<10:46,  1.95s/it]Traceback (most recent call last):
+  File "/mnt/4t/code_space/zcy/GSC_Token/scripts/train_terminal_lora.py", line 186, in <module>
+    main()
+  File "/mnt/4t/code_space/zcy/GSC_Token/scripts/train_terminal_lora.py", line 168, in main
+    trainer.train()
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/transformers/trainer.py", line 2325, in train
+    return inner_training_loop(
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/transformers/trainer.py", line 2674, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/transformers/trainer.py", line 4020, in training_step
+    loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/transformers/trainer.py", line 4110, in compute_loss
+    outputs = model(**inputs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/accelerate/utils/operations.py", line 943, in forward
+    return model_forward(*args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/accelerate/utils/operations.py", line 931, in __call__
+    return convert_to_fp32(self.model_forward(*args, **kwargs))
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/amp/autocast_mode.py", line 44, in decorate_autocast
+    return func(*args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/peft/peft_model.py", line 1129, in forward
+    return self.base_model(
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/peft/tuners/tuners_utils.py", line 161, in forward
+    return self.model.forward(*args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/transformers/utils/generic.py", line 1072, in wrapper
+    outputs = func(self, *args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/transformers/models/qwen3_vl/modeling_qwen3_vl.py", line 1344, in forward
+    outputs = self.model(
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/transformers/utils/generic.py", line 1072, in wrapper
+    outputs = func(self, *args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/transformers/models/qwen3_vl/modeling_qwen3_vl.py", line 1140, in forward
+    image_mask, _ = self.get_placeholder_mask(
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/transformers/models/qwen3_vl/modeling_qwen3_vl.py", line 1093, in get_placeholder_mask
+    raise ValueError(
+ValueError: Image features and image tokens do not match: tokens: 138, features 180
+ 11%|█▏        | 43/375 [01:23<10:48,  1.95s/it]
+B2_FAILED
+=== [B3a] 蒸馏学生语用缓存 ===
+transmitter prompt version: v1
+manifest -> 60 samples in processed pool
+cache has 0/60; building the rest
+Traceback (most recent call last):
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/huggingface_hub/utils/_http.py", line 403, in hf_raise_for_status
+    response.raise_for_status()
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: Not Found for url: https://hf-mirror.com/models/Qwen3-VL-2B-Distilled/resolve/main/processor_config.json
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/transformers/utils/hub.py", line 479, in cached_files
+    hf_hub_download(
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1014, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1121, in _hf_hub_download_to_cache_dir
+    _raise_on_head_call_error(head_call_error, force_download, local_files_only)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1662, in _raise_on_head_call_error
+    raise head_call_error
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1550, in _get_metadata_or_catch_error
+    metadata = get_hf_file_metadata(
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1467, in get_hf_file_metadata
+    r = _request_wrapper(
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 283, in _request_wrapper
+    response = _request_wrapper(
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 307, in _request_wrapper
+    hf_raise_for_status(response)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/huggingface_hub/utils/_http.py", line 453, in hf_raise_for_status
+    raise _format(RepositoryNotFoundError, message, response) from e
+huggingface_hub.errors.RepositoryNotFoundError: 404 Client Error. (Request ID: Root=1-6aaaf7cd-266426370dc905791e34c552;907b80d6-b165-4438-a8ef-6a5e3d15eaf9)
+
+Repository Not Found for url: https://hf-mirror.com/models/Qwen3-VL-2B-Distilled/resolve/main/processor_config.json.
+Please make sure you specified the correct `repo_id` and `repo_type`.
+If you are trying to access a private or gated repo, make sure you are authenticated. For more details, see https://huggingface.co/docs/huggingface_hub/authentication
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/4t/code_space/zcy/GSC_Token/scripts/build_score_cache.py", line 114, in <module>
+    main()
+  File "/mnt/4t/code_space/zcy/GSC_Token/scripts/build_score_cache.py", line 75, in main
+    processor = AutoProcessor.from_pretrained(tx_path, local_files_only=True)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/transformers/models/auto/processing_auto.py", line 303, in from_pretrained
+    processor_config_file = cached_file(pretrained_model_name_or_path, PROCESSOR_NAME, **cached_file_kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/transformers/utils/hub.py", line 322, in cached_file
+    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/transformers/utils/hub.py", line 511, in cached_files
+    raise OSError(
+OSError: models/Qwen3-VL-2B-Distilled is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`
+B3a_FAILED
+=== [B3b] 蒸馏学生 surprisal ===
+Traceback (most recent call last):
+  File "/mnt/4t/code_space/zcy/GSC_Token/scripts/build_benchmark_scores.py", line 317, in <module>
+    main()
+  File "/mnt/4t/code_space/zcy/GSC_Token/scripts/build_benchmark_scores.py", line 77, in main
+    rows = list(read_jsonl(cache_path))
+  File "/mnt/4t/code_space/zcy/GSC_Token/src/utils/io.py", line 9, in read_jsonl
+    with Path(path).open(encoding="utf-8") as handle:
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/pathlib.py", line 1119, in open
+    return self._accessor.open(self, mode, buffering, encoding, errors,
+FileNotFoundError: [Errno 2] No such file or directory: 'outputs/cache/v2xqa_scores_2b_distill.jsonl'
+B3b_FAILED
+=== [B3c] 蒸馏学生 answer-aware ===
+Traceback (most recent call last):
+  File "/mnt/4t/code_space/zcy/GSC_Token/scripts/build_answer_aware_scores.py", line 172, in <module>
+    main()
+  File "/mnt/4t/code_space/zcy/GSC_Token/scripts/build_answer_aware_scores.py", line 59, in main
+    rows = list(read_jsonl(cache_path))
+  File "/mnt/4t/code_space/zcy/GSC_Token/src/utils/io.py", line 9, in read_jsonl
+    with Path(path).open(encoding="utf-8") as handle:
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/pathlib.py", line 1119, in open
+    return self._accessor.open(self, mode, buffering, encoding, errors,
+FileNotFoundError: [Errno 2] No such file or directory: 'outputs/cache/v2xqa_scores_2b_distill.jsonl'
+B3c_FAILED
+=== [B3d] 蒸馏学生主实验（14 方法，边仍为 4B）===
+Traceback (most recent call last):
+  File "/mnt/4t/code_space/zcy/GSC_Token/scripts/run_channel_experiment.py", line 454, in <module>
+    main()
+  File "/mnt/4t/code_space/zcy/GSC_Token/scripts/run_channel_experiment.py", line 96, in main
+    for row in read_jsonl(args.score_cache or config["score_cache"])}
+  File "/mnt/4t/code_space/zcy/GSC_Token/src/utils/io.py", line 9, in read_jsonl
+    with Path(path).open(encoding="utf-8") as handle:
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/pathlib.py", line 1119, in open
+    return self._accessor.open(self, mode, buffering, encoding, errors,
+FileNotFoundError: [Errno 2] No such file or directory: 'outputs/cache/v2xqa_scores_2b_distill.jsonl'
+B3d_FAILED
+CHAIN_B_DISTILL_DONE

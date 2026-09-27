@@ -1,0 +1,50 @@
+2026-09-12 17:30:49,282 INFO iso-cost targets (mean symbols): {'adaptive': 3133.5, 'oracle': 2149.8, 'lexical': 3945.0}
+2026-09-12 17:30:49,282 INFO pareto sweep: 60 samples, channels=3, snr=[15.0], seeds=[0, 1, 2], 7 budget points
+2026-09-12 17:30:49,283 INFO cell rayleigh/15.0 seed=0
+2026-09-12 17:31:06,060 INFO   selected: rayleigh/15.0/0
+2026-09-12 17:31:06,060 INFO cell rayleigh/15.0 seed=1
+2026-09-12 17:31:21,885 INFO   selected: rayleigh/15.0/1
+2026-09-12 17:31:21,885 INFO cell rayleigh/15.0 seed=2
+2026-09-12 17:31:39,458 INFO   selected: rayleigh/15.0/2
+2026-09-12 17:31:39,459 INFO cell rician/15.0 seed=0
+2026-09-12 17:31:58,341 INFO   selected: rician/15.0/0
+2026-09-12 17:31:58,342 INFO cell rician/15.0 seed=1
+2026-09-12 17:32:18,032 INFO   selected: rician/15.0/1
+2026-09-12 17:32:18,032 INFO cell rician/15.0 seed=2
+2026-09-12 17:32:36,092 INFO   selected: rician/15.0/2
+2026-09-12 17:32:36,094 INFO cell frequency_selective/15.0 seed=0
+2026-09-12 17:32:52,681 INFO   selected: frequency_selective/15.0/0
+2026-09-12 17:32:52,682 INFO cell frequency_selective/15.0 seed=1
+2026-09-12 17:33:10,183 INFO   selected: frequency_selective/15.0/1
+2026-09-12 17:33:10,184 INFO cell frequency_selective/15.0 seed=2
+2026-09-12 17:33:26,951 INFO   selected: frequency_selective/15.0/2
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 153.95it/s]
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+2026-09-12 17:36:04,823 INFO   answered 500/6730 [2.6 min] (reused 220)
+2026-09-12 17:38:24,669 INFO   answered 1000/6730 [4.9 min] (reused 430)
+2026-09-12 17:40:31,354 INFO   answered 1500/6730 [7.0 min] (reused 670)
+2026-09-12 17:45:28,531 INFO   answered 2500/6730 [12.0 min] (reused 1093)
+2026-09-12 17:50:13,261 INFO   answered 3500/6730 [16.7 min] (reused 1484)
+2026-09-12 17:54:48,477 INFO   answered 4500/6730 [21.3 min] (reused 1900)
+2026-09-12 18:04:14,214 INFO   answered 6500/6730 [30.8 min] (reused 2770)
+2026-09-12 18:05:06,423 INFO answering done: 3856 generations, 2874 reused from identical selections
+2026-09-12 18:05:06,424 INFO skipped (would exceed the reliable budget): uniform_rH, uniform_rL, uniform_rM
+2026-09-12 18:05:06,797 INFO strategy             acc   symbols budgetUse  rcvdTok  restore
+2026-09-12 18:05:06,797 INFO budget800          58.5%       778     0.26     45.8     1.00
+2026-09-12 18:05:06,797 INFO budget1200         70.0%      1157     0.36     68.3     0.72
+2026-09-12 18:05:06,797 INFO budget1600         83.5%      1526     0.46     90.0     0.21
+2026-09-12 18:05:06,797 INFO budget2000         84.1%      1821     0.53    106.9     0.08
+2026-09-12 18:05:06,797 INFO budget2600         85.0%      1983     0.57    115.2     0.07
+2026-09-12 18:05:06,798 INFO budget3200         86.1%      2007     0.58    116.5     0.07
+2026-09-12 18:05:06,798 INFO budget4000         86.1%      2007     0.58    116.5     0.07
+2026-09-12 18:05:06,798 INFO uniform_rL         89.2%      2097     0.51    124.1     0.00
+2026-09-12 18:05:06,798 INFO fill_oracle        86.1%      2142     0.61    116.5     0.07
+2026-09-12 18:05:06,798 INFO fill_adaptive      86.1%      2813     0.76    116.5     0.07
+2026-09-12 18:05:06,798 INFO anchor_adaptive    86.1%      3134     0.79    116.4     0.07
+2026-09-12 18:05:06,798 INFO fill_lexical       86.1%      3352     0.88    116.5     0.07
+2026-09-12 18:05:06,798 INFO uniform_rM         88.6%      3994     0.79    118.4     0.00
+2026-09-12 18:05:06,798 INFO uniform_rH         89.1%      5569     0.93    109.6     0.00
+2026-09-12 18:05:06,800 INFO paired fill_adaptive vs anchor_adaptive: 0 : 0
+2026-09-12 18:05:06,800 INFO paired fill_oracle vs anchor_adaptive: 0 : 0
+2026-09-12 18:05:06,800 INFO paired fill_lexical vs anchor_adaptive: 0 : 0
+2026-09-12 18:05:06,800 INFO DONE -> outputs/pareto/summary.json

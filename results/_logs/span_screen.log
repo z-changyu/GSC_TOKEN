@@ -1,0 +1,27 @@
+2026-09-10 22:34:27,560 INFO span screen: 60 samples, channels=['configs/channels/rayleigh.yaml'] snr=[0.0, 15.0] seeds=[0, 1, 2]
+2026-09-10 22:34:27,930 INFO cell rayleigh/0.0 seed=0
+2026-09-10 22:34:28,831 INFO   done: rayleigh/0.0/0
+2026-09-10 22:34:28,831 INFO cell rayleigh/0.0 seed=1
+2026-09-10 22:34:29,702 INFO   done: rayleigh/0.0/1
+2026-09-10 22:34:29,703 INFO cell rayleigh/0.0 seed=2
+2026-09-10 22:34:30,584 INFO   done: rayleigh/0.0/2
+2026-09-10 22:34:30,584 INFO cell rayleigh/15.0 seed=0
+2026-09-10 22:34:31,565 INFO   done: rayleigh/15.0/0
+2026-09-10 22:34:31,565 INFO cell rayleigh/15.0 seed=1
+2026-09-10 22:34:32,548 INFO   done: rayleigh/15.0/1
+2026-09-10 22:34:32,548 INFO cell rayleigh/15.0 seed=2
+2026-09-10 22:34:33,504 INFO   done: rayleigh/15.0/2
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 156.33it/s]
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+2026-09-10 22:34:55,217 INFO   answered 200/1080 [0.3 min]
+2026-09-10 22:35:14,548 INFO   answered 400/1080 [0.7 min]
+2026-09-10 22:35:34,179 INFO   answered 600/1080 [1.0 min]
+2026-09-10 22:35:57,941 INFO   answered 800/1080 [1.4 min]
+2026-09-10 22:36:20,897 INFO   answered 1000/1080 [1.8 min]
+2026-09-10 22:36:29,922 INFO method          cell              acc  symbols  rcvdTok
+2026-09-10 22:36:29,922 INFO adaptive_sc     rayleigh/0      46.7%      660     30.2
+2026-09-10 22:36:29,922 INFO adaptive_sc     rayleigh/15     81.7%     2998    113.3
+2026-09-10 22:36:29,922 INFO proposed        rayleigh/0      46.7%      666     30.4
+2026-09-10 22:36:29,922 INFO proposed        rayleigh/15     82.2%     1975    113.3
+2026-09-10 22:36:29,922 INFO proposed_span   rayleigh/0      47.8%      650     30.1
+2026-09-10 22:36:29,922 INFO proposed_span   rayleigh/15     81.7%     1922    113.4

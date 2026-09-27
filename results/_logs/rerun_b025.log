@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/mnt/4t/code_space/zcy/GSC_Token/scripts/run_channel_experiment.py", line 454, in <module>
+    main()
+  File "/mnt/4t/code_space/zcy/GSC_Token/scripts/run_channel_experiment.py", line 92, in main
+    run = create_run_directory("outputs/runs", "scienceqa_channel_experiment", config)
+  File "/mnt/4t/code_space/zcy/GSC_Token/src/utils/logging.py", line 43, in create_run_directory
+    run_dir.mkdir(parents=True, exist_ok=False)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/pathlib.py", line 1175, in mkdir
+    self._accessor.mkdir(self, mode)
+FileExistsError: [Errno 17] File exists: 'outputs/runs/20260914_215022_scienceqa_channel_experiment'
+b025_FAILED
+BUDGET_B025_DONE

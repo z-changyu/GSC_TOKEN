@@ -1,0 +1,17 @@
+2026-09-14 21:50:22,340 INFO benchmark self-information: 60 samples
+2026-09-14 21:50:22,343 INFO answer-aware importance: 60 samples
+2026-09-14 21:50:22,344 INFO channel experiment: 60 samples
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 147.39it/s]
+2026-09-14 21:50:24,076 INFO Power sampling backend: nvidia-smi
+2026-09-14 21:50:24,077 INFO channel=rayleigh snr=0.0 seed=0
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+2026-09-14 21:51:58,692 INFO channel=rayleigh snr=0.0 seed=1
+2026-09-14 21:53:27,614 INFO channel=rayleigh snr=0.0 seed=2
+2026-09-14 21:54:50,196 INFO channel=rayleigh snr=15.0 seed=0
+2026-09-14 21:56:10,373 INFO channel=rayleigh snr=15.0 seed=1
+2026-09-14 21:57:33,827 INFO channel=rayleigh snr=15.0 seed=2
+2026-09-14 21:58:57,692 INFO channel=rician snr=0.0 seed=0
+2026-09-14 22:00:22,115 INFO channel=rician snr=0.0 seed=1
+2026-09-14 22:01:49,119 INFO channel=rician snr=0.0 seed=2
+2026-09-14 22:03:12,270 INFO channel=rician snr=15.0 seed=0
+2026-09-14 22:04:33,014 INFO channel=rician snr=15.0 seed=1

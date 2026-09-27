@@ -1,0 +1,20 @@
+transmitter prompt version: v2
+manifest -> 150 samples in processed pool
+cache has 0/150; building the rest
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 114.06it/s]
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Traceback (most recent call last):
+  File "/mnt/4t/code_space/zcy/GSC_Token/scripts/build_score_cache.py", line 114, in <module>
+    main()
+  File "/mnt/4t/code_space/zcy/GSC_Token/scripts/build_score_cache.py", line 99, in main
+    scores = scorer.score(row, image)
+  File "/mnt/4t/code_space/zcy/GSC_Token/src/experiments/scoring.py", line 209, in score
+    gradient = self.gradient_scorer.score(output.loss, embeddings, token_ids, token_strings,
+  File "/mnt/4t/code_space/zcy/GSC_Token/src/pragmatic/gradient_score.py", line 38, in score
+    grad, = torch.autograd.grad(loss, input_embeddings, retain_graph=retain_graph, allow_unused=False)
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/autograd/__init__.py", line 496, in grad
+    result = _engine_run_backward(
+  File "/home/sc/miniconda3/envs/GSC_Token/lib/python3.10/site-packages/torch/autograd/graph.py", line 825, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+RuntimeError: CUDA error: CUBLAS_STATUS_ALLOC_FAILED when calling `cublasCreate(handle)`
+PROMPTV2_FAILED

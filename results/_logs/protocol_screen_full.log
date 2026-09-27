@@ -1,0 +1,26 @@
+2026-09-10 22:27:57,654 INFO screening 600 runs: methods=['proposed', 'adaptive_sc', 'full', 'plugin_capacity', 'tokcom_uep'] cells=[('rayleigh', 0.0), ('rayleigh', 15.0)] variants=['v0', 'v1', 'v2', 'v3']
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 160.56it/s]
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+2026-09-10 22:28:28,881 INFO   50/600 runs [0.5 min]
+2026-09-10 22:28:57,222 INFO   100/600 runs [1.0 min]
+2026-09-10 22:29:26,639 INFO   150/600 runs [1.5 min]
+2026-09-10 22:29:53,997 INFO   200/600 runs [1.9 min]
+2026-09-10 22:30:21,980 INFO   250/600 runs [2.4 min]
+2026-09-10 22:30:48,821 INFO   300/600 runs [2.8 min]
+2026-09-10 22:31:18,107 INFO   350/600 runs [3.3 min]
+2026-09-10 22:31:44,008 INFO   400/600 runs [3.7 min]
+2026-09-10 22:32:09,936 INFO   450/600 runs [4.2 min]
+2026-09-10 22:32:37,718 INFO   500/600 runs [4.6 min]
+2026-09-10 22:33:07,041 INFO   550/600 runs [5.1 min]
+2026-09-10 22:33:35,295 INFO   600/600 runs [5.6 min]
+2026-09-10 22:33:35,483 INFO method           cell        base       v0      v1      v2      v3
+2026-09-10 22:33:35,483 INFO proposed         rayleigh/0  36.7%    36.7%   48.3%   48.3%   43.3%
+2026-09-10 22:33:35,483 INFO proposed         rayleigh/15  86.7%    86.7%   80.0%   85.0%   88.3%
+2026-09-10 22:33:35,483 INFO adaptive_sc      rayleigh/0  40.0%    40.0%   48.3%   48.3%   46.7%
+2026-09-10 22:33:35,483 INFO adaptive_sc      rayleigh/15  81.7%    81.7%   78.3%   78.3%   88.3%
+2026-09-10 22:33:35,484 INFO full             rayleigh/0  63.3%    63.3%   70.0%   75.0%   70.0%
+2026-09-10 22:33:35,484 INFO full             rayleigh/15  83.3%    83.3%   88.3%   88.3%   91.7%
+2026-09-10 22:33:35,484 INFO plugin_capacity  rayleigh/0  46.7%    46.7%   55.0%   55.0%   48.3%
+2026-09-10 22:33:35,484 INFO plugin_capacity  rayleigh/15  86.7%    86.7%   85.0%   88.3%   85.0%
+2026-09-10 22:33:35,484 INFO tokcom_uep       rayleigh/0  33.3%    33.3%   33.3%   40.0%   51.7%
+2026-09-10 22:33:35,484 INFO tokcom_uep       rayleigh/15  73.3%    73.3%   76.7%   75.0%   76.7%

@@ -1,0 +1,505 @@
+=== [B3b] 蒸馏学生 surprisal ===
+cache: 60 samples -> outputs/cache/v2xqa_scores_2b_distill.jsonl
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 157.05it/s]
+[phase 1] receiver LM: models/Qwen3-4B
+[phase 1] llmlingua-2: models/llmlingua2-xlmr (keep label 1)
+[phase 1] 25/60 id=65 [21:14:36]
+[phase 1] 50/60 id=125 [21:14:40]
+[phase 1] 60/60 id=149 [21:14:42]
+The tokenizer you are loading from 'models/Qwen3-VL-2B-Distilled' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+[phase 2] transmitter VLM: models/Qwen3-VL-2B-Distilled
+[phase 2] 10/60 id=28 mean=0.5690 [21:14:45]
+[phase 2] 20/60 id=56 mean=0.5834 [21:14:47]
+[phase 2] 30/60 id=83 mean=0.6098 [21:14:49]
+[phase 2] 40/60 id=105 mean=0.5434 [21:14:51]
+[phase 2] 50/60 id=125 mean=0.5776 [21:14:53]
+[phase 2] 60/60 id=149 mean=0.5706 [21:14:54]
+DONE: 60 samples -> outputs/cache/v2xqa_scores_2b_distill_surprisal.jsonl
+=== [B3c] 蒸馏学生 answer-aware ===
+cache: 60 samples -> outputs/cache/v2xqa_scores_2b_distill.jsonl
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 153.28it/s]
+scorer (receiver LM): models/Qwen3-4B
+10/60 id=28 tok=234 loo_max=6.771 [21:16:45]
+20/60 id=56 tok=186 loo_max=6.005 [21:18:37]
+30/60 id=83 tok=128 loo_max=6.576 [21:19:44]
+40/60 id=105 tok=311 loo_max=6.714 [21:21:46]
+50/60 id=125 tok=176 loo_max=9.250 [21:23:34]
+60/60 id=149 tok=178 loo_max=10.156 [21:24:46]
+DONE: 60 samples -> outputs/cache/v2xqa_scores_2b_distill_answer_aware.jsonl
+=== [归因] 端4B→边4B（4 方法，复用 4B 缓存）===
+2026-09-19 21:24:49,859 INFO benchmark self-information: 60 samples
+2026-09-19 21:24:49,872 INFO answer-aware importance: 60 samples
+2026-09-19 21:24:49,873 INFO channel experiment: 60 samples
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 155.52it/s]
+2026-09-19 21:24:51,645 INFO Power sampling backend: nvidia-smi
+2026-09-19 21:24:51,646 INFO channel=rayleigh snr=0.0 seed=0
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+2026-09-19 21:25:57,302 INFO channel=rayleigh snr=0.0 seed=1
+2026-09-19 21:26:58,232 INFO channel=rayleigh snr=0.0 seed=2
+2026-09-19 21:27:58,371 INFO channel=rayleigh snr=15.0 seed=0
+2026-09-19 21:28:55,537 INFO channel=rayleigh snr=15.0 seed=1
+2026-09-19 21:29:54,365 INFO channel=rayleigh snr=15.0 seed=2
+2026-09-19 21:30:52,024 INFO channel=rician snr=0.0 seed=0
+2026-09-19 21:31:52,814 INFO channel=rician snr=0.0 seed=1
+2026-09-19 21:32:53,838 INFO channel=rician snr=0.0 seed=2
+2026-09-19 21:33:52,949 INFO channel=rician snr=15.0 seed=0
+2026-09-19 21:34:49,923 INFO channel=rician snr=15.0 seed=1
+2026-09-19 21:35:47,956 INFO channel=rician snr=15.0 seed=2
+2026-09-19 21:36:45,389 INFO channel=frequency_selective snr=0.0 seed=0
+2026-09-19 21:37:44,962 INFO channel=frequency_selective snr=0.0 seed=1
+2026-09-19 21:38:45,982 INFO channel=frequency_selective snr=0.0 seed=2
+2026-09-19 21:39:45,986 INFO channel=frequency_selective snr=15.0 seed=0
+2026-09-19 21:40:43,476 INFO channel=frequency_selective snr=15.0 seed=1
+2026-09-19 21:41:43,171 INFO channel=frequency_selective snr=15.0 seed=2
+{
+  "samples": 60,
+  "channels": [
+    "rayleigh",
+    "rician",
+    "frequency_selective"
+  ],
+  "snr_db": [
+    0.0,
+    15.0
+  ],
+  "channel_seeds": [
+    0,
+    1,
+    2
+  ],
+  "epsilon_out": 0.05,
+  "methods": [
+    "full",
+    "plugin_capacity",
+    "proposed",
+    "adaptive_sc"
+  ],
+  "weights": [
+    0.25,
+    0.3,
+    0.45
+  ],
+  "beta": 0.25,
+  "codebook_levels": [
+    48.0,
+    32.0,
+    16.0
+  ],
+  "code_rates": [
+    0.3333333333333333,
+    0.5,
+    1.0
+  ],
+  "energy_backend": "nvidia-smi",
+  "conditions": [
+    {
+      "channel": "frequency_selective",
+      "snr_db": 0.0,
+      "method": "adaptive_sc",
+      "observations": 180,
+      "accuracy": 0.5,
+      "accuracy_ci95": 0.07324863908968972,
+      "mean_TRR": 0.3205988346741727,
+      "mean_symbols": 742.5777777777778,
+      "capacity_outage_rate": 0.05,
+      "plugin_outage_rate": 0.5444444444444444,
+      "mean_token_erasure_rate": 0.2501826933467691,
+      "mean_schedule_seconds": 0.0005508074499933475,
+      "mean_receive_seconds": 0.18521223627220834,
+      "mean_gpu_peak_memory_delta_gib": 0.032276487350463866,
+      "mean_energy_j": 43.879126078715224
+    },
+    {
+      "channel": "frequency_selective",
+      "snr_db": 0.0,
+      "method": "full",
+      "observations": 180,
+      "accuracy": 0.6611111111111111,
+      "accuracy_ci95": 0.06934185395446286,
+      "mean_TRR": 1.0,
+      "mean_symbols": 5908.0,
+      "capacity_outage_rate": 0.05,
+      "plugin_outage_rate": 0.5444444444444444,
+      "mean_token_erasure_rate": 0.2639897357605928,
+      "mean_schedule_seconds": 3.4065083299436894e-05,
+      "mean_receive_seconds": 0.18362181444447034,
+      "mean_gpu_peak_memory_delta_gib": 0.04839078850216336,
+      "mean_energy_j": 42.867603776604
+    },
+    {
+      "channel": "frequency_selective",
+      "snr_db": 0.0,
+      "method": "plugin_capacity",
+      "observations": 180,
+      "accuracy": 0.5222222222222223,
+      "accuracy_ci95": 0.07317625899386067,
+      "mean_TRR": 0.369284437395263,
+      "mean_symbols": 887.2888888888889,
+      "capacity_outage_rate": 0.05,
+      "plugin_outage_rate": 0.5444444444444444,
+      "mean_token_erasure_rate": 0.27671756182691915,
+      "mean_schedule_seconds": 0.0139037240055283,
+      "mean_receive_seconds": 0.18264706127762717,
+      "mean_gpu_peak_memory_delta_gib": 0.03362041844262017,
+      "mean_energy_j": 42.785864975710766
+    },
+    {
+      "channel": "frequency_selective",
+      "snr_db": 0.0,
+      "method": "proposed",
+      "observations": 180,
+      "accuracy": 0.5166666666666667,
+      "accuracy_ci95": 0.07320793409121996,
+      "mean_TRR": 0.3211758715277551,
+      "mean_symbols": 748.1777777777778,
+      "capacity_outage_rate": 0.05,
+      "plugin_outage_rate": 0.5444444444444444,
+      "mean_token_erasure_rate": 0.2579468026153127,
+      "mean_schedule_seconds": 0.013928464305566497,
+      "mean_receive_seconds": 0.18263370446665148,
+      "mean_gpu_peak_memory_delta_gib": 0.03228983614179823,
+      "mean_energy_j": 42.89549001932611
+    },
+    {
+      "channel": "frequency_selective",
+      "snr_db": 15.0,
+      "method": "adaptive_sc",
+      "observations": 180,
+      "accuracy": 0.7166666666666667,
+      "accuracy_ci95": 0.06601414366067802,
+      "mean_TRR": 0.9319159571942959,
+      "mean_symbols": 3144.3555555555554,
+      "capacity_outage_rate": 0.05,
+      "plugin_outage_rate": 0.5444444444444444,
+      "mean_token_erasure_rate": 0.08182509957367484,
+      "mean_schedule_seconds": 0.0012309494556373263,
+      "mean_receive_seconds": 0.1791387002222513,
+      "mean_gpu_peak_memory_delta_gib": 0.05287091202206082,
+      "mean_energy_j": 43.182826288514306
+    },
+    {
+      "channel": "frequency_selective",
+      "snr_db": 15.0,
+      "method": "full",
+      "observations": 180,
+      "accuracy": 0.7388888888888889,
+      "accuracy_ci95": 0.06434751802574994,
+      "mean_TRR": 1.0,
+      "mean_symbols": 5908.0,
+      "capacity_outage_rate": 0.05,
+      "plugin_outage_rate": 0.5444444444444444,
+      "mean_token_erasure_rate": 0.0643626239912117,
+      "mean_schedule_seconds": 3.422922774108075e-05,
+      "mean_receive_seconds": 0.16896643324448127,
+      "mean_gpu_peak_memory_delta_gib": 0.054639673233032225,
+      "mean_energy_j": 40.31792512597883
+    },
+    {
+      "channel": "frequency_selective",
+      "snr_db": 15.0,
+      "method": "plugin_capacity",
+      "observations": 180,
+      "accuracy": 0.7444444444444445,
+      "accuracy_ci95": 0.06389816195894177,
+      "mean_TRR": 0.9605709698847199,
+      "mean_symbols": 2052.8888888888887,
+      "capacity_outage_rate": 0.05,
+      "plugin_outage_rate": 0.5444444444444444,
+      "mean_token_erasure_rate": 0.07208110325505063,
+      "mean_schedule_seconds": 0.014746858988847736,
+      "mean_receive_seconds": 0.1750513530278618,
+      "mean_gpu_peak_memory_delta_gib": 0.05369275675879585,
+      "mean_energy_j": 41.77141454307099
+    },
+    {
+      "channel": "frequency_selective",
+      "snr_db": 15.0,
+      "method": "proposed",
+      "observations": 180,
+      "accuracy": 0.7444444444444445,
+      "accuracy_ci95": 0.06389816195894177,
+      "mean_TRR": 0.9317869792427372,
+      "mean_symbols": 1885.1555555555556,
+      "capacity_outage_rate": 0.05,
+      "plugin_outage_rate": 0.5444444444444444,
+      "mean_token_erasure_rate": 0.07238659715627373,
+      "mean_schedule_seconds": 0.01489972393890437,
+      "mean_receive_seconds": 0.17124370827770893,
+      "mean_gpu_peak_memory_delta_gib": 0.052843854162428115,
+      "mean_energy_j": 41.015373826245835
+    },
+    {
+      "channel": "rayleigh",
+      "snr_db": 0.0,
+      "method": "adaptive_sc",
+      "observations": 180,
+      "accuracy": 0.45555555555555555,
+      "accuracy_ci95": 0.07295868787109208,
+      "mean_TRR": 0.27070065014477296,
+      "mean_symbols": 644.3555555555556,
+      "capacity_outage_rate": 0.05555555555555555,
+      "plugin_outage_rate": 0.4888888888888889,
+      "mean_token_erasure_rate": 0.2520151712550434,
+      "mean_schedule_seconds": 0.0005942120000630287,
+      "mean_receive_seconds": 0.19022799404439056,
+      "mean_gpu_peak_memory_delta_gib": 0.0304892275068495,
+      "mean_energy_j": 45.11048634863134
+    },
+    {
+      "channel": "rayleigh",
+      "snr_db": 0.0,
+      "method": "full",
+      "observations": 180,
+      "accuracy": 0.6666666666666666,
+      "accuracy_ci95": 0.06905947921734082,
+      "mean_TRR": 1.0,
+      "mean_symbols": 5908.0,
+      "capacity_outage_rate": 0.05555555555555555,
+      "plugin_outage_rate": 0.4888888888888889,
+      "mean_token_erasure_rate": 0.2687695527306277,
+      "mean_schedule_seconds": 3.647424993889419e-05,
+      "mean_receive_seconds": 0.1868445715221747,
+      "mean_gpu_peak_memory_delta_gib": 0.04749019145965576,
+      "mean_energy_j": 43.20157133572514
+    },
+    {
+      "channel": "rayleigh",
+      "snr_db": 0.0,
+      "method": "plugin_capacity",
+      "observations": 180,
+      "accuracy": 0.5111111111111111,
+      "accuracy_ci95": 0.07323055077256253,
+      "mean_TRR": 0.3154862645564725,
+      "mean_symbols": 788.2666666666667,
+      "capacity_outage_rate": 0.05555555555555555,
+      "plugin_outage_rate": 0.4888888888888889,
+      "mean_token_erasure_rate": 0.2910284300841863,
+      "mean_schedule_seconds": 0.014786463699925258,
+      "mean_receive_seconds": 0.19484485938337456,
+      "mean_gpu_peak_memory_delta_gib": 0.03161722289191352,
+      "mean_energy_j": 45.40467659315014
+    },
+    {
+      "channel": "rayleigh",
+      "snr_db": 0.0,
+      "method": "proposed",
+      "observations": 180,
+      "accuracy": 0.5055555555555555,
+      "accuracy_ci95": 0.07324411742919652,
+      "mean_TRR": 0.2713585879876055,
+      "mean_symbols": 649.7777777777778,
+      "capacity_outage_rate": 0.05555555555555555,
+      "plugin_outage_rate": 0.4888888888888889,
+      "mean_token_erasure_rate": 0.2635964630452915,
+      "mean_schedule_seconds": 0.014239971277735701,
+      "mean_receive_seconds": 0.18667828676116188,
+      "mean_gpu_peak_memory_delta_gib": 0.03043351968129476,
+      "mean_energy_j": 43.81771254759059
+    },
+    {
+      "channel": "rayleigh",
+      "snr_db": 15.0,
+      "method": "adaptive_sc",
+      "observations": 180,
+      "accuracy": 0.7,
+      "accuracy_ci95": 0.06713348663620086,
+      "mean_TRR": 0.9162285522446236,
+      "mean_symbols": 3005.866666666667,
+      "capacity_outage_rate": 0.05555555555555555,
+      "plugin_outage_rate": 0.4888888888888889,
+      "mean_token_erasure_rate": 0.0709465029036046,
+      "mean_schedule_seconds": 0.0011618568943857906,
+      "mean_receive_seconds": 0.1759047018888446,
+      "mean_gpu_peak_memory_delta_gib": 0.05189277331034343,
+      "mean_energy_j": 42.58279880759051
+    },
+    {
+      "channel": "rayleigh",
+      "snr_db": 15.0,
+      "method": "full",
+      "observations": 180,
+      "accuracy": 0.7333333333333333,
+      "accuracy_ci95": 0.0647835339372428,
+      "mean_TRR": 1.0,
+      "mean_symbols": 5908.0,
+      "capacity_outage_rate": 0.05555555555555555,
+      "plugin_outage_rate": 0.4888888888888889,
+      "mean_token_erasure_rate": 0.064434434136971,
+      "mean_schedule_seconds": 3.639704458085665e-05,
+      "mean_receive_seconds": 0.16851230021663166,
+      "mean_gpu_peak_memory_delta_gib": 0.054565262794494626,
+      "mean_energy_j": 40.29781649853151
+    },
+    {
+      "channel": "rayleigh",
+      "snr_db": 15.0,
+      "method": "plugin_capacity",
+      "observations": 180,
+      "accuracy": 0.7166666666666667,
+      "accuracy_ci95": 0.06601414366067802,
+      "mean_TRR": 0.9594325532592216,
+      "mean_symbols": 2029.6888888888889,
+      "capacity_outage_rate": 0.05555555555555555,
+      "plugin_outage_rate": 0.4888888888888889,
+      "mean_token_erasure_rate": 0.07298231574492663,
+      "mean_schedule_seconds": 0.014625502466636438,
+      "mean_receive_seconds": 0.17610838066668497,
+      "mean_gpu_peak_memory_delta_gib": 0.053207577599419485,
+      "mean_energy_j": 42.139685626229536
+    },
+    {
+      "channel": "rayleigh",
+      "snr_db": 15.0,
+      "method": "proposed",
+      "observations": 180,
+      "accuracy": 0.7166666666666667,
+      "accuracy_ci95": 0.06601414366067802,
+      "mean_TRR": 0.916268743534815,
+      "mean_symbols": 1846.2222222222222,
+      "capacity_outage_rate": 0.05555555555555555,
+      "plugin_outage_rate": 0.4888888888888889,
+      "mean_token_erasure_rate": 0.07333716210402272,
+      "mean_schedule_seconds": 0.014689705416822107,
+      "mean_receive_seconds": 0.17239595126110444,
+      "mean_gpu_peak_memory_delta_gib": 0.05185620519849989,
+      "mean_energy_j": 41.43493252693163
+    },
+    {
+      "channel": "rician",
+      "snr_db": 0.0,
+      "method": "adaptive_sc",
+      "observations": 180,
+      "accuracy": 0.45555555555555555,
+      "accuracy_ci95": 0.07295868787109208,
+      "mean_TRR": 0.2863423304555622,
+      "mean_symbols": 714.4,
+      "capacity_outage_rate": 0.06666666666666667,
+      "plugin_outage_rate": 0.5,
+      "mean_token_erasure_rate": 0.15854379091710294,
+      "mean_schedule_seconds": 0.0006099915666507312,
+      "mean_receive_seconds": 0.18124595747219954,
+      "mean_gpu_peak_memory_delta_gib": 0.03081317212846544,
+      "mean_energy_j": 42.926129818365595
+    },
+    {
+      "channel": "rician",
+      "snr_db": 0.0,
+      "method": "full",
+      "observations": 180,
+      "accuracy": 0.7055555555555556,
+      "accuracy_ci95": 0.06677237842645391,
+      "mean_TRR": 1.0,
+      "mean_symbols": 5908.0,
+      "capacity_outage_rate": 0.06666666666666667,
+      "plugin_outage_rate": 0.5,
+      "mean_token_erasure_rate": 0.14260478293291928,
+      "mean_schedule_seconds": 3.6807616692789854e-05,
+      "mean_receive_seconds": 0.1756290550944464,
+      "mean_gpu_peak_memory_delta_gib": 0.05218011803097195,
+      "mean_energy_j": 41.09508747275643
+    },
+    {
+      "channel": "rician",
+      "snr_db": 0.0,
+      "method": "plugin_capacity",
+      "observations": 180,
+      "accuracy": 0.48333333333333334,
+      "accuracy_ci95": 0.07320793409121996,
+      "mean_TRR": 0.34069026974141947,
+      "mean_symbols": 877.5111111111111,
+      "capacity_outage_rate": 0.06666666666666667,
+      "plugin_outage_rate": 0.5,
+      "mean_token_erasure_rate": 0.16876001296067983,
+      "mean_schedule_seconds": 0.01554367728892127,
+      "mean_receive_seconds": 0.19267576416668816,
+      "mean_gpu_peak_memory_delta_gib": 0.03230538103315565,
+      "mean_energy_j": 45.16825961556311
+    },
+    {
+      "channel": "rician",
+      "snr_db": 0.0,
+      "method": "proposed",
+      "observations": 180,
+      "accuracy": 0.45555555555555555,
+      "accuracy_ci95": 0.07295868787109208,
+      "mean_TRR": 0.28822067855659916,
+      "mean_symbols": 719.7333333333333,
+      "capacity_outage_rate": 0.06666666666666667,
+      "plugin_outage_rate": 0.5,
+      "mean_token_erasure_rate": 0.1657845894381763,
+      "mean_schedule_seconds": 0.015538202900016687,
+      "mean_receive_seconds": 0.1795992392055066,
+      "mean_gpu_peak_memory_delta_gib": 0.030847936206393773,
+      "mean_energy_j": 42.24681363400755
+    },
+    {
+      "channel": "rician",
+      "snr_db": 15.0,
+      "method": "adaptive_sc",
+      "observations": 180,
+      "accuracy": 0.7277777777777777,
+      "accuracy_ci95": 0.0652064772986717,
+      "mean_TRR": 0.9793913917077087,
+      "mean_symbols": 3252.5333333333333,
+      "capacity_outage_rate": 0.06666666666666667,
+      "plugin_outage_rate": 0.5,
+      "mean_token_erasure_rate": 0.05104466450193013,
+      "mean_schedule_seconds": 0.0011785210722033905,
+      "mean_receive_seconds": 0.17374874161115358,
+      "mean_gpu_peak_memory_delta_gib": 0.05438937346140544,
+      "mean_energy_j": 42.06021309597843
+    },
+    {
+      "channel": "rician",
+      "snr_db": 15.0,
+      "method": "full",
+      "observations": 180,
+      "accuracy": 0.7388888888888889,
+      "accuracy_ci95": 0.06434751802574994,
+      "mean_TRR": 1.0,
+      "mean_symbols": 5908.0,
+      "capacity_outage_rate": 0.06666666666666667,
+      "plugin_outage_rate": 0.5,
+      "mean_token_erasure_rate": 0.05358102753888356,
+      "mean_schedule_seconds": 3.6550877788007104e-05,
+      "mean_receive_seconds": 0.16712703906107182,
+      "mean_gpu_peak_memory_delta_gib": 0.05494354036119249,
+      "mean_energy_j": 39.978994382229075
+    },
+    {
+      "channel": "rician",
+      "snr_db": 15.0,
+      "method": "plugin_capacity",
+      "observations": 180,
+      "accuracy": 0.7388888888888889,
+      "accuracy_ci95": 0.06434751802574994,
+      "mean_TRR": 0.9918421284728239,
+      "mean_symbols": 2039.0222222222221,
+      "capacity_outage_rate": 0.06666666666666667,
+      "plugin_outage_rate": 0.5,
+      "mean_token_erasure_rate": 0.053637378750114956,
+      "mean_schedule_seconds": 0.014485301272240273,
+      "mean_receive_seconds": 0.1752866595611623,
+      "mean_gpu_peak_memory_delta_gib": 0.05476879543728298,
+      "mean_energy_j": 41.973597044491754
+    },
+    {
+      "channel": "rician",
+      "snr_db": 15.0,
+      "method": "proposed",
+      "observations": 180,
+      "accuracy": 0.75,
+      "accuracy_ci95": 0.06343518224430915,
+      "mean_TRR": 0.9794418967582138,
+      "mean_symbols": 1962.8444444444444,
+      "capacity_outage_rate": 0.06666666666666667,
+      "plugin_outage_rate": 0.5,
+      "mean_token_erasure_rate": 0.05226322639377976,
+      "mean_schedule_seconds": 0.014638177722291503,
+      "mean_receive_seconds": 0.1660635350666477,
+      "mean_gpu_peak_memory_delta_gib": 0.05441431469387478,
+      "mean_energy_j": 39.92364855229452
+    }
+  ]
+}
+CHAIN_B_SIDECARS_ATTR_DONE

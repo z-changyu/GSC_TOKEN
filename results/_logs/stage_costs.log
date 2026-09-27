@@ -1,0 +1,96 @@
+2026-09-27 01:15:41,837 INFO prompt-length cap 200 keeps 59 samples (1 longer reports are outside the single-card scoring envelope)
+2026-09-27 01:15:41,837 INFO stage-cost run: 30 samples (2 warm-up), methods=['proposed', 'adaptive_sc', 'tokcom_uep', 'full']
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 58.27it/s]
+2026-09-27 01:15:44,789 INFO receiver on cuda:1
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 112.99it/s]
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+2026-09-27 01:15:55,395 INFO   [mem] after report: gpu0=8.30 GiB gpu1=16.33 GiB
+2026-09-27 01:16:02,943 INFO   [mem] after report: gpu0=8.33 GiB gpu1=16.36 GiB
+2026-09-27 01:16:10,710 INFO   [mem] after report: gpu0=8.33 GiB gpu1=16.36 GiB
+2026-09-27 01:16:15,574 INFO sample 11 (135 tokens): report 4445 + scoring 4791 + sched 1.3 | rx 40 ms
+2026-09-27 01:16:19,712 INFO   [mem] after report: gpu0=8.33 GiB gpu1=16.36 GiB
+2026-09-27 01:16:24,216 INFO sample 16 (124 tokens): report 4095 + scoring 4423 + sched 1.3 | rx 41 ms
+2026-09-27 01:16:28,585 INFO   [mem] after report: gpu0=8.33 GiB gpu1=16.36 GiB
+2026-09-27 01:16:33,334 INFO sample 17 (132 tokens): report 4327 + scoring 4671 + sched 1.3 | rx 37 ms
+2026-09-27 01:16:38,255 INFO   [mem] after report: gpu0=8.33 GiB gpu1=16.36 GiB
+2026-09-27 01:16:43,624 INFO sample 21 (150 tokens): report 4880 + scoring 5282 + sched 1.4 | rx 41 ms
+2026-09-27 01:16:49,350 INFO   [mem] after report: gpu0=8.33 GiB gpu1=16.36 GiB
+2026-09-27 01:16:55,512 INFO sample 26 (175 tokens): report 5685 + scoring 6077 + sched 1.6 | rx 40 ms
+2026-09-27 01:16:59,634 INFO   [mem] after report: gpu0=8.33 GiB gpu1=16.36 GiB
+2026-09-27 01:17:04,177 INFO sample 27 (124 tokens): report 4079 + scoring 4460 + sched 1.3 | rx 41 ms
+2026-09-27 01:17:08,410 INFO   [mem] after report: gpu0=8.33 GiB gpu1=16.36 GiB
+2026-09-27 01:17:13,056 INFO sample 28 (127 tokens): report 4190 + scoring 4572 + sched 1.3 | rx 41 ms
+2026-09-27 01:17:17,101 INFO   [mem] after report: gpu0=8.33 GiB gpu1=16.36 GiB
+2026-09-27 01:17:21,531 INFO sample 31 (120 tokens): report 4000 + scoring 4350 + sched 1.3 | rx 40 ms
+2026-09-27 01:17:24,833 INFO   [mem] after report: gpu0=8.33 GiB gpu1=16.36 GiB
+2026-09-27 01:17:28,489 INFO sample 32 (99 tokens): report 3259 + scoring 3576 + sched 1.2 | rx 40 ms
+2026-09-27 01:17:32,864 INFO   [mem] after report: gpu0=8.33 GiB gpu1=16.36 GiB
+2026-09-27 01:17:37,650 INFO sample 36 (133 tokens): report 4332 + scoring 4705 + sched 1.4 | rx 40 ms
+2026-09-27 01:17:40,778 INFO   [mem] after report: gpu0=8.33 GiB gpu1=16.36 GiB
+2026-09-27 01:17:44,232 INFO sample 37 (93 tokens): report 3085 + scoring 3374 + sched 1.2 | rx 41 ms
+2026-09-27 01:17:48,119 INFO   [mem] after report: gpu0=8.33 GiB gpu1=16.36 GiB
+2026-09-27 01:17:52,409 INFO sample 44 (118 tokens): report 3845 + scoring 4209 + sched 1.3 | rx 40 ms
+2026-09-27 01:17:55,863 INFO   [mem] after report: gpu0=8.33 GiB gpu1=16.36 GiB
+2026-09-27 01:17:59,706 INFO sample 48 (104 tokens): report 3411 + scoring 3763 + sched 1.3 | rx 41 ms
+2026-09-27 01:18:03,755 INFO   [mem] after report: gpu0=8.33 GiB gpu1=16.36 GiB
+2026-09-27 01:18:08,197 INFO sample 49 (122 tokens): report 4006 + scoring 4362 + sched 1.3 | rx 39 ms
+2026-09-27 01:18:12,071 INFO   [mem] after report: gpu0=8.33 GiB gpu1=16.36 GiB
+2026-09-27 01:18:16,320 INFO sample 50 (117 tokens): report 3828 + scoring 4166 + sched 1.3 | rx 41 ms
+2026-09-27 01:18:19,760 INFO   [mem] after report: gpu0=8.33 GiB gpu1=16.36 GiB
+2026-09-27 01:18:23,559 INFO sample 55 (103 tokens): report 3398 + scoring 3717 + sched 1.2 | rx 41 ms
+2026-09-27 01:18:27,394 INFO   [mem] after report: gpu0=8.33 GiB gpu1=16.36 GiB
+2026-09-27 01:18:31,598 INFO sample 56 (115 tokens): report 3793 + scoring 4124 + sched 1.2 | rx 40 ms
+2026-09-27 01:18:35,117 INFO   [mem] after report: gpu0=8.33 GiB gpu1=16.36 GiB
+2026-09-27 01:18:38,958 INFO sample 57 (105 tokens): report 3477 + scoring 3760 + sched 2.0 | rx 41 ms
+2026-09-27 01:18:42,220 INFO   [mem] after report: gpu0=8.33 GiB gpu1=16.36 GiB
+2026-09-27 01:18:45,841 INFO sample 59 (98 tokens): report 3221 + scoring 3542 + sched 1.2 | rx 41 ms
+2026-09-27 01:18:49,489 INFO   [mem] after report: gpu0=8.33 GiB gpu1=16.36 GiB
+2026-09-27 01:18:53,485 INFO sample 60 (110 tokens): report 3606 + scoring 3916 + sched 1.2 | rx 40 ms
+2026-09-27 01:18:57,834 INFO   [mem] after report: gpu0=8.33 GiB gpu1=16.36 GiB
+2026-09-27 01:19:02,563 INFO sample 61 (132 tokens): report 4305 + scoring 4647 + sched 1.3 | rx 40 ms
+2026-09-27 01:19:05,944 INFO   [mem] after report: gpu0=8.33 GiB gpu1=16.36 GiB
+2026-09-27 01:19:09,697 INFO sample 65 (101 tokens): report 3339 + scoring 3673 + sched 1.2 | rx 41 ms
+2026-09-27 01:19:13,493 INFO   [mem] after report: gpu0=8.33 GiB gpu1=16.36 GiB
+2026-09-27 01:19:17,641 INFO sample 67 (114 tokens): report 3754 + scoring 4066 + sched 1.3 | rx 41 ms
+2026-09-27 01:19:20,415 INFO   [mem] after report: gpu0=8.33 GiB gpu1=16.36 GiB
+2026-09-27 01:19:23,494 INFO sample 70 (82 tokens): report 2731 + scoring 3003 + sched 1.1 | rx 40 ms
+2026-09-27 01:19:27,827 INFO   [mem] after report: gpu0=8.33 GiB gpu1=16.36 GiB
+2026-09-27 01:19:32,542 INFO sample 71 (131 tokens): report 4291 + scoring 4633 + sched 1.4 | rx 40 ms
+2026-09-27 01:19:37,174 INFO   [mem] after report: gpu0=8.33 GiB gpu1=16.36 GiB
+2026-09-27 01:19:42,246 INFO sample 77 (141 tokens): report 4588 + scoring 4987 + sched 1.4 | rx 41 ms
+2026-09-27 01:19:46,753 INFO   [mem] after report: gpu0=8.33 GiB gpu1=16.36 GiB
+2026-09-27 01:19:51,635 INFO sample 83 (136 tokens): report 4465 + scoring 4800 + sched 1.3 | rx 40 ms
+2026-09-27 01:19:55,872 INFO   [mem] after report: gpu0=8.33 GiB gpu1=16.36 GiB
+2026-09-27 01:20:00,490 INFO sample 85 (128 tokens): report 4193 + scoring 4535 + sched 1.5 | rx 41 ms
+2026-09-27 01:20:04,520 INFO   [mem] after report: gpu0=8.33 GiB gpu1=16.36 GiB
+2026-09-27 01:20:08,948 INFO sample 86 (122 tokens): report 3986 + scoring 4353 + sched 1.4 | rx 40 ms
+2026-09-27 01:20:13,829 INFO   [mem] after report: gpu0=8.33 GiB gpu1=16.36 GiB
+2026-09-27 01:20:19,130 INFO sample 87 (149 tokens): report 4838 + scoring 5215 + sched 1.8 | rx 41 ms
+2026-09-27 01:20:19,138 INFO stage                          mean_ms    p50_ms    p95_ms      n
+2026-09-27 01:20:19,138 INFO coord_k10_ms                      1.12      1.12      1.13     30
+2026-09-27 01:20:19,138 INFO coord_k20_ms                      1.13      1.13      1.15     30
+2026-09-27 01:20:19,138 INFO coord_k4_ms                       1.15      1.15      1.17     30
+2026-09-27 01:20:19,138 INFO preprocess_ms                     7.00      7.14      7.91     30
+2026-09-27 01:20:19,138 INFO report_ms                      3981.86   4003.05   4880.32     30
+2026-09-27 01:20:19,138 INFO rx_forward_ms                    34.38     34.30     35.79     30
+2026-09-27 01:20:19,138 INFO rx_prep_ms                        0.57      0.57      0.62     30
+2026-09-27 01:20:19,138 INFO rx_readout_ms                     5.42      5.76      6.31     30
+2026-09-27 01:20:19,138 INFO schedule_adaptive_sc_ms           0.61      0.61      0.72     30
+2026-09-27 01:20:19,138 INFO schedule_full_ms                  0.02      0.02      0.02     30
+2026-09-27 01:20:19,138 INFO schedule_lp_ms                    0.72      0.68      1.14     30
+2026-09-27 01:20:19,138 INFO schedule_proposed_ms              1.35      1.32      1.85     30
+2026-09-27 01:20:19,138 INFO schedule_refine_ms                0.49      0.49      0.56     30
+2026-09-27 01:20:19,138 INFO schedule_rounding_ms              0.15      0.15      0.16     30
+2026-09-27 01:20:19,138 INFO schedule_tokcom_uep_ms            1.51      1.57      2.25     30
+2026-09-27 01:20:19,138 INFO scoring_assemble_ms               1.11      1.10      1.21     30
+2026-09-27 01:20:19,138 INFO scoring_attention_aggregate_ms      0.50      0.49      0.67     30
+2026-09-27 01:20:19,138 INFO scoring_backward_ms             102.51    104.80    109.99     30
+2026-09-27 01:20:19,138 INFO scoring_coupling_ms               0.01      0.01      0.01     30
+2026-09-27 01:20:19,138 INFO scoring_forward_ms              113.85    115.20    118.23     30
+2026-09-27 01:20:19,138 INFO scoring_net_ms                  330.87    334.25    351.40     30
+2026-09-27 01:20:19,138 INFO scoring_report_ms              3994.18   4021.23   4931.07     30
+2026-09-27 01:20:19,138 INFO scoring_total_ms               4325.04   4357.64   5281.86     30
+2026-09-27 01:20:19,138 INFO vision_ms                        27.18     27.25     27.42     30
+2026-09-27 01:20:19,138 INFO timeline: terminal 4392.8 ms | edge 40.5 ms | total p50 4454.1 / p95 5380.0 ms
+2026-09-27 01:20:19,138 INFO wrote outputs/stage_costs
