@@ -1,0 +1,60 @@
+sample_id,channel,snr_db,channel_seed,method,receiver_protocol,original_tokens,selected_tokens,received_tokens,TRR,transmitted_symbols,budget,plugin_budget,reliable_efficiency,realized_efficiency,capacity_outage,plugin_outage,token_erasure_rate,any_token_lost,correct,parse_mode,schedule_seconds,receive_seconds,gpu_peak_memory_delta_gib,energy_j,selected_text,restored
+0,rayleigh,0.0,0,proposed,v6_letter,196,24,24,0.12244897959183673,752.0,753.3726692199707,928.5073062037671,0.7533726692199707,1.1572925745684213,0,0,0.0,0,True,logit_letter,0.003763577959034592,0.38945739198243245,0.08992481231689453,42.84031311806757,"What?
+A.B. It. the.,.,., a, and its value is not limited.",0
+0,rayleigh,0.0,0,adaptive_sc,v6_letter,196,23,21,0.11734693877551021,736.0,753.3726692199707,928.5073062037671,0.7533726692199707,1.1572925745684213,0,0,0.08695652173913043,1,True,logit_letter,0.00040869798976927996,0.05142331903334707,0.05839061737060547,5.93913623175642,"What?
+A.B. It. the.,,., a and its is not limited.",0
+3,rayleigh,0.0,0,proposed,v6_letter,142,68,61,0.4788732394366197,1088.0,1089.3279314041138,1268.7362296036492,1.0893279314041138,1.3595937466211934,0,0,0.10294117647058823,1,True,logit_letter,0.0036951390211470425,0.05044894898310304,0.07141971588134766,6.229183975688647,"What far is?
+A..
+B.C..
+. No.
+
+The a is a in the, a and. is, and and in. is no in the. The in the is a and, are not of a. Therefore, most accurate description is that there is no obvious far.",0
+3,rayleigh,0.0,0,adaptive_sc,v6_letter,142,68,62,0.4788732394366197,1088.0,1089.3279314041138,1268.7362296036492,1.0893279314041138,1.3595937466211934,0,0,0.08823529411764706,1,True,logit_letter,0.0015278539503924549,0.056568653031717986,0.07184505462646484,7.3414797904563605,"What far is..
+B..
+C..
+D. No.
+
+The a and. is a the, and a and. is, and and in the. is no in the. The in is a and, are not of a. Therefore, accurate description is that there is no obvious far.",0
+9,rayleigh,0.0,0,proposed,v6_letter,119,6,6,0.05042016806722689,288.0,318.6121881008148,462.0788469544603,0.3186121881008148,0.42224237370707196,0,1,0.0,0,False,logit_letter,0.0018153430428355932,0.04983785003423691,0.04718828201293945,6.670297848582268,Question:.. no or,0
+9,rayleigh,0.0,0,adaptive_sc,v6_letter,119,6,6,0.05042016806722689,288.0,318.6121881008148,462.0788469544603,0.3186121881008148,0.42224237370707196,0,1,0.0,0,False,logit_letter,0.00026852398877963424,0.03959869802929461,0.04718828201293945,5.515306661520153,Question:.. no or,0
+0,rayleigh,15.0,0,proposed,v6_letter,196,196,185,1.0,3136.0,4503.644943237305,4885.820062827563,4.503644943237305,5.318612608256486,0,0,0.05612244897959184,1,True,logit_letter,0.0021554140257649124,0.0766093959682621,0.128997802734375,11.283797932165324,"What is the main value of the second view?
+A. It reveals an occluded road user.
+B. It clarifies a blurred ego view.
+C. It provides a-range cue.
+D Its added value is limited.
+
+The second view shows a clear, centered perspective of the road ahead, with the vehicle's front view and the road markings in focus. The first view is a wider, possibly blurred, perspective from the same vehicle. The second view is more focused and provides a clearer image of the road and traffic signals, which helps in understanding road conditions. The value of the second view is provides a clearer and more detailed of the road ahead, which is a-range cue. The first view is more of a general overview, and the second view is more focused on the immediate surroundings. The second does not an occluded road user, nor does it clarify a blurred ego, and its added value is not limited.",0
+0,rayleigh,15.0,0,adaptive_sc,v6_letter,196,196,182,1.0,3136.0,4503.644943237305,4885.820062827563,4.503644943237305,5.318612608256486,0,0,0.07142857142857142,1,True,logit_letter,0.0031256289803422987,0.09189114003675058,0.1275348663330078,14.8211219765275,"What is the value of the second view?
+A. It reveals an occluded road user.
+B. It clarifies a blurred ego viewC. It provides a long-range cue.
+D. Its added value is limited.
+
+The second view shows a centered perspective of the road, with the vehicle's front view and the road in focus. The first view a wider, possibly blurred, perspective from same vehicle. The second view is more focused and provides a clearer image of the road and traffic signals, which helps in understanding the road. The main value of the second view is that it provides a clearer and more detailed view of the road ahead which is a long-range cue. The first view is more of a general overview, and the second view is more focused on the surroundings. The second view does not reveal an oc road nor does it clarify a blurred ego view, and its added value is not limited.",0
+3,rayleigh,15.0,0,proposed,v6_letter,142,142,128,1.0,2272.0,5196.235179901123,5510.089454026813,5.196235179901123,5.6589355137224855,0,0,0.09859154929577464,1,True,logit_letter,0.001709054980892688,0.047541334002744406,0.10117769241333008,8.279085609907924,"What useful far-field cue is visible?
+A A large far agent.
+B. A of traffic.
+C. far work zone.
+D. No obvious-field cue.
+
+The scene shows a wide road intersection with multiple lanes and traffic signs. There is a car in the foreground, and a distant traffic light and road markings. is wet, and there are trees and buildings in the background. There is no visible large or significant traffic buildup in the far distance. The only visible feature in the far field is a traffic and road markings, which are not indicative of a work Therefore, the most accurate description is that there is no obvious far-field.",0
+3,rayleigh,15.0,0,adaptive_sc,v6_letter,142,142,132,1.0,4544.0,5196.235179901123,5510.089454026813,5.196235179901123,5.6589355137224855,0,0,0.07042253521126761,1,True,logit_letter,0.0018365989672020078,0.05624172301031649,0.10287809371948242,9.909791594417765,"What useful far-field cue is visible?
+ A large far-field agent.
+B. A far buildup of traffic.
+C. A far work zone.
+D. No obvious far-field.
+
+ scene shows a wide road intersection with multiple lanes and traffic signs. There is a white car in the foreground and a distant traffic light and road markings. The road is wet, and there are trees and buildings in the background. There is no visible large agent or significant traffic in the far distance. The only visible feature in the far field is a traffic light and road, which are not of a work zone. Therefore, the most accurate description is that there is no obvious cue.",0
+9,rayleigh,15.0,0,proposed,v6_letter,119,119,111,1.0,1904.0,3139.951705932617,3693.5872216379576,3.139951705932617,3.5548367710678916,0,1,0.06722689075630252,1,True,logit_letter,0.0017103790305554867,0.04382625798461959,0.09292316436767578,8.224654704683635,"Question: Which road feature is most important ahead?
+Candidate choices:
+A. Junction structure.
+B.ing road.
+C. Barrier or guidance.
+D. Ramp-like road split.
+Description: The road ahead is a multi-lane highway with a clear lane separation and a white dashed line indicating a lane boundary. There is no visible junction structure, barrier, or ramp-like road split. The road surface is wet, and the vehicle is in the middle of the road, with a white painted on the road surface a direction. There are no cones barriers visible",0
+9,rayleigh,15.0,0,adaptive_sc,v6_letter,119,119,111,1.0,1904.0,3139.951705932617,3693.5872216379576,3.139951705932617,3.5548367710678916,0,1,0.06722689075630252,1,True,logit_letter,0.0021631770068779588,0.052724658977240324,0.09261131286621094,9.985259540404659,"Question: Which road feature most important ahead?
+Candidate choices:
+A. Junction structure.
+B. Lane-following road.
+C. Barrier or guidance.
+D Ramp-like road split.
+Description: The road ahead is a multi-lane highway with lane separation and a white dashed line indicating a lane boundary. There is no visible junction structure, barrier, or ramp-like road split. The road surface is wet and the vehicle is in middle of the road, with a white arrow painted on the road surface indicating a lane direction. There are no cones or visible.",0

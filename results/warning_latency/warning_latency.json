@@ -1,0 +1,250 @@
+{
+  "warning_budget_ms": 100.0,
+  "control_budget_ms": 10.0,
+  "route_a_ms": {
+    "trigger_low": {
+      "p50": 57.84969250764685,
+      "p95": 87.35377471987145
+    },
+    "trigger_high": {
+      "p50": 77.84969250764685,
+      "p95": 107.35377471987147
+    }
+  },
+  "legacy_ms": {
+    "p50": 4419.511303030374,
+    "p95": 4523.899715377554
+  },
+  "stages": {
+    "端侧触发（原生感知，假设）": {
+      "low": 10.0,
+      "high": 30.0,
+      "source": "assumption"
+    },
+    "端侧视觉塔（实测）": {
+      "ms": 1062.5,
+      "source": "measured"
+    },
+    "端侧报告生成（实测，异步）": {
+      "ms": 3110.3,
+      "source": "measured"
+    },
+    "上行（建模）": {
+      "ms": 1.0,
+      "source": "model"
+    },
+    "边侧调度（实测，优化后）": {
+      "p50": 1.32592651061705,
+      "p95": 3.964241725043354,
+      "source": "measured"
+    },
+    "边侧判定-判别式（实测）": {
+      "p50": 44.82387600000945,
+      "p95": 73.6138974840287,
+      "source": "measured"
+    },
+    "边侧判定-自回归（实测）": {
+      "p50": 244.74488550913514,
+      "p95": 347.1795226680115,
+      "source": "measured"
+    },
+    "回传（建模）": {
+      "ms": 0.5,
+      "source": "model"
+    }
+  },
+  "timely_grid": [
+    {
+      "speed_kmh": 30.0,
+      "distance_m": 10.0,
+      "tolerable_ms": 0.0,
+      "timely_rate_low_trigger": 0.0,
+      "timely_rate_high_trigger": 0.0,
+      "feasible": false
+    },
+    {
+      "speed_kmh": 30.0,
+      "distance_m": 15.0,
+      "tolerable_ms": 105.55555555555534,
+      "timely_rate_low_trigger": 0.9958333333333333,
+      "timely_rate_high_trigger": 0.925,
+      "feasible": true
+    },
+    {
+      "speed_kmh": 30.0,
+      "distance_m": 20.0,
+      "tolerable_ms": 705.5555555555553,
+      "timely_rate_low_trigger": 1.0,
+      "timely_rate_high_trigger": 1.0,
+      "feasible": true
+    },
+    {
+      "speed_kmh": 30.0,
+      "distance_m": 25.0,
+      "tolerable_ms": 1305.5555555555554,
+      "timely_rate_low_trigger": 1.0,
+      "timely_rate_high_trigger": 1.0,
+      "feasible": true
+    },
+    {
+      "speed_kmh": 30.0,
+      "distance_m": 30.0,
+      "tolerable_ms": 1905.5555555555552,
+      "timely_rate_low_trigger": 1.0,
+      "timely_rate_high_trigger": 1.0,
+      "feasible": true
+    },
+    {
+      "speed_kmh": 30.0,
+      "distance_m": 40.0,
+      "tolerable_ms": 3105.5555555555547,
+      "timely_rate_low_trigger": 1.0,
+      "timely_rate_high_trigger": 1.0,
+      "feasible": true
+    },
+    {
+      "speed_kmh": 30.0,
+      "distance_m": 50.0,
+      "tolerable_ms": 4305.555555555555,
+      "timely_rate_low_trigger": 1.0,
+      "timely_rate_high_trigger": 1.0,
+      "feasible": true
+    },
+    {
+      "speed_kmh": 30.0,
+      "distance_m": 60.0,
+      "tolerable_ms": 5505.555555555555,
+      "timely_rate_low_trigger": 1.0,
+      "timely_rate_high_trigger": 1.0,
+      "feasible": true
+    },
+    {
+      "speed_kmh": 50.0,
+      "distance_m": 10.0,
+      "tolerable_ms": 0.0,
+      "timely_rate_low_trigger": 0.0,
+      "timely_rate_high_trigger": 0.0,
+      "feasible": false
+    },
+    {
+      "speed_kmh": 50.0,
+      "distance_m": 15.0,
+      "tolerable_ms": 0.0,
+      "timely_rate_low_trigger": 0.0,
+      "timely_rate_high_trigger": 0.0,
+      "feasible": false
+    },
+    {
+      "speed_kmh": 50.0,
+      "distance_m": 20.0,
+      "tolerable_ms": 0.0,
+      "timely_rate_low_trigger": 0.0,
+      "timely_rate_high_trigger": 0.0,
+      "feasible": false
+    },
+    {
+      "speed_kmh": 50.0,
+      "distance_m": 25.0,
+      "tolerable_ms": 0.0,
+      "timely_rate_low_trigger": 0.0,
+      "timely_rate_high_trigger": 0.0,
+      "feasible": false
+    },
+    {
+      "speed_kmh": 50.0,
+      "distance_m": 30.0,
+      "tolerable_ms": 2.592592592592439,
+      "timely_rate_low_trigger": 0.0,
+      "timely_rate_high_trigger": 0.0,
+      "feasible": true
+    },
+    {
+      "speed_kmh": 50.0,
+      "distance_m": 40.0,
+      "tolerable_ms": 722.5925925925925,
+      "timely_rate_low_trigger": 1.0,
+      "timely_rate_high_trigger": 1.0,
+      "feasible": true
+    },
+    {
+      "speed_kmh": 50.0,
+      "distance_m": 50.0,
+      "tolerable_ms": 1442.5925925925924,
+      "timely_rate_low_trigger": 1.0,
+      "timely_rate_high_trigger": 1.0,
+      "feasible": true
+    },
+    {
+      "speed_kmh": 50.0,
+      "distance_m": 60.0,
+      "tolerable_ms": 2162.5925925925926,
+      "timely_rate_low_trigger": 1.0,
+      "timely_rate_high_trigger": 1.0,
+      "feasible": true
+    },
+    {
+      "speed_kmh": 60.0,
+      "distance_m": 10.0,
+      "tolerable_ms": 0.0,
+      "timely_rate_low_trigger": 0.0,
+      "timely_rate_high_trigger": 0.0,
+      "feasible": false
+    },
+    {
+      "speed_kmh": 60.0,
+      "distance_m": 15.0,
+      "tolerable_ms": 0.0,
+      "timely_rate_low_trigger": 0.0,
+      "timely_rate_high_trigger": 0.0,
+      "feasible": false
+    },
+    {
+      "speed_kmh": 60.0,
+      "distance_m": 20.0,
+      "tolerable_ms": 0.0,
+      "timely_rate_low_trigger": 0.0,
+      "timely_rate_high_trigger": 0.0,
+      "feasible": false
+    },
+    {
+      "speed_kmh": 60.0,
+      "distance_m": 25.0,
+      "tolerable_ms": 0.0,
+      "timely_rate_low_trigger": 0.0,
+      "timely_rate_high_trigger": 0.0,
+      "feasible": false
+    },
+    {
+      "speed_kmh": 60.0,
+      "distance_m": 30.0,
+      "tolerable_ms": 0.0,
+      "timely_rate_low_trigger": 0.0,
+      "timely_rate_high_trigger": 0.0,
+      "feasible": false
+    },
+    {
+      "speed_kmh": 60.0,
+      "distance_m": 40.0,
+      "tolerable_ms": 11.111111111110574,
+      "timely_rate_low_trigger": 0.0,
+      "timely_rate_high_trigger": 0.0,
+      "feasible": true
+    },
+    {
+      "speed_kmh": 60.0,
+      "distance_m": 50.0,
+      "tolerable_ms": 611.1111111111105,
+      "timely_rate_low_trigger": 1.0,
+      "timely_rate_high_trigger": 1.0,
+      "feasible": true
+    },
+    {
+      "speed_kmh": 60.0,
+      "distance_m": 60.0,
+      "tolerable_ms": 1211.1111111111106,
+      "timely_rate_low_trigger": 1.0,
+      "timely_rate_high_trigger": 1.0,
+      "feasible": true
+    }
+  ]
+}

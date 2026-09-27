@@ -1,0 +1,1044 @@
+sample_id,channel,snr_db,channel_seed,method,receiver_protocol,original_tokens,selected_tokens,received_tokens,TRR,transmitted_symbols,budget,plugin_budget,reliable_efficiency,realized_efficiency,capacity_outage,plugin_outage,token_erasure_rate,any_token_lost,correct,parse_mode,schedule_seconds,receive_seconds,gpu_peak_memory_delta_gib,energy_j,selected_text,restored
+0,rayleigh,0.0,0,proposed,v6_norestore,196,24,24,0.12244897959183673,752.0,753.3726692199707,928.5073062037671,0.7533726692199707,1.1572925745684213,0,0,0.0,0,True,leading_letter,0.003782582003623247,0.7228331319638528,0.06158113479614258,89.96381160422112,"What?
+A.B. It. the.,.,., a, and its value is not limited.",0
+0,rayleigh,0.0,0,adaptive_sc,v6_norestore,196,23,21,0.11734693877551021,736.0,753.3726692199707,928.5073062037671,0.7533726692199707,1.1572925745684213,0,0,0.08695652173913043,1,True,leading_letter,0.00041302997851744294,0.3357613430125639,0.029874801635742188,52.063153847528156,"What?
+A.B. It. the.,,., a and its is not limited.",0
+0,rayleigh,0.0,0,full,v6_norestore,196,196,185,1.0,9408.0,753.3726692199707,928.5073062037671,0.7533726692199707,1.1572925745684213,0,0,0.05612244897959184,1,True,leading_letter,8.741597412154078e-05,0.3674615960335359,0.08102178573608398,72.17129476896662,"What is the main value of the second view?
+A. It reveals an occluded road user.
+B. It clarifies a blurred ego view.
+C. It provides a long-range cue.
+D. Its added value is limited.
+
+The second view shows a clear, centered perspective of the road ahead, with the vehicle's view and the road in focus. The first view wider, possibly blurred, perspective the same vehicle. The second view is focused and provides a clearer image of the road and traffic signals, which helps in understanding the road conditions. The main value of the second is that provides a clearer and more detailed view of the road ahead, which a long-range cue. The first view is more of a overview, and the second view is more focused on the immediate surroundings. The second view does not reveal an occluded road user nor does it clarify a blurred ego view, and its added value is not limited.",0
+0,rayleigh,0.0,0,plugin_capacity,v6_norestore,196,29,25,0.14795918367346939,928.0,753.3726692199707,928.5073062037671,0.7533726692199707,1.1572925745684213,0,0,0.13793103448275862,1,True,leading_letter,0.008396624005399644,0.3471200920175761,0.030560016632080078,78.70948086498538,"What?
+A..
+ It.
+..
+
+ the.,.,. The, a, and value is not limited.",0
+3,rayleigh,0.0,0,proposed,v6_norestore,142,68,61,0.4788732394366197,1088.0,1089.3279314041138,1268.7362296036492,1.0893279314041138,1.3595937466211934,0,0,0.10294117647058823,1,True,leading_letter,0.0015888030175119638,0.29938550502993166,0.037873268127441406,66.17467510429094,"What far is?
+A..
+B.C..
+. No.
+
+The a is a in the, a and. is, and and in. is no in the. The in the is a and, are not of a. Therefore, most accurate description is that there is no obvious far.",0
+3,rayleigh,0.0,0,adaptive_sc,v6_norestore,142,68,62,0.4788732394366197,1088.0,1089.3279314041138,1268.7362296036492,1.0893279314041138,1.3595937466211934,0,0,0.08823529411764706,1,True,leading_letter,0.0014996580430306494,0.3038495039800182,0.038150787353515625,67.0048926176736,"What far is..
+B..
+C..
+D. No.
+
+The a and. is a the, and a and. is, and and in the. is no in the. The in is a and, are not of a. Therefore, accurate description is that there is no obvious far.",0
+3,rayleigh,0.0,0,full,v6_norestore,142,142,133,1.0,6816.0,1089.3279314041138,1268.7362296036492,1.0893279314041138,1.3595937466211934,0,0,0.06338028169014084,1,True,leading_letter,0.0001230509951710701,0.32399853598326445,0.0599822998046875,71.74137583009433,"What useful far-field is visible?
+A. A large far-fieldB. A far buildup of traffic.
+C. A far work zone.
+D. No obvious far-field cue.
+
+The scene shows a road with multiple lanes and traffic signs. There is a white car in the foreground, and a distant traffic light road markings. The road is wet, and there are trees and buildings in the background. There is no visible large agent or significant traffic buildup in the far distance. only visible feature in the far field is a traffic light and road markings, which are not indicative a work zone., the most accurate description is that there is no obvious far-field cue.",0
+3,rayleigh,0.0,0,plugin_capacity,v6_norestore,142,79,75,0.5563380281690141,1264.0,1089.3279314041138,1268.7362296036492,1.0893279314041138,1.3595937466211934,0,0,0.05063291139240506,1,True,leading_letter,0.002588898001704365,0.31441494496539235,0.042649269104003906,71.5781342960964,"What farA. A.
+B. A of.
+C. A.
+D. No.
+
+The a with and. is a in the, and a and. The is, and are and in the is no or in the. The only in the is a and, which are not of a. Therefore, the most accurate description is there is no obvious far cue.",0
+9,rayleigh,0.0,0,proposed,v6_norestore,119,6,6,0.05042016806722689,288.0,318.6121881008148,462.0788469544603,0.3186121881008148,0.42224237370707196,0,1,0.0,0,False,leading_letter,0.0018420189735479653,0.27119022503029555,0.02421283721923828,60.45779281712894,Question:.. no or,0
+9,rayleigh,0.0,0,adaptive_sc,v6_norestore,119,6,6,0.05042016806722689,288.0,318.6121881008148,462.0788469544603,0.3186121881008148,0.42224237370707196,0,1,0.0,0,False,leading_letter,0.0002568390336818993,0.28306212002644315,0.02421283721923828,62.317541034421595,Question:.. no or,0
+9,rayleigh,0.0,0,full,v6_norestore,119,119,110,1.0,5712.0,318.6121881008148,462.0788469544603,0.3186121881008148,0.42224237370707196,0,1,0.07563025210084033,1,True,leading_letter,8.656596764922142e-05,0.28117668902268633,0.05241107940673828,61.16014751276961,"Question: Which road feature is most importantCandidate choices:
+A. Junction structureB. Lane-following road.
+C. Barrier or cone guidance.
+D. Ramp-like road split.
+Description: The road ahead is a multi-lane highway with a clear lane separation and a white dashed line indicating a lane boundary. There is no visible junction structure, barrier, or ramp-like road split. The road surface is wet, and the is in the middle of road with a white arrow painted on road surface a lane direction. There no cones or barriers visible.",0
+9,rayleigh,0.0,0,plugin_capacity,v6_norestore,119,9,9,0.07563025210084033,432.0,318.6121881008148,462.0788469544603,0.3186121881008148,0.42224237370707196,0,1,0.0,0,False,leading_letter,0.001990822027437389,0.2674654559814371,0.02421283721923828,58.18844727604155,Question::... no or.,0
+11,rayleigh,0.0,0,proposed,v6_norestore,135,55,0,0.4074074074074074,880.0,881.1410665512085,1059.1430010784459,0.8811410665512085,0.9801060116841918,0,1,1.0,1,False,leading_letter,0.0019210809841752052,0.2722775249858387,0.022865772247314453,58.342266666340585,,0
+11,rayleigh,0.0,0,adaptive_sc,v6_norestore,135,55,0,0.4074074074074074,880.0,881.1410665512085,1059.1430010784459,0.8811410665512085,0.9801060116841918,0,1,1.0,1,False,leading_letter,0.0012330220197327435,0.2783699329593219,0.022865772247314453,59.1550026035207,,0
+11,rayleigh,0.0,0,full,v6_norestore,135,135,125,1.0,6480.0,881.1410665512085,1059.1430010784459,0.8811410665512085,0.9801060116841918,0,1,0.07407407407407407,1,True,leading_letter,0.00016548397252336144,0.08670131396502256,0.05654621124267578,18.264498799871657,"How should the ahead be?
+A. Intersection-type scene.
+B. road scene.
+C. Restricted or guided scene.
+D. Branching scene.
+
+The scene is an intersection with multiple lanes, crosswalks, traffic signals, and vehicles approaching from different directions. A pedestrian is crossing the road, and there are traffic signs and barriers. The road indicate a controlled intersection with a crosswalk and directional arrows. The presence of traffic lights,walks, and a pedestrian suggests a regulated intersection. The road is not a branching road, and there are no signs of restricted or guided. Therefore the scene is an intersection-type.",0
+11,rayleigh,0.0,0,plugin_capacity,v6_norestore,135,64,1,0.4740740740740741,1056.0,881.1410665512085,1059.1430010784459,0.8811410665512085,0.9801060116841918,0,1,0.984375,1,False,leading_letter,0.0065573580213822424,0.2770456569851376,0.023088932037353516,59.63130720948102,.,0
+16,rayleigh,0.0,0,proposed,v6_norestore,320,4,0,0.0125,176.0,189.51180577278137,309.8031754722598,0.18951180577278137,0.2986172992165844,0,1,1.0,1,True,leading_letter,0.0042208629893139005,0.07170053001027554,0.022865772247314453,15.132396858668654,,0
+16,rayleigh,0.0,0,adaptive_sc,v6_norestore,320,3,0,0.009375,144.0,189.51180577278137,309.8031754722598,0.18951180577278137,0.2986172992165844,0,1,1.0,1,True,leading_letter,0.00044530804734677076,0.06851029500830919,0.022865772247314453,14.239864817477065,,0
+16,rayleigh,0.0,0,full,v6_norestore,320,320,0,1.0,15360.0,189.51180577278137,309.8031754722598,0.18951180577278137,0.2986172992165844,0,1,1.0,1,True,leading_letter,5.742697976529598e-05,0.07267745904391631,0.022865772247314453,15.284069636935602,,0
+16,rayleigh,0.0,0,plugin_capacity,v6_norestore,320,6,0,0.01875,288.0,189.51180577278137,309.8031754722598,0.18951180577278137,0.2986172992165844,0,1,1.0,1,True,leading_letter,0.0035548110026866198,0.06959380401531234,0.022865772247314453,14.762585676748131,,0
+17,rayleigh,0.0,0,proposed,v6_norestore,320,63,57,0.196875,1008.0,1012.5225782394409,1191.8030846991167,1.012522578239441,1.090376076215493,0,1,0.09523809523809523,1,False,leading_letter,0.002797644992824644,0.07225215499056503,0.03380584716796875,15.309147860175871,"The,.,.,. obstructions,,., and. of ob, and,., and.,. in, and., and,. in, and of a. is of, and, The is in the of the, and there no a or",0
+17,rayleigh,0.0,0,adaptive_sc,v6_norestore,320,63,58,0.196875,1008.0,1012.5225782394409,1191.8030846991167,1.012522578239441,1.090376076215493,0,1,0.07936507936507936,1,False,leading_letter,0.0006338389939628541,0.08161287801340222,0.03407144546508789,17.397009141726887,"The,., and. obstructions,,., and. is of ob and,., and.,,. in, and., and, in, and of a. is of, and. The is in the of the, and there no of a or.",0
+17,rayleigh,0.0,0,full,v6_norestore,320,320,303,1.0,15360.0,1012.5225782394409,1191.8030846991167,1.012522578239441,1.090376076215493,0,1,0.053125,1,True,exact,5.35570434294641e-05,0.24605786899337545,0.1213836669921875,53.67014238483505,"The ego vehicle is in a crosswalk with a pedestrian crossing signal that is red, indicating that pedestrians may not cross. The vehicle is in the middle of the road, there are no visible signs of a turn signal or lane change indicator. The vehicle is positioned in the center of the crosswalk, and there are no other vehicles or pedestrians in immediate vicinity. The road is of any obstructions, and the lights ahead are green, indicating vehicles may proceed. The vehicle in the middle of the crosswalk, and there are no visible signs of a turn signal or change indicator. The road is clear of any obstructions, and the traffic lights ahead are green, indicating that vehicles may proceed. The vehicle is in middle of the crosswalk, and there are no visible signs of a turn signal or lane change indicator. The road is clear any obstructions, and traffic lights ahead are green, indicating that vehicles may proceed. The vehicle is in the middle of the crosswalk, and there are no visible signs of a turn signal lane change indicator. road is clear of any obstructions, and the traffic lights ahead green, indicating that vehicles may proceed. The vehicle is in the middle of the crosswalk, and there are no visible signs of a turn signal or lane change indicator. The road is clear of any obstructions, and traffic lights ahead are green, indicating that vehicles may proceed. The vehicle is in the middle of the crosswalk, and there are no visible signs of turn or lane change. The",0
+17,rayleigh,0.0,0,plugin_capacity,v6_norestore,320,74,69,0.23125,1184.0,1012.5225782394409,1191.8030846991167,1.012522578239441,1.090376076215493,0,1,0.06756756756756757,1,False,leading_letter,0.0036661330377683043,0.07252602704102173,0.03705024719238281,16.551527261166775,"The in,., and., and. is of obstructions, and. in, and. is of ob, and,., and, and,. is in, and a., and,. is in, of a. of, and the,. The is in the of the, and there no of a.",0
+21,rayleigh,0.0,0,proposed,v6_norestore,173,19,17,0.10982658959537572,592.0,599.8785495758057,768.6816191964111,0.5998785495758057,0.8615548477804235,0,0,0.10526315789473684,1,False,leading_letter,0.002332785981707275,0.2667805950040929,0.027373313903808594,61.85975046657404,"?
+A..... is that the is constrained by the of cross.",0
+21,rayleigh,0.0,0,adaptive_sc,v6_norestore,173,18,18,0.10404624277456648,576.0,599.8785495758057,768.6816191964111,0.5998785495758057,0.8615548477804235,0,0,0.0,0,False,leading_letter,0.0003641869989223778,0.2744810709846206,0.027599334716796875,64.08995766955398,"?
+A.B.... is that the is constrained by the of cross.",0
+21,rayleigh,0.0,0,full,v6_norestore,173,173,165,1.0,8304.0,599.8785495758057,768.6816191964111,0.5998785495758057,0.8615548477804235,0,0,0.046242774566473986,1,False,leading_letter,5.7788973208516836e-05,0.10030993697000667,0.07115793228149414,23.738848133636928,"With both views, what best describes ego path?
+A. The path looks clear.
+B. Cross traffic affects the.
+. The path is constrained.
+D. The path is still unclear.
+
+The ego vehicle is in a multi-lane road with a blue car on the left a black car on the right, both in adjacent lanes. The road has a median with a metal barrier and trees on the right. The traffic is red and the road is wide with visible lane markings. The road appears to be open with no visible obstructions, but the presence of cross traffic and the red light suggest that the path is not clear. The road is not constrained by physical barriers, and the path is not still unclear due to presence of traffic., the best description is that the path is constrained by the presence of cross traffic.",0
+21,rayleigh,0.0,0,plugin_capacity,v6_norestore,173,24,23,0.13872832369942195,768.0,599.8785495758057,768.6816191964111,0.5998785495758057,0.8615548477804235,0,0,0.041666666666666664,1,False,leading_letter,0.0024121960159391165,0.2745587000390515,0.028283119201660156,64.48697467167221,"?
+A..
+B...
+
+..., is that the is constrained by the of cross traffic.",0
+26,rayleigh,0.0,0,proposed,v6_norestore,320,6,0,0.01875,288.0,303.8477599620819,445.19953502389336,0.3038477599620819,0.3315042598055893,0,1,1.0,1,False,leading_letter,0.0026032860041595995,0.07444702996872365,0.02511310577392578,17.113138778910507,,0
+26,rayleigh,0.0,0,adaptive_sc,v6_norestore,320,6,0,0.01875,288.0,303.8477599620819,445.19953502389336,0.3038477599620819,0.3315042598055893,0,1,1.0,1,False,leading_letter,0.00048284302465617657,0.07112798496382311,0.02511310577392578,16.2939987955126,,0
+26,rayleigh,0.0,0,full,v6_norestore,320,320,0,1.0,15360.0,303.8477599620819,445.19953502389336,0.3038477599620819,0.3315042598055893,0,1,1.0,1,False,leading_letter,5.5708049330860376e-05,0.06945541698951274,0.02511310577392578,15.964327595039503,,0
+26,rayleigh,0.0,0,plugin_capacity,v6_norestore,320,9,0,0.028125,432.0,303.8477599620819,445.19953502389336,0.3038477599620819,0.3315042598055893,0,1,1.0,1,False,leading_letter,0.0062312340014614165,0.07290232600644231,0.02511310577392578,16.649797724981326,,0
+27,rayleigh,0.0,0,proposed,v6_norestore,147,2,0,0.013605442176870748,96.0,116.68900400400162,216.78281867232815,0.11668900400400162,0.22123541103817246,0,0,1.0,1,True,leading_letter,0.0016013390268199146,0.07140600500861183,0.022865772247314453,15.78251225702843,,0
+27,rayleigh,0.0,0,adaptive_sc,v6_norestore,147,2,0,0.013605442176870748,96.0,116.68900400400162,216.78281867232815,0.11668900400400162,0.22123541103817246,0,0,1.0,1,True,leading_letter,0.00025438901502639055,0.07115832099225372,0.022865772247314453,15.552362636066974,,0
+27,rayleigh,0.0,0,full,v6_norestore,147,147,0,1.0,7056.0,116.68900400400162,216.78281867232815,0.11668900400400162,0.22123541103817246,0,0,1.0,1,True,leading_letter,0.00015207304386422038,0.07905807404313236,0.022865772247314453,16.875341194876817,,0
+27,rayleigh,0.0,0,plugin_capacity,v6_norestore,147,4,0,0.027210884353741496,192.0,116.68900400400162,216.78281867232815,0.11668900400400162,0.22123541103817246,0,0,1.0,1,True,leading_letter,0.00676625402411446,0.0739283449947834,0.022865772247314453,15.556741637252271,,0
+28,rayleigh,0.0,0,proposed,v6_norestore,214,18,16,0.08411214953271028,576.0,579.0529251098633,746.6883194480819,0.5790529251098633,0.7272867962396824,0,1,0.1111111111111111,1,True,leading_letter,0.0025938060134649277,0.07238544902065769,0.027145862579345703,15.073183976816654,"Question:....., the Therefore, the path is clear.",0
+28,rayleigh,0.0,0,adaptive_sc,v6_norestore,214,18,18,0.08411214953271028,576.0,579.0529251098633,746.6883194480819,0.5790529251098633,0.7272867962396824,0,1,0.0,0,True,leading_letter,0.00040556403109803796,0.07197882694890723,0.027373313903808594,15.206606875360885,"Question:......, the. Therefore, the path is clear.",0
+28,rayleigh,0.0,0,full,v6_norestore,214,214,200,1.0,10272.0,579.0529251098633,746.6883194480819,0.5790529251098633,0.7272867962396824,0,1,0.06542056074766354,1,True,exact,5.733600119128823e-05,0.3064612860325724,0.08455753326416016,65.82941654622671,"Question: With both, what best describes the ego path?
+
+ choices:
+. The path looks clear.
+B. Cross traffic affects the path.
+C. The path is constrained.
+D. path is still unclear.
+
+Visual and contextual evidence that discriminates choices:
+The ego path is a multi-lane with a crosswalk in the foreground and a traffic light with a red signal, indicating that vehicles are not allowed to. The road is marked with white lines and a left-turn arrow, suggesting a designated path. There are no visible vehicles obstacles on the path, and road appears to be clear of traffic. The of a traffic light and the red signal indicates that the path is not currently clear. The road is also surrounded by trees and buildings which may suggest that the path is constrained by the surrounding environment However, the is not visibly blocked or obstructed by any physical barriers. The path is not still unclear, as the road is clearly marked and the light is red. Therefore, the path is clear.",0
+28,rayleigh,0.0,0,plugin_capacity,v6_norestore,214,23,23,0.10747663551401869,736.0,579.0529251098633,746.6883194480819,0.5790529251098633,0.7272867962396824,0,1,0.0,0,True,leading_letter,0.0028205279959365726,0.07498260901775211,0.028283119201660156,16.65138798457221,"Question:......,., as the and the. Therefore, the path is clear.",0
+31,rayleigh,0.0,0,proposed,v6_norestore,115,0,0,0.0,0.0,4.598873667418957,28.833184527196074,0.004598873667418957,0.059801834444571926,0,0,0.0,0,True,leading_letter,0.00048197602154687047,0.07065556896850467,0.023537635803222656,15.668932252300436,,0
+31,rayleigh,0.0,0,adaptive_sc,v6_norestore,115,0,0,0.0,0.0,4.598873667418957,28.833184527196074,0.004598873667418957,0.059801834444571926,0,0,0.0,0,True,leading_letter,0.00017068599117919803,0.07136223703855649,0.023537635803222656,15.759993238780007,,0
+31,rayleigh,0.0,0,full,v6_norestore,115,115,0,1.0,5520.0,4.598873667418957,28.833184527196074,0.004598873667418957,0.059801834444571926,0,0,1.0,1,True,leading_letter,5.703896749764681e-05,0.07052088400814682,0.023537635803222656,15.803377501805661,,0
+31,rayleigh,0.0,0,plugin_capacity,v6_norestore,115,1,0,0.008695652173913044,16.0,4.598873667418957,28.833184527196074,0.004598873667418957,0.059801834444571926,0,0,1.0,1,True,leading_letter,0.0017720929463393986,0.07014508300926536,0.023537635803222656,16.01061519686482,,0
+32,rayleigh,0.0,0,proposed,v6_norestore,103,16,15,0.1553398058252427,512.0,526.0939598083496,690.3564370020897,0.5260939598083496,0.7031397518142042,0,0,0.0625,1,False,leading_letter,0.0018667459953576326,0.33542115398449823,0.027826786041259766,74.92637737705721,? choices: A.. An D... and a with standard,0
+32,rayleigh,0.0,0,adaptive_sc,v6_norestore,103,16,14,0.1553398058252427,512.0,526.0939598083496,690.3564370020897,0.5260939598083496,0.7031397518142042,0,0,0.125,1,False,leading_letter,0.00028115499299019575,0.33365597698139027,0.027826786041259766,75.07259482081281,? choices: A. An D.. and a with standard.,0
+32,rayleigh,0.0,0,full,v6_norestore,103,103,101,1.0,4944.0,526.0939598083496,690.3564370020897,0.5260939598083496,0.7031397518142042,0,0,0.019417475728155338,1,True,leading_letter,6.092299008741975e-05,0.07682141795521602,0.05241107940673828,17.635892919978943,"How should this RSU-view intersection be described? Candidate choices: A. A standard intersection B. An intersection with a curved approach. C. An intersection with strong turn guidance. D. An intersection with a complex layout. The intersection has multiple lanes with clear directional arrows, including straight and left-turn lanes. There are no visible curves in the approach. The layout is straightforward with no signs of complex or intricate configurations. The presence of bus and several cars indicates a typical urban setting with standard traffic flow.",0
+32,rayleigh,0.0,0,plugin_capacity,v6_norestore,103,21,18,0.20388349514563106,688.0,526.0939598083496,690.3564370020897,0.5260939598083496,0.7031397518142042,0,0,0.14285714285714285,1,False,leading_letter,0.007476816012058407,0.3427508950117044,0.027599334716796875,79.04007014417411,"How? choices A.... An D.,... and a.",0
+36,rayleigh,0.0,0,proposed,v6_norestore,168,92,86,0.5476190476190477,1472.0,1473.6098051071167,1648.9454838566246,1.4736098051071167,1.6403746958226546,0,1,0.06521739130434782,1,True,leading_letter,0.00352077599382028,0.0758669429924339,0.04554128646850586,17.08220088417642,"What the in theA. Light.
+B..
+C. with.
+D. A.
+
+The image a, and a, in. The in the, with in the and in. The to, with of The not, and no as or. A, as a, is the, but it is not the. The is not and are no of a out. Therefore, the best description of the traffic is light.",0
+36,rayleigh,0.0,0,adaptive_sc,v6_norestore,168,92,87,0.5476190476190477,1472.0,1473.6098051071167,1648.9454838566246,1.4736098051071167,1.6403746958226546,0,1,0.05434782608695652,1,True,leading_letter,0.0015451050130650401,0.08866705902619287,0.04554128646850586,19.72709062744252,"What the inA. Light.
+..
+C. with.
+D. A.
+
+The image a with, and a, in. The in the, with in the and in. The to, with of. The not, and no as or., as a, is in the, but it is not the. The is not, and are no of a out. Therefore, the best description of traffic is light traffic.",0
+36,rayleigh,0.0,0,full,v6_norestore,168,168,161,1.0,8064.0,1473.6098051071167,1648.9454838566246,1.4736098051071167,1.6403746958226546,0,1,0.041666666666666664,1,True,leading_letter,5.286803934723139e-05,0.0975599359953776,0.06946420669555664,21.867084054003936,"What best describes traffic in the RSU view?
+A. Light traffic.
+B. Many cars close together.
+C. Mixed traffic with vulnerable users.
+D. A large vehicle stands out.
+
+ image shows a road intersection with multiple vehicles, including cars and a van, in various lanes. The vehicles are mostly in the same direction, with some cars in the same lane and others in lanes The traffic appears to be moderate, with no signs of congestion. The vehicles are not closely packed, and there are no visible vulnerable users such as pedestrians or cyclists. A large vehicle, such as a van is visible in the image, but it not the only large vehicle. The traffic is not dense, and there are no signs of a large standing out. Therefore, the best description of the traffic is light traffic.",0
+36,rayleigh,0.0,0,plugin_capacity,v6_norestore,168,103,102,0.6130952380952381,1648.0,1473.6098051071167,1648.9454838566246,1.4736098051071167,1.6403746958226546,0,1,0.009708737864077669,1,True,leading_letter,0.0022123490343801677,0.0759153490071185,0.050289154052734375,17.365636085378355,"What best describes the in theU?
+A. Light traffic.
+B..
+C. with.
+D. A.
+
+The image a with, and a, in. The are in the, with in the and in. The to, with no of. The are not, and are no as or. A, as a, is in, but it is not the only. The traffic is not, and there are no of a out. Therefore, the best description of the traffic is light traffic.",0
+37,rayleigh,0.0,0,proposed,v6_norestore,114,114,109,1.0,1824.0,2213.6378288269043,2370.2788636723117,2.2136378288269043,2.43387498163357,0,0,0.043859649122807015,1,False,leading_letter,0.003021102980710566,0.24027932400349528,0.049986839294433594,53.86221466524351,"Which traffic pattern is most clear?
+A. Sparse movement.
+B. Dense vehicle.
+C. Mixed road users.
+D. One large vehicle.
+
+The image shows a busy urban intersection with multiple vehicles, including cars, buses, and motorcycles, all moving in various directions. The road surface is wet, and there are vehicles in close proximity, indicating a dense vehicle group. The presence of multiple road users, including cars, buses, and motorcycles, suggests a mixed road users pattern. are no large dominating the scene, and the movement is not.",0
+37,rayleigh,0.0,0,adaptive_sc,v6_norestore,114,114,105,1.0,1824.0,2213.6378288269043,2370.2788636723117,2.2136378288269043,2.43387498163357,0,0,0.07894736842105263,1,False,leading_letter,0.0005967770121060312,0.0763407779741101,0.04970407485961914,17.54807292901882,"Which traffic pattern is most clearA. Sparse movement.
+B. Dense vehicle group.
+C. road users.
+D One large vehicle.
+
+The image shows a busy urban intersection with multiple vehicles including cars, buses, motorcycles, all moving in various directions The road surface is wet, and there are numerous vehicles in close proximity, indicating a dense vehicle group. The presence of multiple road users, cars, buses, and motorcycles, suggests a mixed road users pattern. There are no large vehicles scene, and the movement is not sparse.",0
+37,rayleigh,0.0,0,full,v6_norestore,114,114,109,1.0,5472.0,2213.6378288269043,2370.2788636723117,2.2136378288269043,2.43387498163357,0,0,0.043859649122807015,1,False,leading_letter,5.46220107935369e-05,0.07579721900401637,0.049986839294433594,17.612241807773245,"Which traffic pattern is most clear?
+A. Sparse.
+B. Dense vehicle group.
+C. Mixed road users.
+D One large vehicle.
+
+The image shows a busy urban intersection with vehicles, including cars, buses, and motorcycles, all moving in various directions. The road surface is wet, and there are numerous vehicles in close proximity, indicating a dense vehicle group. The presence of multiple road users, including cars, buses, and motorcycles, suggests a mixed road users pattern. There are no large vehicles dominating the scene, and movement not sparse.",0
+37,rayleigh,0.0,0,plugin_capacity,v6_norestore,114,114,108,1.0,1824.0,2213.6378288269043,2370.2788636723117,2.2136378288269043,2.43387498163357,0,0,0.05263157894736842,1,True,leading_letter,0.001812861009966582,0.08051082497695461,0.04968738555908203,19.083078290162668,"Which traffic pattern is most clear?
+A. Sparse movement.
+B. Dense vehicle group.
+C. Mixed road users.
+D. One large vehicle.
+
+The image shows a busy urban intersection with multiple vehicles, cars, buses, and motorcycles, all in various directions. road surface is wet, and there are numerous vehicles in close proximity, indicating a vehicle group. The presence of multiple road users, including cars, buses, and motorcycles, suggests a mixed road users. There are no large vehicles dominating the scene, and the movement is sparse.",0
+44,rayleigh,0.0,0,proposed,v6_norestore,212,58,57,0.27358490566037735,928.0,931.5611720085144,1110.2294370428942,0.9315611720085144,1.2337030487972163,0,0,0.017241379310344827,1,False,leading_letter,0.0023455359623767436,0.29989618400577456,0.034877777099609375,69.61640067418047,"What?
+A..
+..
+..
+..
+
+The,,,,.,.,. and, and. in, in and. is a in the, the., and of. Therefore, the best description of the is that it mixed traffic with vulnerable users.",0
+44,rayleigh,0.0,0,adaptive_sc,v6_norestore,212,58,55,0.27358490566037735,928.0,931.5611720085144,1110.2294370428942,0.9315611720085144,1.2337030487972163,0,0,0.05172413793103448,1,False,leading_letter,0.0005099650006741285,0.3069108799681999,0.034877777099609375,70.4897563566963,"What?
+A..
+..
+..
+..
+
+The,,,.,.,. and, and. in, in. is a in the, the, and of. Therefore, the best description of the is that it is mixed traffic with vulnerable users.",0
+44,rayleigh,0.0,0,full,v6_norestore,212,212,204,1.0,10176.0,931.5611720085144,1110.2294370428942,0.9315611720085144,1.2337030487972163,0,0,0.03773584905660377,1,False,leading_letter,6.599701009690762e-05,0.3390867129783146,0.08484029769897461,78.81053383041989,"What best describes the traffic in the RSU view?
+A. Light traffic.
+B. Many cars close together.
+C. Mixed traffic with vulnerable users.
+D. A vehicle stands out.
+
+The image shows a road intersection with several vehicles, including a white sedan, a white min, a white car, and a large truck The vehicles are in motion, with some cars in crosswalk and others in the lanes. The large truck is positioned on the right side of road, and the other vehicles are in the middle of the intersection The road has multiple lanes and a crosswalk, and there are traffic lights and road signs visible. The traffic appears to be moving in different directions, with some vehicles in the cross and others in the lanes. The large truck is a prominent feature in the image, out from the other vehicles. The other vehicles are not closely packed together, and there are no signs of congestion or dangerous driving behavior. Therefore, the best description of the traffic is that it is mixed traffic with vulnerable users.",0
+44,rayleigh,0.0,0,plugin_capacity,v6_norestore,212,69,64,0.32547169811320753,1104.0,931.5611720085144,1110.2294370428942,0.9315611720085144,1.2337030487972163,0,0,0.07246376811594203,1,False,leading_letter,0.007468448020517826,0.3151161000132561,0.03705024719238281,74.40994027663022,"What the in the?
+...
+..
+D..
+
+The,,,,., in and. is, and. and, and and. in, in and in. is a the, the., and of or. Therefore the best description of the is it is mixed traffic with vulnerable users.",0
+48,rayleigh,0.0,0,proposed,v6_norestore,320,0,0,0.0,0.0,4.6578459441661835,29.068971223546807,0.0046578459441661835,0.06968842663386764,0,0,0.0,0,False,leading_letter,0.0005662349867634475,0.2683127920026891,0.023987293243408203,61.80585163781943,,0
+48,rayleigh,0.0,0,adaptive_sc,v6_norestore,320,0,0,0.0,0.0,4.6578459441661835,29.068971223546807,0.0046578459441661835,0.06968842663386764,0,0,0.0,0,False,leading_letter,0.0010703160078264773,0.2746810609824024,0.023987293243408203,61.86778877037141,,0
+48,rayleigh,0.0,0,full,v6_norestore,320,320,0,1.0,15360.0,4.6578459441661835,29.068971223546807,0.0046578459441661835,0.06968842663386764,0,0,1.0,1,False,leading_letter,5.954696098342538e-05,0.27023067395202816,0.023987293243408203,59.956079629736486,,0
+48,rayleigh,0.0,0,plugin_capacity,v6_norestore,320,1,0,0.003125,16.0,4.6578459441661835,29.068971223546807,0.0046578459441661835,0.06968842663386764,0,0,1.0,1,False,leading_letter,0.002292331017088145,0.26805976999457926,0.023987293243408203,60.90452004161838,,0
+49,rayleigh,0.0,0,proposed,v6_norestore,320,3,0,0.009375,144.0,163.48369419574738,277.3958152501943,0.16348369419574738,0.2159982689763187,0,1,1.0,1,False,leading_letter,0.002885658002924174,0.2685701220179908,0.023987293243408203,60.06973634115391,,0
+49,rayleigh,0.0,0,adaptive_sc,v6_norestore,320,3,0,0.009375,144.0,163.48369419574738,277.3958152501943,0.16348369419574738,0.2159982689763187,0,1,1.0,1,False,leading_letter,0.0004730609944090247,0.2765266650239937,0.023987293243408203,61.55068773436563,,0
+49,rayleigh,0.0,0,full,v6_norestore,320,320,0,1.0,15360.0,163.48369419574738,277.3958152501943,0.16348369419574738,0.2159982689763187,0,1,1.0,1,False,leading_letter,6.36280165053904e-05,0.27296543697593734,0.023987293243408203,60.35129328819487,,0
+49,rayleigh,0.0,0,plugin_capacity,v6_norestore,320,6,0,0.01875,272.0,163.48369419574738,277.3958152501943,0.16348369419574738,0.2159982689763187,0,1,1.0,1,False,leading_letter,0.009164677991066128,0.26915913104312494,0.023987293243408203,59.42360715604591,,0
+50,rayleigh,0.0,0,proposed,v6_norestore,133,72,69,0.5413533834586466,1152.0,1160.8492136001587,1340.036700265524,1.1608492136001587,1.4104709551184351,0,0,0.041666666666666664,1,False,leading_letter,0.0015520829474553466,0.30552851903485134,0.03953886032104492,68.37575491740456,"What is the?
+A. A.
+. A.
+C..
+D. No strong long.
+
+A..
+The is a, not far.
+
+B..
+The is a and in, not far.
+
+C..
+ is no.
+
+D. No strong long.
+The image shows a with and a, but no long cue is visible.",0
+50,rayleigh,0.0,0,adaptive_sc,v6_norestore,133,72,69,0.5413533834586466,1152.0,1160.8492136001587,1340.036700265524,1.1608492136001587,1.4104709551184351,0,0,0.041666666666666664,1,False,leading_letter,0.0004764720215462148,0.0749946620198898,0.03953886032104492,16.86292472848232,"What is the?
+A A.
+B. A.
+C..
+D. No strong long.
+
+A.The is a, not far.
+
+B..
+The is a and a in, not far.
+
+C..
+ is no.
+
+D No strong long.
+The image shows a with and a, but no strong long cue is visible.",0
+50,rayleigh,0.0,0,full,v6_norestore,133,133,126,1.0,6384.0,1160.8492136001587,1340.036700265524,1.1608492136001587,1.4104709551184351,0,0,0.05263157894736842,1,False,leading_letter,5.550798960030079e-05,0.3170839899685234,0.05769920349121094,73.12115350669133,"What is the clearest long cue?
+A. A far large vehicle.
+. A far vehicle group.
+C A work zone ahead.
+D. No strong long-range cue.
+
+A. A far vehicle.
+The large is a truck in the foreground, not far away.
+
+B. A far vehicle group.
+The vehicle group is a cluster of cars and a motorcycle in the middle of the road, not far away.
+
+C. A work zone aheadThere is no visible work zone ahead.
+
+D. No strong long-range cue.
+The image shows a clear road intersection with vehicles and a motorcycle, but no strong long-range cue visible.",0
+50,rayleigh,0.0,0,plugin_capacity,v6_norestore,133,83,79,0.6240601503759399,1328.0,1160.8492136001587,1340.036700265524,1.1608492136001587,1.4104709551184351,0,0,0.04819277108433735,1,False,leading_letter,0.007037978037260473,0.0866648830124177,0.04322242736816406,19.761326624491485,"What is the long?
+A. A far.
+B. A.
+C. A.
+D. No strong long.
+
+A. A.
+The is a in the, not far.
+
+B. A.
+The is of and a the of the, not far.
+
+C..
+ is.
+
+D. No strong long.
+The image shows a with and a, but strong long cue is visible.",0
+55,rayleigh,0.0,0,proposed,v6_norestore,141,59,58,0.41843971631205673,944.0,952.9777765274048,1131.860335266202,0.9529777765274048,1.1928144279179165,0,0,0.01694915254237288,1,True,leading_letter,0.0020762180211022496,0.17361770500428975,0.03568601608276367,40.299273597070716,"Question: the?
+
+:
+A..
+B. Regular.
+..
+D..
+
+ and that the:
+The a, with or and of. The is and a, and. The is and to a, with of a or. The of a and a, suggests a regular road.",0
+55,rayleigh,0.0,0,adaptive_sc,v6_norestore,141,59,58,0.41843971631205673,944.0,952.9777765274048,1131.860335266202,0.9529777765274048,1.1928144279179165,0,0,0.01694915254237288,1,True,leading_letter,0.0013734559761360288,0.18593137903371826,0.03568601608276367,42.45278211787372,"Question: the?
+
+:
+A..
+B. Regular.
+..
+D..
+
+ and that the:
+The a, with or, and. The is and a, and. The is and to a, with of a or. The of a and a, suggests a regular road.",0
+55,rayleigh,0.0,0,full,v6_norestore,141,141,132,1.0,6768.0,952.9777765274048,1131.860335266202,0.9529777765274048,1.1928144279179165,0,0,0.06382978723404255,1,True,leading_letter,0.00013453897554427385,0.1921500189928338,0.05833244323730469,42.02705215411261,"Question: How should the scene ahead be grouped?
+
+Candidate choices:
+A. Intersection-type scene.
+B. road sceneC. Restricted or guided scene.
+D. Branching road scene.
+
+Visual and contextual evidence that discriminates the choices:
+The scene shows a single, straight with no visible intersections junctions, and no signs of branching The road is with standard lane lines and a central divider, and there are no traffic signals or signs restricted or guided travel. The road is unobstruct and appears to be a continuous path, with no indication of a split or multiple routes. presence of a single lane and a clear, straight path suggests a regular road scene.",0
+55,rayleigh,0.0,0,plugin_capacity,v6_norestore,141,70,70,0.49645390070921985,1120.0,952.9777765274048,1131.860335266202,0.9529777765274048,1.1928144279179165,0,0,0.0,0,True,leading_letter,0.00861115101724863,0.1879043509834446,0.0392608642578125,40.203075414662884,"Question: the?
+
+:
+A..
+B. Regular.
+C. or.
+D..
+
+ and evidence that the:
+The a, with no or, and of. The is with and a, and no or or. The is and to a, with no of a or. The of a single and a clear, suggests a regular road.",0
+56,rayleigh,0.0,0,proposed,v6_norestore,59,2,0,0.03389830508474576,96.0,121.30743265151978,222.93202653808285,0.12130743265151978,0.23561794422183388,0,0,1.0,1,False,leading_letter,0.0016264040023088455,0.3314558100537397,0.0248870849609375,71.64914518026664,,0
+56,rayleigh,0.0,0,adaptive_sc,v6_norestore,59,2,0,0.03389830508474576,96.0,121.30743265151978,222.93202653808285,0.12130743265151978,0.23561794422183388,0,0,1.0,1,False,leading_letter,0.00015250395517796278,0.33319606096483767,0.0248870849609375,72.8083372617315,,0
+56,rayleigh,0.0,0,full,v6_norestore,59,59,0,1.0,2832.0,121.30743265151978,222.93202653808285,0.12130743265151978,0.23561794422183388,0,0,1.0,1,False,leading_letter,5.810399306938052e-05,0.34830870502628386,0.0248870849609375,78.7978783380962,,0
+56,rayleigh,0.0,0,plugin_capacity,v6_norestore,59,4,0,0.06779661016949153,192.0,121.30743265151978,222.93202653808285,0.12130743265151978,0.23561794422183388,0,0,1.0,1,False,leading_letter,0.006781674979720265,0.3376145779620856,0.0248870849609375,77.46228876762092,,0
+57,rayleigh,0.0,0,proposed,v6_norestore,98,15,15,0.15306122448979592,480.0,489.97727036476135,651.5696338965365,0.48997727036476135,0.6122592364232082,0,1,0.0,0,False,leading_letter,0.0025733099901117384,0.27669531403807923,0.026240825653076172,61.08879143332713,"What?
+A.. is, as the is and the is not.",0
+57,rayleigh,0.0,0,adaptive_sc,v6_norestore,98,15,14,0.15306122448979592,480.0,489.97727036476135,651.5696338965365,0.48997727036476135,0.6122592364232082,0,1,0.06666666666666667,1,False,leading_letter,0.0010582899558357894,0.2792931749718264,0.026015758514404297,60.79793479374202,"What?
+A.. is, as the is and is not.",0
+57,rayleigh,0.0,0,full,v6_norestore,98,98,90,1.0,4704.0,489.97727036476135,651.5696338965365,0.48997727036476135,0.6122592364232082,0,1,0.08163265306122448,1,False,leading_letter,5.665200296789408e-05,0.236854677030351,0.045832157135009766,52.43133558082366,"What is the main scene result?
+A Open path ahead.
+B. Crossing activity matters.
+C. The lane area is limited.
+D. Joint evidence remains weak.
+
+ scene shows a multi-lane road with a clear view of the road ahead, indicating an. There visible crossing activity, and the lane area appears to be well-defined and not. The joint evidence is not weak, as the road is clearly visible and the scene is not obstructed.",0
+57,rayleigh,0.0,0,plugin_capacity,v6_norestore,98,20,18,0.20408163265306123,640.0,489.97727036476135,651.5696338965365,0.48997727036476135,0.6122592364232082,0,1,0.1,1,False,leading_letter,0.0018765139975585043,0.27460157696623355,0.026240825653076172,61.02058942555159,"What?
+A..
+..
+
+.,., as the is and the is.",0
+59,rayleigh,0.0,0,proposed,v6_norestore,150,20,18,0.13333333333333333,640.0,646.3509202003479,817.4694553526231,0.6463509202003479,0.7900575026716494,0,1,0.1,1,True,leading_letter,0.0016862810007296503,0.07698521699057892,0.024662494659423828,16.945216111796327,"A..;..... D., the; in the and.",0
+59,rayleigh,0.0,0,adaptive_sc,v6_norestore,150,20,18,0.13333333333333333,640.0,646.3509202003479,817.4694553526231,0.6463509202003479,0.7900575026716494,0,1,0.1,1,True,leading_letter,0.0003398529952391982,0.06982853502267972,0.024662494659423828,15.55570274700236,"A.;..... D.., the; in the and.",0
+59,rayleigh,0.0,0,full,v6_norestore,150,150,142,1.0,7200.0,646.3509202003479,817.4694553526231,0.6463509202003479,0.7900575026716494,0,1,0.05333333333333334,1,True,leading_letter,5.683099152520299e-05,0.0789077429799363,0.06024599075317383,17.619309929989978,"A. Sparse movement. The scene shows a wide road with multiple vehicles, but the traffic is not; there are several cars in the foreground and background, and the road is not congested. B. Dense vehicle group. The scene shows a large number of vehicles, but they are not packed together; there are several cars in the foreground and background, and the road is not congest. C. Mixed road users. The scene shows a mix vehicles, cars, trucks, and pedestrians, but the vehicles are mixed in a way that suggests a high degree of interaction. D. large vehicle. The shows a large vehicle, but it is the only vehicle; there are several cars in the foreground and background.",0
+59,rayleigh,0.0,0,plugin_capacity,v6_norestore,150,26,23,0.17333333333333334,816.0,646.3509202003479,817.4694553526231,0.6463509202003479,0.7900575026716494,0,1,0.11538461538461539,1,True,leading_letter,0.004394925956148654,0.06930994498543441,0.025789260864257812,15.716723124897106,"A..;. B..;... D., not the only; in foreground and.",0
+60,rayleigh,0.0,0,proposed,v6_norestore,148,6,0,0.04054054054054054,272.0,286.0252559185028,424.67037076387453,0.2860252559185028,0.28854952317436294,0,1,1.0,1,True,exact,0.0024563189945183694,0.20651312702102587,0.02196979522705078,45.92129149003042,,0
+60,rayleigh,0.0,0,adaptive_sc,v6_norestore,148,5,0,0.033783783783783786,240.0,286.0252559185028,424.67037076387453,0.2860252559185028,0.28854952317436294,0,1,1.0,1,True,exact,0.0003005460021086037,0.20311132998904213,0.02196979522705078,44.644885888241404,,0
+60,rayleigh,0.0,0,full,v6_norestore,148,148,0,1.0,7104.0,286.0252559185028,424.67037076387453,0.2860252559185028,0.28854952317436294,0,1,1.0,1,True,exact,6.763602141290903e-05,0.20156865601893514,0.02196979522705078,45.31464955961681,,0
+60,rayleigh,0.0,0,plugin_capacity,v6_norestore,148,9,0,0.060810810810810814,416.0,286.0252559185028,424.67037076387453,0.2860252559185028,0.28854952317436294,0,1,1.0,1,True,exact,0.005769609997514635,0.21636355301598087,0.02196979522705078,48.196063252074815,,0
+61,rayleigh,0.0,0,proposed,v6_norestore,119,1,0,0.008403361344537815,16.0,17.13106408715248,62.407615729732335,0.01713106408715248,0.054982414840222114,0,1,1.0,1,False,leading_letter,0.001510673959273845,0.31396815401967615,0.023763179779052734,67.40739282725437,,0
+61,rayleigh,0.0,0,adaptive_sc,v6_norestore,119,1,0,0.008403361344537815,16.0,17.13106408715248,62.407615729732335,0.01713106408715248,0.054982414840222114,0,1,1.0,1,False,leading_letter,0.00027789402520284057,0.30190941295586526,0.023763179779052734,64.4531310248829,,0
+61,rayleigh,0.0,0,full,v6_norestore,119,119,0,1.0,5712.0,17.13106408715248,62.407615729732335,0.01713106408715248,0.054982414840222114,0,1,1.0,1,False,leading_letter,7.49960308894515e-05,0.30174608499510214,0.023763179779052734,65.07154322919376,,0
+61,rayleigh,0.0,0,plugin_capacity,v6_norestore,119,1,0,0.008403361344537815,48.0,17.13106408715248,62.407615729732335,0.01713106408715248,0.054982414840222114,0,1,1.0,1,False,leading_letter,0.006488882005214691,0.3119763200520538,0.023763179779052734,68.39612852661202,,0
+65,rayleigh,0.0,0,proposed,v6_norestore,91,1,0,0.01098901098901099,48.0,79.28619533777237,165.0769289999552,0.07928619533777237,0.261557845856706,0,0,1.0,1,False,leading_letter,0.0017555980011820793,0.3694253489957191,0.023987293243408203,80.76561692418909,,0
+65,rayleigh,0.0,0,adaptive_sc,v6_norestore,91,1,0,0.01098901098901099,48.0,79.28619533777237,165.0769289999552,0.07928619533777237,0.261557845856706,0,0,1.0,1,False,leading_letter,0.0005976599641144276,0.38620393199380487,0.023987293243408203,84.24459470546863,,0
+65,rayleigh,0.0,0,full,v6_norestore,91,91,0,1.0,4368.0,79.28619533777237,165.0769289999552,0.07928619533777237,0.261557845856706,0,0,1.0,1,False,leading_letter,0.00012072100071236491,0.373540127009619,0.023987293243408203,81.65213636303262,,0
+65,rayleigh,0.0,0,plugin_capacity,v6_norestore,91,3,0,0.03296703296703297,144.0,79.28619533777237,165.0769289999552,0.07928619533777237,0.261557845856706,0,0,1.0,1,False,leading_letter,0.005439891014248133,0.381752063985914,0.023987293243408203,84.63634134599705,,0
+67,rayleigh,0.0,0,proposed,v6_norestore,94,94,90,1.0,1504.0,1974.1308689117432,2137.60830428356,1.9741308689117432,2.245839473415097,0,0,0.0425531914893617,1,False,leading_letter,0.0013151149614714086,0.2724581710062921,0.046126365661621094,59.75961293766508,"Which distant feature stands out mostA. A distant truck or bus.
+B. A distant traffic cluster.
+C. A distant work zone.
+D. Nothing distant stands out.
+
+ distant feature that stands out most is a distant work zone. is indicated by the presence of a large red and white striped barrier on the right side of the road, which is a common sign of a construction or work zone. The other options are not visible in the distance.",0
+67,rayleigh,0.0,0,adaptive_sc,v6_norestore,94,94,90,1.0,1504.0,1974.1308689117432,2137.60830428356,1.9741308689117432,2.245839473415097,0,0,0.0425531914893617,1,False,leading_letter,0.0005044889985583723,0.27271324303001165,0.046126365661621094,60.595519035053435," distant feature stands out most?
+A. A distant truck or bus.
+B. A distant traffic cluster.
+C. A distant work zone.
+D. Nothing distant stands out.
+
+The distant feature that out most is a distant work zone. This is indicated by the presence of a large red and white striped barrier on the right side of the road which is a common sign a construction or work zone. The other options are not clearly visible in the distance.",0
+67,rayleigh,0.0,0,full,v6_norestore,94,94,88,1.0,4512.0,1974.1308689117432,2137.60830428356,1.9741308689117432,2.245839473415097,0,0,0.06382978723404255,1,False,leading_letter,6.650103023275733e-05,0.27906151697970927,0.045832157135009766,63.910668618693016,"Which distant feature stands out most?
+A. A distant truck or bus.
+B. A distant traffic cluster.
+C. A distant work zoneD. Nothing distant stands out.
+
+The distant feature that stands is a distant work zone. is indicated by the of a large red and white striped barrier on the right side of the road, which is a common sign of a construction or work zone. The other options are not clearly visible in the distance",0
+67,rayleigh,0.0,0,plugin_capacity,v6_norestore,94,94,89,1.0,1504.0,1974.1308689117432,2137.60830428356,1.9741308689117432,2.245839473415097,0,0,0.05319148936170213,1,False,leading_letter,0.0017088360036723316,0.2708211069693789,0.045832157135009766,64.53531568526815,"Which distant feature stands out most?
+A. A distant truck or bus.
+B. A traffic cluster.
+C. A distant work zone.
+D. Nothing stands out.
+
+The distant feature that stands out most is a distant work zone. is indicated by the presence of a large red and white striped barrier on the right side of the road, which is a common sign of a construction or work zone The other options are clearly visible in the distance.",0
+70,rayleigh,0.0,0,proposed,v6_norestore,148,139,122,0.9391891891891891,2224.0,2226.6247272491455,2382.884672559152,2.2266247272491455,2.1744242296350196,1,1,0.1223021582733813,1,True,leading_letter,0.0015475010150112212,0.3092010010150261,0.05714559555053711,72.11649547173963,"What useful far-field cue is visibleA. A large far agent.
+B. far of traffic.
+C. A far zone.
+D. far cue.
+
+The scene shows a wide road intersection with multiple and traffic signs. There a black car and a white in the foreground, and black car and a white car on the right side of the. The marked with white lines and, and there and road signs. There is no agent or zone in the far field. The traffic appears to be moving in a normal flow, with no significant or. Therefore, the most accurate is D. No obvious far-field.",0
+70,rayleigh,0.0,0,adaptive_sc,v6_norestore,148,139,129,0.9391891891891891,2224.0,2226.6247272491455,2382.884672559152,2.2266247272491455,2.1744242296350196,1,1,0.07194244604316546,1,True,leading_letter,0.0020282129989936948,0.3134324249695055,0.05896806716918945,71.47826451429573,"What useful far-field cue is visible?
+A. A large agent.
+B. A far of traffic.
+C. A far zone.
+D. No obvious far cue.
+
+The scene shows wide road intersection with and traffic. There is a black car and a white in the foreground, and a black car and a white car on the right side of the. The road is marked with white and, and there are traffic and road signs. There is no visible agent or work zone in the far field. The traffic appears to be moving in a normal flow, with significant buildup or. Therefore, the most accurate answer is. No obvious-field cue.",0
+70,rayleigh,0.0,0,full,v6_norestore,148,148,141,1.0,7104.0,2226.6247272491455,2382.884672559152,2.2266247272491455,2.1744242296350196,1,1,0.0472972972972973,1,True,leading_letter,8.520099800080061e-05,0.08125348901376128,0.06283140182495117,18.39335230804514,"What useful far-field cue is visible?
+A. large far-field agent.
+B. A far buildup of traffic.
+C. A far work zone.
+D No obvious far-field cue.
+
+The scene shows a wide road intersection with multiple lanes and traffic signs. There is a black car and a white truck in the foreground, and a black car and a white car on the right side of the road The is marked with white lines and, and there are traffic lights and road signs. There is no visible large agent or work zone in the far field. The traffic appears to be moving in a normal flow, with no significant buildup or congestion. Therefore, most accurate answer is D. No far-field cue.",0
+70,rayleigh,0.0,0,plugin_capacity,v6_norestore,148,148,140,1.0,2368.0,2226.6247272491455,2382.884672559152,2.2266247272491455,2.1744242296350196,1,1,0.05405405405405406,1,True,leading_letter,0.007150924997404218,0.32389426400186494,0.06250476837158203,72.68025337069848,"What useful far-field cue is visible?
+A. A large far-field agent.
+B. A far buildup of traffic.
+. A far work zone.
+D. No obvious far-field.
+
+The scene shows a wide road intersection with multiple lanes and traffic signs. There is a black car and a white truck in the foreground, and a black car a white car on the side of the road The road is with white lines and arrows, and there are traffic lights and road signs. There is no visible large agent or work zone in the far. traffic appears to be moving in a normal flow, with no significant buildup or congestion. Therefore, the most accurate answer is D. No obvious far-field cue.",0
+71,rayleigh,0.0,0,proposed,v6_norestore,59,5,5,0.0847457627118644,240.0,255.83279132843018,389.4670019204166,0.2558327913284302,0.3349428194412439,0,1,0.0,0,True,leading_letter,0.0016574280452914536,0.07096385804470628,0.023987293243408203,15.88419516543683,"The., of a",0
+71,rayleigh,0.0,0,adaptive_sc,v6_norestore,59,5,5,0.0847457627118644,240.0,255.83279132843018,389.4670019204166,0.2558327913284302,0.3349428194412439,0,1,0.0,0,True,leading_letter,0.0001708919880911708,0.06910109304590151,0.023987293243408203,15.555001550097659,"The., of a",0
+71,rayleigh,0.0,0,full,v6_norestore,59,59,57,1.0,2832.0,255.83279132843018,389.4670019204166,0.2558327913284302,0.3349428194412439,0,1,0.03389830508474576,1,True,leading_letter,5.4396979976445436e-05,0.07667739997850731,0.036229610443115234,17.408453504120406,"The ego vehicle is likely to move forward on the road There are no visible signs of a left turn or right turn, and the vehicle is not in a lane position. The road is clear and the vehicle is in the center of the road, with no indication of a lane change.",0
+71,rayleigh,0.0,0,plugin_capacity,v6_norestore,59,8,8,0.13559322033898305,384.0,255.83279132843018,389.4670019204166,0.2558327913284302,0.3349428194412439,0,1,0.0,0,True,leading_letter,0.0030834840144962072,0.0697826580144465,0.024436473846435547,15.858109033782966,"The.., no of a.",0
+77,rayleigh,0.0,0,proposed,v6_norestore,28,3,0,0.10714285714285714,128.0,129.74806129932404,234.06443646632368,0.12974806129932404,0.21853524525515514,0,1,1.0,1,False,leading_letter,0.0013828410301357508,0.33959176094504073,0.02421283721923828,76.46757477079954,,0
+77,rayleigh,0.0,0,adaptive_sc,v6_norestore,28,2,0,0.07142857142857142,96.0,129.74806129932404,234.06443646632368,0.12974806129932404,0.21853524525515514,0,1,1.0,1,False,leading_letter,0.00012207904364913702,0.3452803519903682,0.02421283721923828,77.6794471890331,,0
+77,rayleigh,0.0,0,full,v6_norestore,28,28,0,1.0,1344.0,129.74806129932404,234.06443646632368,0.12974806129932404,0.21853524525515514,0,1,1.0,1,False,leading_letter,0.00012318399967625737,0.34914749005110934,0.02421283721923828,79.21981975514646,,0
+77,rayleigh,0.0,0,plugin_capacity,v6_norestore,28,5,0,0.17857142857142858,224.0,129.74806129932404,234.06443646632368,0.12974806129932404,0.21853524525515514,0,1,1.0,1,False,leading_letter,0.0018102859612554312,0.3342365169664845,0.02421283721923828,76.2493766155641,,0
+83,rayleigh,0.0,0,proposed,v6_norestore,142,15,15,0.1056338028169014,480.0,489.2869293689728,650.8252381399403,0.4892869293689728,0.6709545792602413,0,0,0.0,0,True,leading_letter,0.0016905740485526621,0.07091773801948875,0.025789260864257812,15.921386774065322,"Question:.,.,. Therefore, the is as an intersection.",0
+83,rayleigh,0.0,0,adaptive_sc,v6_norestore,142,15,15,0.1056338028169014,480.0,489.2869293689728,650.8252381399403,0.4892869293689728,0.6709545792602413,0,0,0.0,0,True,leading_letter,0.0003035899717360735,0.06959429301787168,0.025789260864257812,15.361200326369728,"Question:.,.,. Therefore, the is as an intersection.",0
+83,rayleigh,0.0,0,full,v6_norestore,142,142,135,1.0,6816.0,489.2869293689728,650.8252381399403,0.4892869293689728,0.6709545792602413,0,0,0.04929577464788732,1,True,leading_letter,5.163997411727905e-05,0.07937098504044116,0.05928468704223633,17.701317083719186,"Question: How should the scene ahead be grouped?
+
+Candidate choices:
+A. Intersection-type scene.
+B. Regular road scene.
+C. Restricted or guided.
+D. Branching road scene.
+
+Visual and evidence that discriminates choices:
+The features multiple lanes of traffic a crosswalk, traffic lights, and a central intersection with vehicles approaching from different directions, indicating a controlled intersection. The presence of traffic signals and crosswalks suggests a regulated traffic environment, which is characteristic of an-type scene. There are no signs of branching roads or restricted traffic patterns, nor there any indications of a regular road with no control. Therefore, the scene is best categorized as an intersection-type scene.",0
+83,rayleigh,0.0,0,plugin_capacity,v6_norestore,142,20,19,0.14084507042253522,640.0,489.2869293689728,650.8252381399403,0.4892869293689728,0.6709545792602413,0,0,0.05,1,False,leading_letter,0.002435285015963018,0.2684310449985787,0.026015758514404297,60.79292091605311,"Question:..,,,.,.,. Therefore, the is as an.",0
+0,rayleigh,15.0,0,proposed,v6_norestore,196,196,185,1.0,3136.0,4503.644943237305,4885.820062827563,4.503644943237305,5.318612608256486,0,0,0.05612244897959184,1,True,leading_letter,0.0020728620002046227,0.3745300690061413,0.08102178573608398,84.58387078434694,"What is the main value of the second view?
+A. It reveals an occluded road user.
+B. It clarifies a blurred ego view.
+C. It provides a-range cue.
+D Its added value is limited.
+
+The second view shows a clear, centered perspective of the road ahead, with the vehicle's front view and the road markings in focus. The first view is a wider, possibly blurred, perspective from the same vehicle. The second view is more focused and provides a clearer image of the road and traffic signals, which helps in understanding road conditions. The value of the second view is provides a clearer and more detailed of the road ahead, which is a-range cue. The first view is more of a general overview, and the second view is more focused on the immediate surroundings. The second does not an occluded road user, nor does it clarify a blurred ego, and its added value is not limited.",0
+0,rayleigh,15.0,0,adaptive_sc,v6_norestore,196,196,182,1.0,3136.0,4503.644943237305,4885.820062827563,4.503644943237305,5.318612608256486,0,0,0.07142857142857142,1,True,leading_letter,0.0010936720063909888,0.36704274301882833,0.08006429672241211,85.27687569927947,"What is the value of the second view?
+A. It reveals an occluded road user.
+B. It clarifies a blurred ego viewC. It provides a long-range cue.
+D. Its added value is limited.
+
+The second view shows a centered perspective of the road, with the vehicle's front view and the road in focus. The first view a wider, possibly blurred, perspective from same vehicle. The second view is more focused and provides a clearer image of the road and traffic signals, which helps in understanding the road. The main value of the second view is that it provides a clearer and more detailed view of the road ahead which is a long-range cue. The first view is more of a general overview, and the second view is more focused on the surroundings. The second view does not reveal an oc road nor does it clarify a blurred ego view, and its added value is not limited.",0
+0,rayleigh,15.0,0,full,v6_norestore,196,196,181,1.0,9408.0,4503.644943237305,4885.820062827563,4.503644943237305,5.318612608256486,0,0,0.07653061224489796,1,True,leading_letter,6.696698255836964e-05,0.36241422302555293,0.07974863052368164,89.1520867931709,"What is the main value of the second view?
+. It reveals an occluded road user.
+B. It clarifies a ego view.
+C. It provides a long-range.
+D Its added value is limited.
+
+The second view shows a clear, centered perspective of the road ahead, with the vehicle's front view and the road markings in focus. first view is a wider, possibly blurred, perspective from the same vehicle. The second view is more focused and provides clearer image the road and traffic signals, helps understanding the road conditions. The main value of second is that it provides a clearer and more detailed view of the road ahead, which is a long-range cue. The first view is more a overview, and the second view is more focused on the immediate surroundings. The second view does not reveal an occluded road user, nor does it clarify a blurred ego view, and its added is not.",0
+0,rayleigh,15.0,0,plugin_capacity,v6_norestore,196,196,182,1.0,3136.0,4503.644943237305,4885.820062827563,4.503644943237305,5.318612608256486,0,0,0.07142857142857142,1,True,leading_letter,0.007702592993155122,0.3748507969430648,0.08006429672241211,90.64641971677192,"What is the main value of the second view?
+A. It reveals occluded road user.
+B. It clarifies blurred ego view.
+C. It provides a long-range cue.
+D. Its added value is limited.
+
+The second view shows a clear, centered perspective of the road ahead, with the vehicle's view and road markings in focus. The is a wider, possibly blurred, perspective from the same vehicle. The second view is more focused and provides a clearer image of the road and traffic, which helps in understanding the road conditions. The main value of the second view is that it provides a clearer and more detailed view the ahead, which is a long-range cue. The first view is more of overview, and the second view is more focused on the immediate. The second view not reveal an occluded road user, nor does it clarify a blurred view, and its added value is not limited.",0
+3,rayleigh,15.0,0,proposed,v6_norestore,142,142,128,1.0,2272.0,5196.235179901123,5510.089454026813,5.196235179901123,5.6589355137224855,0,0,0.09859154929577464,1,True,leading_letter,0.0015736200148239732,0.3077100340160541,0.05864858627319336,71.68259097420989,"What useful far-field cue is visible?
+A A large far agent.
+B. A of traffic.
+C. far work zone.
+D. No obvious-field cue.
+
+The scene shows a wide road intersection with multiple lanes and traffic signs. There is a car in the foreground, and a distant traffic light and road markings. is wet, and there are trees and buildings in the background. There is no visible large or significant traffic buildup in the far distance. The only visible feature in the far field is a traffic and road markings, which are not indicative of a work Therefore, the most accurate description is that there is no obvious far-field.",0
+3,rayleigh,15.0,0,adaptive_sc,v6_norestore,142,142,132,1.0,4544.0,5196.235179901123,5510.089454026813,5.196235179901123,5.6589355137224855,0,0,0.07042253521126761,1,True,leading_letter,0.0008231430547311902,0.30808045295998454,0.0599822998046875,72.53754264942836,"What useful far-field cue is visible?
+ A large far-field agent.
+B. A far buildup of traffic.
+C. A far work zone.
+D. No obvious far-field.
+
+ scene shows a wide road intersection with multiple lanes and traffic signs. There is a white car in the foreground and a distant traffic light and road markings. The road is wet, and there are trees and buildings in the background. There is no visible large agent or significant traffic in the far distance. The only visible feature in the far field is a traffic light and road, which are not of a work zone. Therefore, the most accurate description is that there is no obvious cue.",0
+3,rayleigh,15.0,0,full,v6_norestore,142,142,137,1.0,6816.0,5196.235179901123,5510.089454026813,5.196235179901123,5.6589355137224855,0,0,0.035211267605633804,1,True,leading_letter,0.0001335330307483673,0.3267558990046382,0.06153392791748047,77.47545743349474,"What useful far-field cue is visible?
+A. A large far-field agent.
+B. A far buildup of traffic.
+C. A far work zone.
+D. No obvious far-field.
+
+The scene shows a wide road intersection with multiple lanes and traffic signs. There is a white car in the foreground, and a distant light and road markings. The road is wet, and there are trees and buildings in the background. There is no large agent or significant traffic buildup in the far distance. The only feature in the far field is a traffic light and road markings, which are not of a work zone. Therefore, the most accurate description is that there is no obvious far-field cue.",0
+3,rayleigh,15.0,0,plugin_capacity,v6_norestore,142,142,135,1.0,2272.0,5196.235179901123,5510.089454026813,5.196235179901123,5.6589355137224855,0,0,0.04929577464788732,1,True,leading_letter,0.006773506000172347,0.3209559469833039,0.06088876724243164,75.75523216646921,"What useful far-field cue is visible?
+. A large far-field agent.
+B. A far buildup of traffic.
+C. A far work zone.
+D. No obvious far-field cueThe scene a wide road intersection with multiple lanes and traffic signs. There is a white car in the foreground, and a distant traffic light and road markings. The road is wet, and are trees and buildings in the background. There is visible large agent or significant traffic buildup in the far distance. The only visible feature the far field is a traffic light and road markings, which are not indicative of a work zone. Therefore, the most accurate description is that there is no far-field cue.",0
+9,rayleigh,15.0,0,proposed,v6_norestore,119,119,111,1.0,1904.0,3139.951705932617,3693.5872216379576,3.139951705932617,3.5548367710678916,0,1,0.06722689075630252,1,True,leading_letter,0.001868350023869425,0.2763013439835049,0.05222654342651367,62.87513383688638,"Question: Which road feature is most important ahead?
+Candidate choices:
+A. Junction structure.
+B.ing road.
+C. Barrier or guidance.
+D. Ramp-like road split.
+Description: The road ahead is a multi-lane highway with a clear lane separation and a white dashed line indicating a lane boundary. There is no visible junction structure, barrier, or ramp-like road split. The road surface is wet, and the vehicle is in the middle of the road, with a white painted on the road surface a direction. There are no cones barriers visible",0
+9,rayleigh,15.0,0,adaptive_sc,v6_norestore,119,119,111,1.0,1904.0,3139.951705932617,3693.5872216379576,3.139951705932617,3.5548367710678916,0,1,0.06722689075630252,1,True,leading_letter,0.0022429520031437278,0.2770334139931947,0.0519709587097168,62.340829150888595,"Question: Which road feature most important ahead?
+Candidate choices:
+A. Junction structure.
+B. Lane-following road.
+C. Barrier or guidance.
+D Ramp-like road split.
+Description: The road ahead is a multi-lane highway with lane separation and a white dashed line indicating a lane boundary. There is no visible junction structure, barrier, or ramp-like road split. The road surface is wet and the vehicle is in middle of the road, with a white arrow painted on the road surface indicating a lane direction. There are no cones or visible.",0
+9,rayleigh,15.0,0,full,v6_norestore,119,119,114,1.0,5712.0,3139.951705932617,3693.5872216379576,3.139951705932617,3.5548367710678916,0,1,0.04201680672268908,1,True,leading_letter,0.00012859102571383119,0.2872707780334167,0.05448579788208008,65.20328484413476,"Question: Which road feature is most important ahead?
+Candidate choices:
+A. Junction structure.
+B. Lane-following road.
+C. Barrier or cone guidance.
+D. Ramp-like road split.
+Description: The road ahead is a multi-lane highway with a clear lane separation a white dashed line indicating a lane boundary. There is no visible junction structure, barrier, or ramp-like road. The road surface is, and the vehicle is in the middle of the road, with a white arrow painted on the road surface indicating lane direction. There are no cones or barriers.",0
+9,rayleigh,15.0,0,plugin_capacity,v6_norestore,119,119,117,1.0,1904.0,3139.951705932617,3693.5872216379576,3.139951705932617,3.5548367710678916,0,1,0.01680672268907563,1,True,leading_letter,0.002147020015399903,0.2859893359709531,0.05459403991699219,65.12978142734501,"Question: Which road feature is most important ahead?
+Candidate choices:
+. Junction structure.
+B. Lane-following road.
+C. Barrier or cone guidance.
+D. Ramp-like road split.
+Description: The road ahead is a multi-lane highway with a clear lane separation and a white dashed line indicating a lane boundary. There is no visible junction structure, barrier, or ramp-like road split. The road surface is wet, and the vehicle is in the middle of the road, with a white painted on the road surface indicating a lane direction. There are no cones or barriers visible.",0
+11,rayleigh,15.0,0,proposed,v6_norestore,135,135,126,1.0,2160.0,4787.69588470459,5140.3448751658225,4.78769588470459,4.988986369718226,0,1,0.06666666666666667,1,True,leading_letter,0.00198857398936525,0.08188440802041441,0.056735992431640625,18.07188885010546,"How should the scene ahead be?
+A. Intersection-type scene.
+B. Regular road scene.
+C. Restricted or guided.
+D. Branching road scene.
+
+The scene is an intersection with multiple lanes, crosswalks, traffic signals, and vehicles approaching from different directions. A pedestrian is crossing the road, and there are traffic signs and barriers. The road markings a intersection with a crosswalk and directional arrows. presence of traffic lights crosswalks, and a pedestrian crossing suggests a regulated intersection. The road is not a branching road and there no signs of restricted or guided traffic. Therefore the scene is an intersection-type scene.",0
+11,rayleigh,15.0,0,adaptive_sc,v6_norestore,135,135,128,1.0,4320.0,4787.69588470459,5140.3448751658225,4.78769588470459,4.988986369718226,0,1,0.05185185185185185,1,True,leading_letter,0.0008159090066328645,0.07718418398872018,0.057114601135253906,16.673327425243333,"How should the scene ahead be?
+A. Intersection-type scene.
+B. Regular road scene.
+C. Restricted or guided scene.
+D. Branching road scene.
+
+The scene is an intersection with multiple lanes, crosswalks, traffic signals and vehicles approaching from different directions. A pedestrian is crossing the road, and there are traffic and barriers. The road markings a controlled intersection with a crosswalk and directional arrows. The presence of traffic lights, crosswalks, and pedestrian crossing a regulated intersection. The road not a branching road, and there are no signs of restricted or guided traffic. Therefore, the scene is an intersection-type scene.",0
+11,rayleigh,15.0,0,full,v6_norestore,135,135,130,1.0,6480.0,4787.69588470459,5140.3448751658225,4.78769588470459,4.988986369718226,0,1,0.037037037037037035,1,True,leading_letter,5.912297638133168e-05,0.08085725299315527,0.05769920349121094,18.110407525406917,"How should the scene ahead be grouped?
+A. Intersection-type scene.
+B. Regular road scene.
+C. Restricted or guided scene.
+D. Branching road.
+
+The is an intersection with lanes, crosswalks, traffic signals and vehicles approaching from different directions. A pedestrian is crossing the road, and there are traffic signs and barriers. The road markings indicate a controlled intersection with a crosswalk and directional arrows. The presence of traffic lights, crosswalks, and a pedestrian crossing suggests a regulated intersection The road is not a branching road, and there are no signs of restricted or guided traffic. Therefore, the scene is an intersection-type scene.",0
+11,rayleigh,15.0,0,plugin_capacity,v6_norestore,135,135,130,1.0,2160.0,4787.69588470459,5140.3448751658225,4.78769588470459,4.988986369718226,0,1,0.037037037037037035,1,True,leading_letter,0.002530535974074155,0.08754088100977242,0.05744218826293945,19.74747193818446,"How should the scene ahead be grouped?
+A. Intersection-type scene.
+B. Regular scene.
+C. Restricted or guided scene.
+D. Branching road scene.
+
+The scene is an intersection with multiple lanes, crosswalks, traffic signals, and vehicles approaching from different directions. A pedestrian is crossing the road, and there are traffic signs and barriers. The road markings indicate a controlled with a crosswalk and directional arrows. The presence of traffic lights, crosswalks, and a pedestrian crossing suggests a regulated intersection. The road is not branching road, and there are no signs of restricted or guided traffic., the scene is an intersection-type.",0
+16,rayleigh,15.0,0,proposed,v6_norestore,320,152,143,0.475,2432.0,2443.3767795562744,3100.115642020932,2.4433767795562744,3.048259347796434,0,1,0.05921052631578947,1,False,leading_letter,0.0027387660229578614,0.07997176900971681,0.06185579299926758,17.72854161291907, is a a and in. a and a a. is in and is in a. is and a a. is not in a is for a. is in a is for a. is in a for a. is in a a. is in a a. is not in a a. is not in a is for a. is not in a for a. The is in a is for a. The is not in a that is for The is not in a is for a. The is not in is for a. is not in a is for a The is not in a for a. The is not in a is for a. The is not in a that is for a left.,0
+16,rayleigh,15.0,0,adaptive_sc,v6_norestore,320,152,143,0.475,2432.0,2443.3767795562744,3100.115642020932,2.4433767795562744,3.048259347796434,0,1,0.05921052631578947,1,False,leading_letter,0.0009960279567167163,0.07771384401712567,0.06185579299926758,17.399352536994265, is a a and in. a and a a. is in is in a. is and a a. is not a for a. is in a is for a. is in a for is in a is for a. is a a. is not in a a. is not in a is for a. is not in a is for a. The is not in a is for a. is not in a that is for a. The is not in a is for a. The is not in a is for a. is not in a is for a. The is not in a is for a. not in a is for a. The is not in a that is for a left.,0
+16,rayleigh,15.0,0,full,v6_norestore,320,320,301,1.0,15360.0,2443.3767795562744,3100.115642020932,2.4433767795562744,3.048259347796434,0,1,0.059375,1,True,leading_letter,6.07779948040843e-05,0.11764087702613324,0.1213836669921875,26.572133098277845,The ego vehicle is likely to move forward on a wet road with a bus and other in the same direction. The road has a lane marking and a traffic sign indicating a no left turn zone. The vehicle is in the right lane and is not in turn lane. The road is not crowded and there are no signs of a right turn or a left turn. The vehicle is not in a lane that reserved a left turn. The vehicle is not in a lane that is reserved for a right turn. The vehicle is not in a lane is reserved for a change of lanes. The vehicle is not in a lane that is reserved for a left turn. The vehicle is not in a lane that is reserved a right turn The is not in a lane that is reserved for change of lanes. The vehicle is not in a that is reserved for a left turn. The vehicle is in a lane that is reserved for a right turn. The vehicle is not in a lane that is reserved for a change of lanes. The vehicle is not a lane that reserved for a left turn. The vehicle is not in a lane that is reserved for a right turn. The vehicle is not in a that is reserved for a change of lanes. The vehicle is not in lane that is reserved for left turn. The vehicle is not in a that is reserved for a right turn. The vehicle is not in a lane is reserved for change of lanes. The vehicle is not in a lane that is reserved for a left turn. The,0
+16,rayleigh,15.0,0,plugin_capacity,v6_norestore,320,193,182,0.603125,3088.0,2443.3767795562744,3100.115642020932,2.4433767795562744,3.048259347796434,0,1,0.05699481865284974,1,False,leading_letter,0.003562594996765256,0.09853290003957227,0.0756378173828125,23.403041752899007,The is to a a and in the. a and a a. is in the and is not in a. is not and a a. is not in a that is for a. The is not in is for a. is not in a that is for a of. is not in a that is for a. The is not in a is for a. The is not in a that is for a of. The is not in a that is for a. The is not in a that is for a. The in that is for a of. The is not in a that is for. The vehicle is not in a that for a. The is not in a that is for of. The is not in a that is for a. The is not in a that is for a. The is not a that is for a of. The is not in a that for a left.,0
+17,rayleigh,15.0,0,proposed,v6_norestore,320,315,294,0.984375,5040.0,5051.987171173096,5379.055414597152,5.051987171173096,5.198158371400288,0,1,0.06666666666666667,1,True,exact,0.002311946009285748,0.2489280910231173,0.11971569061279297,61.23631039168686,"The ego vehicle is in awalk with a pedestrian crossing signal that is red indicating that may not cross. The vehicle is the middle of the road, and there are no visible signs of a turn signal or lane change indicator. vehicle is positioned in the center of the crosswalk and there no other vehicles the immediate. The road is clear of any obstructions, and the lights ahead are green, indicating that vehicles may proceed. The vehicle is in the of the crosswalk, and there are no visible of a turn signal or lane change indicator. The road is clear of any obstructions, and the traffic lights ahead are green, indicating that vehicles may proceed. The vehicle is in the middle of the crosswalk, and there are no visible signs a turn signal or change indicator. The road is clear of any obstructions, and the traffic lights ahead are green, indicating that vehicles may proceed. The vehicle is in the of the crosswalk, and are no visible signs of a turn or lane change indicator. The is clear of any obstructions and the traffic lights ahead are green, indicating that vehicles may proceed. The vehicle is in the of the crosswalk, and there are no visible signs of a turn signal or lane change indicator. The road is clear of any ob, and the lights ahead are green, indicating that vehicles may proceed. The vehicle is in the middle of the crosswalk, and there are visible signs of a turn or lane change indicator. The",0
+17,rayleigh,15.0,0,adaptive_sc,v6_norestore,320,315,298,0.984375,5040.0,5051.987171173096,5379.055414597152,5.051987171173096,5.198158371400288,0,1,0.05396825396825397,1,True,exact,0.0015334160416387022,0.24786442203912884,0.11994504928588867,61.88059228417871,"The ego vehicle is in a crosswalk with a pedestrian crossing signal that is red, indicating that may not cross. The vehicle is in middle of the road and there are no visible signs of a turn signal or lane change. The vehicle is positioned in the center of the crosswalk, and there are no other vehicles or in the immediate. The road is clear of any obstructions, and the traffic lights ahead are green, indicating that vehicles proceed. The vehicle is in the middle of the crosswalk, and there are no visible signs of a turn signal or lane change indicator. The road clear any obstructions and the traffic lights ahead are green, indicating that vehicles may proceed. The vehicle is in middle of the crosswalk, and there are no visible signs of a signal or change indicator. The road is clear of any obstructions, and the traffic ahead are green indicating that vehicles may proceed. The vehicle is in the middle of the crosswalk, and are no visible signs of a turn signal or lane change indicator. road is clear of any obstructions, and the traffic lights ahead are green, indicating that vehicles may proceed. The vehicle is in middle of the crosswalk, and there are no visible signs of a turn signal or lane change indicator. The road is clear of any ob, and traffic lights ahead are green, indicating that vehicles may. The vehicle is in the middle of the crosswalk, and there are no visible signs of a turn signal or lane change indicator The",0
+17,rayleigh,15.0,0,full,v6_norestore,320,320,306,1.0,15360.0,5051.987171173096,5379.055414597152,5.051987171173096,5.198158371400288,0,1,0.04375,1,True,exact,0.00013729301281273365,0.2572999949916266,0.12217950820922852,65.58705522334057,"The ego vehicle is in a crosswalk with a pedestrian crossing signal that is red, indicating that pedestrians not cross. The vehicle is in the middle of the road and there are no visible of a turn signal or lane change indicator. The vehicle is positioned in the center of the crosswalk, and there are no other vehicles or pedestrians in the immediate vicinity. The road is clear of any obstructions, the traffic lights ahead are green, indicating that vehicles may proceed. The vehicle is in the middle of the crosswalk, and there are no visible signs of a turn signal or lane indicator. The road is clear of any obstructions, and the traffic lights ahead are green, indicating that vehicles may proceed. The vehicle is in the middle of the crosswalk, and there are no visible signs of a turn signal or lane change indicator. The road is clear of any obstructions, and the traffic lights ahead are green, indicating that vehicles may proceed. The vehicle is in the middle of the crosswalk, and there are no visible of a signal or lane change indicator. The road is clear of any obstructions, and the traffic lights ahead are green that vehicles may proceed. The vehicle is in the middle of the crosswalk, and there are no visible signs of a turn signal or lane indicator. The road is clear of obstructions, and the traffic lights ahead are green, indicating that vehicles may proceed. The vehicle is in the middle of the cross, and there are no visible signs a turn or lane change indicator. The",0
+17,rayleigh,15.0,0,plugin_capacity,v6_norestore,320,320,306,1.0,5120.0,5051.987171173096,5379.055414597152,5.051987171173096,5.198158371400288,0,1,0.04375,1,True,exact,0.0029715290293097496,0.2490078670089133,0.12217950820922852,63.14964011279547,"The ego vehicle is in a crosswalk with a pedestrian crossing signal that is red, indicating that pedestrians may not cross. The vehicle is in the middle of the road, and there are no visible signs of a turn signal or lane. The vehicle positioned in the center of the crosswalk, and there are no other vehicles or pedestrians in the immediate vicinity. The is clear of any obstructions, and the traffic lights ahead are green, indicating that vehicles may proceed. The vehicle is in the middle of the crosswalk, and there are no visible signs of a turn signal or lane change indicator. The is clear of any obstructions, and the traffic lights ahead are green, indicating that vehicles may proceed. The is in the middle of the crosswalk, and there are no visible signs of a turn signal or lane change indicator. The road is clear of any obstructions, and the traffic lights ahead are green, indicating that vehicles may proceed. The vehicle is in the middle of the crosswalk, and there are no visible signs of a turn signal or lane change indicator. The road is clear of any obstructions and the traffic lights ahead are green, indicating that vehicles may proceed. The is in the of the crosswalk, and there are no visible signs of a signal or lane change indicator. The road is clear of any obstructions, and the lights ahead are green, indicating that may proceed. The vehicle is in the of the crosswalk, and there are no signs of a turn signal or lane change indicator. The",0
+21,rayleigh,15.0,0,proposed,v6_norestore,173,173,166,1.0,2768.0,4113.063335418701,4539.365588592732,4.113063335418701,4.74607980015788,0,0,0.04046242774566474,1,False,leading_letter,0.0016747969784773886,0.32665721100056544,0.0722494125366211,80.9962887536452,"With both views, best describes the ego path?
+A. The path looks clear.
+B. Cross traffic affects the path.
+C. The path is constrained.
+D. The path is still unclear.
+
+The ego vehicle in a multi-lane road with a blue car on the left and a black on right, both in adjacent lanes. The road has a median with a metal barrier and trees on the right. The traffic light is red, and the road wide with visible lane markings. The road appears to be open with no visible obstructions, but the presence of cross traffic and the red light suggest the path not clear. The road is not constrained by physical barriers, and the path is not still unclear due to the presence of traffic. Therefore, the best description is that the path is constrained by the presence of cross traffic.",0
+21,rayleigh,15.0,0,adaptive_sc,v6_norestore,173,173,164,1.0,2768.0,4113.063335418701,4539.365588592732,4.113063335418701,4.74607980015788,0,0,0.05202312138728324,1,False,leading_letter,0.0009026969783008099,0.2976430450216867,0.07115793228149414,73.02969752652105,"With both views, what best describes the ego path?
+A. The looks clear.
+B Cross traffic affects the path.
+C. The path is constrained.
+D. The path still unclear.
+
+The ego vehicle is in a multi-lane road with a blue car on the left and a black car on the right, both in adjacent lanes. The road a median with a metal and trees on the right. The traffic light is red, and the road is wide with visible lane markings. The road appears to be open with no visible obstructions, but the presence cross traffic and red light suggest that the path not. The road is not constrained by physical barriers, and the path is not still unclear due to the presence of traffic. Therefore, the best description is that the path is constrained by the presence of cross traffic.",0
+21,rayleigh,15.0,0,full,v6_norestore,173,173,163,1.0,8304.0,4113.063335418701,4539.365588592732,4.113063335418701,4.74607980015788,0,0,0.057803468208092484,1,False,leading_letter,6.349198520183563e-05,0.3283164449967444,0.07081937789916992,80.9891006517969,"With views, what best describes the ego path?
+A. The path looks clear.
+B. Cross traffic affects the path.
+C. The path is constrained.
+D. The path is still unclear.
+
+The ego vehicle is in a multi-lane road with a blue car on the left a car on the right, both in adjacent lanes. The road has a median a metal barrier and on the right. The traffic light is red, and the road is wide with visible lane markings The road appears be open with nostructions, but the presence of cross traffic and the red light suggest that the path is not clear. The road is not constrained by physical barriers, and the path is not still unclear due to the presence of traffic. Therefore, the best description is that the path is by the presence of cross traffic.",0
+21,rayleigh,15.0,0,plugin_capacity,v6_norestore,173,173,162,1.0,2768.0,4113.063335418701,4539.365588592732,4.113063335418701,4.74607980015788,0,0,0.06358381502890173,1,False,leading_letter,0.002339063968975097,0.33785101998364553,0.07047843933105469,83.5927886194535,"With both views, what describes the ego path?
+A. The path looks clear.
+B. Cross traffic affects the pathC. The path is constrained.
+D. The path is still unclear.
+
+The ego vehicle is in a multi-lane road with a blue car on the left and a black car on the right, both in adjacent lanes. The road has a median with metal barrier and trees on the right. The traffic light is red, and the road is wide with visible lane markings. The road appears to be open with no ob the presence of cross traffic and the red suggest that the path is not clear. The road is not constrained by physical barriers, and the is not still unclear due to the presence of traffic. Therefore, the best description that the path is by the presence of cross traffic.",0
+26,rayleigh,15.0,0,proposed,v6_norestore,320,192,181,0.6,3072.0,3072.6892948150635,3635.952840490287,3.0726892948150635,3.19675569233661,0,1,0.057291666666666664,1,False,leading_letter,0.010593801038339734,0.1004306260147132,0.07911539077758789,24.0305380396705,"Which is by?  
+A. An  
+B. A cue from the.  
+C. A  
+D. is.  
+
+The image a with, a in the of the, and in the. The is from a's, with the's. The is, are and. The image is, on the, or a of. The are, and the are in The is in an the. The is, but the and are. The image does not specific, as a's or a's. long are not to the. The image does not information to a specific occluded. The image does not long, or. The does not provide information to recover a specific oc. The image does not to a specific. The image does information to a specific occluded. The image does not to a specific long. The image does not provide recover a specific occluded cue. The image does not",0
+26,rayleigh,15.0,0,adaptive_sc,v6_norestore,320,192,184,0.6,3072.0,3072.6892948150635,3635.952840490287,3.0726892948150635,3.19675569233661,0,1,0.041666666666666664,1,False,leading_letter,0.0010463229846209288,0.10735331504838541,0.08006429672241211,25.7315160839475,"Which is by?  
+A. An.  
+B. A cue from the.  
+C. A.  
+D. is.  
+
+The image a with, a in of the, and in the. The is from a's, with the's. The is, and are and. The is, the, or a of. The are, and the are in. The is in an the. The is, but the and are. The image does not specific, as a's or a's. The long are not to the. The image does not information to a specific occluded. The image does long, or. The image does not provide information to a specific oc. The image does not to a specific long. The image does not information to a specific occluded. The image does not to a specific long. The image does not provide information to recover a oc cue. The image does not",0
+26,rayleigh,15.0,0,full,v6_norestore,320,320,298,1.0,15360.0,3072.6892948150635,3635.952840490287,3.0726892948150635,3.19675569233661,0,1,0.06875,1,False,leading_letter,0.0001513409661129117,0.12221944099292159,0.12453174591064453,29.449996501654383,"Which missing cue is best recovered by cooperation?  
+A. An occluded road-user cue.  
+B. A cue missing from the blurred ego view.  
+C. A long-range cue  
+D. No important is recovered. image shows a wet road with vehicles, including a black car in the of the road, and buildings in the background. The view is from a vehicle perspective, with the car's roof rack visible The road is wet, and there are trees and buildings. The image is blurred, especially on the left side, suggesting motion or a of focus. The road markings are visible, and the vehicles are in. The scene is likely in an urban area during the day. The ego view is blurred, but and vehicles are still discernible. image does not show any specific road-user details, such as a person face or a vehicle's license plate. The long-range cues are not clearly visible due the blur. The image not provide enough information to recover a specific occluded road-user cue. The image does not show any long-range cues, such as distant buildings or signs. The image does not provide enough information to recover a specific occluded road-user cue. The image does enough information to recover specific long-range cue. The image does not provide enough information to recover a specificcluded road-user cue. The image does not provide enough information to recover a specific-range cue. The image does not provide enough information to a specific occluded road-user cue The image does not",0
+26,rayleigh,15.0,0,plugin_capacity,v6_norestore,320,227,214,0.709375,3632.0,3072.6892948150635,3635.952840490287,3.0726892948150635,3.19675569233661,0,1,0.05726872246696035,1,False,leading_letter,0.002670920977834612,0.105333473009523,0.0904240608215332,25.579707252997615,"Which missing is by?  
+A. An oc.  
+B. A cue from the.  
+C. A long.  
+D. No is.  
+
+The image shows with, a in the the, and in the. The is from a, with the's. The, and there. The image is, on the, or a of. The, and the are. The is in an during the. The is, but the and are. The image does not show any specific, as a's or a's. The long are not due to the. The image does not provide enough information to recover a specific occluded cue. The image does not show any long, such as or. The does not provide enough information to recover a specific occluded cue. The image does not provide information to a specific long. The image does not provide enough information to recover a specific occluded cue. The image does not provide enough information to recover a specific long cue The image does not provide enough information recover a specific occluded road cue. The image does not",0
+27,rayleigh,15.0,0,proposed,v6_norestore,147,117,111,0.7959183673469388,1872.0,1873.4272718429565,2615.249144111695,1.8734272718429565,2.641751100555855,0,0,0.05128205128205128,1,False,leading_letter,0.0016733419615775347,0.07710754103027284,0.05241107940673828,18.740602309702663,"What deserves the most caution here? A wet road surface. Heavy interaction among vehicles Nearby vulnerable users. No major point. The image shows a intersection with multiple, including,, and a. There are several people on and near thes. The surface appears, and there is no visible sign of. The are moving a, with no of or. The area is well-lit and to be a typical with clear. The presence of vulnerable users such as and is a concern, but situation is not particularly. There no major caution visible in the image.",0
+27,rayleigh,15.0,0,adaptive_sc,v6_norestore,147,117,115,0.7959183673469388,1872.0,1873.4272718429565,2615.249144111695,1.8734272718429565,2.641751100555855,0,0,0.017094017094017096,1,True,leading_letter,0.0006769369938410819,0.07664085802389309,0.05448579788208008,18.608783532491362,"What deserves the most caution here? A wet road surface. Heavy interaction among vehicles. Nearby vulnerable users. No major point The image shows a intersection with multiple, including,, and. There are several people on and near thes. The surface appears, and there is no visible sign of. The are moving in a, with no of or. The area is well-lit and appears to be a typical with clear. The presence of vulnerable users such as and is a concern, but the situation is not particularly. There are no major caution points visible in the image.",0
+27,rayleigh,15.0,0,full,v6_norestore,147,147,142,1.0,7056.0,1873.4272718429565,2615.249144111695,1.8734272718429565,2.641751100555855,0,0,0.034013605442176874,1,True,leading_letter,4.9501017201691866e-05,0.07834545004880056,0.06153392791748047,19.31842107303324,"What the most caution here? A wet road surface. Heavy interaction among vehicles. Nearby vulnerable users. No major caution point. The image shows a road intersection with multiple vehicles, including cars, motorcycles, and a bus. There are several people on bicycles and pedestrians near the crosswalks. The road surface appears dry, and there is no visible sign of wetness. The vehicles are moving a relatively orderly manner, with no signs of heavy interaction or dangerous behavior. The area well-lit and appears to be a typical urban setting with clear road markings The presence of vulnerable such as pedestrians and cyclists is a concern, but the situation is not particularly hazardous. There are no major caution points visible in the image.",0
+27,rayleigh,15.0,0,plugin_capacity,v6_norestore,147,147,143,1.0,2608.0,1873.4272718429565,2615.249144111695,1.8734272718429565,2.641751100555855,0,0,0.027210884353741496,1,False,leading_letter,0.002479882969055325,0.27761655300855637,0.06185579299926758,70.08291072424501,"What deserves the most caution here? A wet road surface. interaction among vehicles. Nearby vulnerable users. major caution point. The shows a road intersection with multiple vehicles, including cars, motorcycles, and a bus. There are several on bicycles and pedestrians near the crosswalks. The road surface appears dry, and there is no visible sign of wetness. The vehicles are moving in a relatively orderly manner, with no signs of heavy interaction or dangerous behavior. The area is well-lit and appears to be a typical urban setting with clear road markings. The presence of vulnerable users such as pedestrians and cyclists is a concern, but the situation is not particularly hazardous. There are no major caution points visible in the image.",0
+28,rayleigh,15.0,0,proposed,v6_norestore,214,214,199,1.0,3424.0,4054.6298027038574,4487.8877328199815,4.054629802703857,4.441579622618757,0,1,0.07009345794392523,1,True,exact,0.0018773400224745274,0.30191029905108735,0.0843496322631836,73.76574336715217,"Question: With both, what best describes the path?
+
+Candidate choices:
+A. The path looks clear.
+B. Cross traffic affects the path.
+C. The path is constrained.
+D. path is still unclear.
+
+Visual and contextual that discrimin the choices:
+The ego path is a multi-lane road with a crosswalk in the foreground and a traffic light a red signal, indicating that vehicles are not allowed to proceed The road is marked with white lines and a left arrow, suggesting a designated path. There are no visible vehicles or obstacles on the path, and the road appears to clear of traffic. The presence of a traffic light and the red signal indicates that the path is not currently clear. The is also surrounded by trees and, which may suggest that the path is constrained the surrounding environment. However, the road is not visibly blocked or obstructed by any physical barriers. The path is not still unclear as the road is clearly marked and the traffic light is red Therefore, the is clear.",0
+28,rayleigh,15.0,0,adaptive_sc,v6_norestore,214,214,204,1.0,3424.0,4054.6298027038574,4487.8877328199815,4.054629802703857,4.441579622618757,0,1,0.04672897196261682,1,True,exact,0.0028879110468551517,0.31056352896848693,0.08612918853759766,75.08649721635594,"Question: With both views, what best describes the ego path?
+
+Candidate choices:
+A. The path looks clear.
+B Cross traffic affects the path.
+C. The path is constrained.
+D. The path is still unclear.
+
+Visual and contextual evidence that discriminates the choices:
+The ego path is a multi-lane road with a crosswalk in the foreground and a traffic light a red signal, indicating that vehicles are not allowed to. road is marked with white lines and a left-turn arrow, suggesting a designated path. There are visible or obstacles on the path, and the road appears to be clear of traffic. presence of a traffic light and the red signal indicates that the path is not currently clear. The road is also surrounded by trees and buildings, which may suggest that the path is constrained by the surrounding environment. However, the road is visibly blocked or obstruct by any physical barriers. The path is not still unclear, as the road is clearly marked and the traffic light is red. Therefore the path is clear.",0
+28,rayleigh,15.0,0,full,v6_norestore,214,214,202,1.0,10272.0,4054.6298027038574,4487.8877328199815,4.054629802703857,4.441579622618757,0,1,0.056074766355140186,1,True,leading_letter,6.000901339575648e-05,0.10297627100953832,0.08547019958496094,25.015510634992097,"Question With both views, what best describes the ego path?
+
+Candidate:
+A path looks clear.
+B. Cross traffic affects the path.
+C. The path is constrained.
+. The path is still unclear.
+
+Visual and contextual evidence that discriminates the choices:
+The ego path is a multiane road with a crosswalk in foreground a traffic light with a red signal, indicating that vehicles are not allowed to proceed. The road is marked with white lines and a left-turn arrow, suggesting a designated path. There are no visible vehicles or on the path, and the road to be clear of traffic. The presence of a traffic light and the red signal indicates that the path is not currently clear. The is also surrounded by trees and buildings, which may suggest that the path is constrained by the surrounding environment. However, the road is not visibly blocked or obstructed by any physical. The path is not still unclear, as the road is clearly marked and the traffic light is red. Therefore, the path is clear.",0
+28,rayleigh,15.0,0,plugin_capacity,v6_norestore,214,214,202,1.0,3424.0,4054.6298027038574,4487.8877328199815,4.054629802703857,4.441579622618757,0,1,0.056074766355140186,1,False,leading_letter,0.002693887974601239,0.2994600220117718,0.08547019958496094,75.0925951196719,"Question: With both views, what best describes the ego path?
+
+Candidate choices:
+A. The path looks clear.
+B. Cross traffic the path.
+C. The path is constrainedD. path still unclear.
+
+Visual and contextual evidence that discriminates the choices:
+The ego path a multi-lane road with a crosswalk in foreground and a traffic light with a red signal, indicating that vehicles are not allowed to proceed. The road is marked with white lines and a left-turn arrow, suggesting a designated path. There are no visible vehicles or obstacles on the path, and the road be clear of traffic. The presence of a traffic light and the red indicates that the path is not currently clear. The road is also by trees and buildings, which may suggest that the path is constrained the surrounding environment. However, the road is not visibly blocked or obstructed by any physical barriers. The path is not still unclear, as the road is clearly marked and the traffic light is red. Therefore, the path is.",0
+31,rayleigh,15.0,0,proposed,v6_norestore,115,5,5,0.043478260869565216,128.0,138.7680172920227,712.2517002095401,0.1387680172920227,1.2254955042343487,0,0,0.0,0,False,leading_letter,0.0019370359950698912,0.0702461110195145,0.024662494659423828,17.47266642443894," Ped., in the",0
+31,rayleigh,15.0,0,adaptive_sc,v6_norestore,115,4,4,0.034782608695652174,128.0,138.7680172920227,712.2517002095401,0.1387680172920227,1.2254955042343487,0,0,0.0,0,True,leading_letter,0.00022512098075821996,0.07127538201166317,0.024662494659423828,17.60965225671156," Ped, in the",0
+31,rayleigh,15.0,0,full,v6_norestore,115,115,108,1.0,5520.0,138.7680172920227,712.2517002095401,0.1387680172920227,1.2254955042343487,0,0,0.06086956521739131,1,True,leading_letter,5.314097506925464e-05,0.08655546198133379,0.0519709587097168,21.45320402938349,"Question: Which hazard most important now?
+Candidate choices:
+A. Blurred visibility or surface.
+B. Vehicle conflict.
+C. Pedestrian or rider.
+D. No obvious hazard.
+
+Visual and contextual evidence that discriminates the choices:
+The road surface is wet, causing reduced visibility and potential for hydroing, which is a significant hazard. The image shows a blurred view of the road and vehicles, indicating poor visibility due to rain are no clear signs of a pedestrian or rider conflict, and no visible vehicle conflicts in the immediate vicinity.",0
+31,rayleigh,15.0,0,plugin_capacity,v6_norestore,115,22,21,0.19130434782608696,704.0,138.7680172920227,712.2517002095401,0.1387680172920227,1.2254955042343487,0,0,0.045454545454545456,1,False,leading_letter,0.006876564002595842,0.342188743990846,0.027373313903808594,81.29891274106514,"Question:... Ped.,,.. no of a, and no conflicts in the.",0
+32,rayleigh,15.0,0,proposed,v6_norestore,103,103,99,1.0,1648.0,3898.674249649048,4350.945089150259,3.898674249649048,4.382701644918977,0,0,0.038834951456310676,1,True,leading_letter,0.001811132999137044,0.0778696250054054,0.05089378356933594,17.589580244345996,"How should this RSU-view intersection be described? Candidate choices: A. standard intersection. B. intersection with a curved. C. An intersection with strong turn guidance. D. An intersection with a complex layout. The intersection has multiple with clear directional arrows, including straight and left-turn lanes. There are no visible curves in the approach. The layout is straightforward with no signs of complex or intricate configurations. The presence of a bus and several cars indicates a typical urban setting with standard traffic flow.",0
+32,rayleigh,15.0,0,adaptive_sc,v6_norestore,103,103,96,1.0,3296.0,3898.674249649048,4350.945089150259,3.898674249649048,4.382701644918977,0,0,0.06796116504854369,1,True,leading_letter,0.0006008599884808064,0.07618729601381347,0.050289154052734375,17.11357136710285,How should this RSU-view intersection be described? Candidate choices: A. A standard. B. An intersection with a curved approach. C. An intersection with strong turn. D. An intersection with a complex layout. The intersection has multiple clear directional arrows including straight and left-turn lanes. There are no visible curves in the approach. The layout is straightforward with no signs of complex or intricate configurations. The presence of a bus and several cars a typical urban setting with standard traffic flow,0
+32,rayleigh,15.0,0,full,v6_norestore,103,103,97,1.0,4944.0,3898.674249649048,4350.945089150259,3.898674249649048,4.382701644918977,0,0,0.05825242718446602,1,True,leading_letter,5.218398291617632e-05,0.07544052100274712,0.049986839294433594,17.30002027634997,"How should this RSU-view intersection be described? Candidate choices: A. A standard intersection. B. An intersection with a curved approach. C. An intersection with strong turn guidance.. intersection with a complex. The has multiple lanes clear directional arrows, including straight and left-turn lanes There are no visible curves in the approach. The layout is straightforward with no signs of complex or intricate configurations. The presence of a bus and several cars indicates a typical urban setting with standard traffic flow.",0
+32,rayleigh,15.0,0,plugin_capacity,v6_norestore,103,103,100,1.0,1648.0,3898.674249649048,4350.945089150259,3.898674249649048,4.382701644918977,0,0,0.02912621359223301,1,True,leading_letter,0.0016493769944645464,0.07737356598954648,0.05208873748779297,18.00289446661773,"How should this RSU-view be described? Candidate choices: A. A standard intersection. B. An intersection with a curved approach. C. An intersection with strong turn guidance. D. An intersection with a complex. The intersection has multiple lanes with clear directional arrows, including straight and left-turn lanes. There are no visible curves in the. The layout is straightforward with no signs of complex or intricate configurations. The presence of a bus and several cars indicates a typical urban setting with standard traffic flow.",0
+36,rayleigh,15.0,0,proposed,v6_norestore,168,168,158,1.0,2688.0,5837.9106521606445,6099.034679434641,5.8379106521606445,6.086618484766486,0,1,0.05952380952380952,1,True,leading_letter,0.0016407759976573288,0.09638094698311761,0.06845283508300781,22.650968255237384,"What best describes the in the RSU view?
+A. Light traffic.
+B. Many cars close together.
+. Mixed traffic with vulnerable users.
+D. A large vehicle stands out.
+
+The image shows a road intersection multiple vehicles, including cars and a van, in various lanes. The are mostly in the same direction, with some cars in same lane and others in adjacent lanes. The traffic appears to be moderate, with no of congestion. The not closely packed, there are no visible vulnerable users such as pedestrians or cyclists. A large vehicle, such as a van, is visible in the image, but it is not the only large vehicle. The traffic is not dense, and there no signs of a large vehicle standing out. Therefore, the best description of the traffic is light traffic.",0
+36,rayleigh,15.0,0,adaptive_sc,v6_norestore,168,168,161,1.0,5376.0,5837.9106521606445,6099.034679434641,5.8379106521606445,6.086618484766486,0,1,0.041666666666666664,1,True,leading_letter,0.0022569220163859427,0.10506748297484592,0.06946420669555664,25.01236499699182,"What best describes the traffic in the RSU viewA. Light traffic.
+B. Many close together.
+C. Mixed traffic with vulnerable users.
+D. A large vehicle stands out.
+
+The image shows a road intersection with multiple vehicles, including cars and a van, various lanes. The vehicles are mostly in the same direction, with some cars in the same lane and others in adjacent lanes. The traffic appears to be moderate, with no signs of congestion. vehicles not closely packed, and there are no visible vulnerable users such as pedestrians or cyclists. A large vehicle, such as a van, is visible in the image, but it is not the only large vehicle. traffic is not dense, and there are signs of a large vehicle standing out. Therefore, the best description of the traffic is light traffic.",0
+36,rayleigh,15.0,0,full,v6_norestore,168,168,163,1.0,8064.0,5837.9106521606445,6099.034679434641,5.8379106521606445,6.086618484766486,0,1,0.02976190476190476,1,True,leading_letter,6.517698056995869e-05,0.10559391899732873,0.07014083862304688,25.33726086340903," best describes the traffic in the RSU view?
+A. Light traffic.
+B. Many cars close together.
+C. Mixed traffic with vulnerable users.
+D. A large vehicle stands out.
+
+The image shows a road intersection with multiple vehicles, including cars and a van, in various lanes. The vehicles are mostly in the same direction, with some cars in the same lane and others in adjacent lanes. The traffic appears to moderate, with no signs of congestion. The vehicles are not closely packed, and there are no visible vulnerable users such as pedestrians or cyclists. A large vehicle, such as a van, is visible in the image, but is not the only large vehicle. The traffic is not dense, and are no signs of a large vehicle standing out. Therefore, the best description of the is light traffic.",0
+36,rayleigh,15.0,0,plugin_capacity,v6_norestore,168,168,164,1.0,2688.0,5837.9106521606445,6099.034679434641,5.8379106521606445,6.086618484766486,0,1,0.023809523809523808,1,True,leading_letter,0.002071706985589117,0.09849880397086963,0.07047843933105469,23.680589956656625,"What best describes the traffic in the RSU view?
+A. Light traffic.
+B. Many close together.
+C. Mixed traffic with vulnerable users.
+D. A large vehicle stands out.
+
+The image shows a road intersection with multiple vehicles, including cars and a van, in various lanes. The vehicles are mostly in the same direction, with some cars in the same lane and others in adjacent lanes. The traffic appears to be moderate, with no signs of congestion. The vehicles are not closely packed, and there are no visible vulnerable users such as pedestrians or cyclists. A large vehicle, such as a van, is visible in image, but it is not the only vehicle. The traffic is not dense, and there are no signs a large vehicle standing out. Therefore, the best description of the traffic is light traffic.",0
+37,rayleigh,15.0,0,proposed,v6_norestore,114,114,109,1.0,1824.0,6858.694553375244,7053.97977502282,6.858694553375244,7.131842789546216,0,0,0.043859649122807015,1,False,leading_letter,0.0015610359841957688,0.23935885302489623,0.049986839294433594,59.243709712192064,"Which traffic pattern is most clear?
+A. Sparse movement.
+B. Dense vehicle.
+C. Mixed road users.
+D. One large vehicle.
+
+The image shows a busy urban intersection with multiple vehicles, including cars, buses, and motorcycles, all moving in various directions. The road surface is wet, and there are vehicles in close proximity, indicating a dense vehicle group. The presence of multiple road users, including cars, buses, and motorcycles, suggests a mixed road users pattern. are no large dominating the scene, and the movement is not.",0
+37,rayleigh,15.0,0,adaptive_sc,v6_norestore,114,114,105,1.0,5472.0,6858.694553375244,7053.97977502282,6.858694553375244,7.131842789546216,0,0,0.07894736842105263,1,False,leading_letter,0.0007114660111255944,0.07656440103892237,0.04970407485961914,18.86202301794372,"Which traffic pattern is most clearA. Sparse movement.
+B. Dense vehicle group.
+C. road users.
+D One large vehicle.
+
+The image shows a busy urban intersection with multiple vehicles including cars, buses, motorcycles, all moving in various directions The road surface is wet, and there are numerous vehicles in close proximity, indicating a dense vehicle group. The presence of multiple road users, cars, buses, and motorcycles, suggests a mixed road users pattern. There are no large vehicles scene, and the movement is not sparse.",0
+37,rayleigh,15.0,0,full,v6_norestore,114,114,109,1.0,5472.0,6858.694553375244,7053.97977502282,6.858694553375244,7.131842789546216,0,0,0.043859649122807015,1,False,leading_letter,0.00013014697469770908,0.08477964001940563,0.049986839294433594,20.89521397738281,"Which traffic pattern is most clear?
+A. Sparse.
+B. Dense vehicle group.
+C. Mixed road users.
+D One large vehicle.
+
+The image shows a busy urban intersection with vehicles, including cars, buses, and motorcycles, all moving in various directions. The road surface is wet, and there are numerous vehicles in close proximity, indicating a dense vehicle group. The presence of multiple road users, including cars, buses, and motorcycles, suggests a mixed road users pattern. There are no large vehicles dominating the scene, and movement not sparse.",0
+37,rayleigh,15.0,0,plugin_capacity,v6_norestore,114,114,108,1.0,1824.0,6858.694553375244,7053.97977502282,6.858694553375244,7.131842789546216,0,0,0.05263157894736842,1,True,leading_letter,0.006077759026084095,0.08906586596276611,0.04968738555908203,21.802433329025515,"Which traffic pattern is most clear?
+A. Sparse movement.
+B. Dense vehicle group.
+C. Mixed road users.
+D. One large vehicle.
+
+The image shows a busy urban intersection with multiple vehicles, cars, buses, and motorcycles, all in various directions. road surface is wet, and there are numerous vehicles in close proximity, indicating a vehicle group. The presence of multiple road users, including cars, buses, and motorcycles, suggests a mixed road users. There are no large vehicles dominating the scene, and the movement is sparse.",0
+44,rayleigh,15.0,0,proposed,v6_norestore,212,212,204,1.0,3392.0,4892.030239105225,5234.36589575401,4.892030239105225,5.45102829814105,0,0,0.03773584905660377,1,False,leading_letter,0.002171622996684164,0.3353779340395704,0.08476686477661133,77.67017574422411,"What best describes the traffic in the RSU view?
+A. Light traffic.
+B. Many cars close together.
+C. Mixed traffic with vulnerable users.
+D. A large vehicle stands out.
+
+The image shows a road intersection with several vehicles, including a sedan, a white minivan, a white car, and a large truck. The vehicles are in, with some cars in the crosswalk and others in the lanes The large truck is positioned on the side of the road, and the other vehicles are in the middle of the intersection. The road has multiple lanes and a crosswalk, and there are traffic lights and road signs visible. The traffic appears to be moving in different directions, with some vehicles in the crosswalk and in the lanes. The large truck is a prominent feature in the image, standing out from the other vehicles. other vehicles are not closely packed together, and are no signs of congestion or dangerous driving behavior., the best description of the traffic is that it is mixed traffic with vulnerable users.",0
+44,rayleigh,15.0,0,adaptive_sc,v6_norestore,212,212,201,1.0,3392.0,4892.030239105225,5234.36589575401,4.892030239105225,5.45102829814105,0,0,0.05188679245283019,1,False,leading_letter,0.0011034029885195196,0.33429100300418213,0.0843496322631836,78.83919014850632,"What describes the traffic in the RSU view?
+A. Light trafficB. Many cars close together.
+C. Mixed traffic with vulnerable users.
+D. A large vehicle stands out.
+
+The image shows a road intersection with several vehicles, including a white, a white minivan, a white car, and a large truck. The vehicles in motion, with some cars in the crosswalk and others in the lanes. The large truck is positioned on the right side of the road, and the other vehicles are in the middle of the intersection. The road has multiple lanes and a crosswalk and are traffic lights and road signs visible. The traffic appears to be moving in different directions, with some vehicles in the crosswalk and others in the lanes. The large truck a prominent feature in the image, standing out from other vehicles. The other vehicles not closely packed together, and there are no signs of congestion dangerous driving behavior. Therefore, the description of the traffic is that it is mixed traffic with vulnerable users.",0
+44,rayleigh,15.0,0,full,v6_norestore,212,212,196,1.0,10176.0,4892.030239105225,5234.36589575401,4.892030239105225,5.45102829814105,0,0,0.07547169811320754,1,False,leading_letter,6.187701364979148e-05,0.33624196401797235,0.08198165893554688,81.63450523410341,"What best describes the traffic in the RSU view?
+A. Light.
+B. Many cars close together.
+C. Mixed traffic with vulnerable users.
+. A vehicle stands out.
+
+The image shows road intersection with several vehicles, including a sedan a minivan, white car, a large truck. The vehicles are in motion, with some cars in the crosswalk others in the lanes. The large truck is positioned the right side of, and the other vehicles are in the middle of the intersection. The road has multiple lanes and a crosswalk, and there are traffic lights and road signs visible. The traffic appears to be moving in different directions, with some vehicles in the crosswalk and others in the lanes. large truck is a prominent feature in the image, standing out from the other vehicles. The other vehicles are not closely packed together, there are no signs of congestion or dangerous driving behavior. Therefore, the best description of the traffic is that it is traffic with vulnerable users.",0
+44,rayleigh,15.0,0,plugin_capacity,v6_norestore,212,212,199,1.0,3392.0,4892.030239105225,5234.36589575401,4.892030239105225,5.45102829814105,0,0,0.06132075471698113,1,False,leading_letter,0.007221209991257638,0.34234545298386365,0.08294963836669922,83.53571398259257," best describes the traffic in the RSU view?
+A. Light traffic.
+B. Many cars close together.
+C. Mixed traffic with vulnerable users.
+D. A large vehicle stands out.
+
+The image shows a intersection several vehicles, including a white sedan, a white minivan, a white car, a truck The vehicles are in motion, with some cars in the crosswalk and others in lanes. The large truck is positioned on the right side of the road, and the other vehicles are in the middle of the intersection. The road has multiple lanes and a crosswalk, and there are traffic lights and road signs visible. The traffic appears to be in different directions with some vehicles in the crosswalk and others in the lanes. The large truck is a prominent feature in the image, standing out from other. The other vehicles are closely packed together, and there are no signs of congestion or dangerous driving behavior. Therefore, the best description of the traffic is that it is traffic with vulnerable users.",0
+48,rayleigh,15.0,0,proposed,v6_norestore,320,5,4,0.015625,128.0,140.46424627304077,716.8875287624564,0.14046424627304077,1.358965218171008,0,0,0.2,1,False,leading_letter,0.005174488003831357,0.27555804199073464,0.0248870849609375,64.60733852514764,Which on the.,0
+48,rayleigh,15.0,0,adaptive_sc,v6_norestore,320,4,3,0.0125,128.0,140.46424627304077,716.8875287624564,0.14046424627304077,1.358965218171008,0,0,0.25,1,False,leading_letter,0.0004765980411320925,0.072436431015376,0.024662494659423828,16.53868592943065, on the.,0
+48,rayleigh,15.0,0,full,v6_norestore,320,320,308,1.0,15360.0,140.46424627304077,716.8875287624564,0.14046424627304077,1.358965218171008,0,0,0.0375,1,True,leading_letter,5.93240256421268e-05,0.11727814603364095,0.12777948379516602,26.724171136685765,"Which intersection feature stands out most in this RSU view?
+A. A regular intersection shape.
+B. A curved approach road.
+C Clear turn guidance.
+D. A complex road layoutThe intersection has a wide, straight road with multiple lanes and a central crosswalk. There are traffic cones and barriers on the road and vehicles are in the intersection The road layout is complex with multiple lanes and central crosswalk. The intersection has a clear turn guidance with on the road. The road is wet, indicating recent rain. The intersection has a regular shape with straight roads and no curves. The road layout is not complex. intersection has clear turn guidance with arrows on the road. The road is wet, indicating recent rain. The intersection has a regular shape with straight roads and no curves. The road layout is not complex. The intersection has clear turn guidance with arrows on the road. The road is wet, indicating recent. The intersection has a regular shape straight roads and no curves. The road layout is not complex. The intersection has clear turn guidance with arrows on the road. The road is wet, indicating recent rain. The intersection has a regular shape with straight roads and no curves. The road layout is not complex. The intersection has clear turn guidance with arrows on the road. The road is wet, indicating recent rain. The intersection has a regular shape with straight roads and no. The road layout is not complex. The intersection has clear guidance with arrows on the road. The road is, indicating recent rain. The intersection has a regular shape",0
+48,rayleigh,15.0,0,plugin_capacity,v6_norestore,320,27,26,0.084375,704.0,140.46424627304077,716.8875287624564,0.14046424627304077,1.358965218171008,0,0,0.037037037037037035,1,False,leading_letter,0.003545641025993973,0.07815051899524406,0.02850961685180664,18.37592228394671,Which...The... on the. with on the... with on the.. The has a regular,0
+49,rayleigh,15.0,0,proposed,v6_norestore,320,141,130,0.440625,2256.0,2261.338949203491,2945.643494822378,2.261338949203491,2.6105371895200076,0,1,0.07801418439716312,1,False,leading_letter,0.002607978996820748,0.2731834030128084,0.05928468704223633,62.66963856815332,"Which in?
+A. A.
+B A.
+C. Clear.
+D. A.
+
+The a, with a and. The a, with and. and in the a. is,. a of and a and a the. The a with, and a the. The is complex, with and a. The has a, and. The is, with and a. The, with and. The, with and The a, with and. The is, with and a. The has a, with and. The is with and a. The has a, with and. The road layout is complex, with multiple lanes and a central",0
+49,rayleigh,15.0,0,adaptive_sc,v6_norestore,320,141,134,0.440625,2256.0,2261.338949203491,2945.643494822378,2.261338949203491,2.6105371895200076,0,1,0.04964539007092199,1,False,leading_letter,0.0021486199693754315,0.28834849304985255,0.06056547164916992,67.87867700640054,"Which in?
+A. A.
+B. A.
+C Clear.
+D. A.
+
+The has a, with a and. The a, with and. a and in a. is,. a of and, a and a the. The a with, and a the. The is complex, with and a. The a, with and. The is, with a. The a, with and The is, with and a. The a, with and. The is, with and a. The has a, with and. The is, with and a. The has a, with and. The road layout is, with multiple lanes and a central",0
+49,rayleigh,15.0,0,full,v6_norestore,320,320,303,1.0,15360.0,2261.338949203491,2945.643494822378,2.261338949203491,2.6105371895200076,0,1,0.053125,1,True,leading_letter,6.18969788774848e-05,0.11682640801882371,0.12410211563110352,28.349096169847762,"Which intersection stands out most in this RSU view?
+A. A regular intersection shape.
+B. A curved approach.
+ Clear turn guidance.
+D. complex road layout.
+
+The intersection has a wide, multi-lane road with a central median and multiple traffic lanes. The road layout includes a clear, straight intersection crosswalks and traffic signals. of a large white truck and several cars in the foreground suggests busy urban setting. The road surface is wet, indicating recent rain. The intersection features a series of traffic signs and signals including a red light and a white line marking the crosswalk. The road a straight path with a clear, defined centerline and a curved approach road on the left side. The road layout is complex, with multiple lanes and a central median. The intersection has a clear turn guidance system, visible arrows and signs directing traffic. The road layout is complex, with multiple lanes and a central median. The intersection has a clear turn guidance system, with visible arrows and signs directing traffic. The road layout is complex, with multiple lanes and a central median. The intersection has a clear turn guidance system, with visible arrows and signs directing traffic. The road layout is complex, with multiple lanes and a central median. The intersection has a clear turn guidance system, with visible arrows signs directing traffic. The road layout is complex, with multiple lanes and a central median The a clear turn guidance system, with visible arrows and signs directing traffic. The road layout is complex, with multiple lanes and a central median",0
+49,rayleigh,15.0,0,plugin_capacity,v6_norestore,320,184,173,0.575,2944.0,2261.338949203491,2945.643494822378,2.261338949203491,2.6105371895200076,0,1,0.059782608695652176,1,True,leading_letter,0.008615729049779475,0.09776518098078668,0.07355785369873047,23.76280488919001,"Which intersection feature out most in thisU?
+A. A regular.
+B. A.
+C. Clear turn guidance.
+D. A complex.
+
+The has a, a and multiple. The layout a clear, straight with. The a and the. The is,. The a of and, and a the has a with a clear, and a road on the. The road layout is complex, with multiple and a. The has a clear system, with and. The is complex, with multiple and a. The has a, with and. The is complex, with and a. The has a, with and. The is complex, with multiple and a. The has a, with and. The is complex, with multiple and. The intersection has a clear system, with visible and. The road layout is complex, with multiple lanes and a central median",0
+50,rayleigh,15.0,0,proposed,v6_norestore,133,133,127,1.0,2128.0,5324.892044067383,5627.394850439908,5.324892044067383,5.739797596957367,0,0,0.045112781954887216,1,False,leading_letter,0.0015262360102497041,0.3062060429947451,0.058013916015625,73.44045735185966,"What is the clearest long-range cueA. A far large vehicle.
+B. A far vehicle group.
+C. A work zone ahead.
+D. No strong long-range cue.
+
+. A far large vehicle.
+The large vehicle is a truck in the foreground, not far away.
+
+B. A far vehicle group.
+ vehicle group is a cluster of cars and a motorcycle the middle of the road, not far away.
+
+C. A work zone ahead.
+ is no visible work zone ahead.
+
+D. No strong long-range cue.
+The image shows a clear road intersection with vehicles and a motorcycle but no strong long-range cue is visible.",0
+50,rayleigh,15.0,0,adaptive_sc,v6_norestore,133,133,127,1.0,4256.0,5324.892044067383,5627.394850439908,5.324892044067383,5.739797596957367,0,0,0.045112781954887216,1,False,leading_letter,0.0022048220271244645,0.32050300599075854,0.058013916015625,77.3662206161092,"What is the clearest long-range cue?
+A. A far large vehicle.
+B A far vehicle group.
+C. A work ahead.
+D. No strong long cue.
+
+A. A far large vehicle.
+The large vehicle is a truck in the, not far awayB. A far vehicle group.
+The vehicle group is a cluster of cars and a motorcycle in the middle of the road, not far away.
+
+C. A work zone ahead.
+There is no visible work zone ahead.
+
+D. strong long-range cue.
+The image shows a clear road intersection with vehicles and a motorcycle, but no strong long-range cue is visible.",0
+50,rayleigh,15.0,0,full,v6_norestore,133,133,124,1.0,6384.0,5324.892044067383,5627.394850439908,5.324892044067383,5.739797596957367,0,0,0.06766917293233082,1,False,leading_letter,0.00013656396185979247,0.321089307020884,0.057114601135253906,77.34078138212033,"What is the clearest long-range cueA. A far large vehicle.
+B. A far vehicle group.
+C. A work zone ahead.
+D. No strong long-range cue.
+
+A. A far large vehicle.
+The large vehicle is a truck in the foreground not far awayB. A far vehicle group.
+The vehicle group is cluster of cars and a motorcycle in the middle of the road, not far awayC. A work zone ahead.
+ is no visible work zone aheadD. No strong long-range cue.
+The image a road intersection with vehicles and a motorcycle, but no strong long-range cue is visible.",0
+50,rayleigh,15.0,0,plugin_capacity,v6_norestore,133,133,120,1.0,2128.0,5324.892044067383,5627.394850439908,5.324892044067383,5.739797596957367,0,0,0.09774436090225563,1,False,leading_letter,0.0027853919891640544,0.32035172497853637,0.05635833740234375,76.39427585563156," is the clearest long-range cue?
+A. A far large vehicle.
+B. A far vehicle group.
+C. A work zone ahead.
+D. No strong long cue.
+
+A. A large vehicleThe large vehicle is a truck in the foreground, not far away.
+
+B A far vehicle group vehicle group is a cluster of cars and a motorcycle in the middle of the road, not far away.
+
+C. A zone ahead.
+There is visible zone ahead.
+
+D. No strong-range.
+The image shows a clear road intersection with vehicles and a motorcycle but no strong long-range cue is visible.",0
+55,rayleigh,15.0,0,proposed,v6_norestore,141,141,138,1.0,2256.0,4935.206413269043,5273.356833277569,4.935206413269043,5.380810499190895,0,0,0.02127659574468085,1,True,leading_letter,0.0019177100039087236,0.24239347002003342,0.06024599075317383,55.48750118963595,"Question: How should the scene ahead be grouped?
+
+Candidate choices:
+A. Intersection-type scene.
+B. Regular road scene.
+C Restricted or guided scene.
+D. Branching road scene.
+
+Visual and contextual evidence that discriminates the choices:
+The scene shows a single, straight road with no visible intersections or junctions, and no signs of branching. The road is marked with standard lane lines and a central divider, and there are traffic signals or signs indicating restricted or guided travel. The road is unobstructed and appears to be a continuous path, with no indication of a split or multiple routes. The presence of a single lane and a clear, straight path suggests a regular road.",0
+55,rayleigh,15.0,0,adaptive_sc,v6_norestore,141,141,133,1.0,4512.0,4935.206413269043,5273.356833277569,4.935206413269043,5.380810499190895,0,0,0.05673758865248227,1,True,leading_letter,0.0008225539932027459,0.24343190202489495,0.05864858627319336,56.576008349605836,"Question How should the scene ahead be grouped?
+
+Candidate choices:
+A. Intersection-type scene.
+B. Regular road scene.
+C. Restricted or guided scene.
+D Branching road sceneVisual and contextual evidence that discriminates the:
+The scene a single, straight road with no visible intersections or junctions, and no signs of. The road is marked with standard lane lines and a divider, and there are no traffic signals or signs indicating restricted or guided travel. The road unobstructed and appears to be a continuous path, with no indication of a split or multiple routes. The presence of a single lane and a clear, straight path suggests a regular road scene.",0
+55,rayleigh,15.0,0,full,v6_norestore,141,141,138,1.0,6768.0,4935.206413269043,5273.356833277569,4.935206413269043,5.380810499190895,0,0,0.02127659574468085,1,True,leading_letter,6.295298226177692e-05,0.24142503400798887,0.06024599075317383,56.848352757861136,"Question: How should the scene ahead be grouped?
+
+Candidate choices:
+A. Intersection-type scene.
+B. Regular road scene.
+C. Restricted or guided scene.
+D. Branching road scene.
+
+Visual and contextual evidence that discriminates the choices:
+The scene shows a single, straight road with no visible intersections or junctions, and no signs of branching. The road is marked with standard lane lines and a central divider, and there are traffic signals or signs indicating restricted or travel. The road is unobstructed and appears to a continuous path, with no indication of a split or multiple routes. The presence of a single lane and a clear, straight path suggests a regular road scene.",0
+55,rayleigh,15.0,0,plugin_capacity,v6_norestore,141,141,134,1.0,2256.0,4935.206413269043,5273.356833277569,4.935206413269043,5.380810499190895,0,0,0.04964539007092199,1,True,leading_letter,0.0023348989780060947,0.25179675000254065,0.05928468704223633,60.76107374311309,"Question: How should the ahead be grouped?
+
+Candidate choices:
+A. Intersection-type sceneB. Regular road scene.
+C. or guided scene.
+D. Branching road scene.
+
+Visual and contextual evidence that discriminates the choices:
+The scene shows a single, road with no visible intersections or junctions, and signs of branching. The road is marked with standard lane lines and a central divider, and there are no traffic signals or signs indicating restricted or guided travel. The road is unobstructed and appears to be a continuous path, with no indication of a split or multiple routes. The presence of a single lane and a clear, path suggests a regular road scene",0
+56,rayleigh,15.0,0,proposed,v6_norestore,59,59,57,1.0,1904.0,1916.07666015625,2651.7438745102127,1.91607666015625,2.724699748077838,0,0,0.03389830508474576,1,True,leading_letter,0.002331485040485859,0.07441009901231155,0.038704872131347656,17.513905004527768,"A standard intersection with multiple lanes, a crosswalk, and a central island with a traffic light. The road has a clear division of traffic flow with no visible curves or complex layouts. There are vehicles in the lanes on the crosswalk, and the intersection is wellit and organized.",0
+56,rayleigh,15.0,0,adaptive_sc,v6_norestore,59,59,56,1.0,1888.0,1916.07666015625,2651.7438745102127,1.91607666015625,2.724699748077838,0,0,0.05084745762711865,1,True,leading_letter,0.0003765940200537443,0.07425139099359512,0.03842592239379883,17.595723380707206,"A standard intersection with multiple lanes, crosswalk, and a central island a traffic light. The road has a clear division of traffic flow no visible curves or complex layouts. There are vehicles in the lanes and on the crosswalk, and the intersection is well-lit and organized.",0
+56,rayleigh,15.0,0,full,v6_norestore,59,59,57,1.0,2832.0,1916.07666015625,2651.7438745102127,1.91607666015625,2.724699748077838,0,0,0.03389830508474576,1,True,leading_letter,0.00021067296620458364,0.0830770120373927,0.038704872131347656,19.624451783472903,"A standard intersection with multiple lanes, a crosswalk, and a central island with a traffic light The road has a clear division of traffic flow with no visible curves or complex layouts. are vehicles in the lanes and on the crosswalk, and the intersection is well-lit and organized.",0
+56,rayleigh,15.0,0,plugin_capacity,v6_norestore,59,59,54,1.0,2640.0,1916.07666015625,2651.7438745102127,1.91607666015625,2.724699748077838,0,0,0.0847457627118644,1,True,leading_letter,0.008573078957851976,0.0935593310277909,0.037873268127441406,21.255276619548678,"A standard intersection with multiple lanes, a crosswalk, and a island with a traffic light. The road has a clear division of traffic flow with no visible curves or complex layouts. There are in the and on the crosswalk, and the is well-lit and.",0
+57,rayleigh,15.0,0,proposed,v6_norestore,98,98,90,1.0,1568.0,3785.44282913208,4251.923221220245,3.78544282913208,4.1470964748521375,0,1,0.08163265306122448,1,False,leading_letter,0.0013263910077512264,0.2796891100006178,0.045832157135009766,61.36518917968555,"What is the main joint scene result?
+A. Open path ahead.
+B. Crossing activity matters.
+C. The lane area is.
+D. Joint evidence remains weakThe scene shows a-lane road with a clear view of the road ahead, indicating an open path. There is no visible crossing activity, and lane area appears to be well-defined and not limited. The joint evidence is not weak, road is and the scene is not obstructed.",0
+57,rayleigh,15.0,0,adaptive_sc,v6_norestore,98,98,93,1.0,3136.0,3785.44282913208,4251.923221220245,3.78544282913208,4.1470964748521375,0,1,0.05102040816326531,1,True,leading_letter,0.0006129730027168989,0.0775344850262627,0.046713829040527344,17.22738722798531,"What is the main joint scene resultA. Open path ahead.
+B. Crossing activity matters.
+C. The lane area is limited.
+D. Joint evidence remains weak.
+
+The scene shows a multiane road with a clear view of road ahead, indicating an open path. There is no visible crossing activity, and the lane area appears be well-defined and limited. The joint evidence is not weak, as the road is clearly visible and the scene is not obstructed.",0
+57,rayleigh,15.0,0,full,v6_norestore,98,98,94,1.0,4704.0,3785.44282913208,4251.923221220245,3.78544282913208,4.1470964748521375,0,1,0.04081632653061224,1,False,leading_letter,5.9568032156676054e-05,0.2817189199849963,0.047007083892822266,64.11781759398524,"What is the main joint scene result?
+A. Open path ahead.
+B. Crossing activity matters.
+C. The lane area is limited.
+D. Joint evidence remainsThe scene shows a multi-lane road with a clear view of the road ahead, indicating an open path. There is no visible crossing activity, and the lane area appears to be well-defined and not limited. The joint evidence is not weak, the road is clearly visible and the scene is obstructed.",0
+57,rayleigh,15.0,0,plugin_capacity,v6_norestore,98,98,92,1.0,1568.0,3785.44282913208,4251.923221220245,3.78544282913208,4.1470964748521375,0,1,0.061224489795918366,1,False,leading_letter,0.00147790095070377,0.271658404963091,0.04641866683959961,63.8139176178549,"What is the main joint scene result?
+A. Open path ahead.
+B. Crossing activity matters.
+C. The lane area is limited.
+. Joint evidence remains weak.
+
+The shows a multi-lane road with a clear view of the road ahead, indicating open path. There is no visible crossing activity, and the lane area appears to be-defined and not limited. The joint evidence is not weak, as the road is clearly and the scene is not obstruct.",0
+59,rayleigh,15.0,0,proposed,v6_norestore,150,150,141,1.0,2400.0,4238.276958465576,4649.984746860835,4.238276958465576,4.588417117544881,0,1,0.06,1,True,leading_letter,0.0015907660126686096,0.07763284799875692,0.05978679656982422,18.536006952423193,"A. Sparse movement. The scene shows a wide with multiple vehicles, but the is not dense; are several cars in the foreground and background, and the road is noted. B. Dense vehicle group. The scene shows a large number of vehicles, but they are not packed; there are several cars in the foreground and background, and the road is not congested. C. Mixed road users. The scene shows a mix of vehicles, including cars, trucks, and pedestrians, but the vehicles are not mixed in a way that suggests a high degree of interaction D. One large vehicle. The scene shows a large vehicle but it not the only vehicle; there are several cars in the and background.",0
+59,rayleigh,15.0,0,adaptive_sc,v6_norestore,150,150,140,1.0,2400.0,4238.276958465576,4649.984746860835,4.238276958465576,4.588417117544881,0,1,0.06666666666666667,1,True,leading_letter,0.002593368000816554,0.08499921800103039,0.05978679656982422,20.428287058277636,"A. Sparse movement. The scene shows a wide road multiple vehicles, but traffic is not dense; there are several in the foreground and background, and the road is not congested. B. Dense vehicle group. The scene shows a large number of vehicles, they are not packed together; are several cars in the foreground and background, and the road is not congested. C. Mixed road users. The scene shows a mix of vehicles including cars, trucks, and pedestrians, but the vehicles are not mixed in a way that suggests a high degree of interaction. D. One large vehicle. The scene shows a large vehicle, it is not only; there are cars in the foreground and background.",0
+59,rayleigh,15.0,0,full,v6_norestore,150,150,141,1.0,7200.0,4238.276958465576,4649.984746860835,4.238276958465576,4.588417117544881,0,1,0.06,1,True,leading_letter,0.0001294900430366397,0.07817866996629164,0.0599822998046875,18.852395369021394,"A. Sparse. The scene shows a wide road with vehicles, but the traffic is not dense; there are several cars in the foreground and background, and the road is not congest. B. Dense vehicle group. The scene shows a large number of, but they are not packed together; there are several cars in the foreground and background, and the road not congested. C. Mixed road users. The scene shows a mix of vehicles, including cars, trucks, pedestrians, the vehicles are not mixed in a way that suggests a high degree of interaction. D. One large vehicle The scene shows a large vehicle, but is not the only vehicle; there are several cars in the foreground and background.",0
+59,rayleigh,15.0,0,plugin_capacity,v6_norestore,150,150,144,1.0,2400.0,4238.276958465576,4649.984746860835,4.238276958465576,4.588417117544881,0,1,0.04,1,True,leading_letter,0.008403618005104363,0.07768532203044742,0.06056547164916992,18.63398976883327,"A. Sparse movement. The scene shows a wide road with multiple vehicles, but the traffic is not dense; there are several cars in the foreground and background, and the road is noted. B. Dense vehicle group. The scene shows a large number of vehicles but they are not packed together; there are several cars in foreground and background, and the road is not congested. C. Mixed road users. The scene shows a of vehicles, including cars trucks, and pedestrians, but the vehicles are not mixed in a way that suggests a high degree of interaction. D. One large vehicle. The scene shows a large vehicle, but it is not the only vehicle; there are cars in the foreground and background.",0
+60,rayleigh,15.0,0,proposed,v6_norestore,148,148,137,1.0,2368.0,2988.071918487549,3563.572381845393,2.988071918487549,3.000297790410723,0,1,0.07432432432432433,1,False,leading_letter,0.0019501339993439615,0.2092227209941484,0.05896806716918945,49.22487568189827,"Which traffic is most clear?
+A. Sparse movement.
+B. Dense vehicle groupC. Mixed road users.
+D. One large vehicle.
+
+The image shows a wide road with multiple vehicles, cars motorcycles, and a bus, moving in various directions. The road is marked with clear lane dividers and traffic signs, and there are several vehicles in close proximity indicating a dense vehicle group. The presence of multiple road users, including cars, motorcycles, and a bus, suggests a road users pattern. There is no large vehicle dominating the scene, so option D is not applicable. The movement not sparse as there are many vehicles present. Therefore, the most clear traffic pattern is a dense group",0
+60,rayleigh,15.0,0,adaptive_sc,v6_norestore,148,148,139,1.0,2368.0,2988.071918487549,3563.572381845393,2.988071918487549,3.000297790410723,0,1,0.060810810810810814,1,False,leading_letter,0.0007590450113639235,0.2427113419980742,0.05928468704223633,57.30536140245531,"Which pattern is most clear?
+A. Sparse movementB. Dense vehicle group.
+C. Mixed road users.
+D. One large vehicle.
+
+The image shows a wide road with multiple vehicles, including cars, motorcycles, and a bus moving in various directions. The road is marked with clear lane dividers and traffic signs, and there are several vehicles in close proximity indicating a dense vehicle group. The presence of multiple road users, including, motorcycles, and a bus, a mixed road users pattern. There is no single large vehicle dominating scene, so option D not applicable. The movement is not sparse as there are many vehicles present. Therefore, the most clear traffic pattern is a dense vehicle group.",0
+60,rayleigh,15.0,0,full,v6_norestore,148,148,141,1.0,7104.0,2988.071918487549,3563.572381845393,2.988071918487549,3.000297790410723,0,1,0.0472972972972973,1,False,leading_letter,6.554502760991454e-05,0.07843939401209354,0.0599822998046875,19.031357972184196,"Which traffic pattern is most clear?
+A. Sparse movement.
+B Dense vehicle group.
+C. Mixed road users.
+D One large vehicle.
+
+The image shows a wide road with multiple vehicles, including cars, motorcycles, and a bus, moving in various directions. The road is marked with lane dividers and traffic signs, and there are several vehicles in close proximity, indicating a dense vehicle group. The presence multiple road users, including, motorcycles, and a bus, suggests a mixed road users pattern. There is no single large dominating the scene, so D is not applicable. The movement is not sparse, as there are many vehicles present. Therefore, the most clear traffic pattern is a dense vehicle group.",0
+60,rayleigh,15.0,0,plugin_capacity,v6_norestore,148,148,141,1.0,2368.0,2988.071918487549,3563.572381845393,2.988071918487549,3.000297790410723,0,1,0.0472972972972973,1,False,leading_letter,0.0071016690344549716,0.25230131699936464,0.0599822998046875,60.45518007280276,"Which traffic pattern is most clearA. Sparse movement.
+. Dense vehicle group.
+C. Mixed road usersD. One large vehicle.
+
+The image shows a wide road with vehicles, including cars, motorcycles, and a bus, moving in various directions. The road is marked with clear lane dividers and traffic signs, and there are several vehicles in close proximity, indicating a dense vehicle group. The presence of multiple road users, including cars, motorcycles, and a bus, suggests a mixed road users pattern. There no single large vehicle the scene, so option D is not applicable. The is not sparse, as there are many vehicles present. Therefore, the most clear traffic pattern is a dense vehicle group.",0
+61,rayleigh,15.0,0,proposed,v6_norestore,119,28,27,0.23529411764705882,448.0,462.30044960975647,1261.7987806797205,0.46230044960975647,1.1560291409943104,0,1,0.03571428571428571,1,False,leading_letter,0.001977706968318671,0.3026858920347877,0.028737545013427734,71.49894798699738,"What?
+A.....
+
+A far is a. is.. no, the a with no of a or a.",0
+61,rayleigh,15.0,0,adaptive_sc,v6_norestore,119,28,27,0.23529411764705882,448.0,462.30044960975647,1261.7987806797205,0.46230044960975647,1.1560291409943104,0,1,0.03571428571428571,1,False,leading_letter,0.0003237469936721027,0.3085421249852516,0.028737545013427734,71.25009021221922,"What?
+A.....
+
+A far is a,. is. no, the a with no of a or a.",0
+61,rayleigh,15.0,0,full,v6_norestore,119,119,117,1.0,5712.0,462.30044960975647,1261.7987806797205,0.46230044960975647,1.1560291409943104,0,1,0.01680672268907563,1,False,leading_letter,0.00010394002310931683,0.310308852000162,0.05579328536987305,71.29501029129722,"What is the clearest long-range cue?
+A. A large vehicle.
+B. A far vehicle group.
+C. A work zone ahead.
+D. No strong long-range cue.
+
+A far large vehicle is a truck, visible in the distance, but not the most prominent feature. A far vehicle group is a collection of vehicles, but they are clearly defined as a group. A work zone ahead is not visible in the image. There is no strong long-range cue, as the image shows a typical urban road with no clear indication of a work zone or a large vehicle group.",0
+61,rayleigh,15.0,0,plugin_capacity,v6_norestore,119,78,75,0.6554621848739496,1248.0,462.30044960975647,1261.7987806797205,0.46230044960975647,1.1560291409943104,0,1,0.038461538461538464,1,False,leading_letter,0.0021195419831201434,0.17475207400275394,0.042362213134765625,41.272071077600415,"What is the cle?
+A. far large.
+B. A far.
+C. A.
+D. No.
+
+A large is a, in the, but not the. A group is a of, but not as a. A work is not in the image. There is no long, as the shows a with no of a work zone or a large vehicle group.",0
+65,rayleigh,15.0,0,proposed,v6_norestore,91,91,90,1.0,1472.0,1478.4729480743408,2273.0677658723735,1.4784729480743408,2.865074938349206,0,0,0.01098901098901099,1,True,leading_letter,0.002304459980223328,0.2742570320260711,0.047007083892822266,63.723621391257616,"The main road user ahead is a car-like vehicle. This is indicated by the presence of a blue sedan and a black sedan on the road, both of which are typical car-like vehicles. The vehicle in the foreground is a car, and the road is a multi-lane highway with other vehicles visible. There is no indication of a person, bike, or motorcycle in the immediate vicinity. vehicles are not large enough to be considered a large vehicle.",0
+65,rayleigh,15.0,0,adaptive_sc,v6_norestore,91,91,86,1.0,1456.0,1478.4729480743408,2273.0677658723735,1.4784729480743408,2.865074938349206,0,0,0.054945054945054944,1,True,leading_letter,0.0004687440232373774,0.27215781796257943,0.045832157135009766,63.89993407943402,"The main user ahead is a car-like vehicle. This is indicated by presence of a blue sedan and a black sedan the road, both of are typical car-like vehicles. The vehicle in the foreground is a car, and the road is a multi-lane highway with other vehicles visible. There is no indication of a person, bike, or motorcycle in the vicinity. The vehicles are not large enough to be considered a large vehicle.",0
+65,rayleigh,15.0,0,full,v6_norestore,91,91,89,1.0,4368.0,1478.4729480743408,2273.0677658723735,1.4784729480743408,2.865074938349206,0,0,0.02197802197802198,1,True,leading_letter,7.02079851180315e-05,0.26956945698475465,0.046713829040527344,63.98770200447121,"The main road user ahead is a car-like vehicle. This is indicated by the presence of a blue sedan and a black sedan on the road, both of which are typical car-like vehicles. The vehicle in the foreground is a car, the road is a multi-lane highway with other vehicles visible. There is no indication of a person, bike, or motorcycle in the immediate vicinity. The vehicles are large enough to be considered a large vehicle.",0
+65,rayleigh,15.0,0,plugin_capacity,v6_norestore,91,91,87,1.0,2272.0,1478.4729480743408,2273.0677658723735,1.4784729480743408,2.865074938349206,0,0,0.04395604395604396,1,True,leading_letter,0.0022732469951733947,0.2804934749729,0.046126365661621094,67.86820120444288,"The main road user ahead is a car-like vehicle. This is indicated by the presence of a blue sedan and a black sedan on the road, both of which are car-like vehicles. The vehicle in the foreground is a car, and the road is a multi-l highway with other vehicles visible. There is no indication of a person, bike, motorcycle in the immediate vicinity. The vehicles not large enough to be considered a large vehicle.",0
+67,rayleigh,15.0,0,proposed,v6_norestore,94,94,90,1.0,1504.0,6548.751354217529,6761.917462087467,6.548751354217529,6.899274381231345,0,0,0.0425531914893617,1,False,leading_letter,0.0013083379599265754,0.28193910303525627,0.046126365661621094,67.00705692287418,"Which distant feature stands out mostA. A distant truck or bus.
+B. A distant traffic cluster.
+C. A distant work zone.
+D. Nothing distant stands out.
+
+ distant feature that stands out most is a distant work zone. is indicated by the presence of a large red and white striped barrier on the right side of the road, which is a common sign of a construction or work zone. The other options are not visible in the distance.",0
+67,rayleigh,15.0,0,adaptive_sc,v6_norestore,94,94,90,1.0,4512.0,6548.751354217529,6761.917462087467,6.548751354217529,6.899274381231345,0,0,0.0425531914893617,1,False,leading_letter,0.000596245052292943,0.2791685480042361,0.046126365661621094,65.89215238543984," distant feature stands out most?
+A. A distant truck or bus.
+B. A distant traffic cluster.
+C. A distant work zone.
+D. Nothing distant stands out.
+
+The distant feature that out most is a distant work zone. This is indicated by the presence of a large red and white striped barrier on the right side of the road which is a common sign a construction or work zone. The other options are not clearly visible in the distance.",0
+67,rayleigh,15.0,0,full,v6_norestore,94,94,88,1.0,4512.0,6548.751354217529,6761.917462087467,6.548751354217529,6.899274381231345,0,0,0.06382978723404255,1,False,leading_letter,6.201403448358178e-05,0.2777790860272944,0.045832157135009766,65.71558727690717,"Which distant feature stands out most?
+A. A distant truck or bus.
+B. A distant traffic cluster.
+C. A distant work zoneD. Nothing distant stands out.
+
+The distant feature that stands is a distant work zone. is indicated by the of a large red and white striped barrier on the right side of the road, which is a common sign of a construction or work zone. The other options are not clearly visible in the distance",0
+67,rayleigh,15.0,0,plugin_capacity,v6_norestore,94,94,89,1.0,1504.0,6548.751354217529,6761.917462087467,6.548751354217529,6.899274381231345,0,0,0.05319148936170213,1,False,leading_letter,0.0013751009828411043,0.271563156042248,0.045832157135009766,65.60286942090606,"Which distant feature stands out most?
+A. A distant truck or bus.
+B. A traffic cluster.
+C. A distant work zone.
+D. Nothing stands out.
+
+The distant feature that stands out most is a distant work zone. is indicated by the presence of a large red and white striped barrier on the right side of the road, which is a common sign of a construction or work zone The other options are clearly visible in the distance.",0
+70,rayleigh,15.0,0,proposed,v6_norestore,148,148,131,1.0,2368.0,6875.088691711426,7069.475097983477,6.875088691711426,6.808953872158266,1,1,0.11486486486486487,1,True,leading_letter,0.0015760140377096832,0.3046225080033764,0.05978679656982422,73.14595662177075,"What useful far-field cue is visibleA. A large far-field agent.
+B A far buildup of traffic.
+C. far work zone.
+ No obvious far-field cue.
+
+The scene shows a wide road intersection with multiple lanes and signs. There is a black car and a white truck the foreground, and a black car and a white car on the right the road. The road is marked with and arrows, and there are traffic road signs There is no visible large agent or work zone in the far field. The traffic appears to be moving a normal flow, with no significant or congestion. Therefore, the most answer is D. No obvious far-field cue.",0
+70,rayleigh,15.0,0,adaptive_sc,v6_norestore,148,148,137,1.0,4736.0,6875.088691711426,7069.475097983477,6.875088691711426,6.808953872158266,1,1,0.07432432432432433,1,True,leading_letter,0.0008661159663461149,0.3161418430390768,0.06153392791748047,76.16963495261996,"What useful far cue is visible?
+A. A large far-field agent.
+B A far buildup of traffic.
+C. A far work zoneD. No obvious-field cueThe scene shows a wide road intersection with multiple lanes and traffic signs. There is a black car and a white truck in the foreground, and a black car and a white on the right side of the road. The road is marked with white and arrows, and there are traffic lights and road signs. There is no visible large agent or work zone the far field. The traffic appears to be moving in normal flow, no significant buildup or congestion. Therefore, the most accurate answer is. No obvious far-field cue.",0
+70,rayleigh,15.0,0,full,v6_norestore,148,148,142,1.0,7104.0,6875.088691711426,7069.475097983477,6.875088691711426,6.808953872158266,1,1,0.04054054054054054,1,True,leading_letter,0.00015296100173145533,0.3243013679748401,0.0631556510925293,77.08319215393975,"What useful far-field cue is visible?
+A. A large far-field.
+B. A far buildup of traffic.
+C. A far work zone.
+D. No obvious far-field cue.
+
+The scene shows a wide road intersection with multiple lanes and traffic signs. There is a black car and a white truck in foreground and a black car and a car on the right side of the road. The road is marked with white lines and arrows, and there are traffic lights and road signs. There is no visible large agent or work zone in the far field. The traffic to be moving in a normal flow with no significant buildup or congestion. Therefore, the most accurate answer is D. No obvious far-field cue.",0
+70,rayleigh,15.0,0,plugin_capacity,v6_norestore,148,148,140,1.0,2368.0,6875.088691711426,7069.475097983477,6.875088691711426,6.808953872158266,1,1,0.05405405405405406,1,True,leading_letter,0.004895088030025363,0.32184194203000516,0.06250476837158203,76.81723472372164,"What useful far-field cue is?
+A. A large far-field agent.
+B. A buildup of traffic.
+C. A far work zone.
+D. No obvious far-field cue.
+
+The scene shows a wide road intersection with multiple lanes and traffic signs There is a black car a white truck in foreground, and black car and a white car on the right side of the road. The road is marked with white lines and arrows, and there are lights road signs. There is no visible large agent or work zone in the far field. The traffic appears to be moving in a normal flow, with no significant buildup or congestion. Therefore, the most accurate answer is D. No obvious far-field cue.",0
+71,rayleigh,15.0,0,proposed,v6_norestore,59,59,57,1.0,2832.0,2835.0348472595215,3432.9854404261896,2.8350348472595215,3.2116194444433543,0,1,0.03389830508474576,1,True,leading_letter,0.007102673989720643,0.08243540400872007,0.036229610443115234,18.614326402189036,"The ego vehicle is likely to move forward on the road. There are no visible signs of a left turn right turn, and the vehicle is not in a lane change position. The road is clear and the vehicle in the center of the road, with no indication of a lane change.",0
+71,rayleigh,15.0,0,adaptive_sc,v6_norestore,59,59,56,1.0,2832.0,2835.0348472595215,3432.9854404261896,2.8350348472595215,3.2116194444433543,0,1,0.05084745762711865,1,True,leading_letter,0.0003907519858330488,0.07319271500455216,0.03595924377441406,16.396997978894795,"The ego vehicle is likely to move forward on the road. There are no visible signs of a left or right turn, and the vehicle is in a lane change position. The road is clear and the vehicle is in the center of the road, no indication of a lane change.",0
+71,rayleigh,15.0,0,full,v6_norestore,59,59,57,1.0,2832.0,2835.0348472595215,3432.9854404261896,2.8350348472595215,3.2116194444433543,0,1,0.03389830508474576,1,True,leading_letter,5.22119808010757e-05,0.07339328003581613,0.036229610443115234,16.757887630577898,"The ego vehicle is likely to move forward on the road. There are no visible signs of a turn or right turn, and the vehicle is not in a lane change position. The road is clear and the vehicle is in the center the road, with no indication of a lane change.",0
+71,rayleigh,15.0,0,plugin_capacity,v6_norestore,59,59,57,1.0,2832.0,2835.0348472595215,3432.9854404261896,2.8350348472595215,3.2116194444433543,0,1,0.03389830508474576,1,True,leading_letter,0.0025202700053341687,0.07933628099272028,0.036229610443115234,18.178322063861998,"The ego vehicle is likely to move forward on the road. There are no visible signs of a left turn or right turn, and the vehicle not in a lane change position. The road is clear and the vehicle is in the center of the road, with no indication of lane change.",0
+77,rayleigh,15.0,0,proposed,v6_norestore,28,28,26,1.0,1344.0,1991.2406206130981,2715.9274976344136,1.9912406206130981,2.6257280305495043,0,1,0.07142857142857142,1,False,leading_letter,0.001302367018070072,0.07294920703861862,0.030331134796142578,16.56457644225913,"A wet slippery surface.
+B. Crowded traffic flow.
+. Pedestrian or rider exposure.
+D. Nothing stands out strongly",0
+77,rayleigh,15.0,0,adaptive_sc,v6_norestore,28,28,26,1.0,1344.0,1991.2406206130981,2715.9274976344136,1.9912406206130981,2.6257280305495043,0,1,0.07142857142857142,1,False,leading_letter,0.00022863195044919848,0.08308107196353376,0.030103683471679688,18.734781727776863,"A wet slippery surface.
+B. Crowded traffic.
+C. Pedestrian or rider exposure.
+D. Nothing stands strongly.",0
+77,rayleigh,15.0,0,full,v6_norestore,28,28,26,1.0,1344.0,1991.2406206130981,2715.9274976344136,1.9912406206130981,2.6257280305495043,0,1,0.07142857142857142,1,False,leading_letter,0.00015375798102468252,0.0799845340079628,0.030103683471679688,18.10089996867202,"A wet slippery surface.
+B. Crowded traffic flow.
+C. Pedestrian rider exposure.
+D. Nothing out strongly.",0
+77,rayleigh,15.0,0,plugin_capacity,v6_norestore,28,28,28,1.0,1344.0,1991.2406206130981,2715.9274976344136,1.9912406206130981,2.6257280305495043,0,1,0.0,0,False,leading_letter,0.001452434982638806,0.07239801698597148,0.030560016632080078,16.458241201420897,"A wet slippery surface.
+B. Crowded traffic flow.
+C. Pedestrian or rider exposure.
+D. Nothing stands out strongly.",0
+83,rayleigh,15.0,0,proposed,v6_norestore,142,142,136,1.0,2272.0,3783.2183837890625,4249.98157706461,3.7832183837890625,4.301929293513309,0,0,0.04225352112676056,1,True,leading_letter,0.0015365279978141189,0.07791007903870195,0.05978679656982422,17.604561459585092,"Question: How should the scene ahead be grouped?
+
+Candidate choices:
+A. Intersection-type scene.
+B. Regular road scene.
+C. Restricted or guided scene.
+D. Branching road scene.
+
+Visual and contextual evidence that discriminates the choices:
+The scene features multiple lanes of traffic, a crosswalk traffic lights, and a central intersection with vehicles approaching different directions, indicating controlled intersection. presence of traffic signals andwalks suggests a regulated traffic environment, which is characteristic of an intersection-type scene. There are no signs of branching roads or restricted traffic patterns, nor are there any indications of a regular road with no control. Therefore the scene is best categorized as an intersection-type scene.",0
+83,rayleigh,15.0,0,adaptive_sc,v6_norestore,142,142,137,1.0,2272.0,3783.2183837890625,4249.98157706461,3.7832183837890625,4.301929293513309,0,0,0.035211267605633804,1,True,leading_letter,0.000763488991651684,0.0799254989833571,0.0599822998046875,18.903179764553787,"Question: How should the ahead be grouped?
+
+Candidate choices:
+A. Intersection-type scene.
+B. Regular road scene.
+C. Restricted or guided scene.
+D. Branching road scene.
+
+Visual and contextual evidence that discriminates the choicesThe scene features multiple lanes of traffic, a crosswalk, traffic lights, and a central intersection with vehicles approaching from different directions, indicating a controlled intersection. The presence of traffic signals and crosswalks suggests a regulated traffic environment, which is characteristic of intersection-type. There are no signs of branching roads or restricted traffic patterns, nor are there any of a regular road with no control. Therefore, the scene is best categorized as an intersection-type scene.",0
+83,rayleigh,15.0,0,full,v6_norestore,142,142,130,1.0,6816.0,3783.2183837890625,4249.98157706461,3.7832183837890625,4.301929293513309,0,0,0.08450704225352113,1,True,leading_letter,5.193200195208192e-05,0.0791506870300509,0.05769920349121094,18.734176113142748,"Question: How should the scene ahead be grouped?
+
+Candidate choices:
+A. Intersection scene.
+B. Regular road scene.
+. Restricted or guided scene.
+D. Branching scene.
+
+Visual and contextual evidence that discriminates the choices:
+The scene features multiple lanes of traffic, a crosswalk, traffic lights, and a central intersection vehicles approaching from directions indicating a controlled intersection. presence of signals and crosswalks suggests a regulated traffic environment, which is characteristic of an intersection-type scene. There are no signs of branching roads or restricted traffic patterns nor there any of a regular road with no control. Therefore, the scene best categorized as an intersection-type scene.",0
+83,rayleigh,15.0,0,plugin_capacity,v6_norestore,142,142,131,1.0,2272.0,3783.2183837890625,4249.98157706461,3.7832183837890625,4.301929293513309,0,0,0.07746478873239436,1,True,leading_letter,0.002440675045363605,0.08224776497809216,0.058013916015625,19.639532560293738,"Question: How the scene ahead be grouped?
+
+Candidate choicesA. Intersection-type scene.
+B. Regular road scene.
+C. Restricted or guided.
+D. Branching road scene.
+
+Visual and contextual evidence that discriminates the choices:
+The scene features lanes of traffic, awalk, traffic lights, and a central intersection with vehicles approaching from different directions, indicating a controlled intersection. The presence of traffic and crosswalks suggests a regulated traffic environment, which is characteristic of an intersection-type scene. There are no signs of roads or restricted traffic patterns, nor are there indications of regular with no control. Therefore the scene is best categorized as an intersection-type scene.",0

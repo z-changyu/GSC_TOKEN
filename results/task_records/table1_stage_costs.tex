@@ -1,0 +1,163 @@
+% 表 1 阶段耗时（同条件，30 样本，每实例一固定信道；重复取每样本中位数）
+\begin{tabular}{llrrrl}
+\hline
+实例 & 方法 & 阶段 & P50 (ms) & P95 (ms) & 来源\\
+\hline
+loose (15 dB) & 本文方法 & 报告生成总计 & 2331.10 & 2866.23 & 实测 & 含图像处理与文本解码（视觉编码为诊断测量，不计入总时延）\\
+loose (15 dB) & 本文方法 & ├ 报告输入组装 & 6.87 & 7.72 & 实测 & 含图像的 chat template + 搬运到设备\\
+loose (15 dB) & 本文方法 & ├ 报告文本生成 & 2315.08 & 2853.36 & 实测 & 自回归生成（子项，不重复计入总计）\\
+loose (15 dB) & 本文方法 & └ 报告解码与释放 & 6.89 & 7.43 & 实测 & 文本解码、删除张量与 empty_cache\\
+loose (15 dB) & 本文方法 & 方法专属：语用评分总计 & 325.74 & 350.76 & 实测 & 仅消费语用效用的方法（本文方法/Adaptive-SC）\\
+loose (15 dB) & 本文方法 & ├ 提示分词与截断 & 0.38 & 0.45 & 实测 & semantic prompt 分词 + max_prompt_tokens 截断\\
+loose (15 dB) & 本文方法 & ├ 评分输入准备 & 12.62 & 13.08 & 实测 & 两次 processor（含图像）+ span 定位\\
+loose (15 dB) & 本文方法 & ├ 提示搬运与标签构造 & 0.05 & 0.06 & 实测 & input_ids/attention_mask 搬运、答案标签拼接\\
+loose (15 dB) & 本文方法 & ├ 嵌入与 RoPE 组装 & 1.11 & 1.16 & 实测 & 保留梯度\\
+loose (15 dB) & 本文方法 & ├ 教师强制前向 & 113.78 & 119.23 & 实测 & output_attentions=True，含视觉 token\\
+loose (15 dB) & 本文方法 & ├ 注意力与语义聚合 & 0.48 & 0.59 & 实测 & prompt 切片 + 语义方向\\
+loose (15 dB) & 本文方法 & ├ 梯度反向 & 104.75 & 110.32 & 实测 & 含掩码前向/损失构造\\
+loose (15 dB) & 本文方法 & ├ 耦合构建 & 0.00 & 0.01 & 实测 & 耦合打分 + 凹区间判定\\
+loose (15 dB) & 本文方法 & ├ 答案 NLL 同步 & 0.02 & 0.02 & 实测 & output.loss 取回 CPU\\
+loose (15 dB) & 本文方法 & ├ 结果序列化（批量搬运） & 0.17 & 0.40 & 实测 & 一次性 .cpu().tolist()，正式路径\\
+loose (15 dB) & 本文方法 & ├（对照）逐元素序列化 & 2.04 & 2.53 & 实测 & N^2 次标量搬运，诊断项，不计入总计\\
+loose (15 dB) & 本文方法 & └ 缓存释放（empty_cache） & 90.94 & 106.88 & 实测 & 删除中间张量 + 显存分配器回收\\
+loose (15 dB) & 本文方法 & （父-子残差） & 1.15 & 1.44 & 校验 & T_parent − ΣT_child\\
+loose (15 dB) & 本文方法 & 方法专属：Token 选择与保护调度 & 1.90 & 3.06 & 实测 & 本文方法为 LP+舍入+局部改进\\
+loose (15 dB) & 本文方法 & ├ 基础 LP（对偶搜索） & 1.18 & 1.90 & 实测 & CPU/张量\\
+loose (15 dB) & 本文方法 & ├ 认证舍入 & 0.15 & 0.19 & 实测 & CPU\\
+loose (15 dB) & 本文方法 & └ 局部改进 & 0.51 & 0.97 & 实测 & 至 t_max=8\\
+loose (15 dB) & 本文方法 & RSU 协调：语义价格与带宽分配 & 1.16 & 1.18 & 实测 & 10 终端（CPU）\\
+loose (15 dB) & 本文方法 & 接收端：模板/分词/搬运 & 0.48 & 0.64 & 实测 & chat 模板 + 分词 + 到设备\\
+loose (15 dB) & 本文方法 & 接收端：前向 & 50.04 & 56.14 & 实测 & 单次前向取末位 logits\\
+loose (15 dB) & 本文方法 & 接收端：答案读出（批量搬运） & 0.07 & 0.09 & 实测 & 字母行一次性搬到 CPU 后 argmax\\
+loose (15 dB) & 本文方法 & （对照）逐字母同步读出 & 38.69 & 43.17 & 实测 & 每字母一次 GPU→CPU 标量搬运\\
+loose (15 dB) & 本文方法 & 上行 & 1.00 & 1.00 & 模拟 & 单时隙，设定\\
+loose (15 dB) & 本文方法 & 回传 & 0.50 & 0.50 & 模拟 & 设定\\
+loose (15 dB) & 本文方法 & 车辆原生感知触发 & 20.00 & 20.00 & 模拟 & 假设 10–30 ms\\
+loose (15 dB) & Adaptive-SC & 报告生成总计 & 2331.10 & 2866.23 & 实测 & 含图像处理与文本解码（视觉编码为诊断测量，不计入总时延）\\
+loose (15 dB) & Adaptive-SC & ├ 报告输入组装 & 6.87 & 7.72 & 实测 & 含图像的 chat template + 搬运到设备\\
+loose (15 dB) & Adaptive-SC & ├ 报告文本生成 & 2315.08 & 2853.36 & 实测 & 自回归生成（子项，不重复计入总计）\\
+loose (15 dB) & Adaptive-SC & └ 报告解码与释放 & 6.89 & 7.43 & 实测 & 文本解码、删除张量与 empty_cache\\
+loose (15 dB) & Adaptive-SC & 方法专属：语用评分总计 & 325.74 & 350.76 & 实测 & 仅消费语用效用的方法（本文方法/Adaptive-SC）\\
+loose (15 dB) & Adaptive-SC & ├ 提示分词与截断 & 0.38 & 0.45 & 实测 & semantic prompt 分词 + max_prompt_tokens 截断\\
+loose (15 dB) & Adaptive-SC & ├ 评分输入准备 & 12.62 & 13.08 & 实测 & 两次 processor（含图像）+ span 定位\\
+loose (15 dB) & Adaptive-SC & ├ 提示搬运与标签构造 & 0.05 & 0.06 & 实测 & input_ids/attention_mask 搬运、答案标签拼接\\
+loose (15 dB) & Adaptive-SC & ├ 嵌入与 RoPE 组装 & 1.11 & 1.16 & 实测 & 保留梯度\\
+loose (15 dB) & Adaptive-SC & ├ 教师强制前向 & 113.78 & 119.23 & 实测 & output_attentions=True，含视觉 token\\
+loose (15 dB) & Adaptive-SC & ├ 注意力与语义聚合 & 0.48 & 0.59 & 实测 & prompt 切片 + 语义方向\\
+loose (15 dB) & Adaptive-SC & ├ 梯度反向 & 104.75 & 110.32 & 实测 & 含掩码前向/损失构造\\
+loose (15 dB) & Adaptive-SC & ├ 耦合构建 & 0.00 & 0.01 & 实测 & 耦合打分 + 凹区间判定\\
+loose (15 dB) & Adaptive-SC & ├ 答案 NLL 同步 & 0.02 & 0.02 & 实测 & output.loss 取回 CPU\\
+loose (15 dB) & Adaptive-SC & ├ 结果序列化（批量搬运） & 0.17 & 0.40 & 实测 & 一次性 .cpu().tolist()，正式路径\\
+loose (15 dB) & Adaptive-SC & ├（对照）逐元素序列化 & 2.04 & 2.53 & 实测 & N^2 次标量搬运，诊断项，不计入总计\\
+loose (15 dB) & Adaptive-SC & └ 缓存释放（empty_cache） & 90.94 & 106.88 & 实测 & 删除中间张量 + 显存分配器回收\\
+loose (15 dB) & Adaptive-SC & （父-子残差） & 1.15 & 1.44 & 校验 & T_parent − ΣT_child\\
+loose (15 dB) & Adaptive-SC & 方法专属：Token 选择与保护调度 & 0.91 & 1.08 & 实测 & 本文方法为 LP+舍入+局部改进\\
+loose (15 dB) & Adaptive-SC & RSU 协调：语义价格与带宽分配 & 1.16 & 1.18 & 实测 & 10 终端（CPU）\\
+loose (15 dB) & Adaptive-SC & 接收端：模板/分词/搬运 & 0.45 & 0.64 & 实测 & chat 模板 + 分词 + 到设备\\
+loose (15 dB) & Adaptive-SC & 接收端：前向 & 50.07 & 61.64 & 实测 & 单次前向取末位 logits\\
+loose (15 dB) & Adaptive-SC & 接收端：答案读出（批量搬运） & 0.07 & 0.08 & 实测 & 字母行一次性搬到 CPU 后 argmax\\
+loose (15 dB) & Adaptive-SC & （对照）逐字母同步读出 & 38.54 & 46.80 & 实测 & 每字母一次 GPU→CPU 标量搬运\\
+loose (15 dB) & Adaptive-SC & 上行 & 1.00 & 1.00 & 模拟 & 单时隙，设定\\
+loose (15 dB) & Adaptive-SC & 回传 & 0.50 & 0.50 & 模拟 & 设定\\
+loose (15 dB) & Adaptive-SC & 车辆原生感知触发 & 20.00 & 20.00 & 模拟 & 假设 10–30 ms\\
+loose (15 dB) & TokCom-UEP & 报告生成总计 & 2331.10 & 2866.23 & 实测 & 含图像处理与文本解码（视觉编码为诊断测量，不计入总时延）\\
+loose (15 dB) & TokCom-UEP & 方法专属：Token 选择与保护调度 & 1.79 & 2.51 & 实测 & 本文方法为 LP+舍入+局部改进\\
+loose (15 dB) & TokCom-UEP & RSU 协调：语义价格与带宽分配 & 1.17 & 1.18 & 实测 & 10 终端（CPU）\\
+loose (15 dB) & TokCom-UEP & 接收端：模板/分词/搬运 & 0.52 & 0.66 & 实测 & chat 模板 + 分词 + 到设备\\
+loose (15 dB) & TokCom-UEP & 接收端：前向 & 50.17 & 60.82 & 实测 & 单次前向取末位 logits\\
+loose (15 dB) & TokCom-UEP & 接收端：答案读出（批量搬运） & 0.07 & 0.08 & 实测 & 字母行一次性搬到 CPU 后 argmax\\
+loose (15 dB) & TokCom-UEP & （对照）逐字母同步读出 & 38.79 & 43.67 & 实测 & 每字母一次 GPU→CPU 标量搬运\\
+loose (15 dB) & TokCom-UEP & 外部信号（TokCom） & 0.01 & 0.02 & 未测 & 未测量，不默认零\\
+loose (15 dB) & TokCom-UEP & 上行 & 1.00 & 1.00 & 模拟 & 单时隙，设定\\
+loose (15 dB) & TokCom-UEP & 回传 & 0.50 & 0.50 & 模拟 & 设定\\
+loose (15 dB) & TokCom-UEP & 车辆原生感知触发 & 20.00 & 20.00 & 模拟 & 假设 10–30 ms\\
+loose (15 dB) & 未压缩参考 & 报告生成总计 & 2331.10 & 2866.23 & 实测 & 含图像处理与文本解码（视觉编码为诊断测量，不计入总时延）\\
+loose (15 dB) & 未压缩参考 & 方法专属：Token 选择与保护调度 & 0.32 & 0.36 & 实测 & 本文方法为 LP+舍入+局部改进\\
+loose (15 dB) & 未压缩参考 & RSU 协调：语义价格与带宽分配 & 1.15 & 1.18 & 实测 & 10 终端（CPU）\\
+loose (15 dB) & 未压缩参考 & 接收端：模板/分词/搬运 & 0.45 & 0.61 & 实测 & chat 模板 + 分词 + 到设备\\
+loose (15 dB) & 未压缩参考 & 接收端：前向 & 50.29 & 65.35 & 实测 & 单次前向取末位 logits\\
+loose (15 dB) & 未压缩参考 & 接收端：答案读出（批量搬运） & 0.07 & 0.08 & 实测 & 字母行一次性搬到 CPU 后 argmax\\
+loose (15 dB) & 未压缩参考 & （对照）逐字母同步读出 & 38.68 & 50.18 & 实测 & 每字母一次 GPU→CPU 标量搬运\\
+loose (15 dB) & 未压缩参考 & 上行 & 1.00 & 1.00 & 模拟 & 单时隙，设定\\
+loose (15 dB) & 未压缩参考 & 回传 & 0.50 & 0.50 & 模拟 & 设定\\
+loose (15 dB) & 未压缩参考 & 车辆原生感知触发 & 20.00 & 20.00 & 模拟 & 假设 10–30 ms\\
+binding (0 dB) & 本文方法 & 报告生成总计 & 2331.58 & 2870.78 & 实测 & 含图像处理与文本解码（视觉编码为诊断测量，不计入总时延）\\
+binding (0 dB) & 本文方法 & ├ 报告输入组装 & 6.97 & 7.89 & 实测 & 含图像的 chat template + 搬运到设备\\
+binding (0 dB) & 本文方法 & ├ 报告文本生成 & 2323.58 & 2858.04 & 实测 & 自回归生成（子项，不重复计入总计）\\
+binding (0 dB) & 本文方法 & └ 报告解码与释放 & 6.94 & 7.40 & 实测 & 文本解码、删除张量与 empty_cache\\
+binding (0 dB) & 本文方法 & 方法专属：语用评分总计 & 329.67 & 355.31 & 实测 & 仅消费语用效用的方法（本文方法/Adaptive-SC）\\
+binding (0 dB) & 本文方法 & ├ 提示分词与截断 & 0.38 & 0.42 & 实测 & semantic prompt 分词 + max_prompt_tokens 截断\\
+binding (0 dB) & 本文方法 & ├ 评分输入准备 & 12.58 & 13.52 & 实测 & 两次 processor（含图像）+ span 定位\\
+binding (0 dB) & 本文方法 & ├ 提示搬运与标签构造 & 0.05 & 0.06 & 实测 & input_ids/attention_mask 搬运、答案标签拼接\\
+binding (0 dB) & 本文方法 & ├ 嵌入与 RoPE 组装 & 1.10 & 1.14 & 实测 & 保留梯度\\
+binding (0 dB) & 本文方法 & ├ 教师强制前向 & 114.98 & 119.64 & 实测 & output_attentions=True，含视觉 token\\
+binding (0 dB) & 本文方法 & ├ 注意力与语义聚合 & 0.49 & 0.57 & 实测 & prompt 切片 + 语义方向\\
+binding (0 dB) & 本文方法 & ├ 梯度反向 & 106.60 & 112.16 & 实测 & 含掩码前向/损失构造\\
+binding (0 dB) & 本文方法 & ├ 耦合构建 & 0.00 & 0.01 & 实测 & 耦合打分 + 凹区间判定\\
+binding (0 dB) & 本文方法 & ├ 答案 NLL 同步 & 0.02 & 0.02 & 实测 & output.loss 取回 CPU\\
+binding (0 dB) & 本文方法 & ├ 结果序列化（批量搬运） & 0.17 & 0.39 & 实测 & 一次性 .cpu().tolist()，正式路径\\
+binding (0 dB) & 本文方法 & ├（对照）逐元素序列化 & 2.06 & 2.49 & 实测 & N^2 次标量搬运，诊断项，不计入总计\\
+binding (0 dB) & 本文方法 & └ 缓存释放（empty_cache） & 91.62 & 107.65 & 实测 & 删除中间张量 + 显存分配器回收\\
+binding (0 dB) & 本文方法 & （父-子残差） & 1.10 & 1.30 & 校验 & T_parent − ΣT_child\\
+binding (0 dB) & 本文方法 & 方法专属：Token 选择与保护调度 & 1.93 & 2.60 & 实测 & 本文方法为 LP+舍入+局部改进\\
+binding (0 dB) & 本文方法 & ├ 基础 LP（对偶搜索） & 1.20 & 1.38 & 实测 & CPU/张量\\
+binding (0 dB) & 本文方法 & ├ 认证舍入 & 0.15 & 0.19 & 实测 & CPU\\
+binding (0 dB) & 本文方法 & └ 局部改进 & 0.51 & 1.06 & 实测 & 至 t_max=8\\
+binding (0 dB) & 本文方法 & RSU 协调：语义价格与带宽分配 & 1.17 & 1.19 & 实测 & 10 终端（CPU）\\
+binding (0 dB) & 本文方法 & 接收端：模板/分词/搬运 & 0.39 & 0.52 & 实测 & chat 模板 + 分词 + 到设备\\
+binding (0 dB) & 本文方法 & 接收端：前向 & 26.37 & 55.37 & 实测 & 单次前向取末位 logits\\
+binding (0 dB) & 本文方法 & 接收端：答案读出（批量搬运） & 0.07 & 0.08 & 实测 & 字母行一次性搬到 CPU 后 argmax\\
+binding (0 dB) & 本文方法 & （对照）逐字母同步读出 & 20.01 & 43.99 & 实测 & 每字母一次 GPU→CPU 标量搬运\\
+binding (0 dB) & 本文方法 & 上行 & 1.00 & 1.00 & 模拟 & 单时隙，设定\\
+binding (0 dB) & 本文方法 & 回传 & 0.50 & 0.50 & 模拟 & 设定\\
+binding (0 dB) & 本文方法 & 车辆原生感知触发 & 20.00 & 20.00 & 模拟 & 假设 10–30 ms\\
+binding (0 dB) & Adaptive-SC & 报告生成总计 & 2331.58 & 2870.78 & 实测 & 含图像处理与文本解码（视觉编码为诊断测量，不计入总时延）\\
+binding (0 dB) & Adaptive-SC & ├ 报告输入组装 & 6.97 & 7.89 & 实测 & 含图像的 chat template + 搬运到设备\\
+binding (0 dB) & Adaptive-SC & ├ 报告文本生成 & 2323.58 & 2858.04 & 实测 & 自回归生成（子项，不重复计入总计）\\
+binding (0 dB) & Adaptive-SC & └ 报告解码与释放 & 6.94 & 7.40 & 实测 & 文本解码、删除张量与 empty_cache\\
+binding (0 dB) & Adaptive-SC & 方法专属：语用评分总计 & 329.67 & 355.31 & 实测 & 仅消费语用效用的方法（本文方法/Adaptive-SC）\\
+binding (0 dB) & Adaptive-SC & ├ 提示分词与截断 & 0.38 & 0.42 & 实测 & semantic prompt 分词 + max_prompt_tokens 截断\\
+binding (0 dB) & Adaptive-SC & ├ 评分输入准备 & 12.58 & 13.52 & 实测 & 两次 processor（含图像）+ span 定位\\
+binding (0 dB) & Adaptive-SC & ├ 提示搬运与标签构造 & 0.05 & 0.06 & 实测 & input_ids/attention_mask 搬运、答案标签拼接\\
+binding (0 dB) & Adaptive-SC & ├ 嵌入与 RoPE 组装 & 1.10 & 1.14 & 实测 & 保留梯度\\
+binding (0 dB) & Adaptive-SC & ├ 教师强制前向 & 114.98 & 119.64 & 实测 & output_attentions=True，含视觉 token\\
+binding (0 dB) & Adaptive-SC & ├ 注意力与语义聚合 & 0.49 & 0.57 & 实测 & prompt 切片 + 语义方向\\
+binding (0 dB) & Adaptive-SC & ├ 梯度反向 & 106.60 & 112.16 & 实测 & 含掩码前向/损失构造\\
+binding (0 dB) & Adaptive-SC & ├ 耦合构建 & 0.00 & 0.01 & 实测 & 耦合打分 + 凹区间判定\\
+binding (0 dB) & Adaptive-SC & ├ 答案 NLL 同步 & 0.02 & 0.02 & 实测 & output.loss 取回 CPU\\
+binding (0 dB) & Adaptive-SC & ├ 结果序列化（批量搬运） & 0.17 & 0.39 & 实测 & 一次性 .cpu().tolist()，正式路径\\
+binding (0 dB) & Adaptive-SC & ├（对照）逐元素序列化 & 2.06 & 2.49 & 实测 & N^2 次标量搬运，诊断项，不计入总计\\
+binding (0 dB) & Adaptive-SC & └ 缓存释放（empty_cache） & 91.62 & 107.65 & 实测 & 删除中间张量 + 显存分配器回收\\
+binding (0 dB) & Adaptive-SC & （父-子残差） & 1.10 & 1.30 & 校验 & T_parent − ΣT_child\\
+binding (0 dB) & Adaptive-SC & 方法专属：Token 选择与保护调度 & 0.54 & 0.92 & 实测 & 本文方法为 LP+舍入+局部改进\\
+binding (0 dB) & Adaptive-SC & RSU 协调：语义价格与带宽分配 & 1.17 & 1.19 & 实测 & 10 终端（CPU）\\
+binding (0 dB) & Adaptive-SC & 接收端：模板/分词/搬运 & 0.34 & 0.62 & 实测 & chat 模板 + 分词 + 到设备\\
+binding (0 dB) & Adaptive-SC & 接收端：前向 & 26.20 & 55.89 & 实测 & 单次前向取末位 logits\\
+binding (0 dB) & Adaptive-SC & 接收端：答案读出（批量搬运） & 0.07 & 0.09 & 实测 & 字母行一次性搬到 CPU 后 argmax\\
+binding (0 dB) & Adaptive-SC & （对照）逐字母同步读出 & 19.90 & 42.99 & 实测 & 每字母一次 GPU→CPU 标量搬运\\
+binding (0 dB) & Adaptive-SC & 上行 & 1.00 & 1.00 & 模拟 & 单时隙，设定\\
+binding (0 dB) & Adaptive-SC & 回传 & 0.50 & 0.50 & 模拟 & 设定\\
+binding (0 dB) & Adaptive-SC & 车辆原生感知触发 & 20.00 & 20.00 & 模拟 & 假设 10–30 ms\\
+binding (0 dB) & TokCom-UEP & 报告生成总计 & 2331.58 & 2870.78 & 实测 & 含图像处理与文本解码（视觉编码为诊断测量，不计入总时延）\\
+binding (0 dB) & TokCom-UEP & 方法专属：Token 选择与保护调度 & 1.79 & 2.34 & 实测 & 本文方法为 LP+舍入+局部改进\\
+binding (0 dB) & TokCom-UEP & RSU 协调：语义价格与带宽分配 & 1.17 & 1.19 & 实测 & 10 终端（CPU）\\
+binding (0 dB) & TokCom-UEP & 接收端：模板/分词/搬运 & 0.42 & 0.56 & 实测 & chat 模板 + 分词 + 到设备\\
+binding (0 dB) & TokCom-UEP & 接收端：前向 & 26.56 & 51.10 & 实测 & 单次前向取末位 logits\\
+binding (0 dB) & TokCom-UEP & 接收端：答案读出（批量搬运） & 0.07 & 0.09 & 实测 & 字母行一次性搬到 CPU 后 argmax\\
+binding (0 dB) & TokCom-UEP & （对照）逐字母同步读出 & 19.98 & 47.25 & 实测 & 每字母一次 GPU→CPU 标量搬运\\
+binding (0 dB) & TokCom-UEP & 外部信号（TokCom） & 0.01 & 0.02 & 未测 & 未测量，不默认零\\
+binding (0 dB) & TokCom-UEP & 上行 & 1.00 & 1.00 & 模拟 & 单时隙，设定\\
+binding (0 dB) & TokCom-UEP & 回传 & 0.50 & 0.50 & 模拟 & 设定\\
+binding (0 dB) & TokCom-UEP & 车辆原生感知触发 & 20.00 & 20.00 & 模拟 & 假设 10–30 ms\\
+binding (0 dB) & 未压缩参考 & 报告生成总计 & 2331.58 & 2870.78 & 实测 & 含图像处理与文本解码（视觉编码为诊断测量，不计入总时延）\\
+binding (0 dB) & 未压缩参考 & 方法专属：Token 选择与保护调度 & 0.32 & 0.38 & 实测 & 本文方法为 LP+舍入+局部改进\\
+binding (0 dB) & 未压缩参考 & RSU 协调：语义价格与带宽分配 & 1.15 & 1.22 & 实测 & 10 终端（CPU）\\
+binding (0 dB) & 未压缩参考 & 接收端：模板/分词/搬运 & 0.46 & 0.64 & 实测 & chat 模板 + 分词 + 到设备\\
+binding (0 dB) & 未压缩参考 & 接收端：前向 & 54.33 & 65.05 & 实测 & 单次前向取末位 logits\\
+binding (0 dB) & 未压缩参考 & 接收端：答案读出（批量搬运） & 0.07 & 0.08 & 实测 & 字母行一次性搬到 CPU 后 argmax\\
+binding (0 dB) & 未压缩参考 & （对照）逐字母同步读出 & 41.26 & 48.90 & 实测 & 每字母一次 GPU→CPU 标量搬运\\
+binding (0 dB) & 未压缩参考 & 上行 & 1.00 & 1.00 & 模拟 & 单时隙，设定\\
+binding (0 dB) & 未压缩参考 & 回传 & 0.50 & 0.50 & 模拟 & 设定\\
+binding (0 dB) & 未压缩参考 & 车辆原生感知触发 & 20.00 & 20.00 & 模拟 & 假设 10–30 ms\\
+\hline
+\end{tabular}
