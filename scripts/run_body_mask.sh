@@ -29,6 +29,6 @@ CUDA_VISIBLE_DEVICES=0 python -u scripts/run_channel_experiment.py \
             configs/channels/rician.yaml \
             configs/channels/frequency_selective.yaml \
   --snr-db 0 5 10 --channel-seeds 0 1 2 \
-  --output-dir outputs/body_mask_8b8b
+  --output-dir outputs/body_mask_8b8b_v2
 
 echo "BODY_MASK_DONE"

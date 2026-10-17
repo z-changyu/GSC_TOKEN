@@ -85,7 +85,8 @@ def main() -> None:
         total = len(token_ids)
         utility = combine_scores(row["attention"], row["semantic"], row["gradient"],
                                  args.weights)
-        body_start = report_span_start(row)
+        body_start = report_span_start(row["token_strings"],
+                                       dataset_row.get("choices"))
         truth = str(dataset_row["choices"][int(dataset_row["answer"])])
         for retention in args.retentions:
             keep = max(1, int(round(retention * total)))

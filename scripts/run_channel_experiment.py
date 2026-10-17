@@ -364,7 +364,8 @@ def main() -> None:
                     # so symbols spent on them carry no information. The prefix takes
                     # 30% of the payload and 44% of the top-10% utility, which is
                     # precisely the budget a body-only selection gets back.
-                    body_start = report_span_start(scores.token_strings)
+                    body_start = report_span_start(scores.token_strings,
+                                                   row.get("choices"))
                     coupling = (torch.tensor(scores.coupling, dtype=torch.float32)
                                 if scores.coupling is not None
                                 else torch.zeros(scores.num_tokens, scores.num_tokens))
