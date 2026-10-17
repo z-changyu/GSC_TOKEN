@@ -43,9 +43,17 @@ def exhaustive_optimum(problem: SchedulingProblem, block: int = 1 << 21) -> dict
                                     np.clip(mode - 1, 0, None)], 0.0)
         resource = np.where(transmitted, rates[np.clip(mode - 1, 0, None)], 0.0).sum(axis=1)
         weighted = z * utility[None, :]
-        # M is strictly upper triangular, so w^T M w = sum_{i<j} M_ij w_i w_j.
+        # Coupling term with the *joint* pair probability: for a common channel the
+        # pair survives with Q[lvl_i, lvl_j], not with the product of marginals.
+        # Q defaults to the product when the caller did not supply a joint matrix,
+        # in which case this is numerically the previous reference objective.
+        joint = problem.joint_q.numpy().astype(np.float64)
+        pair_index = np.clip(mode - 1, 0, None)
+        pair = joint[pair_index[:, :, None], pair_index[:, None, :]]          # [b,N,N]
+        pair = np.where(transmitted[:, :, None] & transmitted[:, None, :], pair, 0.0)
+        # M is strictly upper triangular, so the double sum is over i < j only.
         values = weighted.sum(axis=1) + beta * np.einsum(
-            "bi,ij,bj->b", weighted, coupling, weighted, optimize=True)
+            "bij,ij->b", pair, coupling * np.outer(utility, utility), optimize=True)
         feasible = resource <= budget + 1e-9
         if not feasible.any():
             continue

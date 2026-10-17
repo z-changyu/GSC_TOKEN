@@ -66,10 +66,21 @@ def refine(problem: SchedulingProblem, level: torch.Tensor, t_max: int = 8,
     moves: list[dict[str, Any]] = []
 
     for _ in range(max(0, int(t_max))):
-        selected, mode, z, used = _state(problem, level)
-        weighted = problem.base_utility * z                     # w_i
-        affinity = problem.beta * (incident @ weighted)
-        c = 1.0 + affinity                                      # c_i
+        selected, mode, _z, used = _state(problem, level)
+        # Exact marginal decomposition of Eq. (34) under joint reception:
+        #   add_i(ell)  = u'_i q_{i,ell}
+        #   pair_i(ell) = beta u'_i sum_{j in T} M^<->_ij u'_j Q_{ell, lvl_j}
+        #   insertion_i(ell) = add + pair   (gain of adding i at ell)
+        #   removal_i        = add + pair evaluated at i's current level
+        # With Q = q q^T this is algebraically the product model the gains used
+        # before, so schedules are unchanged whenever joint_q is not supplied.
+        add = problem.base_utility.reshape(-1, 1) * problem.q
+        pair = problem.coupling_affinity(level, incident)
+        insertion = add + pair
+        idx_current = (mode - 1).clamp(min=0)
+        gathered = (add.gather(1, idx_current.reshape(-1, 1))
+                    + pair.gather(1, idx_current.reshape(-1, 1))).reshape(-1)
+        removal = torch.where(selected, gathered, torch.zeros_like(gathered))
         budget = float(problem.budget)
         spent = float(used.sum())
         negative_inf = torch.full((), -math.inf, dtype=torch.float32)
@@ -77,24 +88,21 @@ def refine(problem: SchedulingProblem, level: torch.Tensor, t_max: int = 8,
         best_gain, best_move = float(tolerance), None
 
         # (a) insertion of an unselected token
-        insertion = problem.q * (problem.base_utility * c)[:, None]
         fits = (spent + problem.rates.reshape(1, -1)) <= budget + 1e-6
-        insertion = torch.where(fits, insertion, negative_inf)
-        insertion = torch.where(selected.reshape(-1, 1), negative_inf, insertion)
-        flat = int(insertion.argmax())
-        if math.isfinite(float(insertion.reshape(-1)[flat])):
+        candidate = torch.where(fits, insertion, negative_inf)
+        candidate = torch.where(selected.reshape(-1, 1), negative_inf, candidate)
+        flat = int(candidate.argmax())
+        if math.isfinite(float(candidate.reshape(-1)[flat])):
             token, lvl = divmod(flat, problem.num_levels)
-            if float(insertion[token, lvl]) > best_gain:
-                best_gain, best_move = float(insertion[token, lvl]), ("insert", int(token), int(lvl))
+            if float(candidate[token, lvl]) > best_gain:
+                best_gain, best_move = float(candidate[token, lvl]), ("insert", int(token), int(lvl))
 
         if bool(selected.any()):
-            current_q = torch.zeros(problem.num_tokens, dtype=torch.float32)
-            current_q[selected] = problem.q[selected, mode[selected]]
             headroom = budget - spent + used.reshape(-1, 1)      # spent - r_s + r_ell <= C
 
-            # (b) protection-mode change on a selected token, Eq. (59)
-            change = ((problem.q - current_q.reshape(-1, 1))
-                      * (problem.base_utility * c).reshape(-1, 1))
+            # (b) protection-mode change on a selected token, Eq. (59):
+            #     Delta = insertion(i, ell_new) - removal(i) at the current level.
+            change = insertion - removal.reshape(-1, 1)
             change = torch.where(problem.rates.reshape(1, -1) <= headroom + 1e-6,
                                  change, negative_inf)
             change = torch.where(selected.reshape(-1, 1), change, negative_inf)
@@ -104,14 +112,16 @@ def refine(problem: SchedulingProblem, level: torch.Tensor, t_max: int = 8,
                 if float(change[token, lvl]) > best_gain:
                     best_gain, best_move = float(change[token, lvl]), ("mode", int(token), int(lvl))
 
-            # (c) swap an unselected token in for a selected one, Eq. (58)
-            removal_loss = current_q * problem.base_utility * c
+            # (c) swap an unselected token in for a selected one, Eq. (58):
+            #     the pending pair (incoming, outgoing) must be netted out, with the
+            #     joint probability Q(ell_in, lvl_out) rather than q_in * q_out.
             shared = problem.beta * incident * torch.outer(problem.base_utility,
                                                            problem.base_utility)
+            pair_out = problem.joint_q[:, idx_current].t()       # [o, ell] = Q(ell, lvl_o)
             for lvl in range(problem.num_levels):
                 rate = float(problem.rates[lvl])
-                gains = (insertion[:, lvl].reshape(-1, 1) - removal_loss.reshape(1, -1)
-                         - shared * problem.q[:, lvl].reshape(-1, 1) * current_q.reshape(1, -1))
+                gains = (insertion[:, lvl].reshape(-1, 1) - removal.reshape(1, -1)
+                         - shared * pair_out[:, lvl].reshape(1, -1))
                 feasible = (rate <= headroom + 1e-6) & (~selected).reshape(-1, 1) & selected.reshape(1, -1)
                 gains = torch.where(feasible, gains, negative_inf)
                 flat = int(gains.argmax())

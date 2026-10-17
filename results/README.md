@@ -29,6 +29,29 @@
 
 > 上表所有目录的 `channel_results.csv` 均为逐样本记录，列含义见记录字段（精度、符号数、保留率、超预算、窗口数、预算等）。
 
+## 1b. 端 8B → 边 8B 主实验（2026-10，修订实现）
+
+> 口径与 §1 的 `channel_main_4b8b_*` 逐项一致（60 题 × 3 信道 × SNR{0,15} × 3 种子，
+> 协议 `v6_norestore`），唯一变量是端侧模型 4B → 8B。
+
+| 目录 | 内容 | 记录数 | 方法数 |
+|---|---|---|---|
+| `main_8b8b_full14/` | **主表**：14 方法全量 | 15 120 | 14 |
+| `main_8b8b_full7/` | 七方法子集（含 `random` / `fixed_H` / `truncate`） | 7 560 | 7 |
+
+两条运行均使用**修订后的实现**（与 `channel_main_4b8b_*` 的旧实现不同，两套口径不可混用）：
+
+| 项 | 修订值 | 记录字段 |
+|---|---|---|
+| 评分的 teacher-forcing 目标 | 端侧**自预测选项**（不读测试真值） | `score_target=predicted`（缓存侧） |
+| 成对接收概率 | 共同信道下的**联合**成功概率 `Q_ij` | `coupling_model=joint` |
+| 耦合定义 | **冗余惩罚** `M_ij = -cos(e_i,e_j)` | `coupling_variant=B`，`beta=0.13` |
+| 耦合作用位置 | 基 LP/舍入用式 (19) 的上下文效用 | `lp_utility=context` |
+| 保护级 | 差异化（H/M/L） | `protection_mode=differentiated` |
+
+> 旧口径（`channel_main_4b8b_*`）为 `score_target=ground_truth`、`coupling` 关闭、
+> `coupling_variant=raw`、`lp_utility=marginal`。两者在主表上不可直接相减，需按同一口径重跑。
+
 ## 2. 接收端协议对照（论文表 II）
 
 | 目录 | 协议 |

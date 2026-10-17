@@ -51,6 +51,36 @@ def main() -> None:
     parser.add_argument("--answer-scores",
                         help="JSONL sidecar of answer-aware importance (LOO / answer "
                              "attention) from scripts/build_answer_aware_scores.py")
+    parser.add_argument("--coupling-variant", default=None,
+                        choices=["raw", "row", "A", "B"],
+                        help="coupling definition: 'raw' = Eq. (16) attention, "
+                             "'row' = unit-row scaled, 'A' = attention masked by "
+                             "token dissimilarity, 'B' = redundancy penalty -cos. "
+                             "'A'/'B' need --token-embeddings.")
+    parser.add_argument("--token-embeddings", default="outputs/cache/v2xqa_token_embeddings_8b.pt")
+    parser.add_argument("--coupling-shuffle", action="store_true",
+                        help="ablation arm: apply a fixed symmetric permutation to the "
+                             "coupling matrix, preserving its multiset of coefficients "
+                             "but destroying which token each coefficient belongs to. "
+                             "Isolates 'the coupling carries structure' from 'any "
+                             "coupling of this magnitude would do'.")
+    parser.add_argument("--protection-mode", default=None, choices=["differentiated", "fixed"],
+                        help="'fixed' forces every transmitted token to the strongest "
+                             "protection level while keeping the set-aware ranking "
+                             "(ablation arm: set score with fixed protection)")
+    parser.add_argument("--lp-utility", default=None, choices=["marginal", "context"],
+                        help="base utility of the LP/rounding: 'marginal' = u'_i (the "
+                             "historical additive surrogate, coupling only acts in "
+                             "refinement), 'context' = the Eq. (19) context-aware u_i, "
+                             "which lets the coupling steer token selection itself")
+    parser.add_argument("--beta", type=float, default=None,
+                        help="override pragmatic.beta (needed when the coupling variant "
+                             "changes the admissible range)")
+    parser.add_argument("--coupling-model", default=None, choices=["joint", "independent"],
+                        help="pairwise reception model used by the scheduler: 'joint' = "
+                             "P(both received) under the shared instantaneous channel "
+                             "(Eq. 34 as revised), 'independent' = the historical "
+                             "q_i * q_j product (ablation only)")
     parser.add_argument("--weights", type=float, nargs=3,
                         help="Override the pragmatic weights (must sum to one)")
     parser.add_argument("--output-dir", default="outputs/channel")
@@ -78,11 +108,12 @@ def main() -> None:
     import torch
     from transformers import AutoModelForCausalLM, AutoProcessor, AutoTokenizer
     from src.channel import build_channel, decoding_probability
-    from src.channel.link import ProtectionCodebook
+    from src.channel.link import ProtectionCodebook, joint_decoding_probability
     from src.channel.reliable_capacity import reliable_spectral_efficiency
     from src.experiments.prompts import ANSWER_REQUEST
     from src.experiments.receiver_protocol import RESTORE_THRESHOLD, answer_with_protocol
     from src.experiments.scoring import SampleScores, combine_scores
+    from src.pragmatic.utility import context_aware_utility
     from src.metrics.communication import token_retention_ratio
     from src.metrics.qa import exact_match
     from src.metrics.statistics import mean_std_ci95
@@ -130,11 +161,22 @@ def main() -> None:
     manifest = [sid for sid in manifest if sid in cache][:limit]
     logger.info("channel experiment: %d samples", len(manifest))
 
-    weights = tuple(args.weights) if args.weights else tuple(
-        float(w) for w in config["pragmatic"]["weights"])
+    pragmatic_cfg = config["pragmatic"]
+    if args.weights:
+        weights = tuple(float(w) for w in args.weights)
+    elif "weights" in pragmatic_cfg:
+        weights = tuple(float(w) for w in pragmatic_cfg["weights"])
+    else:
+        # The experiment configs spell the same three numbers as lambda_* keys;
+        # accept either spelling so a config cannot silently lose its weights.
+        weights = (float(pragmatic_cfg["lambda_attention"]),
+                   float(pragmatic_cfg["lambda_semantic"]),
+                   float(pragmatic_cfg["lambda_gradient"]))
     if abs(sum(weights) - 1.0) > 1e-9 or any(w < 0 for w in weights):
         raise SystemExit(f"pragmatic weights must be nonnegative and sum to one, got {weights}")
     beta = float(config["pragmatic"]["beta"])
+    if args.beta is not None:
+        beta = float(args.beta)
     codebook = ProtectionCodebook(
         levels=tuple(float(v) for v in config["radio"]["protection"]["levels"]),
         information_bits_per_token=float(
@@ -144,6 +186,26 @@ def main() -> None:
     epsilon_out = float(config["radio"]["epsilon_out"])
     t_max = int(config["scheduling"]["t_max"])
     do_refine = bool(config["scheduling"].get("refine", True))
+    # "joint" uses P(both received) under the shared instantaneous channel;
+    # "independent" restores the historical q_i * q_j coupling term for ablation.
+    coupling_model = args.coupling_model or str(
+        config["scheduling"].get("coupling_model", "joint"))
+    if coupling_model not in ("joint", "independent"):
+        raise SystemExit(f"unknown coupling model {coupling_model!r}")
+    from src.pragmatic.coupling import build_coupling_variant
+    coupling_variant = args.coupling_variant or str(
+        pragmatic_cfg.get("coupling_variant", "raw"))
+    lp_utility = args.lp_utility or str(config["scheduling"].get("lp_utility", "marginal"))
+    protection_mode = args.protection_mode or str(
+        config["scheduling"].get("protection_mode", "differentiated"))
+    token_embeddings = {}
+    if coupling_variant in ("A", "B"):
+        if not Path(args.token_embeddings).exists():
+            raise SystemExit(f"variant {coupling_variant} needs {args.token_embeddings}; "
+                             f"run scripts/build_token_embeddings.py")
+        token_embeddings = torch.load(args.token_embeddings, weights_only=False)
+    logger.info("coupling: variant=%s model=%s lp_utility=%s beta=%s",
+                coupling_variant, coupling_model, lp_utility, beta)
     # "v6_norestore" keeps the fair parts of v6 (RSU-issued task intent, letter-only
     # reply) but disables damage-triggered restoration. Restoration fires whenever
     # survived/original < RESTORE_THRESHOLD, i.e. at a rate set by how much each
@@ -298,6 +360,24 @@ def main() -> None:
                     coupling = (torch.tensor(scores.coupling, dtype=torch.float32)
                                 if scores.coupling is not None
                                 else torch.zeros(scores.num_tokens, scores.num_tokens))
+                    if coupling_variant != "raw":
+                        coupling = build_coupling_variant(
+                            coupling_variant, coupling,
+                            token_embeddings[sample_id])
+                    if args.coupling_shuffle:
+                        # Symmetric permutation: same coefficients, wrong partners.
+                        generator = torch.Generator().manual_seed(
+                            20261012 + int(sample_id))
+                        perm = torch.randperm(coupling.shape[0], generator=generator)
+                        coupling = coupling[perm][:, perm]
+                    # Eq. (19): the utility of a token given that the rest of the set
+                    # is also received. Used as the LP's surrogate when --lp-utility
+                    # context, so the coupling steers the selection and not only the
+                    # local refinement.
+                    selection_utility = None
+                    if lp_utility == "context":
+                        selection_utility = context_aware_utility(
+                            utility_tensor, coupling, beta)
 
                     state = channel.sample((1,))
                     c_eps = reliable_spectral_efficiency(state, epsilon_out)
@@ -307,6 +387,12 @@ def main() -> None:
                     realized = math.log2(1.0 + float(state.snr_linear)
                                          * float(state.h.abs().pow(2)[0]))
                     q = decoding_probability(state, codebook).reshape(-1)
+                    # Pairwise reception probability. Every token of one report shares
+                    # this instantaneous channel, so the scheduler must price a pair
+                    # with Q[ell, m] (the weaker level), not with q_ell * q_m.
+                    joint_q = (joint_decoding_probability(state, codebook).reshape(
+                        codebook.num_levels, codebook.num_levels)
+                        if coupling_model == "joint" else None)
 
                     rng = random.Random(int(seed) * 1000003 + position)
                     # "max" lets proposed use the genie (plug-in) capacity budget,
@@ -331,6 +417,12 @@ def main() -> None:
                         # External lexical baselines rank tokens by the receiver
                         # LM's self-information instead of the pragmatic utility.
                         alt = benchmark_signal(method, sample_id)
+                        sched_method = ("proposed"
+                                        if is_plugin or method in ("tokcom_uep",
+                                                                   "answer_loo_uep")
+                                        else method)
+                        if protection_mode == "fixed" and sched_method == "proposed":
+                            sched_method = "fixed_H"
                         if method in ("tokcom_uep", "answer_loo_uep"):
                             # An external importance signal driving *our* full
                             # scheduler (Lagrangian + certified rounding +
@@ -346,16 +438,18 @@ def main() -> None:
                             utility = torch.tensor(
                                 [(v - lo) / span for v in raw], dtype=torch.float32)
                             level = select_level(
-                                "proposed", utility, coupling, beta, q,
+                                sched_method, utility, coupling, beta, q,
                                 torch.tensor(codebook.levels, dtype=torch.float32),
-                                method_budget, t_max if do_refine else 0, rng)
+                                method_budget, t_max if do_refine else 0, rng,
+                                joint_q=joint_q, selection_utility=selection_utility)
                         else:
                             level = select_level(
-                                "proposed" if is_plugin else method,
+                                sched_method,
                                 utility_tensor, coupling, beta, q,
                                 torch.tensor(codebook.levels, dtype=torch.float32),
                                 method_budget,
-                                t_max if do_refine else 0, rng, alt)
+                                t_max if do_refine else 0, rng, alt,
+                                joint_q=joint_q, selection_utility=selection_utility)
                         schedule_seconds = time.perf_counter() - start
 
                         selected = [i for i in range(scores.num_tokens) if level[i] > 0]
@@ -395,8 +489,15 @@ def main() -> None:
                                       for i in selected)
                         records.append({
                             "sample_id": sample_id, "channel": channel.name, "snr_db": float(snr_db),
-                            "channel_seed": int(seed), "method": method,
+                            "channel_seed": int(seed),                             "method": method,
                             "receiver_protocol": args.receiver_protocol,
+                            "coupling_model": coupling_model,
+                            "coupling_variant": coupling_variant,
+                            "lp_utility": lp_utility,
+                            "protection_mode": protection_mode,
+                            "coupling_shuffled": int(bool(args.coupling_shuffle)),
+                            "sched_method": sched_method,
+                            "beta": beta,
                             "original_tokens": scores.num_tokens,
                             "selected_tokens": len(selected), "received_tokens": len(kept),
                             "TRR": token_retention_ratio(len(selected), scores.num_tokens),

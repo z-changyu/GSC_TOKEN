@@ -30,9 +30,23 @@ def main() -> None:
     parser.add_argument("--processed", default=None, help="override config dataset.processed")
     parser.add_argument("--score-cache", default=None, help="override config score_cache")
     parser.add_argument("--max-samples", type=int, default=None, help="cap for smoke runs")
+    parser.add_argument("--score-target", default=None, choices=["predicted", "ground_truth"],
+                        help="teacher-forcing target of the Eq. (14) gradient. "
+                             "'predicted' (default method) uses the terminal's own choice "
+                             "on its full input and never reads the test label; "
+                             "'ground_truth' is the offline upper-bound branch.")
+    parser.add_argument("--coupling", dest="coupling", action="store_true", default=None,
+                        help="compute the context-coupling matrix M_ij (Eq. 16) so the "
+                             "scheduler can use the set-dependent objective")
+    parser.add_argument("--no-coupling", dest="coupling", action="store_false",
+                        help="explicitly score without the coupling matrix")
     args = parser.parse_args()
 
     config = yaml.safe_load(Path(args.config).read_text(encoding="utf-8"))
+    if args.score_target:
+        config.setdefault("pragmatic", {})["score_target"] = args.score_target
+    if args.coupling is not None:
+        config.setdefault("pragmatic", {})["coupling_enabled"] = bool(args.coupling)
     visible = str(config["experiment"].get("cuda_visible_devices", "0"))
     if "," in visible:
         raise SystemExit("This driver is restricted to exactly one visible GPU")
@@ -64,14 +78,34 @@ def main() -> None:
               if str(e["sample_id"]) in processed]
     print(f"manifest -> {len(needed)} samples in processed pool")
 
-    # Resume from any existing cache.
+    # Resume from any existing cache -- but only if it was produced under the same
+    # scoring configuration. Two branches live side by side (predicted target vs the
+    # ground-truth upper bound, coupling on/off, different transmitters); silently
+    # appending across them would blend them into one meaningless cache.
+    tx_path = config["model"]["transmitter_path"]
+    expected_fp = {
+        "score_target": str(config["pragmatic"].get("score_target", "predicted")),
+        "coupling_enabled": bool(config["pragmatic"].get("coupling_enabled", False)),
+        "model_id": str(tx_path),
+        "mask_token": str(config["pragmatic"]["mask_token"]),
+        "max_prompt_tokens": int(config["transmitter"]["max_prompt_tokens"]),
+        "layer_reduction": str(config["pragmatic"].get("layer_reduction", "mean")),
+    }
+    print(f"scoring branch: target={expected_fp['score_target']} "
+          f"coupling={expected_fp['coupling_enabled']} model={expected_fp['model_id']}")
     cache: dict[str, SampleScores] = {}
     if cache_path.exists():
         for row in read_jsonl(cache_path):
-            cache[row["sample_id"]] = SampleScores.from_dict(row)
+            sample = SampleScores.from_dict(row)
+            stored = sample.fingerprint()
+            if stored != expected_fp:
+                raise SystemExit(
+                    f"cache {cache_path} was built with a different configuration and "
+                    f"must not be extended:\n  stored  = {stored}\n  expected= {expected_fp}\n"
+                    f"Write the new branch to a different --score-cache path.")
+            cache[sample.sample_id] = sample
     print(f"cache has {len(cache)}/{len(needed)}; building the rest")
 
-    tx_path = config["model"]["transmitter_path"]
     processor = AutoProcessor.from_pretrained(tx_path, local_files_only=True)
     processor.image_processor = AutoImageProcessor.from_pretrained(
         tx_path, min_pixels=config["model"]["image_min_pixels"],

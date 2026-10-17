@@ -83,7 +83,29 @@ class SampleScores:
     prompt_truncated: bool
     coupling_kappa: float | None = None
     coupling_d_M: float | None = None
+    # ---- provenance of the teacher-forcing target (added with the predicted-target
+    # revision). ``score_target`` says which branch produced this row; the two
+    # branches must never be mixed inside one cache (guarded by ``fingerprint``).
+    score_target: str = "ground_truth"      # "predicted" | "ground_truth"
+    predicted_choice: int | None = None     # terminal's own choice index
+    predicted_text: str | None = None       # ... and its option text
+    prediction_scores: list[float] | None = None
+    coupling_enabled: bool = False
+    model_id: str | None = None
     metadata: dict[str, Any] = field(default_factory=dict)
+
+    def fingerprint(self) -> dict[str, Any]:
+        """Identity of the scoring configuration this row was produced under.
+
+        ``build_score_cache.py`` refuses to resume a cache whose fingerprint differs,
+        because a mixed cache silently blends two different scoring targets.
+        """
+        return {"score_target": self.score_target,
+                "coupling_enabled": bool(self.coupling_enabled),
+                "model_id": self.model_id,
+                "mask_token": (self.metadata or {}).get("mask_token"),
+                "max_prompt_tokens": (self.metadata or {}).get("max_prompt_tokens"),
+                "layer_reduction": (self.metadata or {}).get("layer_reduction")}
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -144,6 +166,7 @@ class PragmaticScorer:
         from ..pragmatic.utility import coupling_regime
 
         reduction = config["pragmatic"].get("layer_reduction", "mean")
+        self.layer_reduction = reduction
         self.attention_scorer = AttentionStructuralScorer(reduction)
         self.semantic_scorer = SemanticDirectionalScorer()
         self.coupling_scorer = SemanticCouplingScorer(reduction)
@@ -152,6 +175,13 @@ class PragmaticScorer:
         self.coupling_regime = coupling_regime
         self.coupling_enabled = bool(config["pragmatic"].get("coupling_enabled", False))
         self.beta = float(config["pragmatic"]["beta"])
+        # Eq. (14)'s teacher-forcing target. "predicted" is the revised method: the
+        # terminal answers its own full input and that choice becomes the target, so
+        # no test label is read. "ground_truth" is kept only as an offline upper bound.
+        self.score_target = str(config["pragmatic"].get("score_target", "predicted"))
+        if self.score_target not in ("predicted", "ground_truth"):
+            raise SystemExit(f"unknown pragmatic.score_target {self.score_target!r}")
+        self.model_id = str(getattr(transmitter.config, "_name_or_path", "unknown"))
 
         mask_token_id = self.tokenizer.convert_tokens_to_ids(config["pragmatic"]["mask_token"])
         if mask_token_id is None or mask_token_id < 0:
@@ -202,6 +232,41 @@ class PragmaticScorer:
             torch.cuda.empty_cache()
         return text
 
+    # ---------------------------------------------------------- self prediction
+    def self_predict(self, sample: dict, image) -> dict[str, Any]:
+        """The terminal's own choice for its *full* input, without reading any label.
+
+        Read off a single forward pass over the option-letter logits (the same
+        deterministic readout the receiver uses), so it costs one prefill instead of
+        a decoding loop and always yields an index -- there is no "unparseable"
+        branch that would tempt a fallback to the ground truth.
+        """
+        from .prompts import TRANSMITTER_SELF_QUERY, build_transmitter_messages
+        from .receiver_protocol import letter_token_ids
+
+        choices = list(sample["choices"])
+        request = TRANSMITTER_SELF_QUERY.format(
+            question=sample["question"], choices="\n".join(
+                f"{chr(65 + i)}. {c}" for i, c in enumerate(choices)))
+        content = []
+        if image is not None:
+            content.append({"type": "image", "image": image})
+        content.append({"type": "text", "text": request})
+        inputs = self.processor.apply_chat_template(
+            build_transmitter_messages(content), tokenize=True, add_generation_prompt=True,
+            return_dict=True, return_tensors="pt")
+        inputs = {k: (v.to("cuda:0") if hasattr(v, "to") else v) for k, v in inputs.items()}
+        with torch.no_grad():
+            logits = self.transmitter(**inputs).logits[0, -1]
+        groups = letter_token_ids(self.tokenizer)
+        scores = [float(logits[ids].max()) if ids else float("-inf") for ids in groups]
+        index = int(max(range(min(len(scores), len(choices))),
+                        key=lambda i: scores[i]))
+        del inputs, logits
+        torch.cuda.empty_cache()
+        return {"index": index, "text": choices[index], "letter": "ABCD"[index],
+                "scores": scores, "parse_mode": "logit_letter"}
+
     # ------------------------------------------------------------------ score
     def score(self, sample: dict, image) -> SampleScores:
         from .prompts import build_scoring_messages, locate_span
@@ -209,6 +274,15 @@ class PragmaticScorer:
         start = time.perf_counter()
         semantic_prompt = self.generate_prompt(sample, image)
         transmit_seconds = time.perf_counter() - start
+
+        # Teacher-forcing target of Eq. (14). The revised method never touches the
+        # test label: the target is the terminal's own choice on its full input.
+        if self.score_target == "predicted":
+            prediction = self.self_predict(sample, image)
+            target_text = prediction["text"]
+        else:
+            prediction = None
+            target_text = str(sample["choices"][int(sample["answer"])])
 
         with _stage(self.timings if self.collect_timings else None, "tokenize"):
             token_ids = self.tokenizer(semantic_prompt, add_special_tokens=False)["input_ids"]
@@ -250,7 +324,7 @@ class PragmaticScorer:
         with _stage(timings, "payload_transfer"):
             sequence_ids = batch["input_ids"].to("cuda:0")
         attention_mask = batch["attention_mask"].to("cuda:0")
-        answer_ids = self.tokenizer(str(sample["choices"][sample["answer"]]),
+        answer_ids = self.tokenizer(target_text,
                                     add_special_tokens=False)["input_ids"] + [self.im_end_id]
         tail = torch.tensor([answer_ids], device="cuda:0")
         input_ids = torch.cat([sequence_ids, tail], dim=1)
@@ -314,7 +388,18 @@ class PragmaticScorer:
                 prompt_meta_leak=False,
                 prompt_truncated=truncated,
                 coupling_kappa=regime.get("kappa"),
-                coupling_d_M=regime.get("d_M"))
+                coupling_d_M=regime.get("d_M"),
+                score_target=self.score_target,
+                predicted_choice=prediction["index"] if prediction else None,
+                predicted_text=prediction["text"] if prediction else None,
+                prediction_scores=prediction["scores"] if prediction else None,
+                coupling_enabled=self.coupling_enabled,
+                model_id=self.model_id,
+                metadata={"mask_token": str(self.config["pragmatic"]["mask_token"]),
+                          "max_prompt_tokens": self.max_prompt_tokens,
+                          "max_new_tokens": self.max_new_tokens,
+                          "layer_reduction": str(self.layer_reduction),
+                          "beta": float(self.beta)})
         with _stage(timings, "cache_release"):
             del output, embeddings, batch, input_ids, labels, position_ids
             torch.cuda.empty_cache()
@@ -328,12 +413,17 @@ class PragmaticScorer:
                 del legacy
         return scores
 
-    def pruned_prompt_nll(self, sample: dict, image, prompt_text: str) -> float:
+    def pruned_prompt_nll(self, sample: dict, image, prompt_text: str,
+                          target_text: str | None = None) -> float:
         """Eq. (21)-(23): transmitter-side NLL of the answer given a pruned prompt.
 
         This is the calibration target for the pragmatic weights: the receiver is
         not involved, so a grid search costs one forward per candidate rather
         than one generation per candidate.
+
+        ``target_text`` defaults to the ground-truth option because this quantity is
+        only ever consumed offline (an upper-bound diagnostic). Callers that must not
+        touch the label should pass the terminal's own prediction instead.
         """
         from .prompts import build_scoring_messages
 
@@ -344,7 +434,9 @@ class PragmaticScorer:
             return_tensors="pt")
         sequence_ids = batch["input_ids"].to("cuda:0")
         attention_mask = batch["attention_mask"].to("cuda:0")
-        answer_ids = self.tokenizer(str(sample["choices"][sample["answer"]]),
+        if target_text is None:
+            target_text = str(sample["choices"][int(sample["answer"])])
+        answer_ids = self.tokenizer(target_text,
                                     add_special_tokens=False)["input_ids"] + [self.im_end_id]
         tail = torch.tensor([answer_ids], device="cuda:0")
         input_ids = torch.cat([sequence_ids, tail], dim=1)

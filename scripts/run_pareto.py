@@ -91,6 +91,15 @@ def main() -> None:
                         help="v6_norestore mirrors the fair main line: the v6 answer "
                              "prompt with damage-triggered restoration disabled")
     parser.add_argument("--limit", type=int)
+    parser.add_argument("--beta", type=float, default=0.25)
+    parser.add_argument("--coupling-variant", default="raw", choices=["raw", "row", "A", "B"],
+                        help="coupling definition; must match the main table being "
+                             "compared against")
+    parser.add_argument("--token-embeddings",
+                        default="outputs/cache/v2xqa_token_embeddings_8b.pt")
+    parser.add_argument("--lp-utility", default="marginal", choices=["marginal", "context"],
+                        help="'context' solves the LP on the Eq. (19) set-aware utility "
+                             "so the coupling steers selection, not just refinement")
     args = parser.parse_args()
 
     import pandas as pd
@@ -105,6 +114,8 @@ def main() -> None:
     from src.experiments.scoring import SampleScores, combine_scores
     from src.metrics.communication import token_retention_ratio
     from src.metrics.qa import exact_match
+    from src.pragmatic.coupling import build_coupling_variant
+    from src.pragmatic.utility import context_aware_utility
     from src.scheduling import select_level
     from src.utils.io import atomic_json, read_jsonl
     from src.utils.logging import configure_logging
@@ -115,7 +126,7 @@ def main() -> None:
 
     codebook = ProtectionCodebook()
     levels = torch.tensor(codebook.levels, dtype=torch.float32)
-    bandwidth, slot_duration, eps_out, beta = 1e6, 1e-3, 0.05, 0.25
+    bandwidth, slot_duration, eps_out, beta = 1e6, 1e-3, 0.05, float(args.beta)
 
     cache = {str(r["sample_id"]): SampleScores.from_dict(r)
              for r in read_jsonl(args.score_cache)}
@@ -142,10 +153,17 @@ def main() -> None:
                 len(manifest), len(args.channels), args.snr_db, args.seeds,
                 len(args.budgets))
 
+    token_embeddings = {}
+    if args.coupling_variant != "raw":
+        token_embeddings = {str(k): v for k, v in
+                            torch.load(args.token_embeddings, weights_only=False).items()}
+    logger.info("coupling variant=%s lp_utility=%s beta=%s", args.coupling_variant,
+                args.lp_utility, beta)
+
     # -------------------------------------------------------------- strategies
-    def proposed(utility, q, budget, rng, coupling):
+    def proposed(utility, q, budget, rng, coupling, selection_utility=None):
         return select_level("proposed", utility, coupling, beta, q, levels,
-                            budget, args.t_max, rng)
+                            budget, args.t_max, rng, selection_utility=selection_utility)
 
     def fill_to_target(level, utility, q, target, budget):
         """Upgrade protection levels until ``target`` symbols are spent.
@@ -193,7 +211,15 @@ def main() -> None:
                     utility = combine_scores(scores.attention, scores.semantic,
                                              scores.gradient, args.weights).float()
                     n_tokens = scores.num_tokens
-                    coupling = torch.zeros(n_tokens, n_tokens)
+                    coupling = (torch.tensor(scores.coupling, dtype=torch.float32)
+                                if scores.coupling is not None
+                                else torch.zeros(n_tokens, n_tokens))
+                    if args.coupling_variant != "raw":
+                        coupling = build_coupling_variant(args.coupling_variant, coupling,
+                                                          token_embeddings[sid])
+                    selection_utility = None
+                    if args.lp_utility == "context":
+                        selection_utility = context_aware_utility(utility, coupling, beta)
                     state = channel.sample((1,))
                     c_eps = reliable_spectral_efficiency(state, eps_out)
                     reliable = slot_duration * bandwidth * float(c_eps[0])
@@ -207,7 +233,8 @@ def main() -> None:
                     for budget in args.budgets:
                         capped = min(float(budget), reliable)
                         solutions[f"budget{int(budget)}"] = proposed(
-                            utility, q, capped, random.Random(rng_seed), coupling)
+                            utility, q, capped, random.Random(rng_seed), coupling,
+                            selection_utility=selection_utility)
                     base = solutions[f"budget{int(max(args.budgets))}"]
                     for name, target in targets.items():
                         solutions[f"fill_{name}"] = fill_to_target(

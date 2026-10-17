@@ -96,6 +96,9 @@ def main() -> None:
                              "must exceed image + prompt + a useful report prefix")
     parser.add_argument("--max-samples", type=int, default=None)
     parser.add_argument("--lora-r", type=int, default=16)
+    parser.add_argument("--attn", default="eager", choices=["eager", "sdpa"],
+                        help="attention implementation; training never reads attention "
+                             "weights, so sdpa is faster and lighter than eager")
     parser.add_argument("--device", default="0")
     parser.add_argument("--config",
                         default="configs/experiments/v2x_edge_edge_main_2b4b_gpu1.yaml",
@@ -128,7 +131,7 @@ def main() -> None:
     processor.image_processor = AutoImageProcessor.from_pretrained(
         args.student, min_pixels=25088, max_pixels=200704, local_files_only=True)
     model = Qwen3VLForConditionalGeneration.from_pretrained(
-        args.student, dtype=torch.bfloat16, attn_implementation="eager",
+        args.student, dtype=torch.bfloat16, attn_implementation=args.attn,
         local_files_only=True)
     model.config.use_cache = False
     model.gradient_checkpointing_enable(gradient_checkpointing_kwargs={"use_reentrant": False})

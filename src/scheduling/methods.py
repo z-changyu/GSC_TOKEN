@@ -96,7 +96,9 @@ def _llmlingua_order(score: torch.Tensor, target_keep: int, segment_size: int = 
 def select_level(method: str, utility: torch.Tensor, coupling: torch.Tensor, beta: float,
                  q: torch.Tensor, rates: torch.Tensor, budget: float, t_max: int = 8,
                  rng: random.Random | None = None,
-                 alt_score: torch.Tensor | None = None) -> torch.Tensor:
+                 alt_score: torch.Tensor | None = None,
+                 joint_q: torch.Tensor | None = None,
+                 selection_utility: torch.Tensor | None = None) -> torch.Tensor:
     """Per-token protection level; ``0`` means the token is not transmitted."""
     if method not in SCHEDULING_METHODS:
         raise ValueError(f"unknown method {method!r}; available: {SCHEDULING_METHODS}")
@@ -181,15 +183,31 @@ def select_level(method: str, utility: torch.Tensor, coupling: torch.Tensor, bet
         return level
 
     if method == "fixed_H":
-        order = sorted(range(num_tokens), key=lambda i: -float(utility[i]))
+        # Ablation arm "set-aware score, fixed protection": the ranking may come from
+        # the Eq. (19) context-aware utility while every transmitted token still gets
+        # the strongest level, which isolates the value of *differentiated* protection
+        # from the value of the set-aware ranking itself.
+        ranking = utility if selection_utility is None else selection_utility
+        order = sorted(range(num_tokens), key=lambda i: -float(ranking[i]))
         return _fill_strongest(order, level, rates, budget)
 
     from .lp_rounding import certified_rounding
     from .local_refinement import refine
 
     problem = SchedulingProblem(base_utility=utility, coupling=coupling, beta=beta,
-                                q=q, rates=rates, budget=float(budget))
-    rounded = certified_rounding(problem)
+                                q=q, rates=rates, budget=float(budget), joint_q=joint_q)
+    # The base LP and the certified rounding are additive by construction (Eq. 51-55),
+    # so on their own they can only express u'_i q_{i,ell}: the set dependence enters
+    # exclusively through the local refinement, which is why it moves so few
+    # decisions. Passing ``selection_utility`` (the context-aware utility u_i of
+    # Eq. 19) makes the LP itself solve the *linearised* set objective, so the
+    # coupling also steers which tokens are selected. Feasibility is unchanged
+    # because both problems share the same budget, rates and q.
+    lp_problem = problem if selection_utility is None else SchedulingProblem(
+        base_utility=selection_utility, coupling=coupling, beta=beta, q=q, rates=rates,
+        budget=float(budget), joint_q=joint_q)
+    rounded = certified_rounding(lp_problem)
     if t_max <= 0:
         return rounded.level
+    # Refinement always improves the *exact* set objective of Eq. (34).
     return refine(problem, rounded.level, t_max=t_max).level

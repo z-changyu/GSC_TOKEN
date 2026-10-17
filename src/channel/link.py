@@ -73,6 +73,39 @@ def decoding_probability(state, codebook: ProtectionCodebook) -> torch.Tensor:
     return stacked * (1.0 - state.packet_loss_rate)
 
 
+def joint_decoding_probability(state, codebook: ProtectionCodebook) -> torch.Tensor:
+    """``Q_{ell,m}``: P(tokens protected at levels ``ell`` and ``m`` are *both* received).
+
+    Shape ``[|R|, |R|]``. The whole report is sent in one slot, so every token sees
+    the *same* instantaneous gain ``h``: the success events are conditionally
+    independent given ``h`` but **not** independent unconditionally. Both tokens
+    decode iff the realised spectral efficiency clears
+    ``max(rate_ell, rate_m)``, i.e. iff ``|h|^2 >= max(tau_ell, tau_m)``.
+
+    Since ``tau_ell`` is decreasing in protection strength, ``max(tau_ell, tau_m)`` is
+    the threshold of the *weaker* of the two levels, so
+
+        Q_{ell,m} = (1 - F_G(tau_{max(ell,m)})) * (1 - p_loss)^2.
+
+    The packet losses stay independent per token, hence the square. Writing
+    ``q_ell * q_m`` instead -- which is what the objective did before -- prices two
+    independent fading draws and therefore overstates joint reliability whenever the
+    two levels differ; with a common channel the pair is at least as reliable as the
+    weaker token, never as (un)reliable as two separate draws.
+    """
+    mu, nu = posterior_gain_parameters(state.h_hat, state.csi_error_variance)
+    geometric = []
+    for level_index in range(codebook.num_levels):
+        threshold = codebook.rate_threshold(level_index, state.snr_linear)
+        outage = gain_power_cdf(mu, nu, torch.as_tensor(threshold, dtype=torch.float32))
+        geometric.append(1.0 - outage)
+    geometric = torch.stack(geometric, dim=-1)                      # [..., |R|]
+    index = torch.arange(codebook.num_levels, device=geometric.device)
+    weaker = torch.maximum(index[:, None], index[None, :])          # [|R|, |R|]
+    both = geometric[..., weaker]                                   # [..., |R|, |R|]
+    return both * (1.0 - state.packet_loss_rate) ** 2
+
+
 def reception_degree(selection_mask, level_index, q) -> torch.Tensor:
     """Eq. (33): ``z_{i,tau} = sum_ell y_{i,ell,tau} q_{i,ell,tau}``.
 
