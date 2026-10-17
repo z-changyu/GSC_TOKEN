@@ -51,6 +51,13 @@ def main() -> None:
     parser.add_argument("--score-cache", default="outputs/cache/scienceqa_scores_coupling.jsonl")
     parser.add_argument("--weights", type=float, nargs=3, default=(0.25, 0.0, 0.75))
     parser.add_argument("--num-samples", type=int, default=20)
+    parser.add_argument("--score-target", default="predicted",
+                        choices=["predicted", "gold"],
+                        help="which answer string the true deletion effect is measured "
+                             "on. Must match the target the cache scored, otherwise "
+                             "the proxy and the measurement describe different "
+                             "quantities. 'predicted' follows score_target=predicted "
+                             "caches; 'gold' reproduces the legacy protocol.")
     parser.add_argument("--output-dir", default="outputs/proxy")
     args = parser.parse_args()
 
@@ -95,15 +102,33 @@ def main() -> None:
         u_prime = combine_scores(scores.attention, scores.semantic, scores.gradient, args.weights)
         m_matrix = (torch.tensor(scores.coupling, dtype=torch.float32) if scores.coupling
                     else torch.zeros(n, n))
-        full_nll = float(scores.answer_nll)
+        # The proxy is the sensitivity of the NLL of whichever answer the cache was
+        # scored on. When the cache used the transmitter's own prediction, the
+        # deletion effect MUST be measured on that same string: re-measuring on the
+        # gold answer correlates two different quantities and collapses the rank
+        # correlation (that mismatch is one cause of the 2026-08 run's -0.178).
+        if args.score_target == "predicted" and getattr(scores, "predicted_text", None):
+            target_text = str(scores.predicted_text)
+        else:
+            target_text = str(row["choices"][int(row["answer"])])
+        # Recompute the unpruned NLL with the same call path as the pruned ones, so
+        # the difference is a pure token-removal effect and not a prompt-assembly
+        # offset. The cache value is kept for a consistency check.
+        full_nll = float(scorer.pruned_prompt_nll(row, get_image(sample_id),
+                                                 scores.semantic_prompt,
+                                                 target_text=target_text))
+        cache_nll = float(scores.answer_nll)
         # ---- per-token: delete token i alone --------------------------------
         for i in range(n):
             kept = [scores.token_ids[j] for j in range(n) if j != i]
             text = processor.tokenizer.decode(kept, skip_special_tokens=True)
-            pruned_nll = scorer.pruned_prompt_nll(row, get_image(sample_id), text)
+            pruned_nll = scorer.pruned_prompt_nll(row, get_image(sample_id), text,
+                                                 target_text=target_text)
             true_i = full_nll - float(pruned_nll)
             per_token_rows.append({"sample_id": sample_id, "token": i,
-                                   "proxy": float(u_prime[i]), "true_single": float(true_i)})
+                                   "proxy": float(u_prime[i]), "true_single": float(true_i),
+                                   "full_nll": full_nll, "cache_nll": cache_nll,
+                                   "target": target_text})
         # ---- set-level: delete the m most important tokens -------------------
         order = sorted(range(n), key=lambda i: -u_prime[i])
         for frac in (0.05, 0.1, 0.15, 0.2, 0.25, 0.3):
@@ -115,10 +140,12 @@ def main() -> None:
                     m_matrix.new_tensor([u_prime[j] for j in deleted]))).sum())
             kept = [scores.token_ids[j] for j in range(n) if j not in set(deleted)]
             text = processor.tokenizer.decode(kept, skip_special_tokens=True)
-            pruned_nll = scorer.pruned_prompt_nll(row, get_image(sample_id), text)
+            pruned_nll = scorer.pruned_prompt_nll(row, get_image(sample_id), text,
+                                                 target_text=target_text)
             true_drop = full_nll - float(pruned_nll)
-            set_rows.append({"sample_id": sample_id, "deleted": m,
-                             "proxy_f_d": float(f_d), "true_drop": float(true_drop)})
+            set_rows.append({"sample_id": sample_id, "deleted": m, "frac": frac,
+                             "proxy_f_d": float(f_d), "true_drop": float(true_drop),
+                             "full_nll": full_nll, "target": target_text})
         logger.info("sample %s n=%d done", sample_id, n)
 
     # ---- per-token statistics -------------------------------------------------
@@ -137,12 +164,38 @@ def main() -> None:
     alpha = num / den if den > 0 else float("nan")
     frac_raise = float(np.mean(true > 0))
 
+    def within_sample_spearman(rows, a_key, b_key, min_rows=3):
+        """Rank correlation computed per sample, then aggregated.
+
+        Pooling tokens or deletion levels across samples mixes reports whose NLL
+        scales differ by an order of magnitude; that alone can invert a global rank
+        correlation and is what produced the 2026-08 set-level value of -0.178.
+        """
+        groups: dict = {}
+        for row in rows:
+            groups.setdefault(row["sample_id"], []).append(row)
+        values = []
+        for sample_rows in groups.values():
+            if len(sample_rows) < min_rows:
+                continue
+            a = [r[a_key] for r in sample_rows]
+            b = [r[b_key] for r in sample_rows]
+            if len(set(a)) < 2 or len(set(b)) < 2:
+                continue
+            rho = float(spearmanr(a, b).statistic)
+            if not math.isnan(rho):
+                values.append(rho)
+        return values
+
+    per_token_within = within_sample_spearman(per_token_rows, "proxy", "true_single")
+
     # ---- set-level: conservative linear surrogate + Eq. (27) basis -----------
     sp = np.array([r["proxy_f_d"] for r in set_rows]); st = np.array([r["true_drop"] for r in set_rows])
     try:
         sp_set = float(spearmanr(sp, st).statistic)
     except Exception:
         sp_set = None
+    set_within = within_sample_spearman(set_rows, "proxy_f_d", "true_drop")
     # true_drop ~ a * proxy_f_d ; and the remainder basis {sqrt(m), m, m^{3/2}}.
     basis = np.array([[math.sqrt(r["deleted"]), r["deleted"], r["deleted"] ** 1.5]
                       for r in set_rows])
@@ -151,19 +204,36 @@ def main() -> None:
     ss_res = float(np.sum(remainder ** 2)); ss_tot = float(np.sum((st - st.mean()) ** 2))
     r2_remainder = 1.0 - ss_res / ss_tot if ss_tot > 0 else 1.0
     coverage = float(np.mean(np.abs(remainder) <= np.abs(basis @ coeffs) + 1e-9))
+    # Conservativeness of Eq. (27): after the least-squares scale, how often does the
+    # proxy stay above the measured damage? A proxy may be loose, but it must not
+    # under-estimate, otherwise the guarantee cannot be stated.
+    scale = float(np.sum(sp * st) / np.sum(sp ** 2)) if np.sum(sp ** 2) > 0 else float("nan")
+    frac_conservative = float(np.mean(scale * sp >= st))
+    cache_gap = float(np.mean(np.abs(
+        np.array([r["full_nll"] for r in per_token_rows])
+        - np.array([r["cache_nll"] for r in per_token_rows]))))
 
     summary = {
         "samples": len(manifest), "weights": list(args.weights), "beta": beta,
+        "score_target": args.score_target,
         "per_token_n": len(per_token_rows),
         "pearson_proxy_vs_abs_true": pr_abs,
         "spearman_proxy_vs_abs_true": sp_abs,
         "spearman_proxy_vs_signed_true": sp_signed,
+        "spearman_per_token_within_sample_mean": float(np.mean(per_token_within)) if per_token_within else None,
+        "spearman_per_token_within_sample_median": float(np.median(per_token_within)) if per_token_within else None,
+        "spearman_per_token_within_sample_frac_positive": float(np.mean([v > 0 for v in per_token_within])) if per_token_within else None,
+        "recomputed_vs_cached_full_nll_gap": cache_gap,
         "calibrated_scale_alpha": alpha,
         "frac_tokens_raising_nll": frac_raise,
         "abs_true_mean": float(np.mean(abs_true)), "abs_true_ci95": float(
             statistics.mean(abs_true) - 1.96 * np.std(abs_true) / math.sqrt(len(abs_true))),
         "set_n": len(set_rows),
         "spearman_set_proxy_vs_true": sp_set,
+        "spearman_set_within_sample_mean": float(np.mean(set_within)) if set_within else None,
+        "spearman_set_within_sample_median": float(np.median(set_within)) if set_within else None,
+        "spearman_set_within_sample_frac_positive": float(np.mean([v > 0 for v in set_within])) if set_within else None,
+        "set_frac_conservative": frac_conservative,
         "set_remainder_fit_r_squared": r2_remainder,
         "set_remainder_coverage": coverage,
         "set_calibrated_eps_g": float(coeffs[0]), "set_calibrated_eps_H": float(coeffs[1]),

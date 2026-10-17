@@ -1,0 +1,461 @@
+{
+  "samples": 10,
+  "weights": [
+    0.25,
+    0.3,
+    0.45
+  ],
+  "retentions": [
+    0.25,
+    0.35
+  ],
+  "receiver": "models/Qwen3-VL-8B-Instruct",
+  "accuracy": {
+    "0.25:all": 0.4,
+    "0.25:body": 0.4,
+    "0.35:all": 0.6,
+    "0.35:body": 0.7
+  },
+  "rows": [
+    {
+      "sample_id": "0",
+      "retention": 0.25,
+      "arm": "all",
+      "kept": 31,
+      "total": 123,
+      "body_start": 51,
+      "correct": 1,
+      "prediction": "It provides a long-range cue.",
+      "truth": "It provides a long-range cue."
+    },
+    {
+      "sample_id": "0",
+      "retention": 0.25,
+      "arm": "body",
+      "kept": 31,
+      "total": 123,
+      "body_start": 51,
+      "correct": 0,
+      "prediction": "Its added value is limited.",
+      "truth": "It provides a long-range cue."
+    },
+    {
+      "sample_id": "0",
+      "retention": 0.35,
+      "arm": "all",
+      "kept": 43,
+      "total": 123,
+      "body_start": 51,
+      "correct": 1,
+      "prediction": "It provides a long-range cue.",
+      "truth": "It provides a long-range cue."
+    },
+    {
+      "sample_id": "0",
+      "retention": 0.35,
+      "arm": "body",
+      "kept": 43,
+      "total": 123,
+      "body_start": 51,
+      "correct": 1,
+      "prediction": "It provides a long-range cue.",
+      "truth": "It provides a long-range cue."
+    },
+    {
+      "sample_id": "3",
+      "retention": 0.25,
+      "arm": "all",
+      "kept": 29,
+      "total": 117,
+      "body_start": 38,
+      "correct": 1,
+      "prediction": "No obvious far-field cue.",
+      "truth": "No obvious far-field cue."
+    },
+    {
+      "sample_id": "3",
+      "retention": 0.25,
+      "arm": "body",
+      "kept": 29,
+      "total": 117,
+      "body_start": 38,
+      "correct": 1,
+      "prediction": "No obvious far-field cue.",
+      "truth": "No obvious far-field cue."
+    },
+    {
+      "sample_id": "3",
+      "retention": 0.35,
+      "arm": "all",
+      "kept": 41,
+      "total": 117,
+      "body_start": 38,
+      "correct": 1,
+      "prediction": "No obvious far-field cue.",
+      "truth": "No obvious far-field cue."
+    },
+    {
+      "sample_id": "3",
+      "retention": 0.35,
+      "arm": "body",
+      "kept": 41,
+      "total": 117,
+      "body_start": 38,
+      "correct": 1,
+      "prediction": "No obvious far-field cue.",
+      "truth": "No obvious far-field cue."
+    },
+    {
+      "sample_id": "9",
+      "retention": 0.25,
+      "arm": "all",
+      "kept": 26,
+      "total": 103,
+      "body_start": 0,
+      "correct": 1,
+      "prediction": "Lane-following road.",
+      "truth": "Lane-following road."
+    },
+    {
+      "sample_id": "9",
+      "retention": 0.25,
+      "arm": "body",
+      "kept": 26,
+      "total": 103,
+      "body_start": 0,
+      "correct": 1,
+      "prediction": "Lane-following road.",
+      "truth": "Lane-following road."
+    },
+    {
+      "sample_id": "9",
+      "retention": 0.35,
+      "arm": "all",
+      "kept": 36,
+      "total": 103,
+      "body_start": 0,
+      "correct": 1,
+      "prediction": "Lane-following road.",
+      "truth": "Lane-following road."
+    },
+    {
+      "sample_id": "9",
+      "retention": 0.35,
+      "arm": "body",
+      "kept": 36,
+      "total": 103,
+      "body_start": 0,
+      "correct": 1,
+      "prediction": "Lane-following road.",
+      "truth": "Lane-following road."
+    },
+    {
+      "sample_id": "11",
+      "retention": 0.25,
+      "arm": "all",
+      "kept": 34,
+      "total": 136,
+      "body_start": 33,
+      "correct": 0,
+      "prediction": "Restricted or guided scene.",
+      "truth": "Intersection-type scene."
+    },
+    {
+      "sample_id": "11",
+      "retention": 0.25,
+      "arm": "body",
+      "kept": 34,
+      "total": 136,
+      "body_start": 33,
+      "correct": 0,
+      "prediction": "Restricted or guided scene.",
+      "truth": "Intersection-type scene."
+    },
+    {
+      "sample_id": "11",
+      "retention": 0.35,
+      "arm": "all",
+      "kept": 48,
+      "total": 136,
+      "body_start": 33,
+      "correct": 0,
+      "prediction": "Restricted or guided scene.",
+      "truth": "Intersection-type scene."
+    },
+    {
+      "sample_id": "11",
+      "retention": 0.35,
+      "arm": "body",
+      "kept": 48,
+      "total": 136,
+      "body_start": 33,
+      "correct": 0,
+      "prediction": "Regular road scene.",
+      "truth": "Intersection-type scene."
+    },
+    {
+      "sample_id": "16",
+      "retention": 0.25,
+      "arm": "all",
+      "kept": 30,
+      "total": 118,
+      "body_start": 0,
+      "correct": 0,
+      "prediction": "Make a left turn.",
+      "truth": "Keep moving forward."
+    },
+    {
+      "sample_id": "16",
+      "retention": 0.25,
+      "arm": "body",
+      "kept": 30,
+      "total": 118,
+      "body_start": 0,
+      "correct": 0,
+      "prediction": "Make a left turn.",
+      "truth": "Keep moving forward."
+    },
+    {
+      "sample_id": "16",
+      "retention": 0.35,
+      "arm": "all",
+      "kept": 41,
+      "total": 118,
+      "body_start": 0,
+      "correct": 1,
+      "prediction": "Keep moving forward.",
+      "truth": "Keep moving forward."
+    },
+    {
+      "sample_id": "16",
+      "retention": 0.35,
+      "arm": "body",
+      "kept": 41,
+      "total": 118,
+      "body_start": 0,
+      "correct": 1,
+      "prediction": "Keep moving forward.",
+      "truth": "Keep moving forward."
+    },
+    {
+      "sample_id": "17",
+      "retention": 0.25,
+      "arm": "all",
+      "kept": 41,
+      "total": 163,
+      "body_start": 36,
+      "correct": 1,
+      "prediction": "Go straight.",
+      "truth": "Go straight."
+    },
+    {
+      "sample_id": "17",
+      "retention": 0.25,
+      "arm": "body",
+      "kept": 41,
+      "total": 163,
+      "body_start": 36,
+      "correct": 1,
+      "prediction": "Go straight.",
+      "truth": "Go straight."
+    },
+    {
+      "sample_id": "17",
+      "retention": 0.35,
+      "arm": "all",
+      "kept": 57,
+      "total": 163,
+      "body_start": 36,
+      "correct": 1,
+      "prediction": "Go straight.",
+      "truth": "Go straight."
+    },
+    {
+      "sample_id": "17",
+      "retention": 0.35,
+      "arm": "body",
+      "kept": 57,
+      "total": 163,
+      "body_start": 36,
+      "correct": 1,
+      "prediction": "Go straight.",
+      "truth": "Go straight."
+    },
+    {
+      "sample_id": "21",
+      "retention": 0.25,
+      "arm": "all",
+      "kept": 42,
+      "total": 167,
+      "body_start": 45,
+      "correct": 0,
+      "prediction": "The path is constrained.",
+      "truth": "The path looks clear."
+    },
+    {
+      "sample_id": "21",
+      "retention": 0.25,
+      "arm": "body",
+      "kept": 42,
+      "total": 167,
+      "body_start": 45,
+      "correct": 0,
+      "prediction": "The path is still unclear.",
+      "truth": "The path looks clear."
+    },
+    {
+      "sample_id": "21",
+      "retention": 0.35,
+      "arm": "all",
+      "kept": 58,
+      "total": 167,
+      "body_start": 45,
+      "correct": 0,
+      "prediction": "The path is still unclear.",
+      "truth": "The path looks clear."
+    },
+    {
+      "sample_id": "21",
+      "retention": 0.35,
+      "arm": "body",
+      "kept": 58,
+      "total": 167,
+      "body_start": 45,
+      "correct": 0,
+      "prediction": "The path is constrained.",
+      "truth": "The path looks clear."
+    },
+    {
+      "sample_id": "26",
+      "retention": 0.25,
+      "arm": "all",
+      "kept": 49,
+      "total": 197,
+      "body_start": 48,
+      "correct": 0,
+      "prediction": "An occluded road-user cue.",
+      "truth": "A cue missing from the blurred ego view."
+    },
+    {
+      "sample_id": "26",
+      "retention": 0.25,
+      "arm": "body",
+      "kept": 49,
+      "total": 197,
+      "body_start": 48,
+      "correct": 0,
+      "prediction": "An occluded road-user cue.",
+      "truth": "A cue missing from the blurred ego view."
+    },
+    {
+      "sample_id": "26",
+      "retention": 0.35,
+      "arm": "all",
+      "kept": 69,
+      "total": 197,
+      "body_start": 48,
+      "correct": 1,
+      "prediction": "A cue missing from the blurred ego view.",
+      "truth": "A cue missing from the blurred ego view."
+    },
+    {
+      "sample_id": "26",
+      "retention": 0.35,
+      "arm": "body",
+      "kept": 69,
+      "total": 197,
+      "body_start": 48,
+      "correct": 0,
+      "prediction": "An occluded road-user cue.",
+      "truth": "A cue missing from the blurred ego view."
+    },
+    {
+      "sample_id": "27",
+      "retention": 0.25,
+      "arm": "all",
+      "kept": 38,
+      "total": 154,
+      "body_start": 38,
+      "correct": 0,
+      "prediction": "No major caution point.",
+      "truth": "Nearby vulnerable users."
+    },
+    {
+      "sample_id": "27",
+      "retention": 0.25,
+      "arm": "body",
+      "kept": 38,
+      "total": 154,
+      "body_start": 38,
+      "correct": 0,
+      "prediction": "No major caution point.",
+      "truth": "Nearby vulnerable users."
+    },
+    {
+      "sample_id": "27",
+      "retention": 0.35,
+      "arm": "all",
+      "kept": 54,
+      "total": 154,
+      "body_start": 38,
+      "correct": 0,
+      "prediction": "No major caution point.",
+      "truth": "Nearby vulnerable users."
+    },
+    {
+      "sample_id": "27",
+      "retention": 0.35,
+      "arm": "body",
+      "kept": 54,
+      "total": 154,
+      "body_start": 38,
+      "correct": 1,
+      "prediction": "Nearby vulnerable users.",
+      "truth": "Nearby vulnerable users."
+    },
+    {
+      "sample_id": "28",
+      "retention": 0.25,
+      "arm": "all",
+      "kept": 40,
+      "total": 161,
+      "body_start": 45,
+      "correct": 0,
+      "prediction": "The path is still unclear.",
+      "truth": "The path looks clear."
+    },
+    {
+      "sample_id": "28",
+      "retention": 0.25,
+      "arm": "body",
+      "kept": 40,
+      "total": 161,
+      "body_start": 45,
+      "correct": 1,
+      "prediction": "The path looks clear.",
+      "truth": "The path looks clear."
+    },
+    {
+      "sample_id": "28",
+      "retention": 0.35,
+      "arm": "all",
+      "kept": 56,
+      "total": 161,
+      "body_start": 45,
+      "correct": 0,
+      "prediction": "The path is constrained.",
+      "truth": "The path looks clear."
+    },
+    {
+      "sample_id": "28",
+      "retention": 0.35,
+      "arm": "body",
+      "kept": 56,
+      "total": 161,
+      "body_start": 45,
+      "correct": 1,
+      "prediction": "The path looks clear.",
+      "truth": "The path looks clear."
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "samples": 20,
+  "weights": [
+    0.25,
+    0.3,
+    0.45
+  ],
+  "beta": 0.25,
+  "score_target": "predicted",
+  "per_token_n": 2629,
+  "pearson_proxy_vs_abs_true": 0.06360759523529794,
+  "spearman_proxy_vs_abs_true": 0.03897613668083494,
+  "spearman_proxy_vs_signed_true": -0.00664362794778131,
+  "spearman_per_token_within_sample_mean": -0.010887356581673798,
+  "spearman_per_token_within_sample_median": 0.011393295886359782,
+  "spearman_per_token_within_sample_frac_positive": 0.55,
+  "recomputed_vs_cached_full_nll_gap": 0.0,
+  "calibrated_scale_alpha": 0.6075353952741673,
+  "frac_tokens_raising_nll": 0.7926968429060479,
+  "abs_true_mean": 0.18131063686391163,
+  "abs_true_ci95": 0.1739707717104239,
+  "set_n": 120,
+  "spearman_set_proxy_vs_true": -0.2570872977290089,
+  "spearman_set_within_sample_mean": -0.38857142857142857,
+  "spearman_set_within_sample_median": -0.5142857142857143,
+  "spearman_set_within_sample_frac_positive": 0.25,
+  "set_frac_conservative": 0.4083333333333333,
+  "set_remainder_fit_r_squared": 0.13964820059122107,
+  "set_remainder_coverage": 0.4083333333333333,
+  "set_calibrated_eps_g": 0.20156303708072326,
+  "set_calibrated_eps_H": -0.02625991404378584,
+  "set_calibrated_L_3": -0.0019102215584746451
+}

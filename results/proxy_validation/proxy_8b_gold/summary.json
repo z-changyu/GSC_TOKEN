@@ -1,0 +1,33 @@
+{
+  "samples": 20,
+  "weights": [
+    0.25,
+    0.3,
+    0.45
+  ],
+  "beta": 0.25,
+  "score_target": "gold",
+  "per_token_n": 2629,
+  "pearson_proxy_vs_abs_true": 0.08196655976370357,
+  "spearman_proxy_vs_abs_true": 0.053091609373421736,
+  "spearman_proxy_vs_signed_true": 0.006096379748613322,
+  "spearman_per_token_within_sample_mean": -0.0070216884907422315,
+  "spearman_per_token_within_sample_median": 0.011393295886359782,
+  "spearman_per_token_within_sample_frac_positive": 0.55,
+  "recomputed_vs_cached_full_nll_gap": 0.14477814654063345,
+  "calibrated_scale_alpha": 0.6474678923281477,
+  "frac_tokens_raising_nll": 0.805249144161278,
+  "abs_true_mean": 0.1913601978054605,
+  "abs_true_ci95": 0.18368256334871683,
+  "set_n": 120,
+  "spearman_set_proxy_vs_true": -0.2538648517258143,
+  "spearman_set_within_sample_mean": -0.3314285714285714,
+  "spearman_set_within_sample_median": -0.5142857142857143,
+  "spearman_set_within_sample_frac_positive": 0.3,
+  "set_frac_conservative": 0.4666666666666667,
+  "set_remainder_fit_r_squared": 0.13460850872600616,
+  "set_remainder_coverage": 0.38333333333333336,
+  "set_calibrated_eps_g": 0.2080736150008265,
+  "set_calibrated_eps_H": -0.017343270061295945,
+  "set_calibrated_L_3": -0.0037008212036111904
+}

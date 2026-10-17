@@ -1,0 +1,725 @@
+{
+  "samples": 10,
+  "weights": [
+    0.25,
+    0.3,
+    0.45
+  ],
+  "fracs": [
+    0.1,
+    0.2,
+    0.3
+  ],
+  "receiver": "models/Qwen3-VL-8B-Instruct",
+  "rows": [
+    {
+      "sample_id": "0",
+      "frac": 0.0,
+      "arm": "baseline",
+      "deleted": 0,
+      "tokens": 123,
+      "correct": 1,
+      "prediction": "It provides a long-range cue.",
+      "truth": "It provides a long-range cue."
+    },
+    {
+      "sample_id": "0",
+      "frac": 0.1,
+      "arm": "proxy",
+      "deleted": 12,
+      "tokens": 123,
+      "correct": 1,
+      "prediction": "It provides a long-range cue.",
+      "truth": "It provides a long-range cue."
+    },
+    {
+      "sample_id": "0",
+      "frac": 0.1,
+      "arm": "random",
+      "deleted": 12,
+      "tokens": 123,
+      "correct": 1,
+      "prediction": "It provides a long-range cue.",
+      "truth": "It provides a long-range cue."
+    },
+    {
+      "sample_id": "0",
+      "frac": 0.2,
+      "arm": "proxy",
+      "deleted": 25,
+      "tokens": 123,
+      "correct": 1,
+      "prediction": "It provides a long-range cue.",
+      "truth": "It provides a long-range cue."
+    },
+    {
+      "sample_id": "0",
+      "frac": 0.2,
+      "arm": "random",
+      "deleted": 25,
+      "tokens": 123,
+      "correct": 1,
+      "prediction": "It provides a long-range cue.",
+      "truth": "It provides a long-range cue."
+    },
+    {
+      "sample_id": "0",
+      "frac": 0.3,
+      "arm": "proxy",
+      "deleted": 37,
+      "tokens": 123,
+      "correct": 1,
+      "prediction": "It provides a long-range cue.",
+      "truth": "It provides a long-range cue."
+    },
+    {
+      "sample_id": "0",
+      "frac": 0.3,
+      "arm": "random",
+      "deleted": 37,
+      "tokens": 123,
+      "correct": 1,
+      "prediction": "It provides a long-range cue.",
+      "truth": "It provides a long-range cue."
+    },
+    {
+      "sample_id": "3",
+      "frac": 0.0,
+      "arm": "baseline",
+      "deleted": 0,
+      "tokens": 117,
+      "correct": 1,
+      "prediction": "No obvious far-field cue.",
+      "truth": "No obvious far-field cue."
+    },
+    {
+      "sample_id": "3",
+      "frac": 0.1,
+      "arm": "proxy",
+      "deleted": 12,
+      "tokens": 117,
+      "correct": 1,
+      "prediction": "No obvious far-field cue.",
+      "truth": "No obvious far-field cue."
+    },
+    {
+      "sample_id": "3",
+      "frac": 0.1,
+      "arm": "random",
+      "deleted": 12,
+      "tokens": 117,
+      "correct": 1,
+      "prediction": "No obvious far-field cue.",
+      "truth": "No obvious far-field cue."
+    },
+    {
+      "sample_id": "3",
+      "frac": 0.2,
+      "arm": "proxy",
+      "deleted": 23,
+      "tokens": 117,
+      "correct": 1,
+      "prediction": "No obvious far-field cue.",
+      "truth": "No obvious far-field cue."
+    },
+    {
+      "sample_id": "3",
+      "frac": 0.2,
+      "arm": "random",
+      "deleted": 23,
+      "tokens": 117,
+      "correct": 1,
+      "prediction": "No obvious far-field cue.",
+      "truth": "No obvious far-field cue."
+    },
+    {
+      "sample_id": "3",
+      "frac": 0.3,
+      "arm": "proxy",
+      "deleted": 35,
+      "tokens": 117,
+      "correct": 1,
+      "prediction": "No obvious far-field cue.",
+      "truth": "No obvious far-field cue."
+    },
+    {
+      "sample_id": "3",
+      "frac": 0.3,
+      "arm": "random",
+      "deleted": 35,
+      "tokens": 117,
+      "correct": 0,
+      "prediction": "A large far-field agent.",
+      "truth": "No obvious far-field cue."
+    },
+    {
+      "sample_id": "9",
+      "frac": 0.0,
+      "arm": "baseline",
+      "deleted": 0,
+      "tokens": 103,
+      "correct": 1,
+      "prediction": "Lane-following road.",
+      "truth": "Lane-following road."
+    },
+    {
+      "sample_id": "9",
+      "frac": 0.1,
+      "arm": "proxy",
+      "deleted": 10,
+      "tokens": 103,
+      "correct": 1,
+      "prediction": "Lane-following road.",
+      "truth": "Lane-following road."
+    },
+    {
+      "sample_id": "9",
+      "frac": 0.1,
+      "arm": "random",
+      "deleted": 10,
+      "tokens": 103,
+      "correct": 1,
+      "prediction": "Lane-following road.",
+      "truth": "Lane-following road."
+    },
+    {
+      "sample_id": "9",
+      "frac": 0.2,
+      "arm": "proxy",
+      "deleted": 21,
+      "tokens": 103,
+      "correct": 1,
+      "prediction": "Lane-following road.",
+      "truth": "Lane-following road."
+    },
+    {
+      "sample_id": "9",
+      "frac": 0.2,
+      "arm": "random",
+      "deleted": 21,
+      "tokens": 103,
+      "correct": 1,
+      "prediction": "Lane-following road.",
+      "truth": "Lane-following road."
+    },
+    {
+      "sample_id": "9",
+      "frac": 0.3,
+      "arm": "proxy",
+      "deleted": 31,
+      "tokens": 103,
+      "correct": 1,
+      "prediction": "Lane-following road.",
+      "truth": "Lane-following road."
+    },
+    {
+      "sample_id": "9",
+      "frac": 0.3,
+      "arm": "random",
+      "deleted": 31,
+      "tokens": 103,
+      "correct": 0,
+      "prediction": "Junction structure.",
+      "truth": "Lane-following road."
+    },
+    {
+      "sample_id": "11",
+      "frac": 0.0,
+      "arm": "baseline",
+      "deleted": 0,
+      "tokens": 136,
+      "correct": 1,
+      "prediction": "Intersection-type scene.",
+      "truth": "Intersection-type scene."
+    },
+    {
+      "sample_id": "11",
+      "frac": 0.1,
+      "arm": "proxy",
+      "deleted": 14,
+      "tokens": 136,
+      "correct": 1,
+      "prediction": "Intersection-type scene.",
+      "truth": "Intersection-type scene."
+    },
+    {
+      "sample_id": "11",
+      "frac": 0.1,
+      "arm": "random",
+      "deleted": 14,
+      "tokens": 136,
+      "correct": 1,
+      "prediction": "Intersection-type scene.",
+      "truth": "Intersection-type scene."
+    },
+    {
+      "sample_id": "11",
+      "frac": 0.2,
+      "arm": "proxy",
+      "deleted": 27,
+      "tokens": 136,
+      "correct": 1,
+      "prediction": "Intersection-type scene.",
+      "truth": "Intersection-type scene."
+    },
+    {
+      "sample_id": "11",
+      "frac": 0.2,
+      "arm": "random",
+      "deleted": 27,
+      "tokens": 136,
+      "correct": 0,
+      "prediction": "Regular road scene.",
+      "truth": "Intersection-type scene."
+    },
+    {
+      "sample_id": "11",
+      "frac": 0.3,
+      "arm": "proxy",
+      "deleted": 41,
+      "tokens": 136,
+      "correct": 1,
+      "prediction": "Intersection-type scene.",
+      "truth": "Intersection-type scene."
+    },
+    {
+      "sample_id": "11",
+      "frac": 0.3,
+      "arm": "random",
+      "deleted": 41,
+      "tokens": 136,
+      "correct": 0,
+      "prediction": "Restricted or guided scene.",
+      "truth": "Intersection-type scene."
+    },
+    {
+      "sample_id": "16",
+      "frac": 0.0,
+      "arm": "baseline",
+      "deleted": 0,
+      "tokens": 118,
+      "correct": 1,
+      "prediction": "Keep moving forward.",
+      "truth": "Keep moving forward."
+    },
+    {
+      "sample_id": "16",
+      "frac": 0.1,
+      "arm": "proxy",
+      "deleted": 12,
+      "tokens": 118,
+      "correct": 1,
+      "prediction": "Keep moving forward.",
+      "truth": "Keep moving forward."
+    },
+    {
+      "sample_id": "16",
+      "frac": 0.1,
+      "arm": "random",
+      "deleted": 12,
+      "tokens": 118,
+      "correct": 1,
+      "prediction": "Keep moving forward.",
+      "truth": "Keep moving forward."
+    },
+    {
+      "sample_id": "16",
+      "frac": 0.2,
+      "arm": "proxy",
+      "deleted": 24,
+      "tokens": 118,
+      "correct": 1,
+      "prediction": "Keep moving forward.",
+      "truth": "Keep moving forward."
+    },
+    {
+      "sample_id": "16",
+      "frac": 0.2,
+      "arm": "random",
+      "deleted": 24,
+      "tokens": 118,
+      "correct": 1,
+      "prediction": "Keep moving forward.",
+      "truth": "Keep moving forward."
+    },
+    {
+      "sample_id": "16",
+      "frac": 0.3,
+      "arm": "proxy",
+      "deleted": 35,
+      "tokens": 118,
+      "correct": 1,
+      "prediction": "Keep moving forward.",
+      "truth": "Keep moving forward."
+    },
+    {
+      "sample_id": "16",
+      "frac": 0.3,
+      "arm": "random",
+      "deleted": 35,
+      "tokens": 118,
+      "correct": 1,
+      "prediction": "Keep moving forward.",
+      "truth": "Keep moving forward."
+    },
+    {
+      "sample_id": "17",
+      "frac": 0.0,
+      "arm": "baseline",
+      "deleted": 0,
+      "tokens": 163,
+      "correct": 1,
+      "prediction": "Go straight.",
+      "truth": "Go straight."
+    },
+    {
+      "sample_id": "17",
+      "frac": 0.1,
+      "arm": "proxy",
+      "deleted": 16,
+      "tokens": 163,
+      "correct": 1,
+      "prediction": "Go straight.",
+      "truth": "Go straight."
+    },
+    {
+      "sample_id": "17",
+      "frac": 0.1,
+      "arm": "random",
+      "deleted": 16,
+      "tokens": 163,
+      "correct": 1,
+      "prediction": "Go straight.",
+      "truth": "Go straight."
+    },
+    {
+      "sample_id": "17",
+      "frac": 0.2,
+      "arm": "proxy",
+      "deleted": 33,
+      "tokens": 163,
+      "correct": 1,
+      "prediction": "Go straight.",
+      "truth": "Go straight."
+    },
+    {
+      "sample_id": "17",
+      "frac": 0.2,
+      "arm": "random",
+      "deleted": 33,
+      "tokens": 163,
+      "correct": 1,
+      "prediction": "Go straight.",
+      "truth": "Go straight."
+    },
+    {
+      "sample_id": "17",
+      "frac": 0.3,
+      "arm": "proxy",
+      "deleted": 49,
+      "tokens": 163,
+      "correct": 1,
+      "prediction": "Go straight.",
+      "truth": "Go straight."
+    },
+    {
+      "sample_id": "17",
+      "frac": 0.3,
+      "arm": "random",
+      "deleted": 49,
+      "tokens": 163,
+      "correct": 1,
+      "prediction": "Go straight.",
+      "truth": "Go straight."
+    },
+    {
+      "sample_id": "21",
+      "frac": 0.0,
+      "arm": "baseline",
+      "deleted": 0,
+      "tokens": 167,
+      "correct": 1,
+      "prediction": "The path looks clear.",
+      "truth": "The path looks clear."
+    },
+    {
+      "sample_id": "21",
+      "frac": 0.1,
+      "arm": "proxy",
+      "deleted": 17,
+      "tokens": 167,
+      "correct": 1,
+      "prediction": "The path looks clear.",
+      "truth": "The path looks clear."
+    },
+    {
+      "sample_id": "21",
+      "frac": 0.1,
+      "arm": "random",
+      "deleted": 17,
+      "tokens": 167,
+      "correct": 1,
+      "prediction": "The path looks clear.",
+      "truth": "The path looks clear."
+    },
+    {
+      "sample_id": "21",
+      "frac": 0.2,
+      "arm": "proxy",
+      "deleted": 33,
+      "tokens": 167,
+      "correct": 1,
+      "prediction": "The path looks clear.",
+      "truth": "The path looks clear."
+    },
+    {
+      "sample_id": "21",
+      "frac": 0.2,
+      "arm": "random",
+      "deleted": 33,
+      "tokens": 167,
+      "correct": 0,
+      "prediction": "The path is constrained.",
+      "truth": "The path looks clear."
+    },
+    {
+      "sample_id": "21",
+      "frac": 0.3,
+      "arm": "proxy",
+      "deleted": 50,
+      "tokens": 167,
+      "correct": 1,
+      "prediction": "The path looks clear.",
+      "truth": "The path looks clear."
+    },
+    {
+      "sample_id": "21",
+      "frac": 0.3,
+      "arm": "random",
+      "deleted": 50,
+      "tokens": 167,
+      "correct": 1,
+      "prediction": "The path looks clear.",
+      "truth": "The path looks clear."
+    },
+    {
+      "sample_id": "26",
+      "frac": 0.0,
+      "arm": "baseline",
+      "deleted": 0,
+      "tokens": 197,
+      "correct": 1,
+      "prediction": "A cue missing from the blurred ego view.",
+      "truth": "A cue missing from the blurred ego view."
+    },
+    {
+      "sample_id": "26",
+      "frac": 0.1,
+      "arm": "proxy",
+      "deleted": 20,
+      "tokens": 197,
+      "correct": 0,
+      "prediction": "An occluded road-user cue.",
+      "truth": "A cue missing from the blurred ego view."
+    },
+    {
+      "sample_id": "26",
+      "frac": 0.1,
+      "arm": "random",
+      "deleted": 20,
+      "tokens": 197,
+      "correct": 0,
+      "prediction": "An occluded road-user cue.",
+      "truth": "A cue missing from the blurred ego view."
+    },
+    {
+      "sample_id": "26",
+      "frac": 0.2,
+      "arm": "proxy",
+      "deleted": 39,
+      "tokens": 197,
+      "correct": 0,
+      "prediction": "An occluded road-user cue.",
+      "truth": "A cue missing from the blurred ego view."
+    },
+    {
+      "sample_id": "26",
+      "frac": 0.2,
+      "arm": "random",
+      "deleted": 39,
+      "tokens": 197,
+      "correct": 0,
+      "prediction": "An occluded road-user cue.",
+      "truth": "A cue missing from the blurred ego view."
+    },
+    {
+      "sample_id": "26",
+      "frac": 0.3,
+      "arm": "proxy",
+      "deleted": 59,
+      "tokens": 197,
+      "correct": 0,
+      "prediction": "An occluded road-user cue.",
+      "truth": "A cue missing from the blurred ego view."
+    },
+    {
+      "sample_id": "26",
+      "frac": 0.3,
+      "arm": "random",
+      "deleted": 59,
+      "tokens": 197,
+      "correct": 0,
+      "prediction": "An occluded road-user cue.",
+      "truth": "A cue missing from the blurred ego view."
+    },
+    {
+      "sample_id": "27",
+      "frac": 0.0,
+      "arm": "baseline",
+      "deleted": 0,
+      "tokens": 154,
+      "correct": 1,
+      "prediction": "Nearby vulnerable users.",
+      "truth": "Nearby vulnerable users."
+    },
+    {
+      "sample_id": "27",
+      "frac": 0.1,
+      "arm": "proxy",
+      "deleted": 15,
+      "tokens": 154,
+      "correct": 1,
+      "prediction": "Nearby vulnerable users.",
+      "truth": "Nearby vulnerable users."
+    },
+    {
+      "sample_id": "27",
+      "frac": 0.1,
+      "arm": "random",
+      "deleted": 15,
+      "tokens": 154,
+      "correct": 1,
+      "prediction": "Nearby vulnerable users.",
+      "truth": "Nearby vulnerable users."
+    },
+    {
+      "sample_id": "27",
+      "frac": 0.2,
+      "arm": "proxy",
+      "deleted": 31,
+      "tokens": 154,
+      "correct": 1,
+      "prediction": "Nearby vulnerable users.",
+      "truth": "Nearby vulnerable users."
+    },
+    {
+      "sample_id": "27",
+      "frac": 0.2,
+      "arm": "random",
+      "deleted": 31,
+      "tokens": 154,
+      "correct": 1,
+      "prediction": "Nearby vulnerable users.",
+      "truth": "Nearby vulnerable users."
+    },
+    {
+      "sample_id": "27",
+      "frac": 0.3,
+      "arm": "proxy",
+      "deleted": 46,
+      "tokens": 154,
+      "correct": 1,
+      "prediction": "Nearby vulnerable users.",
+      "truth": "Nearby vulnerable users."
+    },
+    {
+      "sample_id": "27",
+      "frac": 0.3,
+      "arm": "random",
+      "deleted": 46,
+      "tokens": 154,
+      "correct": 1,
+      "prediction": "Nearby vulnerable users.",
+      "truth": "Nearby vulnerable users."
+    },
+    {
+      "sample_id": "28",
+      "frac": 0.0,
+      "arm": "baseline",
+      "deleted": 0,
+      "tokens": 161,
+      "correct": 1,
+      "prediction": "The path looks clear.",
+      "truth": "The path looks clear."
+    },
+    {
+      "sample_id": "28",
+      "frac": 0.1,
+      "arm": "proxy",
+      "deleted": 16,
+      "tokens": 161,
+      "correct": 1,
+      "prediction": "The path looks clear.",
+      "truth": "The path looks clear."
+    },
+    {
+      "sample_id": "28",
+      "frac": 0.1,
+      "arm": "random",
+      "deleted": 16,
+      "tokens": 161,
+      "correct": 1,
+      "prediction": "The path looks clear.",
+      "truth": "The path looks clear."
+    },
+    {
+      "sample_id": "28",
+      "frac": 0.2,
+      "arm": "proxy",
+      "deleted": 32,
+      "tokens": 161,
+      "correct": 1,
+      "prediction": "The path looks clear.",
+      "truth": "The path looks clear."
+    },
+    {
+      "sample_id": "28",
+      "frac": 0.2,
+      "arm": "random",
+      "deleted": 32,
+      "tokens": 161,
+      "correct": 1,
+      "prediction": "The path looks clear.",
+      "truth": "The path looks clear."
+    },
+    {
+      "sample_id": "28",
+      "frac": 0.3,
+      "arm": "proxy",
+      "deleted": 48,
+      "tokens": 161,
+      "correct": 1,
+      "prediction": "The path looks clear.",
+      "truth": "The path looks clear."
+    },
+    {
+      "sample_id": "28",
+      "frac": 0.3,
+      "arm": "random",
+      "deleted": 48,
+      "tokens": 161,
+      "correct": 1,
+      "prediction": "The path looks clear.",
+      "truth": "The path looks clear."
+    }
+  ],
+  "accuracy": {
+    "0.0:baseline": 1.0,
+    "0.1:proxy": 0.9,
+    "0.1:random": 0.9,
+    "0.2:proxy": 0.9,
+    "0.2:random": 0.7,
+    "0.3:proxy": 0.9,
+    "0.3:random": 0.6
+  }
+}
