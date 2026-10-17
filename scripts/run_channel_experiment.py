@@ -112,6 +112,7 @@ def main() -> None:
     from src.channel.reliable_capacity import reliable_spectral_efficiency
     from src.experiments.prompts import ANSWER_REQUEST
     from src.experiments.receiver_protocol import RESTORE_THRESHOLD, answer_with_protocol
+    from src.experiments.report_span import report_span_start
     from src.experiments.scoring import SampleScores, combine_scores
     from src.pragmatic.utility import context_aware_utility
     from src.metrics.communication import token_retention_ratio
@@ -357,6 +358,13 @@ def main() -> None:
                     utilities = [float(u) for u in combine_scores(
                         scores.attention, scores.semantic, scores.gradient, weights)]
                     utility_tensor = torch.tensor(utilities, dtype=torch.float32)
+                    # ``proposed_body`` runs the same scheduler with the duplicated
+                    # question/option prefix removed from the candidate set: those
+                    # tokens already reach the receiver through build_question_block,
+                    # so symbols spent on them carry no information. The prefix takes
+                    # 30% of the payload and 44% of the top-10% utility, which is
+                    # precisely the budget a body-only selection gets back.
+                    body_start = report_span_start(scores.token_strings)
                     coupling = (torch.tensor(scores.coupling, dtype=torch.float32)
                                 if scores.coupling is not None
                                 else torch.zeros(scores.num_tokens, scores.num_tokens))
@@ -401,6 +409,7 @@ def main() -> None:
                     for method in methods:
                         start = time.perf_counter()
                         is_plugin = method == "plugin_capacity"
+                        use_body_mask = method == "proposed_body"
                         # Budget routing. ``plugin_capacity`` *is* the internal
                         # baseline that replaces Eq. (6) with the plug-in capacity,
                         # and ``proposed`` may deliberately be run at the genie
@@ -419,8 +428,17 @@ def main() -> None:
                         alt = benchmark_signal(method, sample_id)
                         sched_method = ("proposed"
                                         if is_plugin or method in ("tokcom_uep",
-                                                                   "answer_loo_uep")
+                                                                   "answer_loo_uep",
+                                                                   "proposed_body")
                                         else method)
+                        if use_body_mask:
+                            # Same scheduler and the same budget as ``proposed``; the
+                            # only change is that the duplicated prefix leaves the
+                            # candidate set. Zeroing the utility (instead of filtering
+                            # the order afterwards) keeps the LP honest: the freed
+                            # budget is re-optimised over the report body rather than
+                            # being silently spent and then voided.
+                            method_budget = proposed_budget
                         if protection_mode == "fixed" and sched_method == "proposed":
                             sched_method = "fixed_H"
                         if method in ("tokcom_uep", "answer_loo_uep"):
@@ -443,13 +461,23 @@ def main() -> None:
                                 method_budget, t_max if do_refine else 0, rng,
                                 joint_q=joint_q, selection_utility=selection_utility)
                         else:
+                            masked_utility, masked_selection = utility_tensor, selection_utility
+                            if use_body_mask and body_start > 0:
+                                masked_utility = utility_tensor.clone()
+                                masked_utility[:body_start] = 0.0
+                                if selection_utility is not None:
+                                    masked_selection = selection_utility.clone()
+                                    masked_selection[:body_start] = 0.0
                             level = select_level(
                                 sched_method,
-                                utility_tensor, coupling, beta, q,
+                                masked_utility, coupling, beta, q,
                                 torch.tensor(codebook.levels, dtype=torch.float32),
                                 method_budget,
                                 t_max if do_refine else 0, rng, alt,
-                                joint_q=joint_q, selection_utility=selection_utility)
+                                joint_q=joint_q, selection_utility=masked_selection)
+                            if use_body_mask and body_start > 0:
+                                level = level.clone()
+                                level[:body_start] = 0
                         schedule_seconds = time.perf_counter() - start
 
                         selected = [i for i in range(scores.num_tokens) if level[i] > 0]

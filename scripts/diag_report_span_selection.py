@@ -31,21 +31,7 @@ import yaml
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 
-def report_span_start(row: dict) -> int:
-    """Token index at which the report body begins (after the option list)."""
-    token_strings = row["token_strings"]
-    full = "".join(token_strings).replace("Ġ", " ").replace("Ċ", "\n")
-    last_option = full.find("D. ")
-    breaks = [m.end() for m in re.finditer(r"\n\n", full)]
-    start_char = next((c for c in breaks if c > last_option), None)
-    if start_char is None:
-        return 0
-    consumed = 0
-    for index, piece in enumerate(token_strings):
-        consumed += len(piece.replace("Ġ", " ").replace("Ċ", "\n"))
-        if consumed >= start_char:
-            return index
-    return len(token_strings)
+from src.experiments.report_span import report_span_start  # noqa: E402
 
 
 def main() -> None:
