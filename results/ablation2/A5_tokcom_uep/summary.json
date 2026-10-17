@@ -1,0 +1,142 @@
+{
+  "samples": 60,
+  "channels": [
+    "rayleigh",
+    "rician",
+    "frequency_selective"
+  ],
+  "snr_db": [
+    0.0,
+    15.0
+  ],
+  "channel_seeds": [
+    0,
+    1,
+    2
+  ],
+  "epsilon_out": 0.05,
+  "methods": [
+    "tokcom_uep"
+  ],
+  "weights": [
+    0.25,
+    0.3,
+    0.45
+  ],
+  "beta": 0.13,
+  "codebook_levels": [
+    48.0,
+    32.0,
+    16.0
+  ],
+  "code_rates": [
+    0.3333333333333333,
+    0.5,
+    1.0
+  ],
+  "energy_backend": "nvidia-smi",
+  "conditions": [
+    {
+      "channel": "frequency_selective",
+      "snr_db": 0.0,
+      "method": "tokcom_uep",
+      "observations": 180,
+      "accuracy": 0.5722222222222222,
+      "accuracy_ci95": 0.07248047414548249,
+      "mean_TRR": 0.3086750183297469,
+      "mean_symbols": 752.6222222222223,
+      "capacity_outage_rate": 0.05,
+      "plugin_outage_rate": 0.5444444444444444,
+      "mean_token_erasure_rate": 0.2624369312903659,
+      "mean_schedule_seconds": 0.0017804124492815593,
+      "mean_receive_seconds": 0.08874502771844467,
+      "mean_gpu_peak_memory_delta_gib": 0.03536267280578613,
+      "mean_energy_j": 20.15500570086936
+    },
+    {
+      "channel": "frequency_selective",
+      "snr_db": 15.0,
+      "method": "tokcom_uep",
+      "observations": 180,
+      "accuracy": 0.8444444444444444,
+      "accuracy_ci95": 0.05309551778862333,
+      "mean_TRR": 0.921851646765986,
+      "mean_symbols": 1972.8,
+      "capacity_outage_rate": 0.05,
+      "plugin_outage_rate": 0.5444444444444444,
+      "mean_token_erasure_rate": 0.07366003968579792,
+      "mean_schedule_seconds": 0.001746751999275552,
+      "mean_receive_seconds": 0.1248160648384429,
+      "mean_gpu_peak_memory_delta_gib": 0.05681127707163493,
+      "mean_energy_j": 30.804351852074472
+    },
+    {
+      "channel": "rayleigh",
+      "snr_db": 0.0,
+      "method": "tokcom_uep",
+      "observations": 180,
+      "accuracy": 0.42777777777777776,
+      "accuracy_ci95": 0.07248047414548248,
+      "mean_TRR": 0.2532096448192126,
+      "mean_symbols": 665.6888888888889,
+      "capacity_outage_rate": 0.05555555555555555,
+      "plugin_outage_rate": 0.4888888888888889,
+      "mean_token_erasure_rate": 0.2629574235685788,
+      "mean_schedule_seconds": 0.0017493073168831567,
+      "mean_receive_seconds": 0.08804379383380162,
+      "mean_gpu_peak_memory_delta_gib": 0.034075978067186145,
+      "mean_energy_j": 19.152503191100152
+    },
+    {
+      "channel": "rayleigh",
+      "snr_db": 15.0,
+      "method": "tokcom_uep",
+      "observations": 180,
+      "accuracy": 0.8555555555555555,
+      "accuracy_ci95": 0.051499627190884155,
+      "mean_TRR": 0.9145074772801958,
+      "mean_symbols": 1979.2,
+      "capacity_outage_rate": 0.05555555555555555,
+      "plugin_outage_rate": 0.4888888888888889,
+      "mean_token_erasure_rate": 0.07612621183983978,
+      "mean_schedule_seconds": 0.0017787638728299902,
+      "mean_receive_seconds": 0.12412997800678972,
+      "mean_gpu_peak_memory_delta_gib": 0.05639190938737657,
+      "mean_energy_j": 30.54766199059527
+    },
+    {
+      "channel": "rician",
+      "snr_db": 0.0,
+      "method": "tokcom_uep",
+      "observations": 180,
+      "accuracy": 0.43333333333333335,
+      "accuracy_ci95": 0.07259462029032325,
+      "mean_TRR": 0.2697125751032785,
+      "mean_symbols": 721.6,
+      "capacity_outage_rate": 0.06666666666666667,
+      "plugin_outage_rate": 0.5,
+      "mean_token_erasure_rate": 0.1685536307801794,
+      "mean_schedule_seconds": 0.0018496265389128692,
+      "mean_receive_seconds": 0.08559474083514133,
+      "mean_gpu_peak_memory_delta_gib": 0.034452419810824926,
+      "mean_energy_j": 19.364356168884687
+    },
+    {
+      "channel": "rician",
+      "snr_db": 15.0,
+      "method": "tokcom_uep",
+      "observations": 180,
+      "accuracy": 0.8611111111111112,
+      "accuracy_ci95": 0.05066323346421943,
+      "mean_TRR": 0.9777614220112643,
+      "mean_symbols": 2086.8444444444444,
+      "capacity_outage_rate": 0.06666666666666667,
+      "plugin_outage_rate": 0.5,
+      "mean_token_erasure_rate": 0.05575252272480662,
+      "mean_schedule_seconds": 0.001799333388529097,
+      "mean_receive_seconds": 0.12756901999366366,
+      "mean_gpu_peak_memory_delta_gib": 0.05884412659539117,
+      "mean_energy_j": 31.423809677837166
+    }
+  ]
+}
