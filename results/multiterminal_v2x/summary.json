@@ -1,0 +1,358 @@
+{
+  "samples": 60,
+  "K": [
+    4,
+    10,
+    20
+  ],
+  "snr_db": [
+    0.0,
+    15.0
+  ],
+  "thetas": [
+    0.0,
+    0.05,
+    0.2,
+    1.0,
+    1000000000.0
+  ],
+  "weights": [
+    0.25,
+    0.3,
+    0.45
+  ],
+  "epsilon_out": 0.05,
+  "energy_backend": "nvidia-smi",
+  "front": [
+    {
+      "snr_db": 0.0,
+      "K": 4,
+      "theta": 0.0,
+      "mean_accuracy": 0.15,
+      "accuracy_ci95": 0.09111400941603001,
+      "jain_accuracy": 0.15,
+      "jain_bandwidth": 0.25,
+      "mean_selected_tokens": 16.55,
+      "mean_received_tokens": 15.716666666666667
+    },
+    {
+      "snr_db": 0.0,
+      "K": 4,
+      "theta": 0.05,
+      "mean_accuracy": 0.1,
+      "accuracy_ci95": 0.07655107965672443,
+      "jain_accuracy": 0.1,
+      "jain_bandwidth": 0.9938318180569204,
+      "mean_selected_tokens": 8.45,
+      "mean_received_tokens": 7.483333333333333
+    },
+    {
+      "snr_db": 0.0,
+      "K": 4,
+      "theta": 0.2,
+      "mean_accuracy": 0.11666666666666667,
+      "accuracy_ci95": 0.08191544030095109,
+      "jain_accuracy": 0.11666666666666667,
+      "jain_bandwidth": 0.9996487679277258,
+      "mean_selected_tokens": 8.066666666666666,
+      "mean_received_tokens": 7.083333333333333
+    },
+    {
+      "snr_db": 0.0,
+      "K": 4,
+      "theta": 1.0,
+      "mean_accuracy": 0.11666666666666667,
+      "accuracy_ci95": 0.08191544030095109,
+      "jain_accuracy": 0.11666666666666667,
+      "jain_bandwidth": 0.9999863481238344,
+      "mean_selected_tokens": 7.983333333333333,
+      "mean_received_tokens": 7.016666666666667
+    },
+    {
+      "snr_db": 0.0,
+      "K": 4,
+      "theta": 1000000000.0,
+      "mean_accuracy": 0.11666666666666667,
+      "accuracy_ci95": 0.08191544030095109,
+      "jain_accuracy": 0.11666666666666667,
+      "jain_bandwidth": 1.0,
+      "mean_selected_tokens": 7.966666666666667,
+      "mean_received_tokens": 7.0
+    },
+    {
+      "snr_db": 0.0,
+      "K": 10,
+      "theta": 0.0,
+      "mean_accuracy": 0.1,
+      "accuracy_ci95": 0.07655107965672443,
+      "jain_accuracy": 0.09999999999999999,
+      "jain_bandwidth": 0.09999999999999999,
+      "mean_selected_tokens": 9.933333333333334,
+      "mean_received_tokens": 9.366666666666667
+    },
+    {
+      "snr_db": 0.0,
+      "K": 10,
+      "theta": 0.05,
+      "mean_accuracy": 0.03333333333333333,
+      "accuracy_ci95": 0.04580446445728249,
+      "jain_accuracy": 0.03333333333333333,
+      "jain_bandwidth": 0.9988542506287891,
+      "mean_selected_tokens": 3.4166666666666665,
+      "mean_received_tokens": 3.1166666666666667
+    },
+    {
+      "snr_db": 0.0,
+      "K": 10,
+      "theta": 0.2,
+      "mean_accuracy": 0.016666666666666666,
+      "accuracy_ci95": 0.03266666666666667,
+      "jain_accuracy": 0.016666666666666666,
+      "jain_bandwidth": 0.9999306299821055,
+      "mean_selected_tokens": 3.3,
+      "mean_received_tokens": 3.0
+    },
+    {
+      "snr_db": 0.0,
+      "K": 10,
+      "theta": 1.0,
+      "mean_accuracy": 0.016666666666666666,
+      "accuracy_ci95": 0.03266666666666667,
+      "jain_accuracy": 0.016666666666666666,
+      "jain_bandwidth": 0.9999972480354048,
+      "mean_selected_tokens": 3.283333333333333,
+      "mean_received_tokens": 3.0
+    },
+    {
+      "snr_db": 0.0,
+      "K": 10,
+      "theta": 1000000000.0,
+      "mean_accuracy": 0.016666666666666666,
+      "accuracy_ci95": 0.03266666666666667,
+      "jain_accuracy": 0.016666666666666666,
+      "jain_bandwidth": 1.0,
+      "mean_selected_tokens": 3.283333333333333,
+      "mean_received_tokens": 3.0
+    },
+    {
+      "snr_db": 0.0,
+      "K": 20,
+      "theta": 0.0,
+      "mean_accuracy": 0.03333333333333333,
+      "accuracy_ci95": 0.04580446445728249,
+      "jain_accuracy": 0.03333333333333333,
+      "jain_bandwidth": 0.05000000000000001,
+      "mean_selected_tokens": 4.783333333333333,
+      "mean_received_tokens": 4.566666666666666
+    },
+    {
+      "snr_db": 0.0,
+      "K": 20,
+      "theta": 0.05,
+      "mean_accuracy": 0.03333333333333333,
+      "accuracy_ci95": 0.04580446445728249,
+      "jain_accuracy": 0.03333333333333333,
+      "jain_bandwidth": 0.9997565197896204,
+      "mean_selected_tokens": 1.3666666666666667,
+      "mean_received_tokens": 1.0666666666666667
+    },
+    {
+      "snr_db": 0.0,
+      "K": 20,
+      "theta": 0.2,
+      "mean_accuracy": 0.03333333333333333,
+      "accuracy_ci95": 0.04580446445728249,
+      "jain_accuracy": 0.03333333333333333,
+      "jain_bandwidth": 0.9999850056219984,
+      "mean_selected_tokens": 1.3666666666666667,
+      "mean_received_tokens": 1.0666666666666667
+    },
+    {
+      "snr_db": 0.0,
+      "K": 20,
+      "theta": 1.0,
+      "mean_accuracy": 0.03333333333333333,
+      "accuracy_ci95": 0.04580446445728249,
+      "jain_accuracy": 0.03333333333333333,
+      "jain_bandwidth": 0.9999994025529163,
+      "mean_selected_tokens": 1.3666666666666667,
+      "mean_received_tokens": 1.0666666666666667
+    },
+    {
+      "snr_db": 0.0,
+      "K": 20,
+      "theta": 1000000000.0,
+      "mean_accuracy": 0.03333333333333333,
+      "accuracy_ci95": 0.04580446445728249,
+      "jain_accuracy": 0.03333333333333333,
+      "jain_bandwidth": 1.0,
+      "mean_selected_tokens": 1.3666666666666667,
+      "mean_received_tokens": 1.0666666666666667
+    },
+    {
+      "snr_db": 15.0,
+      "K": 4,
+      "theta": 0.0,
+      "mean_accuracy": 0.21666666666666667,
+      "accuracy_ci95": 0.10512340519670514,
+      "jain_accuracy": 0.21666666666666667,
+      "jain_bandwidth": 0.25,
+      "mean_selected_tokens": 34.86666666666667,
+      "mean_received_tokens": 32.78333333333333
+    },
+    {
+      "snr_db": 15.0,
+      "K": 4,
+      "theta": 0.05,
+      "mean_accuracy": 0.5333333333333333,
+      "accuracy_ci95": 0.12730129451693484,
+      "jain_accuracy": 0.5333333333333333,
+      "jain_bandwidth": 0.9363935013196729,
+      "mean_selected_tokens": 61.766666666666666,
+      "mean_received_tokens": 58.483333333333334
+    },
+    {
+      "snr_db": 15.0,
+      "K": 4,
+      "theta": 0.2,
+      "mean_accuracy": 0.5,
+      "accuracy_ci95": 0.12758513276120736,
+      "jain_accuracy": 0.5,
+      "jain_bandwidth": 0.9956168858316448,
+      "mean_selected_tokens": 58.8,
+      "mean_received_tokens": 55.85
+    },
+    {
+      "snr_db": 15.0,
+      "K": 4,
+      "theta": 1.0,
+      "mean_accuracy": 0.5166666666666667,
+      "accuracy_ci95": 0.12751423243188592,
+      "jain_accuracy": 0.5166666666666667,
+      "jain_bandwidth": 0.999825231152847,
+      "mean_selected_tokens": 57.65,
+      "mean_received_tokens": 54.7
+    },
+    {
+      "snr_db": 15.0,
+      "K": 4,
+      "theta": 1000000000.0,
+      "mean_accuracy": 0.5,
+      "accuracy_ci95": 0.12758513276120736,
+      "jain_accuracy": 0.5,
+      "jain_bandwidth": 1.0,
+      "mean_selected_tokens": 57.266666666666666,
+      "mean_received_tokens": 54.36666666666667
+    },
+    {
+      "snr_db": 15.0,
+      "K": 10,
+      "theta": 0.0,
+      "mean_accuracy": 0.06666666666666667,
+      "accuracy_ci95": 0.0636506472584674,
+      "jain_accuracy": 0.06666666666666667,
+      "jain_bandwidth": 0.09999999999999999,
+      "mean_selected_tokens": 14.016666666666667,
+      "mean_received_tokens": 13.25
+    },
+    {
+      "snr_db": 15.0,
+      "K": 10,
+      "theta": 0.05,
+      "mean_accuracy": 0.25,
+      "accuracy_ci95": 0.11049196611641583,
+      "jain_accuracy": 0.25,
+      "jain_bandwidth": 0.987239500794054,
+      "mean_selected_tokens": 23.95,
+      "mean_received_tokens": 22.7
+    },
+    {
+      "snr_db": 15.0,
+      "K": 10,
+      "theta": 0.2,
+      "mean_accuracy": 0.21666666666666667,
+      "accuracy_ci95": 0.10512340519670514,
+      "jain_accuracy": 0.21666666666666667,
+      "jain_bandwidth": 0.9991769419540425,
+      "mean_selected_tokens": 23.15,
+      "mean_received_tokens": 21.933333333333334
+    },
+    {
+      "snr_db": 15.0,
+      "K": 10,
+      "theta": 1.0,
+      "mean_accuracy": 0.2,
+      "accuracy_ci95": 0.10206810620896589,
+      "jain_accuracy": 0.19999999999999998,
+      "jain_bandwidth": 0.9999667125604862,
+      "mean_selected_tokens": 22.883333333333333,
+      "mean_received_tokens": 21.666666666666668
+    },
+    {
+      "snr_db": 15.0,
+      "K": 10,
+      "theta": 1000000000.0,
+      "mean_accuracy": 0.18333333333333332,
+      "accuracy_ci95": 0.09873546997920792,
+      "jain_accuracy": 0.18333333333333332,
+      "jain_bandwidth": 1.0,
+      "mean_selected_tokens": 22.8,
+      "mean_received_tokens": 21.583333333333332
+    },
+    {
+      "snr_db": 15.0,
+      "K": 20,
+      "theta": 0.0,
+      "mean_accuracy": 0.03333333333333333,
+      "accuracy_ci95": 0.04580446445728249,
+      "jain_accuracy": 0.03333333333333333,
+      "jain_bandwidth": 0.05000000000000001,
+      "mean_selected_tokens": 9.166666666666666,
+      "mean_received_tokens": 8.616666666666667
+    },
+    {
+      "snr_db": 15.0,
+      "K": 20,
+      "theta": 0.05,
+      "mean_accuracy": 0.15,
+      "accuracy_ci95": 0.09111400941603001,
+      "jain_accuracy": 0.15,
+      "jain_bandwidth": 0.996797037991843,
+      "mean_selected_tokens": 11.3,
+      "mean_received_tokens": 10.7
+    },
+    {
+      "snr_db": 15.0,
+      "K": 20,
+      "theta": 0.2,
+      "mean_accuracy": 0.13333333333333333,
+      "accuracy_ci95": 0.086741210879163,
+      "jain_accuracy": 0.13333333333333333,
+      "jain_bandwidth": 0.9997988131436474,
+      "mean_selected_tokens": 10.966666666666667,
+      "mean_received_tokens": 10.366666666666667
+    },
+    {
+      "snr_db": 15.0,
+      "K": 20,
+      "theta": 1.0,
+      "mean_accuracy": 0.13333333333333333,
+      "accuracy_ci95": 0.086741210879163,
+      "jain_accuracy": 0.13333333333333333,
+      "jain_bandwidth": 0.9999919344610294,
+      "mean_selected_tokens": 10.9,
+      "mean_received_tokens": 10.3
+    },
+    {
+      "snr_db": 15.0,
+      "K": 20,
+      "theta": 1000000000.0,
+      "mean_accuracy": 0.13333333333333333,
+      "accuracy_ci95": 0.086741210879163,
+      "jain_accuracy": 0.13333333333333333,
+      "jain_bandwidth": 1.0,
+      "mean_selected_tokens": 10.9,
+      "mean_received_tokens": 10.3
+    }
+  ]
+}
