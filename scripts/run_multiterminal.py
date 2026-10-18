@@ -32,6 +32,8 @@ from src.channel import build_channel, decoding_probability  # noqa: E402
 from src.channel.link import ProtectionCodebook  # noqa: E402
 from src.channel.reliable_capacity import reliable_spectral_efficiency  # noqa: E402
 from src.experiments.prompts import ANSWER_REQUEST, canonical_prediction  # noqa: E402
+from src.experiments.receiver_protocol import answer_with_protocol  # noqa: E402
+from src.experiments.report_span import report_span_start  # noqa: E402
 from src.experiments.scoring import SampleScores, combine_scores  # noqa: E402
 from src.metrics.qa import exact_match  # noqa: E402
 from src.metrics.statistics import mean_std_ci95  # noqa: E402
@@ -147,26 +149,39 @@ def main() -> None:
                     for t_idx, (scores, u_prime, coupling, state, c_eps, q, sid) in enumerate(
                             terminals):
                         budget = slot_duration * float(bandwidths[t_idx]) * bandwidth * c_eps
+                        # Same body mask as the canonical single-terminal table: the
+                        # duplicated question/option prefix is not a candidate, which
+                        # matters even more here because each terminal only gets 1/K of
+                        # the budget.
+                        body_start = report_span_start(
+                            scores.token_strings, processed[sid].get("choices"))
+                        candidate_mask = None
+                        if body_start > 0:
+                            candidate_mask = torch.zeros(scores.num_tokens, dtype=torch.bool)
+                            candidate_mask[body_start:] = True
                         level = select_level(
                             "proposed", u_prime, coupling, beta, q,
                             torch.tensor(codebook.levels, dtype=torch.float32),
-                            budget, int(config["scheduling"]["t_max"]), __import__("random").Random(slot_idx * 7 + t_idx))
+                            budget, int(config["scheduling"]["t_max"]), __import__("random").Random(slot_idx * 7 + t_idx),
+                            candidate_mask=candidate_mask)
                         selected = [(int(i), int(level[i])) for i in range(scores.num_tokens)
                                     if level[i] > 0]
                         rng = __import__("random").Random(slot_idx * 13 + t_idx)
                         kept_ids = apply_realized_channel(state, selected, codebook, rng)
                         received = tx_tokenizer.decode(
                             [scores.token_ids[i] for i in kept_ids], skip_special_tokens=True)
-                        message = receiver_tokenizer.apply_chat_template(
-                            [{"role": "user", "content": f"{ANSWER_REQUEST}\n\n{received}"}],
-                            tokenize=False, add_generation_prompt=True, enable_thinking=False)
-                        inputs = receiver_tokenizer(message, return_tensors="pt").to("cuda:0")
-                        with torch.no_grad():
-                            output = receiver.generate(**inputs, max_new_tokens=config["receiver"]["max_new_tokens"],
-                                                      do_sample=False)
-                        raw = receiver_tokenizer.decode(
-                            output[0, inputs.input_ids.shape[1]:], skip_special_tokens=True).strip()
-                        prediction, _ = canonical_prediction(raw, processed[sid]["choices"])
+                        # Same answering path as the single-terminal line: the RSU-issued
+                        # question block plus the surviving text, task intent in the
+                        # prompt, letter-only reply, no restoration. The previous local
+                        # prompt ("ANSWER_REQUEST + received", no question block) made
+                        # these accuracies incomparable with every other table.
+                        result = answer_with_protocol(
+                            model=receiver, tokenizer=receiver_tokenizer,
+                            row=processed[sid], received=received,
+                            survived_tokens=1, total_tokens=1,   # ideal link: never restore
+                            answer_request=ANSWER_REQUEST, max_new_tokens=int(config["receiver"]["max_new_tokens"]),
+                            protocol="v6", restore_threshold=0.0)
+                        prediction = result["prediction"]
                         correct = exact_match(prediction, str(processed[sid]["choices"][processed[sid]["answer"]]))
                         slot_correct.append(float(correct))
                         records.append({"snr_db": float(snr), "K": k, "theta": float(theta),

@@ -1,0 +1,47 @@
+{
+  "canonical_source": "outputs/main_8b8b_maskall",
+  "canonical_reason": "current implementation (predicted scoring target, joint reception, coupling variant B with beta=0.13, context-aware LP) with the body mask applied to every method, so all methods are compared under the same information condition: none of them may spend symbols re-transmitting the question and options the receiver already holds. NOTE: the transmitter is 8B, not the 4B the paper's main line claims; a 4B predicted-target score cache does not exist yet, so this table must be labelled 8B->8B reference until it is built.",
+  "coverage": {
+    "samples": 60,
+    "channels": [
+      "frequency_selective",
+      "rayleigh",
+      "rician"
+    ],
+    "snr_db": [
+      0.0,
+      15.0
+    ],
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "methods": [
+      "adaptive_sc",
+      "answer_attn",
+      "answer_loo",
+      "answer_loo_uep",
+      "efpc",
+      "full",
+      "llmlingua",
+      "llmlingua2",
+      "longllmlingua",
+      "plugin_capacity",
+      "proposed",
+      "selective_context",
+      "tokcom",
+      "tokcom_uep"
+    ]
+  },
+  "appendix_sources": {
+    "outputs/main_8b8b_full14": "mask off; kept only to quantify the mask's effect",
+    "results/channel_main_4b8b_fair": "older implementation / older budget\u53e3\u5f84; superseded, must not be subtracted from or compared against the canonical table",
+    "results/channel_main_4b4b_fair": "older implementation / older budget\u53e3\u5f84; superseded, must not be subtracted from or compared against the canonical table"
+  },
+  "caveats": [
+    "Accuracy is on the filtered manifest (full = 100%), a controlled comparison set; absolute accuracy on the unfiltered pool is ~40pp lower.",
+    "The body mask lifts the lexical baselines far more than proposed, so the margin over tokcom_uep (+0.9pp, p=0.29) is not significant under it.",
+    "Multi-terminal (VI-B-5) now uses the same answering path and body mask, so it is comparable; absolute accuracy is still lower because each terminal receives only 1/K of the budget."
+  ]
+}
