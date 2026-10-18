@@ -93,7 +93,7 @@ def _llmlingua_order(score: torch.Tensor, target_keep: int, segment_size: int = 
     return kept[:target_keep]
 
 
-def select_level(method: str, utility: torch.Tensor, coupling: torch.Tensor, beta: float,
+def _select_level(method: str, utility: torch.Tensor, coupling: torch.Tensor, beta: float,
                  q: torch.Tensor, rates: torch.Tensor, budget: float, t_max: int = 8,
                  rng: random.Random | None = None,
                  alt_score: torch.Tensor | None = None,
@@ -211,3 +211,67 @@ def select_level(method: str, utility: torch.Tensor, coupling: torch.Tensor, bet
         return rounded.level
     # Refinement always improves the *exact* set objective of Eq. (34).
     return refine(problem, rounded.level, t_max=t_max).level
+
+
+def select_level(method: str, utility: torch.Tensor, coupling: torch.Tensor, beta: float,
+                 q: torch.Tensor, rates: torch.Tensor, budget: float, t_max: int = 8,
+                 rng: random.Random | None = None,
+                 alt_score: torch.Tensor | None = None,
+                 joint_q: torch.Tensor | None = None,
+                 selection_utility: torch.Tensor | None = None,
+                 candidate_mask: torch.Tensor | None = None) -> torch.Tensor:
+    """``_select_level`` restricted to ``candidate_mask``.
+
+    ``candidate_mask`` marks the tokens a method is allowed to transmit. The
+    body-mask experiment uses it to drop the duplicated question/option prefix,
+    which the receiver already gets through ``build_question_block``.
+
+    Restricting the candidate set has to happen *inside* the selection, not by
+    voiding the result afterwards: a method that spent budget on an excluded token
+    and had it deleted afterwards would silently lose that budget, which would
+    penalise exactly the baselines the comparison is supposed to be fair to. So
+    every ranking sees the restriction, and the order-based methods (random,
+    truncate) shuffle/truncate only over the allowed tokens.
+    """
+    if candidate_mask is None:
+        return _select_level(method, utility, coupling, beta, q, rates, budget, t_max,
+                             rng, alt_score, joint_q, selection_utility)
+    mask = torch.as_tensor(candidate_mask, dtype=torch.bool).reshape(-1)
+    utility = torch.as_tensor(utility, dtype=torch.float32).reshape(-1)
+    if mask.numel() != utility.numel():
+        raise ValueError(f"candidate_mask has {mask.numel()} entries but the prompt has "
+                         f"{utility.numel()} tokens")
+    allowed = [index for index in range(utility.numel()) if bool(mask[index])]
+    if not allowed:
+        raise ValueError("candidate_mask excludes every token")
+    rates_t = torch.as_tensor(rates, dtype=torch.float32).reshape(-1)
+    num_tokens = utility.numel()
+
+    if method == "random":
+        order = list(allowed)
+        (rng or random.Random(0)).shuffle(order)
+        return _fill_strongest(order, torch.zeros(num_tokens, dtype=torch.long),
+                               rates_t, budget)
+    if method == "truncate":
+        return _fill_strongest(allowed, torch.zeros(num_tokens, dtype=torch.long),
+                               rates_t, budget)
+
+    masked_utility = utility.clone()
+    masked_utility[~mask] = 0.0
+    masked_selection = selection_utility
+    if selection_utility is not None:
+        masked_selection = torch.as_tensor(
+            selection_utility, dtype=torch.float32).reshape(-1).clone()
+        masked_selection[~mask] = 0.0
+    masked_alt = alt_score
+    if alt_score is not None:
+        masked_alt = torch.as_tensor(alt_score, dtype=torch.float32).reshape(-1).clone()
+        # Rank excluded tokens last instead of at -inf, so percentile-based
+        # controllers (LLMLingua's budget search) still receive finite values.
+        masked_alt[~mask] = float(masked_alt.min()) - 1.0
+
+    level = _select_level(method, masked_utility, coupling, beta, q, rates, budget,
+                          t_max, rng, masked_alt, joint_q, masked_selection)
+    level = level.clone()
+    level[~mask] = 0
+    return level

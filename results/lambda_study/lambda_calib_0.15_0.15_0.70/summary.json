@@ -1,0 +1,53 @@
+{
+  "samples": 30,
+  "channels": [
+    "rayleigh"
+  ],
+  "snr_db": [
+    0.0
+  ],
+  "channel_seeds": [
+    0,
+    1
+  ],
+  "epsilon_out": 0.05,
+  "methods": [
+    "proposed"
+  ],
+  "weights": [
+    0.15,
+    0.15,
+    0.7
+  ],
+  "beta": 0.13,
+  "codebook_levels": [
+    48.0,
+    32.0,
+    16.0
+  ],
+  "code_rates": [
+    0.3333333333333333,
+    0.5,
+    1.0
+  ],
+  "energy_backend": "nvidia-smi",
+  "conditions": [
+    {
+      "channel": "rayleigh",
+      "snr_db": 0.0,
+      "method": "proposed",
+      "observations": 60,
+      "accuracy": 0.6333333333333333,
+      "accuracy_ci95": 0.12296512450924608,
+      "mean_TRR": 0.2031330435054398,
+      "mean_symbols": 573.0666666666667,
+      "capacity_outage_rate": 0.05,
+      "plugin_outage_rate": 0.5166666666666667,
+      "mean_token_erasure_rate": 0.2810284865093175,
+      "mean_schedule_seconds": 0.0020107395326097806,
+      "mean_receive_seconds": 0.08972299558420976,
+      "mean_gpu_peak_memory_delta_gib": 0.03244069417317708,
+      "mean_energy_j": 18.83951677185821
+    }
+  ]
+}

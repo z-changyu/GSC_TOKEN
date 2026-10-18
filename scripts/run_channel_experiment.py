@@ -43,6 +43,12 @@ def main() -> None:
     parser.add_argument("--snr-db", type=float, nargs="*")
     parser.add_argument("--channels", nargs="*", help="Subset of channel config paths")
     parser.add_argument("--methods", nargs="*")
+    parser.add_argument("--body-mask", default=None, choices=["off", "proposed", "all"],
+                        help="exclude the duplicated question/option prefix from the "
+                             "candidate set: 'off' (default) keeps every method as is, "
+                             "'proposed' applies it to proposed_body only, 'all' applies "
+                             "it to every method except full so the comparison holds the "
+                             "information available to each method fixed")
     parser.add_argument("--manifest", help="Override the sample manifest (e.g. one CV fold)")
     parser.add_argument("--score-cache", help="Override the cached pragmatic scores")
     parser.add_argument("--benchmark-scores",
@@ -197,6 +203,7 @@ def main() -> None:
     coupling_variant = args.coupling_variant or str(
         pragmatic_cfg.get("coupling_variant", "raw"))
     lp_utility = args.lp_utility or str(config["scheduling"].get("lp_utility", "marginal"))
+    body_mask_mode = args.body_mask or "off"
     protection_mode = args.protection_mode or str(
         config["scheduling"].get("protection_mode", "differentiated"))
     token_embeddings = {}
@@ -410,7 +417,12 @@ def main() -> None:
                     for method in methods:
                         start = time.perf_counter()
                         is_plugin = method == "plugin_capacity"
-                        use_body_mask = method == "proposed_body"
+                        use_body_mask = (method == "proposed_body"
+                                         or (body_mask_mode == "all" and method != "full"))
+                        candidate_mask = None
+                        if use_body_mask and body_start > 0:
+                            candidate_mask = torch.zeros(scores.num_tokens, dtype=torch.bool)
+                            candidate_mask[body_start:] = True
                         # Budget routing. ``plugin_capacity`` *is* the internal
                         # baseline that replaces Eq. (6) with the plug-in capacity,
                         # and ``proposed`` may deliberately be run at the genie
@@ -432,13 +444,11 @@ def main() -> None:
                                                                    "answer_loo_uep",
                                                                    "proposed_body")
                                         else method)
-                        if use_body_mask:
+                        if method == "proposed_body":
                             # Same scheduler and the same budget as ``proposed``; the
                             # only change is that the duplicated prefix leaves the
-                            # candidate set. Zeroing the utility (instead of filtering
-                            # the order afterwards) keeps the LP honest: the freed
-                            # budget is re-optimised over the report body rather than
-                            # being silently spent and then voided.
+                            # candidate set, so the freed symbols are re-optimised
+                            # over the report body.
                             method_budget = proposed_budget
                         if protection_mode == "fixed" and sched_method == "proposed":
                             sched_method = "fixed_H"
@@ -460,25 +470,17 @@ def main() -> None:
                                 sched_method, utility, coupling, beta, q,
                                 torch.tensor(codebook.levels, dtype=torch.float32),
                                 method_budget, t_max if do_refine else 0, rng,
-                                joint_q=joint_q, selection_utility=selection_utility)
+                                joint_q=joint_q, selection_utility=selection_utility,
+                                candidate_mask=candidate_mask)
                         else:
-                            masked_utility, masked_selection = utility_tensor, selection_utility
-                            if use_body_mask and body_start > 0:
-                                masked_utility = utility_tensor.clone()
-                                masked_utility[:body_start] = 0.0
-                                if selection_utility is not None:
-                                    masked_selection = selection_utility.clone()
-                                    masked_selection[:body_start] = 0.0
                             level = select_level(
                                 sched_method,
-                                masked_utility, coupling, beta, q,
+                                utility_tensor, coupling, beta, q,
                                 torch.tensor(codebook.levels, dtype=torch.float32),
                                 method_budget,
                                 t_max if do_refine else 0, rng, alt,
-                                joint_q=joint_q, selection_utility=masked_selection)
-                            if use_body_mask and body_start > 0:
-                                level = level.clone()
-                                level[:body_start] = 0
+                                joint_q=joint_q, selection_utility=selection_utility,
+                                candidate_mask=candidate_mask)
                         schedule_seconds = time.perf_counter() - start
 
                         selected = [i for i in range(scores.num_tokens) if level[i] > 0]
